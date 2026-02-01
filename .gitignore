@@ -17,3 +17,33 @@ __pycache__/
 # Local/generated data
 /data/earnings_calendar_intelligence.json
 
+
+# IDE
+.idea/
+.vscode/
+
+# Virtual env
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local DBs
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+
+# Local outputs / caches (common)
+data/news/
+data/cache/
+data/tmp/
+outputs/
+cache/
+logs/
+
+# Secrets
+.env

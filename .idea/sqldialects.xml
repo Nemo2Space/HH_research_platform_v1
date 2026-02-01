@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/setup_alpha_tables.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/sql/ai_system_tables.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/sql/create_earnings_analysis.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/sql/create_earnings_calendar.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/sql/create_earnings_intelligence.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/sql/create_signal_hub.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/sql/options_flow_score.sql" dialect="GenericSQL" />
+  </component>
+</project>
