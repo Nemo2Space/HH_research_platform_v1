@@ -1,0 +1,15 @@
+﻿# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Env / secrets
+.env
+
+# Logs
+*.log
