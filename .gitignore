@@ -47,3 +47,17 @@ logs/
 
 # Secrets
 .env
+
+# Virtual env
+.venv/
+
+# Secrets
+.env
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
