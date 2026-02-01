@@ -61,3 +61,24 @@ logs/
 
 # Logs
 *.log
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Python packaging/build
+build/
+dist/
+*.egg-info/
+
+# Test/coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Node (if you use it)
+node_modules/
+
