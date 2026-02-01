@@ -1,0 +1,445 @@
+{
+  "cache_time": "2026-01-29T20:08:59.590930",
+  "signals": {
+    "TLT": {
+      "ticker": "TLT",
+      "name": "iShares 20+ Year Treasury Bond ETF",
+      "current_price": 87.69000244140625,
+      "target_price": 89.9496645430546,
+      "upside_pct": 2.5768754005432104,
+      "composite_score": 59,
+      "signal_value": "HOLD",
+      "confidence": "Medium",
+      "bull_case": [
+        "MACD bullish crossover",
+        "Elevated term premium offers value",
+        "Bullish news flow (14 bullish headlines)"
+      ],
+      "bear_case": [],
+      "technical_score": 60,
+      "fundamental_score": 68,
+      "flow_score": 44,
+      "macro_score": 50,
+      "sentiment_score": 70,
+      "rsi_14": 52.972058052666746,
+      "rsi_signal": "NEUTRAL",
+      "macd_crossover": "BULLISH",
+      "bb_position": "WITHIN",
+      "trend_value": "Uptrend",
+      "sma_50": 87.95053573608398,
+      "sma_200": 86.55019691467285,
+      "vwap": 86.44033129075962,
+      "support_1": 87.42052459716797,
+      "modified_duration": 17.5,
+      "yield_10y": 4.229000091552734,
+      "yield_30y": 4.855999946594238
+    },
+    "ZROZ": {
+      "ticker": "ZROZ",
+      "name": "PIMCO 25+ Year Zero Coupon Treasury ETF",
+      "current_price": 64.58999633789062,
+      "target_price": 67.1579335164482,
+      "upside_pct": 3.9757506179809665,
+      "composite_score": 59,
+      "signal_value": "HOLD",
+      "confidence": "Medium",
+      "bull_case": [
+        "MACD bullish crossover",
+        "Elevated term premium offers value",
+        "Bullish news flow (14 bullish headlines)"
+      ],
+      "bear_case": [],
+      "technical_score": 60,
+      "fundamental_score": 68,
+      "flow_score": 44,
+      "macro_score": 50,
+      "sentiment_score": 70,
+      "rsi_14": 53.27225483802998,
+      "rsi_signal": "NEUTRAL",
+      "macd_crossover": "BULLISH",
+      "bb_position": "WITHIN",
+      "trend_value": "Downtrend",
+      "sma_50": 65.28619651794433,
+      "sma_200": 64.73286529541015,
+      "vwap": 65.29941902108227,
+      "support_1": 64.21028900146484,
+      "modified_duration": 27.0,
+      "yield_10y": 4.229000091552734,
+      "yield_30y": 4.855999946594238
+    },
+    "EDV": {
+      "ticker": "EDV",
+      "name": "Vanguard Extended Duration Treasury ETF",
+      "current_price": 65.52999877929688,
+      "target_price": 67.89407576522484,
+      "upside_pct": 3.607625560760508,
+      "composite_score": 59,
+      "signal_value": "HOLD",
+      "confidence": "Medium",
+      "bull_case": [
+        "MACD bullish crossover",
+        "Elevated term premium offers value",
+        "Bullish news flow (14 bullish headlines)"
+      ],
+      "bear_case": [],
+      "technical_score": 60,
+      "fundamental_score": 68,
+      "flow_score": 44,
+      "macro_score": 50,
+      "sentiment_score": 70,
+      "rsi_14": 53.175779308666066,
+      "rsi_signal": "NEUTRAL",
+      "macd_crossover": "BULLISH",
+      "bb_position": "WITHIN",
+      "trend_value": "Uptrend",
+      "sma_50": 66.03703186035156,
+      "sma_200": 65.1747040939331,
+      "vwap": 65.63662834429164,
+      "support_1": 64.99451446533203,
+      "modified_duration": 24.5,
+      "yield_10y": 4.229000091552734,
+      "yield_30y": 4.855999946594238
+    },
+    "TMF": {
+      "ticker": "TMF",
+      "name": "Direxion Daily 20+ Year Treasury Bull 3X",
+      "current_price": 37.58829879760742,
+      "target_price": 40.4941096732021,
+      "upside_pct": 7.730626201629631,
+      "composite_score": 60,
+      "signal_value": "BUY",
+      "confidence": "Medium",
+      "bull_case": [
+        "MACD bullish crossover",
+        "Elevated term premium offers value",
+        "Bullish news flow (14 bullish headlines)"
+      ],
+      "bear_case": [],
+      "technical_score": 65,
+      "fundamental_score": 68,
+      "flow_score": 44,
+      "macro_score": 50,
+      "sentiment_score": 70,
+      "rsi_14": 51.16417878940605,
+      "rsi_signal": "NEUTRAL",
+      "macd_crossover": "BULLISH",
+      "bb_position": "WITHIN",
+      "trend_value": "Downtrend",
+      "sma_50": 38.40647369384766,
+      "sma_200": 38.131329650878904,
+      "vwap": 38.4803284602766,
+      "support_1": 37.26569747924805,
+      "modified_duration": 52.5,
+      "yield_10y": 4.229000091552734,
+      "yield_30y": 4.855999946594238
+    },
+    "TBT": {
+      "ticker": "TBT",
+      "name": "ProShares UltraShort 20+ Year Treasury",
+      "current_price": 34.650001525878906,
+      "target_price": 32.864226794662464,
+      "upside_pct": -5.153750801086421,
+      "composite_score": 54,
+      "signal_value": "HOLD",
+      "confidence": "Medium",
+      "bull_case": [
+        "Elevated term premium offers value",
+        "Bullish news flow (14 bullish headlines)"
+      ],
+      "bear_case": [
+        "MACD bearish crossover"
+      ],
+      "technical_score": 40,
+      "fundamental_score": 68,
+      "flow_score": 44,
+      "macro_score": 50,
+      "sentiment_score": 70,
+      "rsi_14": 48.39402947036177,
+      "rsi_signal": "NEUTRAL",
+      "macd_crossover": "BEARISH",
+      "bb_position": "WITHIN",
+      "trend_value": "Uptrend",
+      "sma_50": 34.20200988769531,
+      "sma_200": 34.58987704277038,
+      "vwap": 34.188621641927654,
+      "support_1": 34.39469528198242,
+      "modified_duration": -35.0,
+      "yield_10y": 4.229000091552734,
+      "yield_30y": 4.855999946594238
+    },
+    "SHY": {
+      "ticker": "SHY",
+      "name": "iShares 1-3 Year Treasury Bond ETF",
+      "current_price": 82.94010162353516,
+      "target_price": 83.17214732892101,
+      "upside_pct": 0.2797750434875512,
+      "composite_score": 50,
+      "signal_value": "HOLD",
+      "confidence": "Medium",
+      "bull_case": [
+        "Elevated term premium offers value",
+        "Bullish news flow (14 bullish headlines)"
+      ],
+      "bear_case": [
+        "MACD bearish crossover",
+        "Price above upper Bollinger Band"
+      ],
+      "technical_score": 27,
+      "fundamental_score": 68,
+      "flow_score": 44,
+      "macro_score": 50,
+      "sentiment_score": 70,
+      "rsi_14": 61.12205767071336,
+      "rsi_signal": "NEUTRAL",
+      "macd_crossover": "BEARISH",
+      "bb_position": "ABOVE_UPPER",
+      "trend_value": "Strong Uptrend",
+      "sma_50": 82.70145736694336,
+      "sma_200": 81.6464538192749,
+      "vwap": 81.26157526346745,
+      "support_1": 82.45597839355469,
+      "modified_duration": 1.9,
+      "yield_10y": 4.229000091552734,
+      "yield_30y": 4.855999946594238
+    },
+    "IEF": {
+      "ticker": "IEF",
+      "name": "iShares 7-10 Year Treasury Bond ETF",
+      "current_price": 96.05500030517578,
+      "target_price": 97.1158078796854,
+      "upside_pct": 1.1043751716613759,
+      "composite_score": 52,
+      "signal_value": "HOLD",
+      "confidence": "Medium",
+      "bull_case": [
+        "Elevated term premium offers value",
+        "Bullish news flow (14 bullish headlines)"
+      ],
+      "bear_case": [
+        "MACD bearish crossover"
+      ],
+      "technical_score": 35,
+      "fundamental_score": 68,
+      "flow_score": 44,
+      "macro_score": 50,
+      "sentiment_score": 70,
+      "rsi_14": 47.1932924527404,
+      "rsi_signal": "NEUTRAL",
+      "macd_crossover": "BEARISH",
+      "bb_position": "WITHIN",
+      "trend_value": "Uptrend",
+      "sma_50": 96.23948440551757,
+      "sma_200": 94.44869678497315,
+      "vwap": 93.82389596740441,
+      "support_1": 95.8190689086914,
+      "modified_duration": 7.5,
+      "yield_10y": 4.229000091552734,
+      "yield_30y": 4.855999946594238
+    },
+    "TIP": {
+      "ticker": "TIP",
+      "name": "iShares TIPS Bond ETF",
+      "current_price": 110.6449966430664,
+      "target_price": 111.7528851666609,
+      "upside_pct": 1.0013001556396395,
+      "composite_score": 55,
+      "signal_value": "HOLD",
+      "confidence": "Medium",
+      "bull_case": [
+        "MACD bullish crossover",
+        "Elevated term premium offers value",
+        "Bullish news flow (14 bullish headlines)"
+      ],
+      "bear_case": [
+        "Price above upper Bollinger Band"
+      ],
+      "technical_score": 47,
+      "fundamental_score": 68,
+      "flow_score": 44,
+      "macro_score": 50,
+      "sentiment_score": 70,
+      "rsi_14": 63.63633287883966,
+      "rsi_signal": "NEUTRAL",
+      "macd_crossover": "BULLISH",
+      "bb_position": "ABOVE_UPPER",
+      "trend_value": "Strong Uptrend",
+      "sma_50": 110.1457290649414,
+      "sma_200": 108.82750228881837,
+      "vwap": 108.46820753010515,
+      "support_1": 109.91871643066406,
+      "modified_duration": 6.8,
+      "yield_10y": 4.229000091552734,
+      "yield_30y": 4.855999946594238
+    }
+  },
+  "yields": {
+    "yield_30y": 4.83,
+    "yield_10y": 4.24,
+    "yield_5y": 3.81,
+    "yield_2y": 3.53,
+    "yield_3m": 3.67,
+    "spread_10y_2y": 0.71,
+    "spread_10y_3m": 0.57,
+    "yield_2y_date": "",
+    "yield_10y_date": "",
+    "yield_30y_date": "",
+    "spread_10y_2y_date": "",
+    "fetched_at": "",
+    "data_quality": "OK",
+    "sources": {
+      "yield_3m": "FRED:DGS3MO (2026-01-27)",
+      "yield_2y": "FRED:DGS2 (2026-01-27)",
+      "yield_5y": "FRED:DGS5 (2026-01-27)",
+      "yield_10y": "FRED:DGS10 (2026-01-27)",
+      "yield_30y": "FRED:DGS30 (2026-01-27)"
+    },
+    "warnings": []
+  },
+  "institutional": {
+    "auction_demand_score": 60,
+    "vol_regime_score": 40,
+    "term_premium_score": 50,
+    "curve_trade_score": 50,
+    "futures_momentum_score": 65,
+    "institutional_adjustment": 1,
+    "key_insights": [
+      "Solid auction demand (B/C: 2.56)",
+      "Normal term premium (0.94%)",
+      "Treasury futures showing positive momentum"
+    ],
+    "risks": [
+      "Elevated rate volatility (MOVE: 100)"
+    ],
+    "opportunities": [],
+    "term_premium_value": 0.939000129699707,
+    "term_premium_interpretation": "Term premium normal",
+    "move_index": 100.0,
+    "vol_regime": "ELEVATED",
+    "vol_trading_implication": "Reduce position sizes. Wider stops needed."
+  },
+  "news_result": {
+    "overall_score": 0.7098639455782313,
+    "overall_sentiment": "BULLISH",
+    "bullish_count": 14,
+    "bearish_count": 0,
+    "neutral_count": 6,
+    "themes": [
+      "Fed Policy",
+      "Yields"
+    ],
+    "articles": [
+      {
+        "title": "The bond market is sending a clear signal about Fed independence",
+        "source": "MarketWatch",
+        "sentiment": "BULLISH",
+        "score": 0,
+        "url": "https://www.marketwatch.com/story/the-bond-market-is-sending-a-clear-signal-about-fed-independence-5a3142e9",
+        "category": "Fed Policy",
+        "description": "The U.S. bond market doesn\u2019t seem all that anxious yet about President Trump\u2019s efforts to sway the Federal Reserve\u2019s monetary policy decisions."
+      },
+      {
+        "title": "Trump says he\u2019ll announce his Fed pick next week. Here\u2019s who\u2019s in the lead, according to prediction markets.",
+        "source": "MarketWatch",
+        "sentiment": "BULLISH",
+        "score": 0,
+        "url": "https://www.marketwatch.com/story/trump-says-hell-announce-his-fed-pick-next-week-heres-whos-in-the-lead-according-to-prediction-markets-ba80c732",
+        "category": "Fed Policy",
+        "description": "President Donald Trump said he\u2019ll announce his nominee to chair the Federal Reserve next week \u2014 and prediction markets are pointing strongly to a Wall Street veteran getting the job."
+      },
+      {
+        "title": "Dollar turbulence starts to seep into the Treasury market",
+        "source": "MarketWatch",
+        "sentiment": "BULLISH",
+        "score": 0,
+        "url": "https://www.marketwatch.com/story/dollar-turbulence-starts-to-seep-into-the-treasury-market-644effc1",
+        "category": "General",
+        "description": "The once-mighty U.S. dollar was having another turbulent day earlier on Thursday, and the impact of its lasting weakness against major rivals appeared to seep into the $30 trillion Treasury market."
+      },
+      {
+        "title": "The bond market is sending a clear signal about Fed independence",
+        "source": "MarketWatch",
+        "sentiment": "BULLISH",
+        "score": 0,
+        "url": "https://news.google.com/rss/articles/CBMisANBVV95cUxNNmFaQUQtTHFVUUtBWUpxQXk0R0RXdmZ1LVF6NVNyR1VQZ1NHQjhYSkg1dU1WY3F6QUpiVm1NMk4tcy1ZTHdRVVIxTFg1M2RuaGhOUG5vMUJBdWxQbmE1LVhIeS05cmtOcE50OFg0THdwSzEyR0NnMDdwTnBsVDBBaDFxZ05WdHZ6Y3l1RVZGX21mZGVFYWk5WEktOFJrYmhTeGctWDVyRHRISU1xeDVxeHhEZ0o2MUQ4R3ZmSlBWZG9EY2g3cmRmUWplM195aVdLMS1Dc1ZTYXFQMy1JUTlZN015WVRwV1RxQTdadk9zZmxXTGlvdUwzTkpYRWxCYzh4blU1ajdQTGlaSElyWE05bnF4aUZ1TGRiSHQ3NHdLVEtwbExhOTdkeDVFYnJod2FJWVdRRHZTLW1mYVZOY1BZZHA5aV9WXzctd2RiSHVsS3lveDBqbU9BTHN1SnVfRTVoUXlzOW5tZEVWQmpLeW53X2VacDN4MnphV1VJSDdkVWR3aGRTTDZtMmhYNW1IOUlnekVhLTVKSGNFemhQM1ViSnVYY1BuelVsY25tR2VhbVM?oc=5",
+        "category": "Fed Policy",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMisANBVV95cUxNNmFaQUQtTHFVUUtBWUpxQXk0R0RXdmZ1LVF6NVNyR1VQZ1NHQjhYSkg1dU1WY3F6QUpiVm1NMk4tcy1ZTHdRVVIxTFg1M2RuaGhOUG5vMUJBdWxQbmE1LVhIeS05cmtOcE50OFg0THdwSzEyR0NnMDdwTnBsVDBBaDFxZ05WdHZ6Y3l1RVZGX21mZGVFYWk5WEktOFJrYmhTeGctWDVyRHRISU1xeDVxeHhEZ0o2MUQ4R3ZmSlBWZG9EY2g3cmRmUWplM195aVdLMS1Dc1ZTYXFQMy1JUTlZN015WVRwV1RxQTdadk9zZmxXTGlvdUwzTkpYRWxCYzh4blU1ajdQTGlaSElyWE05bnF4aUZ1TGRiSHQ3NHdLVEtwbExhOTdkeDVFYnJod2FJWVdRRHZTLW1mYVZOY1BZZHA5aV9WXzctd2RiSHVsS3"
+      },
+      {
+        "title": "The bond market is sending a clear signal about Fed independence",
+        "source": "MarketWatch",
+        "sentiment": "BULLISH",
+        "score": 0,
+        "url": "https://www.msn.com/en-us/money/general/the-bond-market-is-sending-a-clear-signal-about-fed-independence/ar-AA1Vgt1b",
+        "category": "Fed Policy",
+        "description": ""
+      },
+      {
+        "title": "A Morgan Stanley exec says chaotic headlines are creating disconnects in the bond market",
+        "source": "Business Insider",
+        "sentiment": "BULLISH",
+        "score": 0,
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQWVp1SkNvbmxPTFpRZGRWSmVRVE9acFlPeExtNi1EYnR2czlsVGliZ3AwbUVhUnUwOFJCdkctWWF1OEpEd3RXZlFRSkZJa1p3My1GeGcxcExoOFBpV2x6aVgwc0Q2bHhXYjRCa1g4THkySW1XM2dyZ3dxenJkcnF6QWt4Rlh0RXhLTlhmYmFZXzdUWC01NWdteVB2ZVIzaXpWZjJmc1ZGaTVveTc3bFVmV0FtazhBZ3ZK?oc=5",
+        "category": "General",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxQWVp1SkNvbmxPTFpRZGRWSmVRVE9acFlPeExtNi1EYnR2czlsVGliZ3AwbUVhUnUwOFJCdkctWWF1OEpEd3RXZlFRSkZJa1p3My1GeGcxcExoOFBpV2x6aVgwc0Q2bHhXYjRCa1g4THkySW1XM2dyZ3dxenJkcnF6QWt4Rlh0RXhLTlhmYmFZXzdUWC01NWdteVB2ZVIzaXpWZjJmc1ZGaTVveTc3bFVmV0FtazhBZ3ZK?oc=5\" target=\"_blank\">A Morgan Stanley exec says chaotic headlines are creating disconnects in the bond market</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Business Insider</font>"
+      },
+      {
+        "title": "Treasury Yields Steady Following Fed Hold as Geopolitical Tension Rises",
+        "source": "Barron's",
+        "sentiment": "BULLISH",
+        "score": 0,
+        "url": "https://news.google.com/rss/articles/CBMi_gNBVV95cUxOZFNPc05QODctblZCWFZsUmdTTklHbVJxWndTdmFPZ1V0eGs5cUdVZWkyWHFTMlZKUHZsMTFrUUREb2ZLR1piUHQ5YkhuTklHcEpHSFhaMGNHNXpwM0tuNmJ0emNmSXZFU2FFZGZKRUdLRU81SENuZGxmVDdva0lOTFZhUzVMMXFwek10VFppZy1HVDdXTkJ6blJLdDAtREJnZ3ZtMXQ2X2hUNzgybUhFSlZZLTNTT1VZZmJ2OVpYMU50d0ZnVHpDSmFjbkROejM4Uk1tVDBlcEF3V1NoeVR1T2RCVm15ZVJNeUtHR0c5ZjFIQjBoR0dVLWhWeUp1ZjVFNEU1M1R4bEVxZFAzeE9TaVVPa3ExTzhvWkhUN3dLb2c3QWVKTVpXSllRY05YTFY0OFRXLWQ0NDJXc1dFcEYzeVhrcllxTFBfRm96RE5VVksyNFNXWE9DR1JzX0VHenZ0V1BDa01LZ1Y1Z1k1OVhrcTNramhCY3MzdzNRUTF0cklQbmpOcUYtQlVQVWtCeE9tbFZXU2g5Q0JvbUtTRmx2UnppUVlBRmpucGw4QUdKUExWWWZ4MGRydG9aWk5CYVlCSlA4bEVsS3NKN01mTTlUNmpNVExuU3hHUUJCRm1BWHozXzJVN2x5eTF6VWF2cUI3VS1WWDBGQkZTUEJVN2c?oc=5",
+        "category": "Fed Policy",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMi_gNBVV95cUxOZFNPc05QODctblZCWFZsUmdTTklHbVJxWndTdmFPZ1V0eGs5cUdVZWkyWHFTMlZKUHZsMTFrUUREb2ZLR1piUHQ5YkhuTklHcEpHSFhaMGNHNXpwM0tuNmJ0emNmSXZFU2FFZGZKRUdLRU81SENuZGxmVDdva0lOTFZhUzVMMXFwek10VFppZy1HVDdXTkJ6blJLdDAtREJnZ3ZtMXQ2X2hUNzgybUhFSlZZLTNTT1VZZmJ2OVpYMU50d0ZnVHpDSmFjbkROejM4Uk1tVDBlcEF3V1NoeVR1T2RCVm15ZVJNeUtHR0c5ZjFIQjBoR0dVLWhWeUp1ZjVFNEU1M1R4bEVxZFAzeE9TaVVPa3ExTzhvWkhUN3dLb2c3QWVKTVpXSllRY05YTFY0OFRXLWQ0NDJXc1dFcEYzeVhrcllxTFBfRm96RE5VVk"
+      },
+      {
+        "title": "Fed chief Powell says a frail U.S. labor market has stabilized. Low jobless claims back him up.",
+        "source": "MarketWatch",
+        "sentiment": "BULLISH",
+        "score": 0,
+        "url": "https://www.marketwatch.com/story/fed-chief-powell-says-a-frail-u-s-labor-market-has-stabilized-low-jobless-claims-back-him-up-7786a6fe",
+        "category": "Fed Policy",
+        "description": "Federal Reserve chief Jerome Powell said Wednesday that the U.S. jobs market seems to have stabilized after a big letdown last year, justifying a decision to leave interest rates unchanged. The latest jobless-claims report appears to support his claim."
+      },
+      {
+        "title": "Federal Reserve live coverage: Fed holds interest rates steady amid political pressure",
+        "source": "Yahoo Finance",
+        "sentiment": "BULLISH",
+        "score": 0,
+        "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxOemJiQW5pc0JEd0FJM2RraXZ1QWdoTEx6U3djLTZZcWwwbElENnNDcjdWYUNRN1paRE1tZTNUcXhxNF9nTlkzNm5HUFZLQWthRXpXbzlUcTR3UEN1TndacFZZbEF2WVozZFdKWmpsa01CcnI2TWFIcGFETWhwYTROUzhzdDJRMUpieXJETHp4elVhRFZuX1B4QmdEaTFqTzNlNFhsOTdYRk0tRW5JVHhtSlM1TFVDaVNWbDQ3LVIyeTZyX0VhUTVndGc3elg3ZjZya1FJZUJsUnNiZ0JYemNOSTh2RlY5RnF5OVRiWmRtSXp3VG5m?oc=5",
+        "category": "Fed Policy",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMi9AFBVV95cUxOemJiQW5pc0JEd0FJM2RraXZ1QWdoTEx6U3djLTZZcWwwbElENnNDcjdWYUNRN1paRE1tZTNUcXhxNF9nTlkzNm5HUFZLQWthRXpXbzlUcTR3UEN1TndacFZZbEF2WVozZFdKWmpsa01CcnI2TWFIcGFETWhwYTROUzhzdDJRMUpieXJETHp4elVhRFZuX1B4QmdEaTFqTzNlNFhsOTdYRk0tRW5JVHhtSlM1TFVDaVNWbDQ3LVIyeTZyX0VhUTVndGc3elg3ZjZya1FJZUJsUnNiZ0JYemNOSTh2RlY5RnF5OVRiWmRtSXp3VG5m?oc=5\" target=\"_blank\">Federal Reserve live coverage: Fed holds interest rates steady amid political pressure</a>&nbsp;&nb"
+      },
+      {
+        "title": "What Federal Reserve's Interest Rate Decision Means for Bitcoin",
+        "source": "Yahoo Finance",
+        "sentiment": "BULLISH",
+        "score": 0,
+        "url": "https://finance.yahoo.com/news/federal-interest-rate-decision-means-130744544.html",
+        "category": "General",
+        "description": ""
+      }
+    ]
+  },
+  "bond_intelligence": {
+    "fed_policy": {
+      "current_rate_lower": 3.5,
+      "current_rate_upper": 3.75,
+      "effective_rate": 3.64,
+      "last_decision": "HOLD",
+      "data_source": "FRED (DFEDTARL/DFEDTARU/EFFR)"
+    },
+    "rate_probabilities": {
+      "next_meeting_probs": {},
+      "cuts_priced_in_2025": 0.0,
+      "data_source": "Web Search (CME FedWatch)"
+    },
+    "yields": {
+      "yield_10y": 4.24,
+      "yield_30y": 4.83,
+      "yield_2y": 3.53,
+      "spread_10y_2y": 0.71,
+      "spread_10y_fed": 0.6000000000000001
+    },
+    "ai_context": "\n======================================================================\n\ud83c\udfe6 BOND MARKET INTELLIGENCE - LIVE DATA\n======================================================================\nGenerated: 2026-01-29 20:08\nTODAY'S DATE: 2026-01-29\nData Sources: FRED API, Yahoo Finance, Web Search\n\n\u26a0\ufe0f IMPORTANT: Use ONLY the data below. Do NOT use training data for rates/yields.\n\n======================================================================\n\ud83d\udcca CURRENT FED POLICY (LIVE from FRED (DFEDTARL/DFEDTARU/EFFR))\n======================================================================\nFed Funds Target Range: 3.50% - 3.75%\nEffective Fed Funds Rate: 3.64%\nData fetched: 2026-01-29T20:08:20.870208\n\nLast Decision: HOLD (+0bps)\n\nLatest Fed News (from web search):\n  \u2022 The Fed releases its latest interest rate decision Wednesday. Here's what to expect: ...\n  \u2022 Fed holds interest rates steady, pausing rate cuts amid economic uncertainty: ...\n  \u2022 Fed holds interest rates steady in first meeting of 2026: ...\n\n======================================================================\n\ud83d\udcc8 TREASURY YIELDS (LIVE from Yahoo Finance)\n======================================================================\nFetched: 2026-01-29T20:08:27.340905\n\n3-Month T-Bill:  3.67%\n2-Year Note:     3.53%\n5-Year Note:     3.81%\n10-Year Note:    4.24%\n30-Year Bond:    4.83%\n\nYIELD CURVE ANALYSIS:\n  10Y - 2Y Spread: +0.71% (Normal)\n  10Y - 3M Spread: +0.57%\n  10Y - Fed Funds Spread: +0.60%\n\nPOLICY SPREAD ANALYSIS (NOT term premium):\n  10Y vs Effective Fed Funds: +0.60%\n  Note: This is a YIELD SPREAD, not term premium.\n  True term premium requires NY Fed ACM or Kim-Wright model data.\n  Interpretation: 10Y trading ABOVE Fed = may offer value if cuts materialize\n\n======================================================================\n\ud83d\udcca MARKET RATE EXPECTATIONS (from Web Search)\n======================================================================\nCrypto Market Awaits Fed's Next Move as Rate Cut Odds Dwindl... Bitcoin Faces Key Support Test After Fed Meeting\u2014Will Powell... The Fed releases its latest interest rate decision Wednesday... Will the Fed cut rates this week?... Fed expected to pause rate cuts after 3 straight reductions ... \n\n======================================================================\n\ud83c\udf0d ECONOMIC INDICATORS (from FRED API)\n======================================================================\nCPI Inflation: 2.7% YoY (as of 2025-12-01)\nPCE Inflation: 2.8% YoY (as of 2025-11-01)\nUnemployment:  4.4% (as of 2025-12-01)\n\n======================================================================\n\ud83d\udcca MOVE INDEX - Bond Market Volatility (LIVE from Yahoo ^MOVE)\n======================================================================\nMOVE Index: 57.43\nRegime: LOW\nData Status: LIVE\n\nInterpretation:\n  - Below 60: LOW volatility (calm markets, favorable for positioning)\n  - 60-80: NORMAL volatility\n  - 80-100: ELEVATED volatility (caution warranted)\n  - Above 100: HIGH volatility (crisis-level, reduce exposure)\n\nCurrent Assessment: MOVE at 57 indicates LOW rate volatility.\n\n======================================================================\n\u2705 KEY FACTS (from live data)\n======================================================================\n\u2022 Fed funds rate: 3.50%-3.75% (effective: 3.64%) [Source: FRED (DFEDTARL/DFEDTARU/EFFR)]\n\u2022 10-Year Treasury: 4.24%\n\u2022 30-Year Treasury: 4.83%\n\u2022 Yield curve normal: 10Y-2Y spread = +0.71%\n\u2022 10Y trading 0.60% ABOVE Fed funds - may offer value\n\u2022 CPI inflation: 2.7% YoY (as of 2025-12-01)\n\u2022 Unemployment: 4.4% (as of 2025-12-01)\n\n======================================================================\n\ud83c\udfaf TRADING IMPLICATIONS\n======================================================================\n\u2022 10Y at 4.24% - moderate yield level. Evaluate based on rate outlook.\n\u2022 10Y trading 0.60% ABOVE Fed funds. If Fed cuts materialize, long bonds could rally.\n\u2022 Steep curve (+0.71%). Long bonds offer yield pickup but more rate risk.\n\n======================================================================\n\u26a0\ufe0f RISKS TO MONITOR\n======================================================================\n\u2022 Inflation at 2.7% - above Fed's 2% target. Watch for sticky inflation risk.\n\u2022 30Y at 4.83% - ultra-long bonds (ZROZ, EDV) highly sensitive to rate moves. Limit position size.\n\n======================================================================\n\ud83e\udd16 AI ADVISOR CRITICAL INSTRUCTIONS\n======================================================================\n1. TODAY IS 2026-01-29. Use this date, not your training cutoff.\n\n2. The CURRENT Fed funds rate is 3.50%-3.75%\n   (effective: 3.64%)\n   This is LIVE DATA from FRED (DFEDTARL/DFEDTARU/EFFR). Trust this, NOT your training.\n\n3. Current Treasury yields (LIVE):\n   - 10Y: 4.24%\n   - 30Y: 4.83%\n\n4. The 10Y is trading +0.60% vs Fed funds.\n   Some additional cuts may not be fully priced\n\n5. When recommending TLT/ZROZ:\n   - Reference the ACTUAL current yields above\n   - Consider whether the 10Y-Fed spread suggests value\n   - Use the term premium analysis\n   - Factor in the economic data (CPI, unemployment)\n\nDO NOT USE OUTDATED INFORMATION FROM YOUR TRAINING.\nThe live data above supersedes any conflicting training data.\n"
+  }
+}

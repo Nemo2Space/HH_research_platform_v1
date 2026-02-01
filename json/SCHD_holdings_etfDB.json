@@ -1,0 +1,507 @@
+[
+    {
+        "name": "Pfizer Inc.",
+        "symbol": "PFE",
+        "weight": 4.53
+    },
+    {
+        "name": "AbbVie, Inc.",
+        "symbol": "ABBV",
+        "weight": 4.28
+    },
+    {
+        "name": "Cisco Systems, Inc.",
+        "symbol": "CSCO",
+        "weight": 4.16
+    },
+    {
+        "name": "Coca-Cola Company",
+        "symbol": "KO",
+        "weight": 4.12
+    },
+    {
+        "name": "Texas Instruments Incorporated",
+        "symbol": "TXN",
+        "weight": 4.12
+    },
+    {
+        "name": "Bristol-Myers Squibb Company",
+        "symbol": "BMY",
+        "weight": 4.12
+    },
+    {
+        "name": "BlackRock, Inc.",
+        "symbol": "BLK",
+        "weight": 3.99
+    },
+    {
+        "name": "Chevron Corporation",
+        "symbol": "CVX",
+        "weight": 3.98
+    },
+    {
+        "name": "Amgen Inc.",
+        "symbol": "AMGN",
+        "weight": 3.97
+    },
+    {
+        "name": "Verizon Communications Inc.",
+        "symbol": "VZ",
+        "weight": 3.85
+    },
+    {
+        "name": "PepsiCo, Inc.",
+        "symbol": "PEP",
+        "weight": 3.82
+    },
+    {
+        "name": "Lockheed Martin Corporation",
+        "symbol": "LMT",
+        "weight": 3.78
+    },
+    {
+        "name": "Home Depot, Inc.",
+        "symbol": "HD",
+        "weight": 3.78
+    },
+    {
+        "name": "United Parcel Service, Inc. Class B",
+        "symbol": "UPS",
+        "weight": 3.57
+    },
+    {
+        "name": "Altria Group, Inc.",
+        "symbol": "MO",
+        "weight": 3.43
+    },
+    {
+        "name": "U.S. Bancorp",
+        "symbol": "USB",
+        "weight": 2.97
+    },
+    {
+        "name": "EOG Resources, Inc.",
+        "symbol": "EOG",
+        "weight": 2.83
+    },
+    {
+        "name": "ONEOK, Inc.",
+        "symbol": "OKE",
+        "weight": 2.32
+    },
+    {
+        "name": "Paychex, Inc.",
+        "symbol": "PAYX",
+        "weight": 1.74
+    },
+    {
+        "name": "Kimberly-Clark Corporation",
+        "symbol": "KMB",
+        "weight": 1.67
+    },
+    {
+        "name": "Fastenal Company",
+        "symbol": "FAST",
+        "weight": 1.62
+    },
+    {
+        "name": "Valero Energy Corporation",
+        "symbol": "VLO",
+        "weight": 1.55
+    },
+    {
+        "name": "Ford Motor Company",
+        "symbol": "F",
+        "weight": 1.49
+    },
+    {
+        "name": "M&T Bank Corporation",
+        "symbol": "MTB",
+        "weight": 1.25
+    },
+    {
+        "name": "Fifth Third Bancorp",
+        "symbol": "FITB",
+        "weight": 1.13
+    },
+    {
+        "name": "T. Rowe Price Group",
+        "symbol": "TROW",
+        "weight": 0.98
+    },
+    {
+        "name": "Hershey Company",
+        "symbol": "HSY",
+        "weight": 0.95
+    },
+    {
+        "name": "Huntington Bancshares Incorporated",
+        "symbol": "HBAN",
+        "weight": 0.94
+    },
+    {
+        "name": "Cincinnati Financial Corporation",
+        "symbol": "CINF",
+        "weight": 0.87
+    },
+    {
+        "name": "Regions Financial Corporation",
+        "symbol": "RF",
+        "weight": 0.85
+    },
+    {
+        "name": "Darden Restaurants, Inc.",
+        "symbol": "DRI",
+        "weight": 0.85
+    },
+    {
+        "name": "Packaging Corporation of America",
+        "symbol": "PKG",
+        "weight": 0.79
+    },
+    {
+        "name": "Coterra Energy Inc.",
+        "symbol": "CTRA",
+        "weight": 0.76
+    },
+    {
+        "name": "LyondellBasell Industries NV",
+        "symbol": "LYB",
+        "weight": 0.75
+    },
+    {
+        "name": "Snap-on Incorporated",
+        "symbol": "SNA",
+        "weight": 0.69
+    },
+    {
+        "name": "Best Buy Co., Inc.",
+        "symbol": "BBY",
+        "weight": 0.65
+    },
+    {
+        "name": "CF Industries Holdings, Inc.",
+        "symbol": "CF",
+        "weight": 0.63
+    },
+    {
+        "name": "Watsco, Inc.",
+        "symbol": "WSO",
+        "weight": 0.63
+    },
+    {
+        "name": "KeyCorp",
+        "symbol": "KEY",
+        "weight": 0.62
+    },
+    {
+        "name": "Tapestry, Inc.",
+        "symbol": "TPR",
+        "weight": 0.61
+    },
+    {
+        "name": "Skyworks Solutions, Inc.",
+        "symbol": "SWKS",
+        "weight": 0.58
+    },
+    {
+        "name": "Fidelity National Financial, Inc. - FNF Group",
+        "symbol": "FNF",
+        "weight": 0.57
+    },
+    {
+        "name": "Amcor PLC",
+        "symbol": "AMCR",
+        "weight": 0.54
+    },
+    {
+        "name": "East West Bancorp, Inc.",
+        "symbol": "EWBC",
+        "weight": 0.52
+    },
+    {
+        "name": "Dick\\'s Sporting Goods, Inc.",
+        "symbol": "DKS",
+        "weight": 0.51
+    },
+    {
+        "name": "Unum Group",
+        "symbol": "UNM",
+        "weight": 0.49
+    },
+    {
+        "name": "C.H. Robinson Worldwide, Inc.",
+        "symbol": "CHRW",
+        "weight": 0.48
+    },
+    {
+        "name": "Interpublic Group of Companies, Inc.",
+        "symbol": "IPG",
+        "weight": 0.41
+    },
+    {
+        "name": "APA Corporation",
+        "symbol": "APA",
+        "weight": 0.34
+    },
+    {
+        "name": "Zions Bancorporation NA",
+        "symbol": "ZION",
+        "weight": 0.32
+    },
+    {
+        "name": "Comerica Incorporated",
+        "symbol": "CMA",
+        "weight": 0.32
+    },
+    {
+        "name": "Synovus Financial Corp.",
+        "symbol": "SNV",
+        "weight": 0.29
+    },
+    {
+        "name": "H&R Block, Inc.",
+        "symbol": "HRB",
+        "weight": 0.29
+    },
+    {
+        "name": "Robert Half Inc.",
+        "symbol": "RHI",
+        "weight": 0.27
+    },
+    {
+        "name": "Vail Resorts, Inc.",
+        "symbol": "MTN",
+        "weight": 0.26
+    },
+    {
+        "name": "Whirlpool Corporation",
+        "symbol": "WHR",
+        "weight": 0.24
+    },
+    {
+        "name": "Columbia Banking System, Inc.",
+        "symbol": "COLB",
+        "weight": 0.22
+    },
+    {
+        "name": "HF Sinclair Corporation",
+        "symbol": "DINO",
+        "weight": 0.22
+    },
+    {
+        "name": "Janus Henderson Group PLC",
+        "symbol": "JHG",
+        "weight": 0.21
+    },
+    {
+        "name": "Radian Group Inc.",
+        "symbol": "RDN",
+        "weight": 0.19
+    },
+    {
+        "name": "Nexstar Media Group, Inc.",
+        "symbol": "NXST",
+        "weight": 0.19
+    },
+    {
+        "name": "Bank OZK",
+        "symbol": "OZK",
+        "weight": 0.18
+    },
+    {
+        "name": "MSC Industrial Direct Co., Inc. Class A",
+        "symbol": "MSM",
+        "weight": 0.14
+    },
+    {
+        "name": "Western Union Company",
+        "symbol": "WU",
+        "weight": 0.14
+    },
+    {
+        "name": "International Bancshares Corporation",
+        "symbol": "IBOC",
+        "weight": 0.13
+    },
+    {
+        "name": "Cathay General Bancorp",
+        "symbol": "CATY",
+        "weight": 0.13
+    },
+    {
+        "name": "Bank of Hawaii Corp",
+        "symbol": "BOH",
+        "weight": 0.11
+    },
+    {
+        "name": "Insperity, Inc.",
+        "symbol": "NSP",
+        "weight": 0.11
+    },
+    {
+        "name": "Artisan Partners Asset Management, Inc. Class A",
+        "symbol": "APAM",
+        "weight": 0.11
+    },
+    {
+        "name": "CVB Financial Corp.",
+        "symbol": "CVBF",
+        "weight": 0.11
+    },
+    {
+        "name": "Huntsman Corporation",
+        "symbol": "HUN",
+        "weight": 0.11
+    },
+    {
+        "name": "Wendy\\'s Company",
+        "symbol": "WEN",
+        "weight": 0.1
+    },
+    {
+        "name": "Heartland Financial USA, Inc.",
+        "symbol": "HTLF",
+        "weight": 0.1
+    },
+    {
+        "name": "Cohen & Steers, Inc.",
+        "symbol": "CNS",
+        "weight": 0.09
+    },
+    {
+        "name": "Banner Corporation",
+        "symbol": "BANR",
+        "weight": 0.09
+    },
+    {
+        "name": "State Street Institutional Investment Trust US Government Money Market Fund Institutional",
+        "symbol": "GVMXX",
+        "weight": 0.08
+    },
+    {
+        "name": "OFG Bancorp",
+        "symbol": "OFG",
+        "weight": 0.08
+    },
+    {
+        "name": "Carter\\'s Incorporated",
+        "symbol": "CRI",
+        "weight": 0.07
+    },
+    {
+        "name": "First Commonwealth Financial Corporation",
+        "symbol": "FCF",
+        "weight": 0.07
+    },
+    {
+        "name": "Lakeland Financial Corporation",
+        "symbol": "LKFN",
+        "weight": 0.07
+    },
+    {
+        "name": "City Holding Company",
+        "symbol": "CHCO",
+        "weight": 0.07
+    },
+    {
+        "name": "Buckle, Inc.",
+        "symbol": "BKE",
+        "weight": 0.06
+    },
+    {
+        "name": "Virtus Investment Partners, Inc.",
+        "symbol": "VRTS",
+        "weight": 0.06
+    },
+    {
+        "name": "S&T Bancorp, Inc.",
+        "symbol": "STBA",
+        "weight": 0.06
+    },
+    {
+        "name": "Northwest Bancshares, Inc.",
+        "symbol": "NWBI",
+        "weight": 0.06
+    },
+    {
+        "name": "Oxford Industries, Inc.",
+        "symbol": "OXM",
+        "weight": 0.05
+    },
+    {
+        "name": "Cracker Barrel Old Country Store, Inc.",
+        "symbol": "CBRL",
+        "weight": 0.05
+    },
+    {
+        "name": "Leggett & Platt, Incorporated",
+        "symbol": "LEG",
+        "weight": 0.05
+    },
+    {
+        "name": "Preferred Bank",
+        "symbol": "PFBC",
+        "weight": 0.04
+    },
+    {
+        "name": "Kforce Inc.",
+        "symbol": "KFRC",
+        "weight": 0.04
+    },
+    {
+        "name": "First Bancshares, Inc.",
+        "symbol": "FBMS",
+        "weight": 0.04
+    },
+    {
+        "name": "1st Source Corporation",
+        "symbol": "SRCE",
+        "weight": 0.04
+    },
+    {
+        "name": "German American Bancorp, Inc.",
+        "symbol": "GABC",
+        "weight": 0.04
+    },
+    {
+        "name": "AMERISAFE, Inc.",
+        "symbol": "AMSF",
+        "weight": 0.04
+    },
+    {
+        "name": "Heritage Financial Corporation",
+        "symbol": "HFWA",
+        "weight": 0.03
+    },
+    {
+        "name": "Clearway Energy, Inc. Class A",
+        "symbol": "CWEN.A",
+        "weight": 0.03
+    },
+    {
+        "name": "Central Pacific Financial Corp.",
+        "symbol": "CPF",
+        "weight": 0.03
+    },
+    {
+        "name": "Premier Financial Corp.",
+        "symbol": "PFC",
+        "weight": 0.03
+    },
+    {
+        "name": "U.S. Dollar",
+        "symbol": "Other",
+        "weight": 0.02
+    },
+    {
+        "name": "Guess?, Inc.",
+        "symbol": "GES",
+        "weight": 0.02
+    },
+    {
+        "name": "Ethan Allen Interiors Inc.",
+        "symbol": "ETD",
+        "weight": 0.02
+    }
+]

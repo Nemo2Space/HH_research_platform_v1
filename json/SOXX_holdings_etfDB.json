@@ -1,0 +1,157 @@
+[
+    {
+        "name": "Broadcom Inc.",
+        "symbol": "AVGO",
+        "weight": 10.94
+    },
+    {
+        "name": "NVIDIA Corporation",
+        "symbol": "NVDA",
+        "weight": 7.84
+    },
+    {
+        "name": "Advanced Micro Devices, Inc.",
+        "symbol": "AMD",
+        "weight": 6.87
+    },
+    {
+        "name": "QUALCOMM Incorporated",
+        "symbol": "QCOM",
+        "weight": 6.11
+    },
+    {
+        "name": "Texas Instruments Incorporated",
+        "symbol": "TXN",
+        "weight": 5.8
+    },
+    {
+        "name": "Marvell Technology, Inc.",
+        "symbol": "MRVL",
+        "weight": 4.93
+    },
+    {
+        "name": "KLA Corporation",
+        "symbol": "KLAC",
+        "weight": 4.1
+    },
+    {
+        "name": "Lam Research Corporation",
+        "symbol": "LRCX",
+        "weight": 4.03
+    },
+    {
+        "name": "Applied Materials, Inc.",
+        "symbol": "AMAT",
+        "weight": 3.92
+    },
+    {
+        "name": "Micron Technology, Inc.",
+        "symbol": "MU",
+        "weight": 3.92
+    },
+    {
+        "name": "Taiwan Semiconductor Manufacturing Co., Ltd. Sponsored ADR",
+        "symbol": "TSM",
+        "weight": 3.92
+    },
+    {
+        "name": "Analog Devices, Inc.",
+        "symbol": "ADI",
+        "weight": 3.91
+    },
+    {
+        "name": "ASML Holding NV ADR",
+        "symbol": "ASML",
+        "weight": 3.78
+    },
+    {
+        "name": "NXP Semiconductors NV",
+        "symbol": "NXPI",
+        "weight": 3.53
+    },
+    {
+        "name": "Monolithic Power Systems, Inc.",
+        "symbol": "MPWR",
+        "weight": 3.47
+    },
+    {
+        "name": "Microchip Technology Incorporated",
+        "symbol": "MCHP",
+        "weight": 3.2
+    },
+    {
+        "name": "Intel Corporation",
+        "symbol": "INTC",
+        "weight": 3.2
+    },
+    {
+        "name": "ON Semiconductor Corporation",
+        "symbol": "ON",
+        "weight": 2.94
+    },
+    {
+        "name": "Teradyne, Inc.",
+        "symbol": "TER",
+        "weight": 2.59
+    },
+    {
+        "name": "Entegris, Inc.",
+        "symbol": "ENTG",
+        "weight": 1.79
+    },
+    {
+        "name": "Skyworks Solutions, Inc.",
+        "symbol": "SWKS",
+        "weight": 1.76
+    },
+    {
+        "name": "Onto Innovation, Inc.",
+        "symbol": "ONTO",
+        "weight": 1.12
+    },
+    {
+        "name": "Lattice Semiconductor Corporation",
+        "symbol": "LSCC",
+        "weight": 0.91
+    },
+    {
+        "name": "MKS Instruments, Inc.",
+        "symbol": "MKSI",
+        "weight": 0.89
+    },
+    {
+        "name": "Qorvo, Inc.",
+        "symbol": "QRVO",
+        "weight": 0.82
+    },
+    {
+        "name": "ASE Technology Holding Co., Ltd. Sponsored ADR",
+        "symbol": "ASX",
+        "weight": 0.81
+    },
+    {
+        "name": "Universal Display Corporation",
+        "symbol": "OLED",
+        "weight": 0.79
+    },
+    {
+        "name": "STMicroelectronics NV ADR RegS",
+        "symbol": "STM",
+        "weight": 0.78
+    },
+    {
+        "name": "ARM Holdings PLC ADR",
+        "symbol": "ARM",
+        "weight": 0.63
+    },
+    {
+        "name": "United Microelectronics Corp. Sponsored ADR",
+        "symbol": "UMC",
+        "weight": 0.55
+    },
+    {
+        "name": "U.S. Dollar",
+        "symbol": "Other",
+        "weight": 0.15
+    }
+]

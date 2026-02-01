@@ -1,0 +1,114 @@
+# =============================================================================
+# ALPHA PLATFORM - Docker Compose
+# =============================================================================
+# 
+# Services:
+#   - timescaledb: PostgreSQL with TimescaleDB + pgvector extensions
+#   - redpanda: Kafka-compatible message broker (lighter than Kafka)
+#   - redpanda-console: Web UI for Redpanda (optional)
+#
+# Usage:
+#   Start all:     docker-compose up -d
+#   Stop all:      docker-compose down
+#   View logs:     docker-compose logs -f
+#   Pause (save energy): docker-compose pause
+#   Unpause:       docker-compose unpause
+#
+# =============================================================================
+
+version: '3.8'
+
+services:
+  # ---------------------------------------------------------------------------
+  # TimescaleDB (PostgreSQL + TimescaleDB + pgvector)
+  # ---------------------------------------------------------------------------
+  timescaledb:
+    image: timescale/timescaledb-ha:pg16
+    container_name: alpha-timescaledb
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: alpha_platform
+      POSTGRES_USER: alpha
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-alpha_secure_2024}
+    volumes:
+      - timescaledb_data:/home/postgres/pgdata/data
+      - ./sql:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U alpha -d alpha_platform"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - alpha-network
+
+  # ---------------------------------------------------------------------------
+  # Redpanda (Kafka-compatible, lighter weight)
+  # ---------------------------------------------------------------------------
+  redpanda:
+    image: redpandadata/redpanda:v23.3.5
+    container_name: alpha-redpanda
+    restart: unless-stopped
+    command:
+      - redpanda
+      - start
+      - --kafka-addr internal://0.0.0.0:9092,external://0.0.0.0:19092
+      - --advertise-kafka-addr internal://redpanda:9092,external://localhost:19092
+      - --pandaproxy-addr internal://0.0.0.0:8082,external://0.0.0.0:18082
+      - --advertise-pandaproxy-addr internal://redpanda:8082,external://localhost:18082
+      - --schema-registry-addr internal://0.0.0.0:8081,external://0.0.0.0:18081
+      - --rpc-addr redpanda:33145
+      - --advertise-rpc-addr redpanda:33145
+      - --smp 1
+      - --memory 1G
+      - --mode dev-container
+      - --default-log-level=warn
+    ports:
+      - "19092:19092"   # Kafka API (external)
+      - "18082:18082"   # Pandaproxy (REST)
+      - "18081:18081"   # Schema Registry
+    volumes:
+      - redpanda_data:/var/lib/redpanda/data
+    healthcheck:
+      test: ["CMD", "rpk", "cluster", "health"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+    networks:
+      - alpha-network
+
+  # ---------------------------------------------------------------------------
+  # Redpanda Console (Web UI for Kafka topics) - Optional
+  # ---------------------------------------------------------------------------
+  redpanda-console:
+    image: redpandadata/console:v2.4.0
+    container_name: alpha-redpanda-console
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      KAFKA_BROKERS: redpanda:9092
+      REDPANDA_ADMINAPI_ENABLED: "true"
+      REDPANDA_ADMINAPI_URLS: http://redpanda:9644
+    depends_on:
+      redpanda:
+        condition: service_healthy
+    networks:
+      - alpha-network
+
+# -----------------------------------------------------------------------------
+# Volumes
+# -----------------------------------------------------------------------------
+volumes:
+  timescaledb_data:
+    driver: local
+  redpanda_data:
+    driver: local
+
+# -----------------------------------------------------------------------------
+# Networks
+# -----------------------------------------------------------------------------
+networks:
+  alpha-network:
+    driver: bridge

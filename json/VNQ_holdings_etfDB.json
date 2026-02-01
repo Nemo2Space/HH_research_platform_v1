@@ -1,0 +1,777 @@
+[
+    {
+        "name": "Prologis, Inc.",
+        "symbol": "PLD",
+        "weight": 6.91
+    },
+    {
+        "name": "American Tower Corporation",
+        "symbol": "AMT",
+        "weight": 6.59
+    },
+    {
+        "name": "Equinix, Inc.",
+        "symbol": "EQIX",
+        "weight": 5.56
+    },
+    {
+        "name": "Welltower Inc.",
+        "symbol": "WELL",
+        "weight": 5.23
+    },
+    {
+        "name": "Digital Realty Trust, Inc.",
+        "symbol": "DLR",
+        "weight": 3.82
+    },
+    {
+        "name": "Simon Property Group, Inc.",
+        "symbol": "SPG",
+        "weight": 3.64
+    },
+    {
+        "name": "Public Storage",
+        "symbol": "PSA",
+        "weight": 3.44
+    },
+    {
+        "name": "Realty Income Corporation",
+        "symbol": "O",
+        "weight": 3.39
+    },
+    {
+        "name": "Crown Castle Inc.",
+        "symbol": "CCI",
+        "weight": 3.09
+    },
+    {
+        "name": "CBRE Group, Inc. Class A",
+        "symbol": "CBRE",
+        "weight": 2.65
+    },
+    {
+        "name": "Iron Mountain, Inc.",
+        "symbol": "IRM",
+        "weight": 2.4
+    },
+    {
+        "name": "Extra Space Storage Inc.",
+        "symbol": "EXR",
+        "weight": 2.28
+    },
+    {
+        "name": "AvalonBay Communities, Inc.",
+        "symbol": "AVB",
+        "weight": 2.08
+    },
+    {
+        "name": "VICI Properties Inc",
+        "symbol": "VICI",
+        "weight": 2.03
+    },
+    {
+        "name": "CoStar Group, Inc.",
+        "symbol": "CSGP",
+        "weight": 1.96
+    },
+    {
+        "name": "Ventas, Inc.",
+        "symbol": "VTR",
+        "weight": 1.75
+    },
+    {
+        "name": "SBA Communications Corp. Class A",
+        "symbol": "SBAC",
+        "weight": 1.63
+    },
+    {
+        "name": "Equity Residential",
+        "symbol": "EQR",
+        "weight": 1.59
+    },
+    {
+        "name": "Weyerhaeuser Company",
+        "symbol": "WY",
+        "weight": 1.5
+    },
+    {
+        "name": "Invitation Homes, Inc.",
+        "symbol": "INVH",
+        "weight": 1.27
+    },
+    {
+        "name": "Essex Property Trust, Inc.",
+        "symbol": "ESS",
+        "weight": 1.2
+    },
+    {
+        "name": "Mid-America Apartment Communities, Inc.",
+        "symbol": "MAA",
+        "weight": 1.17
+    },
+    {
+        "name": "Alexandria Real Estate Equities, Inc.",
+        "symbol": "ARE",
+        "weight": 1.14
+    },
+    {
+        "name": "Sun Communities, Inc.",
+        "symbol": "SUI",
+        "weight": 1.09
+    },
+    {
+        "name": "Kimco Realty Corporation",
+        "symbol": "KIM",
+        "weight": 1.06
+    },
+    {
+        "name": "Healthpeak Properties, Inc.",
+        "symbol": "DOC",
+        "weight": 1.04
+    },
+    {
+        "name": "Gaming and Leisure Properties, Inc.",
+        "symbol": "GLPI",
+        "weight": 0.9
+    },
+    {
+        "name": "UDR, Inc.",
+        "symbol": "UDR",
+        "weight": 0.87
+    },
+    {
+        "name": "Jones Lang LaSalle Incorporated",
+        "symbol": "JLL",
+        "weight": 0.85
+    },
+    {
+        "name": "Regency Centers Corporation",
+        "symbol": "REG",
+        "weight": 0.83
+    },
+    {
+        "name": "Equity LifeStyle Properties, Inc.",
+        "symbol": "ELS",
+        "weight": 0.82
+    },
+    {
+        "name": "Camden Property Trust",
+        "symbol": "CPT",
+        "weight": 0.81
+    },
+    {
+        "name": "W. P. Carey Inc.",
+        "symbol": "WPC",
+        "weight": 0.81
+    },
+    {
+        "name": "Host Hotels & Resorts, Inc.",
+        "symbol": "HST",
+        "weight": 0.8
+    },
+    {
+        "name": "BXP Inc",
+        "symbol": "BXP",
+        "weight": 0.79
+    },
+    {
+        "name": "American Homes 4 Rent Class A",
+        "symbol": "AMH",
+        "weight": 0.77
+    },
+    {
+        "name": "Lamar Advertising Company Class A",
+        "symbol": "LAMR",
+        "weight": 0.77
+    },
+    {
+        "name": "U.S. Dollar",
+        "symbol": "Other",
+        "weight": 0.72
+    },
+    {
+        "name": "CubeSmart",
+        "symbol": "CUBE",
+        "weight": 0.71
+    },
+    {
+        "name": "Omega Healthcare Investors, Inc.",
+        "symbol": "OHI",
+        "weight": 0.69
+    },
+    {
+        "name": "Rexford Industrial Realty, Inc.",
+        "symbol": "REXR",
+        "weight": 0.62
+    },
+    {
+        "name": "Zillow Group, Inc. Class C",
+        "symbol": "Z",
+        "weight": 0.62
+    },
+    {
+        "name": "Federal Realty Investment Trust",
+        "symbol": "FRT",
+        "weight": 0.55
+    },
+    {
+        "name": "Brixmor Property Group, Inc.",
+        "symbol": "BRX",
+        "weight": 0.54
+    },
+    {
+        "name": "EastGroup Properties, Inc.",
+        "symbol": "EGP",
+        "weight": 0.54
+    },
+    {
+        "name": "NNN REIT, Inc.",
+        "symbol": "NNN",
+        "weight": 0.53
+    },
+    {
+        "name": "Agree Realty Corporation",
+        "symbol": "ADC",
+        "weight": 0.49
+    },
+    {
+        "name": "First Industrial Realty Trust, Inc.",
+        "symbol": "FR",
+        "weight": 0.46
+    },
+    {
+        "name": "Americold Realty Trust, Inc.",
+        "symbol": "COLD",
+        "weight": 0.46
+    },
+    {
+        "name": "STAG Industrial, Inc.",
+        "symbol": "STAG",
+        "weight": 0.45
+    },
+    {
+        "name": "Vornado Realty Trust",
+        "symbol": "VNO",
+        "weight": 0.44
+    },
+    {
+        "name": "Healthcare Realty Trust Incorporated Class A",
+        "symbol": "HR",
+        "weight": 0.43
+    },
+    {
+        "name": "Ryman Hospitality Properties, Inc.",
+        "symbol": "RHP",
+        "weight": 0.4
+    },
+    {
+        "name": "Terreno Realty Corporation",
+        "symbol": "TRNO",
+        "weight": 0.38
+    },
+    {
+        "name": "Essential Properties Realty Trust, Inc.",
+        "symbol": "EPRT",
+        "weight": 0.37
+    },
+    {
+        "name": "Kite Realty Group Trust",
+        "symbol": "KRG",
+        "weight": 0.37
+    },
+    {
+        "name": "SL Green Realty Corp.",
+        "symbol": "SLG",
+        "weight": 0.32
+    },
+    {
+        "name": "Phillips Edison & Company, Inc.",
+        "symbol": "PECO",
+        "weight": 0.31
+    },
+    {
+        "name": "CareTrust REIT, Inc.",
+        "symbol": "CTRE",
+        "weight": 0.31
+    },
+    {
+        "name": "Cousins Properties Incorporated",
+        "symbol": "CUZ",
+        "weight": 0.31
+    },
+    {
+        "name": "Kilroy Realty Corporation",
+        "symbol": "KRC",
+        "weight": 0.3
+    },
+    {
+        "name": "Sabra Health Care REIT, Inc.",
+        "symbol": "SBRA",
+        "weight": 0.3
+    },
+    {
+        "name": "Independence Realty Trust, Inc.",
+        "symbol": "IRT",
+        "weight": 0.29
+    },
+    {
+        "name": "Rayonier Inc.",
+        "symbol": "RYN",
+        "weight": 0.29
+    },
+    {
+        "name": "Macerich Company",
+        "symbol": "MAC",
+        "weight": 0.27
+    },
+    {
+        "name": "Lineage, Inc.",
+        "symbol": "LINE",
+        "weight": 0.27
+    },
+    {
+        "name": "COPT Defense Properties",
+        "symbol": "CDP",
+        "weight": 0.24
+    },
+    {
+        "name": "Tanger Inc.",
+        "symbol": "SKT",
+        "weight": 0.24
+    },
+    {
+        "name": "Innovative Industrial Properties Inc",
+        "symbol": "IIPR",
+        "weight": 0.24
+    },
+    {
+        "name": "EPR Properties",
+        "symbol": "EPR",
+        "weight": 0.23
+    },
+    {
+        "name": "Highwoods Properties, Inc.",
+        "symbol": "HIW",
+        "weight": 0.23
+    },
+    {
+        "name": "Broadstone Net Lease, Inc.",
+        "symbol": "BNL",
+        "weight": 0.22
+    },
+    {
+        "name": "PotlatchDeltic Corporation",
+        "symbol": "PCH",
+        "weight": 0.22
+    },
+    {
+        "name": "National Health Investors, Inc.",
+        "symbol": "NHI",
+        "weight": 0.22
+    },
+    {
+        "name": "Apple Hospitality REIT Inc",
+        "symbol": "APLE",
+        "weight": 0.22
+    },
+    {
+        "name": "Cushman & Wakefield Plc",
+        "symbol": "CWK",
+        "weight": 0.21
+    },
+    {
+        "name": "Zillow Group, Inc. Class A",
+        "symbol": "ZG",
+        "weight": 0.21
+    },
+    {
+        "name": "National Storage Affiliates Trust",
+        "symbol": "NSA",
+        "weight": 0.2
+    },
+    {
+        "name": "Douglas Emmett, Inc",
+        "symbol": "DEI",
+        "weight": 0.2
+    },
+    {
+        "name": "Park Hotels & Resorts, Inc.",
+        "symbol": "PK",
+        "weight": 0.19
+    },
+    {
+        "name": "Medical Properties Trust, Inc.",
+        "symbol": "MPW",
+        "weight": 0.18
+    },
+    {
+        "name": "LXP Industrial Trust",
+        "symbol": "LXP",
+        "weight": 0.18
+    },
+    {
+        "name": "Urban Edge Properties",
+        "symbol": "UE",
+        "weight": 0.17
+    },
+    {
+        "name": "Compass Inc Class A",
+        "symbol": "COMP.EQ",
+        "weight": 0.17
+    },
+    {
+        "name": "Four Corners Property Trust, Inc.",
+        "symbol": "FCPT",
+        "weight": 0.17
+    },
+    {
+        "name": "Acadia Realty Trust",
+        "symbol": "AKR",
+        "weight": 0.17
+    },
+    {
+        "name": "OUTFRONT Media Inc.",
+        "symbol": "OUT",
+        "weight": 0.16
+    },
+    {
+        "name": "Howard Hughes Holdings Inc.",
+        "symbol": "HHH",
+        "weight": 0.16
+    },
+    {
+        "name": "InvenTrust Properties Corp",
+        "symbol": "IVT",
+        "weight": 0.15
+    },
+    {
+        "name": "Curbline Properties Corp.",
+        "symbol": "CURB",
+        "weight": 0.14
+    },
+    {
+        "name": "Equity Commonwealth",
+        "symbol": "EQC",
+        "weight": 0.14
+    },
+    {
+        "name": "Newmark Group, Inc. Class A",
+        "symbol": "NMRK",
+        "weight": 0.14
+    },
+    {
+        "name": "Retail Opportunity Investments Corp.",
+        "symbol": "ROIC",
+        "weight": 0.13
+    },
+    {
+        "name": "Sunstone Hotel Investors, Inc.",
+        "symbol": "SHO",
+        "weight": 0.13
+    },
+    {
+        "name": "DiamondRock Hospitality Company",
+        "symbol": "DRH",
+        "weight": 0.12
+    },
+    {
+        "name": "St. Joe Company",
+        "symbol": "JOE",
+        "weight": 0.12
+    },
+    {
+        "name": "Getty Realty Corp.",
+        "symbol": "GTY",
+        "weight": 0.11
+    },
+    {
+        "name": "LTC Properties, Inc.",
+        "symbol": "LTC",
+        "weight": 0.11
+    },
+    {
+        "name": "Pebblebrook Hotel Trust",
+        "symbol": "PEB",
+        "weight": 0.1
+    },
+    {
+        "name": "Global Net Lease Inc",
+        "symbol": "GNL",
+        "weight": 0.1
+    },
+    {
+        "name": "Elme Communities",
+        "symbol": "ELME",
+        "weight": 0.1
+    },
+    {
+        "name": "Empire State Realty Trust, Inc. Class A",
+        "symbol": "ESRT",
+        "weight": 0.1
+    },
+    {
+        "name": "Xenia Hotels & Resorts, Inc.",
+        "symbol": "XHR",
+        "weight": 0.1
+    },
+    {
+        "name": "American Assets Trust, Inc.",
+        "symbol": "AAT",
+        "weight": 0.09
+    },
+    {
+        "name": "RLJ Lodging Trust",
+        "symbol": "RLJ",
+        "weight": 0.09
+    },
+    {
+        "name": "Easterly Government Properties Inc",
+        "symbol": "DEA",
+        "weight": 0.09
+    },
+    {
+        "name": "JBG SMITH Properties",
+        "symbol": "JBGS",
+        "weight": 0.09
+    },
+    {
+        "name": "Alexander & Baldwin, Inc.",
+        "symbol": "ALEX",
+        "weight": 0.09
+    },
+    {
+        "name": "Piedmont Office Realty Trust, Inc. Class A",
+        "symbol": "PDM",
+        "weight": 0.08
+    },
+    {
+        "name": "UMH Properties, Inc.",
+        "symbol": "UMH",
+        "weight": 0.08
+    },
+    {
+        "name": "Kennedy-Wilson Holdings, Inc.",
+        "symbol": "KW",
+        "weight": 0.08
+    },
+    {
+        "name": "Redfin Corporation",
+        "symbol": "RDFN",
+        "weight": 0.08
+    },
+    {
+        "name": "Veris Residential, Inc.",
+        "symbol": "VRE",
+        "weight": 0.08
+    },
+    {
+        "name": "Uniti Group Inc.",
+        "symbol": "UNIT",
+        "weight": 0.08
+    },
+    {
+        "name": "NETSTREIT Corp.",
+        "symbol": "NTST",
+        "weight": 0.08
+    },
+    {
+        "name": "Apartment Investment & Management Co Class A",
+        "symbol": "AIV",
+        "weight": 0.07
+    },
+    {
+        "name": "Opendoor Technologies Inc",
+        "symbol": "OPEN",
+        "weight": 0.07
+    },
+    {
+        "name": "Safehold Inc.",
+        "symbol": "SAFE",
+        "weight": 0.07
+    },
+    {
+        "name": "eXp World Holdings, Inc.",
+        "symbol": "EXPI",
+        "weight": 0.07
+    },
+    {
+        "name": "Centerspace",
+        "symbol": "CSR",
+        "weight": 0.07
+    },
+    {
+        "name": "Armada Hoffler Properties, Inc.",
+        "symbol": "AHH",
+        "weight": 0.06
+    },
+    {
+        "name": "Paramount Group, Inc.",
+        "symbol": "PGRE",
+        "weight": 0.06
+    },
+    {
+        "name": "Brandywine Realty Trust",
+        "symbol": "BDN",
+        "weight": 0.06
+    },
+    {
+        "name": "Marcus & Millichap, Inc.",
+        "symbol": "MMI",
+        "weight": 0.06
+    },
+    {
+        "name": "NexPoint Residential Trust, Inc.",
+        "symbol": "NXRT",
+        "weight": 0.06
+    },
+    {
+        "name": "SITE Centers Corp.",
+        "symbol": "SITC",
+        "weight": 0.05
+    },
+    {
+        "name": "Plymouth Industrial REIT, Inc.",
+        "symbol": "PLYM",
+        "weight": 0.05
+    },
+    {
+        "name": "Whitestone REIT",
+        "symbol": "WSR",
+        "weight": 0.04
+    },
+    {
+        "name": "Global Medical REIT, Inc.",
+        "symbol": "GMRE",
+        "weight": 0.04
+    },
+    {
+        "name": "Service Properties Trust",
+        "symbol": "SVC",
+        "weight": 0.04
+    },
+    {
+        "name": "Gladstone Commercial Corporation",
+        "symbol": "GOOD",
+        "weight": 0.04
+    },
+    {
+        "name": "Diversified Healthcare Trust",
+        "symbol": "DHC",
+        "weight": 0.04
+    },
+    {
+        "name": "Farmland Partners Inc",
+        "symbol": "FPI",
+        "weight": 0.04
+    },
+    {
+        "name": "Forestar Group Inc.",
+        "symbol": "FOR",
+        "weight": 0.04
+    },
+    {
+        "name": "Summit Hotel Properties, Inc.",
+        "symbol": "INN",
+        "weight": 0.04
+    },
+    {
+        "name": "Hudson Pacific Properties, Inc.",
+        "symbol": "HPP",
+        "weight": 0.04
+    },
+    {
+        "name": "Anywhere Real Estate Inc.",
+        "symbol": "HOUS",
+        "weight": 0.03
+    },
+    {
+        "name": "Peakstone Realty Trust",
+        "symbol": "PKST",
+        "weight": 0.03
+    },
+    {
+        "name": "Chatham Lodging Trust",
+        "symbol": "CLDT",
+        "weight": 0.03
+    },
+    {
+        "name": "Alexander\\'s, Inc.",
+        "symbol": "ALX",
+        "weight": 0.03
+    },
+    {
+        "name": "Universal Health Realty Income Trust",
+        "symbol": "UHT",
+        "weight": 0.03
+    },
+    {
+        "name": "Net Lease Office Properties",
+        "symbol": "NLOP",
+        "weight": 0.03
+    },
+    {
+        "name": "One Liberty Properties, Inc.",
+        "symbol": "OLP",
+        "weight": 0.03
+    },
+    {
+        "name": "Community Healthcare Trust Incorporated",
+        "symbol": "CHCT",
+        "weight": 0.03
+    },
+    {
+        "name": "Saul Centers, Inc.",
+        "symbol": "BFS",
+        "weight": 0.03
+    },
+    {
+        "name": "Gladstone Land Corp.",
+        "symbol": "LAND",
+        "weight": 0.03
+    },
+    {
+        "name": "Tejon Ranch Co.",
+        "symbol": "TRC",
+        "weight": 0.02
+    },
+    {
+        "name": "CBL & Associates Properties, Inc.",
+        "symbol": "CBL",
+        "weight": 0.02
+    },
+    {
+        "name": "RMR Group, Inc. Class A",
+        "symbol": "RMR",
+        "weight": 0.02
+    },
+    {
+        "name": "Seritage Growth Properties Class A",
+        "symbol": "SRG",
+        "weight": 0.01
+    },
+    {
+        "name": "Orion Office REIT, Inc.",
+        "symbol": "ONL",
+        "weight": 0.01
+    },
+    {
+        "name": "NexPoint Diversified Real Estate Trust",
+        "symbol": "NXDT",
+        "weight": 0.01
+    },
+    {
+        "name": "Office Properties Income Trust",
+        "symbol": "OPI",
+        "weight": 0.01
+    },
+    {
+        "name": "City Office REIT, Inc.",
+        "symbol": "CIO",
+        "weight": 0.01
+    },
+    {
+        "name": "EQUITY OTHER",
+        "symbol": "Other",
+        "weight": 0.0
+    }
+]

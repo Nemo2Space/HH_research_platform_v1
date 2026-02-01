@@ -1,0 +1,702 @@
+[
+  {
+    "ticker": "AAPL",
+    "name": "Apple Inc.",
+    "sector": "Technology",
+    "weight": 5.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "MSFT",
+    "name": "Microsoft Corp.",
+    "sector": "Technology",
+    "weight": 5.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "GOOGL",
+    "name": "Alphabet Inc.",
+    "sector": "Technology",
+    "weight": 4.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "NVDA",
+    "name": "NVIDIA Corp.",
+    "sector": "Technology",
+    "weight": 2.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "META",
+    "name": "Meta Platforms Inc.",
+    "sector": "Technology",
+    "weight": 2.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "TSM",
+    "name": "Taiwan Semiconductor Manufacturing Co.",
+    "sector": "Technology",
+    "weight": 2.0,
+    "country": "Taiwan"
+  },
+  {
+    "ticker": "CRM",
+    "name": "Salesforce Inc.",
+    "sector": "Technology",
+    "weight": 0.6,
+    "country": "United States"
+  },
+  {
+    "ticker": "TCEHY",
+    "name": "Tencent Holdings Ltd.",
+    "sector": "Technology",
+    "weight": 1.0,
+    "country": "China"
+  },
+  {
+    "ticker": "AVGO",
+    "name": "Broadcom Inc.",
+    "sector": "Technology",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "CSCO",
+    "name": "Cisco Systems Inc.",
+    "sector": "Technology",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "ORCL",
+    "name": "Oracle Corp.",
+    "sector": "Technology",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "ASML",
+    "name": "ASML Holding NV",
+    "sector": "Technology",
+    "weight": 1.0,
+    "country": "Netherlands"
+  },
+  {
+    "ticker": "005930.KS",
+    "name": "Samsung Electronics Co.",
+    "sector": "Technology",
+    "weight": 1.0,
+    "country": "South Korea"
+  },
+  {
+    "ticker": "ADBE",
+    "name": "Adobe Inc.",
+    "sector": "Technology",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "IBM",
+    "name": "International Business Machines Corp.",
+    "sector": "Technology",
+    "weight": 0.3,
+    "country": "United States"
+  },
+  {
+    "ticker": "INTC",
+    "name": "Intel Corp.",
+    "sector": "Technology",
+    "weight": 0.2,
+    "country": "United States"
+  },
+  {
+    "ticker": "QCOM",
+    "name": "QUALCOMM Inc.",
+    "sector": "Technology",
+    "weight": 0.2,
+    "country": "United States"
+  },
+  {
+    "ticker": "INTU",
+    "name": "Intuit Inc.",
+    "sector": "Technology",
+    "weight": 0.2,
+    "country": "United States"
+  },
+  {
+    "ticker": "PYPL",
+    "name": "PayPal Holdings Inc.",
+    "sector": "Technology",
+    "weight": 0.2,
+    "country": "United States"
+  },
+  {
+    "ticker": "NOW",
+    "name": "ServiceNow Inc.",
+    "sector": "Technology",
+    "weight": 0.2,
+    "country": "United States"
+  },
+  {
+    "ticker": "SAP",
+    "name": "SAP SE",
+    "sector": "Technology",
+    "weight": 0.5,
+    "country": "Germany"
+  },
+  {
+    "ticker": "ACN",
+    "name": "Accenture PLC",
+    "sector": "Technology",
+    "weight": 0.5,
+    "country": "Ireland"
+  },
+  {
+    "ticker": "AMD",
+    "name": "Advanced Micro Devices, Inc.",
+    "sector": "Technology",
+    "weight": 0.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "BABA",
+    "name": "Alibaba Group Holding Ltd.",
+    "sector": "Technology",
+    "weight": 0.5,
+    "country": "China"
+  },
+  {
+    "ticker": "TXN",
+    "name": "Texas Instruments Inc.",
+    "sector": "Technology",
+    "weight": 0.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "ADP",
+    "name": "Automatic Data Processing Inc.",
+    "sector": "Technology",
+    "weight": 0.1,
+    "country": "United States"
+  },
+  {
+    "ticker": "INFY",
+    "name": "Infosys Ltd.",
+    "sector": "Technology",
+    "weight": 0.1,
+    "country": "India"
+  },
+  {
+    "ticker": "AMAT",
+    "name": "Applied Materials Inc.",
+    "sector": "Technology",
+    "weight": 0.1,
+    "country": "United States"
+  },
+  {
+    "ticker": "ADI",
+    "name": "Analog Devices Inc.",
+    "sector": "Technology",
+    "weight": 0.1,
+    "country": "United States"
+  },
+  {
+    "ticker": "SONY",
+    "name": "Sony Group Corp.",
+    "sector": "Technology",
+    "weight": 0.1,
+    "country": "Japan"
+  },
+  {
+    "ticker": "NXPI",
+    "name": "NXP Semiconductors NV",
+    "sector": "Technology",
+    "weight": 0.1,
+    "country": "Netherlands"
+  },
+  {
+    "ticker": "CAT",
+    "name": "Caterpillar Inc.",
+    "sector": "Industrial",
+    "weight": 2.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "LMT",
+    "name": "Lockheed Martin Corp.",
+    "sector": "Industrial",
+    "weight": 2.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "HON",
+    "name": "Honeywell International Inc.",
+    "sector": "Industrial",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "RTX",
+    "name": "Raytheon Technologies Corp.",
+    "sector": "Industrial",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "DE",
+    "name": "Deere & Co.",
+    "sector": "Industrial",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "UPS",
+    "name": "United Parcel Service Inc.",
+    "sector": "Industrial",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "SIEGY",
+    "name": "Siemens AG",
+    "sector": "Industrial",
+    "weight": 1.0,
+    "country": "Germany"
+  },
+  {
+    "ticker": "EADSY",
+    "name": "Airbus SE",
+    "sector": "Industrial",
+    "weight": 1.0,
+    "country": "France"
+  },
+  {
+    "ticker": "UNP",
+    "name": "Union Pacific Corp.",
+    "sector": "Industrial",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "GD",
+    "name": "General Dynamics Corp.",
+    "sector": "Industrial",
+    "weight": 0.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "NOC",
+    "name": "Northrop Grumman Corp.",
+    "sector": "Industrial",
+    "weight": 0.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "WM",
+    "name": "Waste Management Inc.",
+    "sector": "Industrial",
+    "weight": 0.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "CNI",
+    "name": "Canadian National Railway Co.",
+    "sector": "Industrial",
+    "weight": 0.5,
+    "country": "Canada"
+  },
+  {
+    "ticker": "ABB",
+    "name": "ABB Ltd.",
+    "sector": "Industrial",
+    "weight": 0.5,
+    "country": "Switzerland"
+  },
+  {
+    "ticker": "CP",
+    "name": "Canadian Pacific Kansas City Ltd.",
+    "sector": "Industrial",
+    "weight": 0.2,
+    "country": "Canada"
+  },
+  {
+    "ticker": "NSC",
+    "name": "Norfolk Southern Corp.",
+    "sector": "Industrial",
+    "weight": 0.2,
+    "country": "United States"
+  },
+  {
+    "ticker": "FANUY",
+    "name": "Fanuc Corp.",
+    "sector": "Industrial",
+    "weight": 0.1,
+    "country": "Japan"
+  },
+  {
+    "ticker": "SU.PA",
+    "name": "Schneider Electric SE",
+    "sector": "Industrial",
+    "weight": 0.1,
+    "country": "France"
+  },
+  {
+    "ticker": "AMT",
+    "name": "American Tower Corp.",
+    "sector": "Real Estate",
+    "weight": 2.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "PLD",
+    "name": "Prologis Inc.",
+    "sector": "Real Estate",
+    "weight": 2.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "EQIX",
+    "name": "Equinix Inc.",
+    "sector": "Real Estate",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "PSA",
+    "name": "Public Storage",
+    "sector": "Real Estate",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "CCI",
+    "name": "Crown Castle Inc.",
+    "sector": "Real Estate",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "O",
+    "name": "Realty Income Corp.",
+    "sector": "Real Estate",
+    "weight": 0.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "SPG",
+    "name": "Simon Property Group Inc.",
+    "sector": "Real Estate",
+    "weight": 0.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "DLR",
+    "name": "Digital Realty Trust Inc.",
+    "sector": "Real Estate",
+    "weight": 0.2,
+    "country": "United States"
+  },
+  {
+    "ticker": "WELL",
+    "name": "Welltower Inc.",
+    "sector": "Real Estate",
+    "weight": 0.2,
+    "country": "United States"
+  },
+  {
+    "ticker": "823.HK",
+    "name": "Link REIT",
+    "sector": "Real Estate",
+    "weight": 0.1,
+    "country": "Hong Kong"
+  },
+  {
+    "ticker": "VNA.DE",
+    "name": "Vonovia SE",
+    "sector": "Real Estate",
+    "weight": 0.1,
+    "country": "Germany"
+  },
+  {
+    "ticker": "NEE",
+    "name": "NextEra Energy Inc.",
+    "sector": "Utilities",
+    "weight": 2.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "DUK",
+    "name": "Duke Energy Corp.",
+    "sector": "Utilities",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "SO",
+    "name": "Southern Co.",
+    "sector": "Utilities",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "D",
+    "name": "Dominion Energy Inc.",
+    "sector": "Utilities",
+    "weight": 0.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "IBE.MC",
+    "name": "Iberdrola SA",
+    "sector": "Utilities",
+    "weight": 0.5,
+    "country": "Spain"
+  },
+  {
+    "ticker": "JNJ",
+    "name": "Johnson & Johnson",
+    "sector": "Health Care",
+    "weight": 2.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "LLY",
+    "name": "Eli Lilly and Co.",
+    "sector": "Health Care",
+    "weight": 2.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "UNH",
+    "name": "UnitedHealth Group Inc.",
+    "sector": "Health Care",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "ROG.SW",
+    "name": "Roche Holding AG",
+    "sector": "Health Care",
+    "weight": 1.0,
+    "country": "Switzerland"
+  },
+  {
+    "ticker": "NVS",
+    "name": "Novartis AG",
+    "sector": "Health Care",
+    "weight": 1.0,
+    "country": "Switzerland"
+  },
+  {
+    "ticker": "PFE",
+    "name": "Pfizer Inc.",
+    "sector": "Health Care",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "MRK",
+    "name": "Merck & Co. Inc.",
+    "sector": "Health Care",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "ABBV",
+    "name": "AbbVie Inc.",
+    "sector": "Health Care",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "NVO",
+    "name": "Novo Nordisk A/S",
+    "sector": "Health Care",
+    "weight": 1.0,
+    "country": "Denmark"
+  },
+  {
+    "ticker": "ABT",
+    "name": "Abbott Laboratories",
+    "sector": "Health Care",
+    "weight": 0.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "MDT",
+    "name": "Medtronic PLC",
+    "sector": "Health Care",
+    "weight": 0.5,
+    "country": "Ireland"
+  },
+  {
+    "ticker": "TMO",
+    "name": "Thermo Fisher Scientific Inc.",
+    "sector": "Health Care",
+    "weight": 0.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "DHR",
+    "name": "Danaher Corp.",
+    "sector": "Health Care",
+    "weight": 0.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "AZN",
+    "name": "AstraZeneca PLC",
+    "sector": "Health Care",
+    "weight": 0.5,
+    "country": "United Kingdom"
+  },
+  {
+    "ticker": "AMGN",
+    "name": "Amgen Inc.",
+    "sector": "Health Care",
+    "weight": 0.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "BMY",
+    "name": "Bristol-Myers Squibb Co.",
+    "sector": "Health Care",
+    "weight": 0.2,
+    "country": "United States"
+  },
+  {
+    "ticker": "SNY",
+    "name": "Sanofi SA",
+    "sector": "Health Care",
+    "weight": 0.2,
+    "country": "France"
+  },
+  {
+    "ticker": "GSK",
+    "name": "GSK plc",
+    "sector": "Health Care",
+    "weight": 0.2,
+    "country": "United Kingdom"
+  },
+  {
+    "ticker": "REGN",
+    "name": "Regeneron Pharmaceuticals Inc.",
+    "sector": "Health Care",
+    "weight": 0.2,
+    "country": "United States"
+  },
+  {
+    "ticker": "GILD",
+    "name": "Gilead Sciences Inc.",
+    "sector": "Health Care",
+    "weight": 0.2,
+    "country": "United States"
+  },
+  {
+    "ticker": "AMZN",
+    "name": "Amazon.com Inc.",
+    "sector": "Consumer Discretionary",
+    "weight": 1.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "TSLA",
+    "name": "Tesla Inc.",
+    "sector": "Consumer Discretionary",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "LVMUY",
+    "name": "LVMH Moët Hennessy Louis Vuitton SE",
+    "sector": "Consumer Discretionary",
+    "weight": 1.0,
+    "country": "France"
+  },
+  {
+    "ticker": "MCD",
+    "name": "McDonald's Corp.",
+    "sector": "Consumer Discretionary",
+    "weight": 1.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "TM",
+    "name": "Toyota Motor Corp.",
+    "sector": "Consumer Discretionary",
+    "weight": 0.3,
+    "country": "Japan"
+  },
+  {
+    "ticker": "SBUX",
+    "name": "Starbucks Corp.",
+    "sector": "Consumer Discretionary",
+    "weight": 0.2,
+    "country": "United States"
+  },
+  {
+    "ticker": "PG",
+    "name": "Procter & Gamble Co.",
+    "sector": "Consumer Staples",
+    "weight": 0.8,
+    "country": "United States"
+  },
+  {
+    "ticker": "NESN.SW",
+    "name": "Nestlé SA",
+    "sector": "Consumer Staples",
+    "weight": 0.8,
+    "country": "Switzerland"
+  },
+  {
+    "ticker": "WMT",
+    "name": "Walmart Inc.",
+    "sector": "Consumer Staples",
+    "weight": 0.8,
+    "country": "United States"
+  },
+  {
+    "ticker": "KO",
+    "name": "Coca-Cola Co.",
+    "sector": "Consumer Staples",
+    "weight": 0.8,
+    "country": "United States"
+  },
+  {
+    "ticker": "COST",
+    "name": "Costco Wholesale Corp.",
+    "sector": "Consumer Staples",
+    "weight": 0.8,
+    "country": "United States"
+  },
+  {
+    "ticker": "UL",
+    "name": "Unilever PLC",
+    "sector": "Consumer Staples",
+    "weight": 0.5,
+    "country": "United Kingdom"
+  },
+  {
+    "ticker": "PEP",
+    "name": "PepsiCo Inc.",
+    "sector": "Consumer Staples",
+    "weight": 0.5,
+    "country": "United States"
+  },
+  {
+    "ticker": "GLD",
+    "name": "SPDR Gold Shares",
+    "sector": "GLD",
+    "weight": 5.0,
+    "country": "United States"
+  },
+  {
+    "ticker": "SPSK",
+    "name": "SP Funds Dow Jones Global Sukuk ETF",
+    "sector": "SPSK",
+    "weight": 10.0,
+    "country": "United States"
+  }
+]

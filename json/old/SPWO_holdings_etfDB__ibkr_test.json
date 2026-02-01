@@ -1,0 +1,34 @@
+[
+    {
+        "name": "INFOSYS LTD-SP ADR",
+        "originalName": "Infosys Limited Sponsored ADR",
+        "similarity": 75.88650479954828,
+        "symbol": "INFY",
+        "minMultiplier": 1,
+        "isin": "US4567881085",
+        "sector": "Technology",
+        "country": "USA",
+        "weight": 1.66,
+        "conid": 4813460,
+        "secType": "STK",
+        "currency": "USD",
+        "exchange": "SMART",
+        "primary_exchange": "NYSE"
+    },
+    {
+        "name": "SAMSUNG ELECTRO-REGS GDR PFD",
+        "originalName": "Samsung Electronics Co., Ltd.",
+        "similarity": 70.80188679245283,
+        "symbol": "SMSD",
+        "minMultiplier": 1.0,
+        "isin": "US7960502018",
+        "sector": "Technology",
+        "country": "USA",
+        "weight": 1.14,
+        "conid": 36774817,
+        "secType": "STK",
+        "currency": "USD",
+        "exchange": "SMART",
+        "primary_exchange": "LSEIOB1"
+    }
+]

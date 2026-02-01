@@ -1,0 +1,12 @@
+[
+    {
+        "name": "SPSK ETF",
+        "symbol": "SPSK",
+        "weight": 8.0
+    },
+    {
+        "name": "GE Aerospace",
+        "symbol": "GE",
+        "weight": 0.57
+    }
+]

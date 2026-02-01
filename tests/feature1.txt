@@ -1,0 +1,1218 @@
+# Earnings Intelligence System — Complete Implementation Guide (Revised)
+
+## Document Purpose
+
+This guide provides complete specifications for implementing an Implied Expectations Score (IES) and Expectations Clearance System (ECS) to solve the "great report, bad trade" problem in the Alpha Research Platform. This revision incorporates critical fixes for production readiness, including blended Event Surprise Z-scores, precise reaction definitions, consistent naming conventions, and data quality handling.
+
+---
+
+## Part 1: The Problem
+
+### 1.1 Core Failure Mode
+
+The current Alpha Research Platform evaluates earnings reports by comparing reported results against publicly available Wall Street consensus estimates. When a company beats consensus, the system generates bullish signals. When a company misses consensus, the system generates bearish signals.
+
+This approach fails because the market does not trade against consensus. The market trades against what is already priced into the stock — the "whisper number" or implied expectations. The whisper is an unpublished expectation that may be significantly higher or lower than the consensus estimate.
+
+### 1.2 How This Manifests
+
+A stock runs up 25% in the three weeks before earnings. Implied volatility is at the 90th percentile versus its historical earnings. Call options are heavily bid. Analyst commentary uses language like "blowout quarter expected" and "can't miss."
+
+The company reports earnings that beat consensus EPS by 8%. Revenue beats by 3%. However, management guides next quarter below consensus. The current system sees "beat on EPS, beat on revenue" and issues a BUY signal. The AI Chat module describes the quarter as "strong" and "exceeding expectations."
+
+The stock gaps down 12% at the open because the 8% beat did not clear the whisper, and guidance disappointed. The market expected a 15% beat given the run-up and positioning, plus maintained or raised guidance. The "beat" was actually a disappointment relative to what was priced in.
+
+The user followed the system's BUY signal and lost money on an objectively "good" report.
+
+### 1.3 Why This Happens
+
+The system has no mechanism to estimate what is already priced in. It treats all 8% EPS beats as equivalent, regardless of:
+
+- Whether the stock ran up 5% or 25% into earnings
+- Whether options imply a 3% move or a 12% move
+- Whether sentiment is cautious or euphoric
+- Whether analysts revised estimates up aggressively or stayed flat
+- Whether guidance was raised, maintained, or lowered
+
+Additionally, the current system over-weights EPS beats and under-weights guidance, even though guidance-driven reactions are often larger than EPS-driven reactions.
+
+Without an expectations layer that considers the complete earnings picture, the system cannot distinguish between "beat expectations" and "beat consensus but missed expectations."
+
+### 1.4 Downstream Impact
+
+This problem propagates through the entire platform:
+
+The Trade Ideas module recommends buying stocks that are about to disappoint relative to priced-in expectations.
+
+The AI Chat module provides bullish commentary that contradicts subsequent price action, eroding user trust.
+
+The signal performance tracking shows false positives around earnings events, degrading overall accuracy metrics.
+
+Position sizing does not account for elevated event risk when expectations are extreme.
+
+---
+
+## Part 2: The Solution Architecture
+
+### 2.1 Solution Overview
+
+The solution introduces an Implied Expectations layer that sits between raw earnings data and trading decisions. This layer estimates what the market has priced in and adjusts signals accordingly.
+
+The system will compute two distinct scores for every earnings event:
+
+**Earnings Quality Score (EQS)**: An objective assessment of how good the reported results and guidance are in absolute terms. This answers "Was it a good quarter?"
+
+**Expectations Clearance Score (ECS)**: An assessment of whether the results cleared the bar that was already priced in, using a blended Event Surprise Z-score that incorporates EPS, revenue, and guidance. This answers "Was it good enough given what the market expected?"
+
+Trading decisions around earnings should be based on ECS, not EQS. Long-term fundamental views can still incorporate EQS.
+
+### 2.2 Key Components
+
+The implementation requires eight interconnected components:
+
+**Component 1 — Implied Expectations Score (IES)**: A composite score from 0-100 estimating how much the market expects from an upcoming earnings report. Higher scores mean higher expectations and a higher bar to clear.
+
+**Component 2 — Earnings Quality Score (EQS)**: An objective score from 0-100 measuring the quality of reported results, guidance, margins, and management tone.
+
+**Component 3 — Event Surprise Z-Score (event_z)**: A blended z-score combining EPS surprise, revenue surprise, and guidance into a single measure of how much the report surprised relative to that ticker's historical patterns.
+
+**Component 4 — Expectations Clearance Score (ECS)**: A categorical assessment (STRONG_BEAT, BEAT, INLINE, MISS, STRONG_MISS) indicating whether the blended event_z cleared the implied expectations bar.
+
+**Component 5 — Expectations Regime Classification**: A categorical label (HYPED, FEARED, VOLATILE, NORMAL) summarizing the pre-earnings setup for downstream decision logic.
+
+**Component 6 — Position Scaling Logic**: Rules that reduce position sizes when entering trades within the earnings event window, scaled by IES and implied move.
+
+**Component 7 — Earnings Window Scoping**: Logic that activates the earnings intelligence system only within a defined window around earnings events, preventing interference with normal non-event signals.
+
+**Component 8 — Data Quality Tracking**: A field indicating whether all required inputs are available and reliable, distinguishing between logic-based suppression and data-gap-based uncertainty.
+
+---
+
+## Part 3: Naming Conventions and Definitions
+
+### 3.1 Purpose
+
+Ambiguous naming causes implementation bugs and confusion during calibration. This section establishes precise naming for all variables.
+
+### 3.2 Implied Move Variables
+
+**implied_move_pct**: The expected move as a decimal or percentage. Example: 0.08 means 8% expected move. This is derived from the ATM straddle price divided by stock price.
+
+**implied_move_pctl**: The percentile rank (0-100) of the current implied_move_pct versus historical earnings for this ticker. Example: 85 means the current implied move is higher than 85% of prior earnings cycles.
+
+### 3.3 Implied Volatility Variables
+
+**iv**: The implied volatility as a decimal or percentage. Example: 0.45 means 45% annualized IV.
+
+**iv_pctl**: The percentile rank (0-100) of current IV versus its historical range for this ticker around earnings.
+
+### 3.4 Z-Score Variables
+
+**eps_z**: Z-score of EPS surprise. (Actual EPS - Consensus EPS) / StdDev of historical EPS surprises for this ticker.
+
+**rev_z**: Z-score of revenue surprise. (Actual Revenue - Consensus Revenue) / StdDev of historical revenue surprises for this ticker.
+
+**guidance_z**: Z-score of guidance versus expectations. Derived from guidance direction and magnitude relative to historical guidance patterns for this ticker.
+
+**event_z**: The blended Event Surprise Z-score combining eps_z, rev_z, and guidance_z. This is the primary input for ECS determination.
+
+### 3.5 Score Variables
+
+**ies**: Implied Expectations Score (0-100). Higher means higher expectations priced in.
+
+**eqs**: Earnings Quality Score (0-100). Higher means objectively better results.
+
+**ecs**: Expectations Clearance Score (categorical: STRONG_BEAT, BEAT, INLINE, MISS, STRONG_MISS).
+
+### 3.6 Threshold Variables
+
+**required_z**: The event_z threshold required for the report to count as clearing expectations. Derived from implied_move_pctl.
+
+---
+
+## Part 4: Reaction Label Definitions
+
+### 4.1 Purpose
+
+Earnings can be released after market close, before market open, or during trading hours. The definition of "reaction" must account for this to avoid measurement noise during calibration.
+
+### 4.2 Three Reaction Measurements
+
+All three must be logged for every earnings event:
+
+**gap_reaction**: The overnight gap from the pre-earnings close to the post-earnings open. This captures the immediate market response to the news.
+
+Calculation: (Post-earnings first open - Pre-earnings last close) / Pre-earnings last close
+
+Example: Stock closes at $100 before earnings, opens at $108 after earnings. gap_reaction = +8%
+
+**intraday_reaction**: The price movement during the first trading day after earnings are released. This captures the market's digestion of the news during regular hours.
+
+Calculation: (Post-earnings first close - Post-earnings first open) / Post-earnings first open
+
+Example: Stock opens at $108, closes at $105. intraday_reaction = -2.8%
+
+**total_reaction**: The complete move from pre-earnings close to post-earnings close. This is the canonical metric for training and evaluation.
+
+Calculation: (Post-earnings first close - Pre-earnings last close) / Pre-earnings last close
+
+Example: Stock closes at $100 before, closes at $105 after. total_reaction = +5%
+
+### 4.3 Canonical Label for Training
+
+The total_reaction is the primary outcome label for:
+
+- Calibrating IES weights
+- Evaluating ECS accuracy
+- Training reaction prediction models
+
+Gap and intraday reactions should be logged for diagnostic purposes but are secondary.
+
+### 4.4 Extended Reaction Windows
+
+Also log for longer-term drift analysis:
+
+**reaction_5d**: Total return from pre-earnings close to close 5 trading days later.
+
+**reaction_10d**: Total return from pre-earnings close to close 10 trading days later.
+
+These capture post-earnings drift which may be tradeable separately.
+
+---
+
+## Part 5: Implied Expectations Score (IES)
+
+### 5.1 Purpose
+
+The IES estimates how much optimism or pessimism is already embedded in the stock price before earnings. A high IES means the market expects a strong report — the bar is high. A low IES means expectations are muted — the bar is low.
+
+### 5.2 Input Components
+
+The IES is computed from seven inputs, each capturing a different dimension of market expectations.
+
+**Input 1 — Pre-Earnings Price Drift (20 trading days)**
+
+This measures how much the stock has moved in the four weeks leading up to earnings. A strong run-up typically indicates elevated expectations because buyers are positioning for a beat. A decline or flat performance suggests muted expectations.
+
+Calculation: Percentage return of the stock over the 20 trading days prior to the earnings timestamp.
+
+Interpretation: A 15% run-up contributes to a high IES. A 5% decline contributes to a low IES.
+
+Variable name: drift_20d
+
+Weight in composite: 20%
+
+**Input 2 — Relative Drift Versus Sector ETF (20 trading days)**
+
+This measures whether the stock outperformed or underperformed its sector into earnings. Outperformance suggests stock-specific optimism beyond general sector strength. Underperformance suggests the stock is being left behind, possibly due to skepticism.
+
+Calculation: Stock 20-day return minus sector ETF 20-day return.
+
+Interpretation: If the stock gained 12% while the sector ETF gained 8%, the relative drift is +4%, suggesting elevated stock-specific expectations.
+
+Variable name: rel_drift_20d
+
+Weight in composite: 15%
+
+**Input 3 — Implied Volatility Percentile**
+
+This measures where current implied volatility stands relative to its historical range for this stock around earnings. High IV percentile means the options market is pricing a larger-than-normal move, which typically accompanies elevated expectations.
+
+Calculation: Percentile rank of current front-month IV versus the last 8-12 earnings cycles for this ticker.
+
+Variable name: iv_pctl
+
+Weight in composite: 15%
+
+**Input 4 — Implied Move Percentile**
+
+This directly measures the expected move size priced by options. The implied move is derived from the at-the-money straddle price for the expiration immediately following earnings. A high implied move percentile means the market is pricing a larger reaction than usual.
+
+Calculation: First, compute implied_move_pct by taking the interpolated ATM straddle price divided by the stock price. Then compute implied_move_pctl as the percentile rank of implied_move_pct versus the last 8-12 earnings cycles.
+
+Implementation detail: Because the exact ATM strike may not exist or may be illiquid, the ATM straddle should be interpolated between the two strikes immediately above and below the current stock price. Always use the nearest expiration that falls after the earnings date.
+
+Variable name: implied_move_pctl
+
+Weight in composite: 20%
+
+**Input 5 — Call/Put Skew Shift**
+
+This measures how the options market is leaning directionally. If call implied volatility has increased relative to put implied volatility in the days leading up to earnings, it suggests bullish positioning and elevated upside expectations.
+
+Calculation: Change in 25-delta call IV minus change in 25-delta put IV over the 5-10 days prior to earnings.
+
+Variable name: skew_shift
+
+Weight in composite: 10%
+
+**Input 6 — Analyst Revision Direction**
+
+This measures whether Wall Street analysts have been raising or lowering estimates in the weeks before earnings. Upward revisions suggest analysts are chasing the whisper higher. Downward revisions suggest lowered expectations.
+
+Calculation: Net number of upward minus downward EPS estimate revisions over the 30 days prior to earnings, normalized to a 0-100 scale.
+
+Time alignment: Only include revisions timestamped before the earnings release. Cut off at earnings timestamp.
+
+Variable name: revision_score
+
+Weight in composite: 10%
+
+**Input 7 — Sentiment Confidence Language Score**
+
+This uses the existing LLM sentiment analysis to detect not just positive/negative tone, but the degree of certainty and inevitability in pre-earnings commentary. Phrases like "will crush," "blowout expected," "cannot miss" signal extreme bullishness that raises the bar.
+
+Calculation: LLM scores the confidence level of bullish language on a 0-100 scale.
+
+Time alignment: Only analyze articles and commentary published before the earnings timestamp.
+
+Variable name: confidence_lang_score
+
+Weight in composite: 10%
+
+### 5.3 Time Alignment Guardrail
+
+All IES inputs must be computed using only data available before the earnings timestamp. This prevents look-ahead bias and ensures the model can be trained cleanly.
+
+Specific requirements:
+
+- Price drift: Use closing prices up to and including the last trading day before earnings
+- Options data: Use the last snapshot captured before the earnings release
+- Analyst revisions: Include only revisions with timestamps before earnings
+- News and sentiment: Include only articles published before earnings
+
+When logging for training, record the earnings timestamp and verify all input timestamps precede it.
+
+### 5.4 Computing the Composite IES
+
+Each input is normalized to a 0-100 scale. The composite IES is the weighted sum of all inputs.
+
+The weights provided (20/15/15/20/10/10/10) are starting heuristics. After logging 50-100 earnings events with outcomes, the weights should be recalibrated using regression against total_reaction to determine which inputs are most predictive.
+
+### 5.5 IES Computation Window
+
+IES can be computed starting 10 trading days before earnings (for monitoring and display purposes), but should only be enforced for trading decisions starting 5 trading days before earnings.
+
+This allows users and the AI Chat to see expectations building earlier without triggering position scaling or trade gating prematurely.
+
+### 5.6 IES Interpretation Scale
+
+0-30: Low expectations. The market is skeptical or indifferent. Easy bar to clear.
+
+30-50: Below-average expectations. Modest positive surprise should be sufficient.
+
+50-70: Normal expectations. Standard "beat" required.
+
+70-85: Elevated expectations. Strong beat required to satisfy the market.
+
+85-100: Extreme expectations. Market is priced for perfection. Very high risk of disappointment.
+
+### 5.7 IES Caching Policy
+
+IES computation involves multiple data fetches and calculations. To ensure consistency and performance:
+
+- Compute IES once per ticker per day during normal periods
+- Compute IES once per ticker per hour when within 2 trading days of earnings
+- Cache results and serve the same value to Chat, Trade Ideas, and Signals modules
+- Include cache timestamp in logged data
+
+This prevents inconsistent outputs between modules querying at different times.
+
+---
+
+## Part 6: Earnings Quality Score (EQS)
+
+### 6.1 Purpose
+
+The EQS measures how objectively good the earnings report was, independent of expectations. This is useful for long-term fundamental assessment even when it should not drive short-term trading decisions.
+
+### 6.2 Input Components
+
+**Input 1 — EPS Surprise Z-Score**
+
+This measures how much the reported EPS beat or missed consensus, normalized by the historical variability of surprises for this specific ticker.
+
+Calculation: (Actual EPS - Consensus EPS) / StdDev of historical EPS surprises for this ticker over the last 8-12 quarters.
+
+Variable name: eps_z
+
+Why z-score matters: A 10% beat for a volatile growth stock might be routine (low z-score), while a 10% beat for a stable utility might be extraordinary (high z-score). Z-scores normalize "impressiveness" by the stock's own history.
+
+Weight in composite: 25%
+
+**Input 2 — Revenue Surprise Z-Score**
+
+Same concept as EPS surprise but for revenue. Revenue beats are often considered higher quality than EPS beats because revenue is harder to manipulate through accounting.
+
+Calculation: (Actual Revenue - Consensus Revenue) / StdDev of historical revenue surprises for this ticker.
+
+Variable name: rev_z
+
+Weight in composite: 25%
+
+**Input 3 — Guidance Direction and Magnitude**
+
+This is critically important and often more impactful than reported results. Forward guidance tells the market what to expect next quarter and next year.
+
+Categories: RAISED_STRONG (guidance significantly above prior), RAISED (guidance above prior), MAINTAINED (in-line with prior), LOWERED (below prior), LOWERED_STRONG (significantly below prior).
+
+Numeric mapping for composite:
+- RAISED_STRONG: 90-100
+- RAISED: 70-85
+- MAINTAINED: 50
+- LOWERED: 20-40
+- LOWERED_STRONG: 0-15
+
+Variable name: guidance_score
+
+Weight in composite: 30%
+
+Emphasis: A company that beats on EPS and revenue but lowers guidance is often a sell, not a buy. Conversely, an inline quarter with raised guidance can be very bullish. Guidance is forward-looking and carries more weight for stock price reactions.
+
+**Input 4 — Margin Trend**
+
+This measures whether profitability is improving or deteriorating.
+
+Calculation: Compare gross margin and operating margin versus the year-ago quarter and versus the prior quarter. Normalize to 0-100.
+
+Variable name: margin_score
+
+Weight in composite: 10%
+
+**Input 5 — Management Tone**
+
+LLM analysis of the earnings call transcript to assess management confidence, optimism, and clarity.
+
+Calculation: LLM scores the tone of management commentary on a 0-100 scale.
+
+Variable name: tone_score
+
+Weight in composite: 10%
+
+### 6.3 Computing the Composite EQS
+
+Each input is normalized and weighted. The composite EQS provides an objective quality assessment that remains useful even when ECS determines tradeability.
+
+---
+
+## Part 7: Event Surprise Z-Score (event_z)
+
+### 7.1 Purpose
+
+The event_z is a blended z-score that captures the complete earnings surprise in a single number. This is the primary input for determining whether the report cleared expectations.
+
+Using only eps_z for ECS determination would perpetuate the "beat EPS but guided down → stock drops" failure mode. The event_z incorporates all factors that drive price reactions.
+
+### 7.2 Components and Weights
+
+**eps_z**: Z-score of EPS surprise. Weight: 35%
+
+**rev_z**: Z-score of revenue surprise. Weight: 30%
+
+**guidance_z**: Z-score of guidance surprise. Weight: 35%
+
+### 7.3 Computing guidance_z
+
+Guidance is categorical (raised/maintained/lowered) rather than numeric, so computing a z-score requires conversion.
+
+Step 1: Assign a numeric surprise score based on guidance direction and magnitude:
+- RAISED_STRONG: +2.0
+- RAISED: +1.0
+- MAINTAINED: 0.0
+- LOWERED: -1.0
+- LOWERED_STRONG: -2.0
+
+Step 2: Compare to the ticker's historical distribution of guidance outcomes. If this ticker typically maintains guidance and this quarter raised strongly, that's a larger positive surprise than for a ticker that frequently raises.
+
+Step 3: Compute z-score relative to ticker history:
+guidance_z = (guidance_numeric - ticker_mean_guidance) / ticker_stdev_guidance
+
+If insufficient historical guidance data exists for the ticker, use sector averages.
+
+### 7.4 Computing the Blended event_z
+
+event_z = (0.35 × eps_z) + (0.30 × rev_z) + (0.35 × guidance_z)
+
+This blended score represents the total surprise of the earnings event.
+
+### 7.5 Why This Matters
+
+Consider two scenarios:
+
+Scenario A: EPS beats by 1.5 sigma, revenue beats by 1.0 sigma, guidance lowered (guidance_z = -1.5)
+event_z = (0.35 × 1.5) + (0.30 × 1.0) + (0.35 × -1.5) = 0.525 + 0.30 - 0.525 = 0.30
+
+Scenario B: EPS beats by 1.0 sigma, revenue beats by 0.8 sigma, guidance raised (guidance_z = +1.0)
+event_z = (0.35 × 1.0) + (0.30 × 0.8) + (0.35 × 1.0) = 0.35 + 0.24 + 0.35 = 0.94
+
+Scenario A has a stronger EPS beat but would likely see a negative reaction due to guidance. The low event_z (0.30) reflects this. Scenario B has a weaker EPS beat but would likely see a positive reaction. The higher event_z (0.94) reflects this.
+
+Using event_z rather than eps_z alone prevents the guidance-driven failure mode.
+
+---
+
+## Part 8: Expectations Clearance Score (ECS)
+
+### 8.1 Purpose
+
+The ECS determines whether the earnings report cleared the bar that was priced in. This is the score that should drive trading decisions around earnings events.
+
+### 8.2 Relationship Between IES, event_z, and ECS
+
+ECS compares the actual event_z against a required threshold. The threshold is determined by implied_move_pctl (a component of IES but used independently for threshold calculation).
+
+When implied_move_pctl is high, a higher event_z is required to count as clearing the bar. When implied_move_pctl is low, a modest event_z is sufficient.
+
+### 8.3 Computing Required Z-Score Threshold
+
+Formula: required_z = 0.5 + (implied_move_pctl / 50)
+
+Examples:
+- implied_move_pctl = 30: required_z = 0.5 + 0.6 = 1.1
+- implied_move_pctl = 50: required_z = 0.5 + 1.0 = 1.5
+- implied_move_pctl = 80: required_z = 0.5 + 1.6 = 2.1
+- implied_move_pctl = 95: required_z = 0.5 + 1.9 = 2.4
+
+### 8.4 Clamping the Required Threshold
+
+The required_z must be clamped to prevent extreme values:
+
+Minimum (floor): 0.8 sigma
+Maximum (ceiling): 2.0 sigma
+
+Rationale for floor: Even with very low expectations, a minimal beat of 0.8 sigma should be required to signal meaningful clearance. Below this, results are essentially inline.
+
+Rationale for ceiling: Even with extreme expectations, requiring more than 2.0 sigma is unrealistic. Very few earnings beats exceed two standard deviations. Without a ceiling, the system would effectively never issue BEAT for highly anticipated earnings.
+
+After clamping:
+- implied_move_pctl = 95: required_z = min(2.4, 2.0) = 2.0
+- implied_move_pctl = 10: required_z = max(0.7, 0.8) = 0.8
+
+### 8.5 ECS Categories
+
+**STRONG_BEAT**: event_z exceeds required_z by more than 0.5 sigma.
+Interpretation: The report significantly exceeded the priced-in bar. Expect positive reaction.
+
+**BEAT**: event_z meets or exceeds required_z (but not by more than 0.5 sigma).
+Interpretation: The report cleared the bar. Expect modestly positive reaction.
+
+**INLINE**: event_z is within 0.3 sigma below required_z.
+Interpretation: The report roughly met expectations. Reaction could go either way.
+
+**MISS**: event_z is more than 0.3 sigma below required_z but within 1.0 sigma.
+Interpretation: The report disappointed. Expect negative reaction.
+
+**STRONG_MISS**: event_z is more than 1.0 sigma below required_z.
+Interpretation: The report significantly disappointed. Expect strongly negative reaction.
+
+### 8.6 Sector Calibration (Future Enhancement)
+
+The threshold formula is global. For improved accuracy, thresholds should eventually be calibrated per sector:
+
+Technology and high-growth sectors have higher bars — markets expect beats and punish inline results.
+
+Defensive sectors like utilities and staples have lower bars — modest beats are rewarded.
+
+Until sector-specific calibration data is available, the implied-move-aware threshold provides automatic adjustment because high-growth stocks tend to have higher implied moves.
+
+---
+
+## Part 9: Expectations Regime Classification
+
+### 9.1 Purpose
+
+The regime classification provides a categorical summary of the pre-earnings setup that simplifies downstream decision logic. Rather than evaluating multiple numeric inputs, Trade Ideas and other modules can branch on regime type.
+
+### 9.2 Regime Definitions
+
+**HYPED**: The market is priced for a very strong report. Characterized by high IES (≥70), high implied_move_pctl (≥70), and strong positive price drift (≥10% over 20 days). Risk is heavily skewed to the downside — even good reports may disappoint.
+
+Trading implication: Require STRONG_BEAT on ECS to initiate long positions. Size positions at 20-30% of normal. Consider avoiding new entries entirely.
+
+**FEARED**: The market is skeptical or pessimistic. Characterized by low to medium IES (≤50), weak or negative price drift (≤-5%), potentially with elevated implied_move_pctl (market expects volatility but leans bearish). Risk is skewed to the upside — modest beats may surprise positively.
+
+Trading implication: BEAT on ECS is sufficient. Size positions at 60-70% of normal. Setup favors long entries if fundamentals support.
+
+**VOLATILE**: The market expects a big move but has no directional bias. Characterized by high implied_move_pctl (≥80) but medium IES (40-60) and mixed price drift. The market acknowledges uncertainty.
+
+Trading implication: BEAT on ECS is required. Size positions at 50% of normal. Direction is uncertain so risk management is key.
+
+**NORMAL**: Standard expectations environment. IES is in the 40-70 range, implied_move_pctl is unremarkable (30-70), price drift is modest (-10% to +10%). No unusual setup characteristics.
+
+Trading implication: Standard rules apply. BEAT on ECS for long entries. Normal position sizing.
+
+### 9.3 Regime Assignment Logic
+
+The regime should be assigned using a priority hierarchy:
+
+First, check for HYPED conditions: IES ≥ 70 AND implied_move_pctl ≥ 70 AND drift_20d ≥ 0.10
+
+Second, check for FEARED conditions: IES ≤ 50 AND drift_20d ≤ -0.05
+
+Third, check for VOLATILE conditions: implied_move_pctl ≥ 80 AND IES between 40-60
+
+Default to NORMAL if no special conditions are met.
+
+Only one regime should be assigned per earnings event.
+
+---
+
+## Part 10: Position Scaling Logic
+
+### 10.1 Purpose
+
+Position sizing should be reduced when entering trades within the earnings event window, with the reduction proportional to expectations risk. This prevents full-sized positions from taking unexpected losses on earnings events where the bar is high.
+
+### 10.2 Scaling Methodology
+
+Position scaling uses an additive penalty approach rather than multiplicative factors. This produces more predictable, interpretable results.
+
+**Base scale**: 1.0 (100% of normal position size)
+
+**IES penalty**: When IES exceeds 70, subtract a penalty. Penalty = (IES - 70) / 100. An IES of 80 produces a 0.10 penalty. An IES of 95 produces a 0.25 penalty.
+
+**Implied move penalty**: When implied_move_pctl exceeds 60, subtract a penalty. Penalty = (implied_move_pctl - 60) / 150. A percentile of 90 produces a 0.20 penalty.
+
+**Combined calculation**: scale = 1.0 - ies_penalty - implied_move_penalty
+
+**Floor**: The scale can never go below 0.20 (20% of normal size). This ensures some participation even in extreme setups because occasionally the most hyped earnings still beat decisively.
+
+**Ceiling**: The scale cannot exceed 1.0 (no bonus for low expectations).
+
+### 10.3 Example Calculations
+
+Example 1: IES = 75, implied_move_pctl = 65
+- IES penalty = (75 - 70) / 100 = 0.05
+- Implied move penalty = (65 - 60) / 150 = 0.033
+- Scale = 1.0 - 0.05 - 0.033 = 0.917
+- Position sized at 92% of normal
+
+Example 2: IES = 90, implied_move_pctl = 85
+- IES penalty = (90 - 70) / 100 = 0.20
+- Implied move penalty = (85 - 60) / 150 = 0.167
+- Scale = 1.0 - 0.20 - 0.167 = 0.633
+- Position sized at 63% of normal
+
+Example 3: IES = 95, implied_move_pctl = 95
+- IES penalty = (95 - 70) / 100 = 0.25
+- Implied move penalty = (95 - 60) / 150 = 0.233
+- Scale = 1.0 - 0.25 - 0.233 = 0.517
+- After floor clamp: Position sized at 52% of normal
+
+### 10.4 Post-Earnings Scaling
+
+Position scaling should relax after earnings are released and the reaction is known:
+
+Days 0-2 post-earnings: Maintain reduced scaling as the reaction is still being digested.
+
+Day 3+ post-earnings: Resume normal sizing. The event risk has passed.
+
+---
+
+## Part 11: Earnings Window Scoping
+
+### 11.1 Purpose
+
+The earnings intelligence system (IES, ECS, regime, scaling) should only activate within a defined window around earnings events. Outside this window, normal signal generation should proceed without interference.
+
+### 11.2 Window Definitions
+
+**Compute window**: IES can be computed starting 10 trading days before earnings. This allows monitoring of building expectations.
+
+**Action window**: Trading logic (gating, scaling, regime-based rules) only activates 5 trading days before earnings through 2 trading days after earnings.
+
+**Post-event window**: Days 0-2 after earnings release are still within the action window for reaction-based decisions.
+
+Outside the action window, the stock is treated as a normal non-event situation.
+
+### 11.3 Implementation Approach
+
+Every signal generation, trade idea, and AI Chat response should check two conditions:
+
+Is the ticker within the compute window (-10 to +2 days)? If yes, compute and display IES/regime information.
+
+Is the ticker within the action window (-5 to +2 days)? If yes, apply position scaling, trade gating, and use ECS for decisions.
+
+If within compute window but outside action window: Show IES for informational purposes but do not modify trading behavior.
+
+If outside compute window entirely: Skip all earnings intelligence calculations. Use normal signal logic.
+
+### 11.4 Why Two Windows
+
+The two-window approach allows users to see expectations building (starting day -10) without triggering trading modifications too early. This provides useful context while maintaining normal trading for stocks that are still 6-10 days from earnings.
+
+---
+
+## Part 12: Data Quality Tracking
+
+### 12.1 Purpose
+
+The system requires multiple data inputs. Some may be unavailable, stale, or unreliable. Data quality tracking distinguishes between "logic says don't trade" and "data is insufficient to decide."
+
+### 12.2 Data Quality Field
+
+Every earnings intelligence output should include a data_quality field with values:
+
+**HIGH**: All required inputs are available and current. Full confidence in IES, ECS, and regime.
+
+**MEDIUM**: Most inputs are available but one or two are missing or stale. Outputs are usable but with increased uncertainty.
+
+**LOW**: Multiple critical inputs are missing. Outputs should be treated as unreliable.
+
+### 12.3 Required vs Optional Inputs
+
+**Required inputs** (LOW quality if missing):
+- Recent price data for drift calculation
+- Current stock price
+- Earnings date
+- EPS consensus and actual
+- Revenue consensus and actual
+
+**Important inputs** (MEDIUM quality if missing):
+- Options chain data (IV, implied move, skew)
+- Analyst revisions
+- Guidance direction
+
+**Optional inputs** (Still HIGH quality if missing):
+- Management tone score
+- Confidence language score
+- Historical z-score data (can use sector defaults)
+
+### 12.4 Behavior at Each Quality Level
+
+**HIGH quality**: Full system behavior. Use all computed values.
+
+**MEDIUM quality**:
+- Widen uncertainty ranges
+- Default missing inputs to neutral (50 for scores, 0 for z-components)
+- Consider defaulting ECS to INLINE rather than making strong calls
+- Position scaling still applies
+
+**LOW quality**:
+- Do not compute ECS (output ECS = UNKNOWN)
+- Do not apply regime-based gating
+- Apply conservative default position scaling (50% of normal)
+- Flag clearly in outputs that data is insufficient
+
+### 12.5 Distinguishing Suppression Reasons
+
+Outputs should clearly indicate why a recommendation is suppressed:
+
+**suppression_reason = "LOGIC"**: Data is sufficient, but regime/ECS logic determined this is not a good entry. Example: HYPED regime with INLINE ECS.
+
+**suppression_reason = "DATA"**: Data quality is LOW, insufficient to make a reliable determination.
+
+**suppression_reason = null**: No suppression, recommendation stands.
+
+This allows users to understand whether they should wait for data or avoid the trade entirely.
+
+---
+
+## Part 13: AI Chat Integration
+
+### 13.1 Current Problem
+
+The AI Chat module can access all platform data but presents earnings results in absolute terms ("beat estimates," "strong quarter") without contextualizing against expectations. This creates misleading narratives when good reports lead to negative price reactions.
+
+### 13.2 Required Changes
+
+When responding to any query about a stock within the compute window (-10 to +2 days), the AI Chat must include a mandatory Expectations Context section.
+
+### 13.3 Mandatory Output Fields
+
+**ies**: The numeric IES value (0-100).
+
+**regime**: The expectations regime classification (HYPED, FEARED, VOLATILE, NORMAL).
+
+**priced_in_risk**: A categorical field with values low, medium, or high. Derived from IES thresholds:
+- IES < 40: low
+- IES 40-70: medium
+- IES > 70: high
+
+**eqs**: The numeric EQS value (0-100), only populated after earnings are released.
+
+**ecs**: The categorical ECS value, only populated after earnings are released.
+
+**tradeable_now**: A boolean field indicating whether the system recommends new entries. Derived from ECS, regime, and data_quality.
+
+**data_quality**: The data quality level (HIGH, MEDIUM, LOW).
+
+### 13.4 Output Format Example (Pre-Earnings)
+
+When queried about a stock before earnings:
+
+```
+Market Expectations Check:
+- Implied Expectations Score: 78/100 (Elevated)
+- Expectations Regime: HYPED
+- Priced-In Risk: High
+- Data Quality: HIGH
+
+Assessment: Strong 18% run-up into earnings with implied move at 82nd
+percentile. The market is positioned for a beat. Even solid results
+may disappoint if they don't significantly exceed the elevated bar.
+
+Position Guidance: If entering, size at 35% of normal. Consider
+waiting for post-earnings reaction confirmation.
+
+Tradeable Now: Caution advised
+```
+
+### 13.5 Output Format Example (Post-Earnings)
+
+When queried about a stock after earnings:
+
+```
+Market Expectations Check:
+- Implied Expectations Score (pre-earnings): 78/100
+- Expectations Regime (pre-earnings): HYPED
+- Data Quality: HIGH
+
+Earnings Results:
+- Earnings Quality Score: 82/100 (Strong)
+- EPS Surprise: +12% (z-score: +1.4)
+- Revenue Surprise: +5% (z-score: +0.9)
+- Guidance: Maintained (z-score: 0.0)
+- Event Surprise Z: +0.89
+
+Expectations Clearance:
+- Required Z-Score: 1.8 (due to elevated implied move)
+- Actual Event Z: 0.89
+- ECS: MISS
+
+Assessment: Report was objectively solid (EQS 82), but the blended
+event surprise of +0.89 sigma did not clear the required 1.8 sigma
+threshold given elevated pre-earnings expectations. Maintained
+guidance, while not negative, failed to provide the upside catalyst
+the market was positioned for.
+
+Tradeable Now: No — expectations not cleared
+```
+
+### 13.6 Preventing Narrative Override
+
+The explicit fields (priced_in_risk, tradeable_now, ecs) must be deterministic outputs from the quantitative system. The Chat's prose commentary must not contradict these fields.
+
+If ECS is MISS and regime was HYPED, the Chat cannot conclude with "bullish setup" or "buying opportunity" regardless of how positive the EQS is. The quantitative determination takes precedence over narrative interpretation.
+
+---
+
+## Part 14: Trade Ideas Integration
+
+### 14.1 Current Problem
+
+The Trade Ideas module generates recommendations by combining multiple signals with additive scoring. Strong earnings (high EQS) can push a stock to the top of recommendations even when expectations clearance is poor.
+
+### 14.2 Required Changes
+
+Within the action window, Trade Ideas must use ECS as a gate, not just EQS as a score component.
+
+### 14.3 Gating Logic by Regime
+
+**HYPED regime**:
+- Only allow BUY recommendations if ECS is STRONG_BEAT
+- BEAT is insufficient — suppress or flag as "wait for confirmation"
+- INLINE, MISS, STRONG_MISS: Suppress recommendation
+
+**FEARED regime**:
+- Allow BUY recommendations if ECS is BEAT or better
+- INLINE can be allowed with 50% position size if other signals are very strong
+- MISS, STRONG_MISS: Suppress recommendation
+
+**VOLATILE regime**:
+- Allow BUY recommendations if ECS is BEAT or better
+- Apply 50% position scaling regardless
+- INLINE, MISS, STRONG_MISS: Suppress recommendation
+
+**NORMAL regime**:
+- Standard rules apply
+- BEAT or better required for BUY
+- Normal position sizing
+
+### 14.4 Score Adjustments
+
+In addition to gating, the Trade Ideas score should incorporate ECS as a component:
+
+STRONG_BEAT: Add 15-20 points to trade idea score
+BEAT: Add 5-10 points
+INLINE: Add 0 points
+MISS: Subtract 10-15 points
+STRONG_MISS: Subtract 20+ points and suppress recommendation
+
+### 14.5 Pre-Earnings Recommendations
+
+Before earnings are released (within action window but ECS not yet determinable):
+
+Use regime to determine allowable recommendations:
+- HYPED: Suppress new BUY recommendations or flag "high risk, consider waiting"
+- FEARED: Allow with 70% sizing
+- VOLATILE: Allow with 50% sizing
+- NORMAL: Allow with standard sizing
+
+### 14.6 Display Transparency
+
+Trade Ideas shown to the user within the action window should display:
+- The expectations regime
+- The ECS result (if post-earnings)
+- The position scale being applied
+- The suppression_reason if applicable
+- A note if the recommendation is modified due to earnings proximity
+
+---
+
+## Part 15: Data Logging Requirements
+
+### 15.1 Purpose
+
+The initial weights, thresholds, and rules in this system are heuristics. Long-term accuracy requires calibration based on actual outcomes. This requires logging every earnings event with sufficient detail to train predictive models later.
+
+### 15.2 Required Log Fields Per Earnings Event
+
+**Identification**
+- ticker: Stock symbol
+- earnings_date: Date and time of earnings release
+- sector: Stock sector classification
+- market_cap: Market capitalization at earnings
+
+**IES Components**
+- drift_20d: 20-day price drift (decimal)
+- rel_drift_20d: Relative drift vs sector ETF (decimal)
+- iv_pctl: IV percentile (0-100)
+- implied_move_pct: Implied move (decimal)
+- implied_move_pctl: Implied move percentile (0-100)
+- skew_shift: Skew shift value
+- revision_score: Analyst revision score (0-100)
+- confidence_lang_score: Confidence language score (0-100)
+
+**IES Output**
+- ies: Composite IES score (0-100)
+- regime: Regime classification
+
+**Raw Earnings Data**
+- eps_actual: Reported EPS
+- eps_consensus: Consensus EPS
+- eps_surprise_pct: EPS surprise percentage
+- revenue_actual: Reported revenue
+- revenue_consensus: Consensus revenue
+- revenue_surprise_pct: Revenue surprise percentage
+- guidance_direction: RAISED_STRONG, RAISED, MAINTAINED, LOWERED, LOWERED_STRONG
+
+**Z-Scores**
+- eps_z: EPS surprise z-score
+- rev_z: Revenue surprise z-score
+- guidance_z: Guidance z-score
+- event_z: Blended event z-score
+
+**EQS Components and Output**
+- guidance_score: Guidance score (0-100)
+- margin_score: Margin trend score (0-100)
+- tone_score: Management tone score (0-100)
+- eqs: Composite EQS score (0-100)
+
+**ECS Calculation**
+- required_z: Required z-score threshold
+- ecs: ECS category (STRONG_BEAT, BEAT, INLINE, MISS, STRONG_MISS)
+
+**Position Scaling**
+- position_scale: Scale factor applied (0.2-1.0)
+
+**Data Quality**
+- data_quality: HIGH, MEDIUM, LOW
+- missing_inputs: List of any missing inputs
+
+**Outcomes**
+- gap_reaction: Gap reaction (decimal)
+- intraday_reaction: Intraday reaction (decimal)
+- total_reaction: Total reaction (decimal) — this is the canonical outcome
+- reaction_5d: 5-day reaction (decimal)
+- reaction_10d: 10-day reaction (decimal)
+
+**Meta**
+- log_timestamp: When this record was created
+- ies_compute_timestamp: When IES was computed
+- earnings_timestamp: Actual earnings release timestamp
+
+### 15.3 Time Alignment Verification
+
+For each logged event, verify:
+- All IES input timestamps precede earnings_timestamp
+- ies_compute_timestamp precedes earnings_timestamp
+- This prevents look-ahead bias when training models
+
+### 15.4 Minimum Data for Calibration
+
+After logging 50-100 earnings events with outcomes, sufficient data exists to:
+
+Recalibrate IES input weights using regression against total_reaction.
+
+Adjust ECS thresholds based on realized hit rates.
+
+Refine regime definitions based on outcome distributions.
+
+Train a logistic model predicting reaction direction from features.
+
+Validate that event_z weights (eps/rev/guidance) are optimal.
+
+---
+
+## Part 16: Post-Earnings IES Behavior
+
+### 16.1 The Problem
+
+IES measures pre-earnings expectations. After earnings are released, those expectations are resolved. Using stale IES post-earnings would be misleading for new calculations.
+
+### 16.2 Post-Earnings Reset Logic
+
+**Days 0-2 post-earnings**: IES should not be recomputed. The pre-earnings IES is retained for logging and context but should not be used for new positioning decisions. ECS (based on the now-known results) drives decisions.
+
+**Days 3-10 post-earnings**: Transition period. The stock is outside the action window. If IES is computed for any reason (e.g., monitoring), apply a 50% weight reduction to reflect that the immediate event is resolved but next quarter's positioning has not yet developed.
+
+**Days 11+ post-earnings**: IES can be computed normally as market attention shifts to the next earnings cycle. The stock will eventually enter the compute window for the following quarter.
+
+### 16.3 Retaining Pre-Earnings IES
+
+The IES computed before earnings should be retained and logged alongside post-earnings outcomes. This is critical for:
+- Completing the log record
+- Providing context in AI Chat for "what happened" discussions
+- Training future models
+
+Do not overwrite pre-earnings IES with post-earnings calculations.
+
+---
+
+## Part 17: Open Interest Considerations
+
+### 17.1 The Question
+
+The current options flow module may only capture volume. Open interest change provides additional signal about whether activity represents new positioning versus closing or rolling existing positions.
+
+### 17.2 When OI Adds Value
+
+High volume + rising OI = new positions being established (meaningful signal)
+High volume + flat OI = closing or rolling existing positions (less meaningful)
+
+If the options data source provides reliable, daily open interest history, OI change can improve signal quality.
+
+### 17.3 When to Skip OI
+
+If OI data is inconsistent, delayed, has gaps, or only updates weekly, do not add it. Bad OI data introduces noise that appears to be signal, degrading model quality.
+
+### 17.4 Implementation If Adding
+
+If OI data is reliable:
+
+Compute daily OI change for near-term calls and puts around the ATM strike.
+
+Compute net positioning signal: call_oi_change_pct minus put_oi_change_pct.
+
+Incorporate as a modifier to the skew_shift input rather than a separate IES component. If skew is shifting bullish AND call OI is rising, that's a stronger signal than skew shift alone.
+
+Do not add OI as a new weighted component unless calibration data supports it.
+
+---
+
+## Part 18: Guardrails Summary
+
+### 18.1 Clamping All Computed Values
+
+Every computed value must be clamped to prevent extreme edge cases:
+
+**IES**: Clamp between 10 and 95
+**required_z**: Clamp between 0.8 and 2.0
+**position_scale**: Clamp between 0.20 and 1.0
+**All percentiles**: Clamp between 5 and 95
+**event_z components**: Clamp individual z-scores between -3.0 and +3.0
+
+### 18.2 Graceful Degradation vs Intentional Suppression
+
+These are distinct concepts:
+
+**Graceful degradation**: When data is missing, the system continues operating with reduced confidence rather than failing entirely. Missing inputs default to neutral values. data_quality reflects the limitation.
+
+**Intentional suppression**: When data is present and the logic determines this is not a good entry (e.g., HYPED regime with INLINE ECS), the recommendation is suppressed. This is correct system behavior, not a failure.
+
+The suppression_reason field distinguishes these cases:
+- suppression_reason = "DATA": Degradation due to missing data
+- suppression_reason = "LOGIC": Intentional suppression due to poor setup
+
+### 18.3 Earnings Date Handling
+
+Earnings dates can shift. The system should:
+- Update earnings dates daily from authoritative sources
+- Handle unexpected entry into the action window gracefully
+- Not crash if an expected earnings event does not occur
+- Log any earnings date changes for debugging
+
+---
+
+## Part 19: Integration Sequence
+
+### 19.1 Recommended Build Order
+
+**Phase 1 — Foundation**: Implement naming conventions, reaction label definitions, and logging schema. This ensures clean data from the start.
+
+**Phase 2 — IES**: Implement IES with the seven inputs, time alignment, caching, and compute/action window logic.
+
+**Phase 3 — EQS**: Implement EQS with z-score normalization and guidance weighting.
+
+**Phase 4 — event_z**: Implement the blended Event Surprise Z-score combining EPS, revenue, and guidance.
+
+**Phase 5 — ECS**: Implement ECS with threshold calculation, clamping, and category assignment.
+
+**Phase 6 — Regime**: Implement regime classification.
+
+**Phase 7 — Position Scaling**: Implement position scaling with guardrails.
+
+**Phase 8 — Data Quality**: Implement data quality tracking and suppression reason logic.
+
+**Phase 9 — Scoping**: Implement earnings window scoping for all modules.
+
+**Phase 10 — AI Chat Integration**: Integrate mandatory output fields and prevent narrative override.
+
+**Phase 11 — Trade Ideas Integration**: Integrate gating logic and score adjustments.
+
+**Phase 12 — Logging Activation**: Ensure all fields are being logged correctly.
+
+### 19.2 Testing Strategy
+
+Test each phase in isolation before integration.
+
+Use historical earnings events to validate:
+- IES correlates with pre-earnings positioning
+- event_z correlates with total_reaction direction
+- ECS categories align with reaction outcomes
+
+Compare old system recommendations versus new system recommendations on historical data.
+
+Paper trade the new system for one earnings season before relying on it.
+
+---
+
+## Part 20: Summary of Key Formulas and Thresholds
+
+### 20.1 IES Weights (Starting Heuristics)
+
+| Input | Variable Name | Weight |
+|-------|---------------|--------|
+| Pre-earnings price drift (20d) | drift_20d | 20% |
+| Relative drift vs sector ETF | rel_drift_20d | 15% |
+| IV percentile | iv_pctl | 15% |
+| Implied move percentile | implied_move_pctl | 20% |
+| Skew shift | skew_shift | 10% |
+| Analyst revision direction | revision_score | 10% |
+| Confidence language score | confidence_lang_score | 10% |
+
+### 20.2 EQS Weights
+
+| Input | Variable Name | Weight |
+|-------|---------------|--------|
+| EPS surprise z-score | eps_z | 25% |
+| Revenue surprise z-score | rev_z | 25% |
+| Guidance direction | guidance_score | 30% |
+| Margin trend | margin_score | 10% |
+| Management tone | tone_score | 10% |
+
+### 20.3 event_z Weights
+
+| Input | Variable Name | Weight |
+|-------|---------------|--------|
+| EPS surprise z-score | eps_z | 35% |
+| Revenue surprise z-score | rev_z | 30% |
+| Guidance z-score | guidance_z | 35% |
+
+### 20.4 ECS Thresholds
+
+Required z-score formula: required_z = 0.5 + (implied_move_pctl / 50)
+
+Clamping: min = 0.8, max = 2.0
+
+ECS categories:
+- STRONG_BEAT: event_z > required_z + 0.5
+- BEAT: event_z ≥ required_z
+- INLINE: event_z ≥ required_z - 0.3
+- MISS: event_z ≥ required_z - 1.0
+- STRONG_MISS: event_z < required_z - 1.0
+
+### 20.5 Regime Criteria
+
+| Regime | Criteria |
+|--------|----------|
+| HYPED | IES ≥ 70 AND implied_move_pctl ≥ 70 AND drift_20d ≥ 0.10 |
+| FEARED | IES ≤ 50 AND drift_20d ≤ -0.05 |
+| VOLATILE | implied_move_pctl ≥ 80 AND IES between 40-60 |
+| NORMAL | Default (none of the above) |
+
+### 20.6 Position Scaling
+
+Base: 1.0
+
+Penalties:
+- IES penalty (when IES > 70): (IES - 70) / 100
+- Implied move penalty (when implied_move_pctl > 60): (implied_move_pctl - 60) / 150
+
+Formula: scale = 1.0 - ies_penalty - implied_move_penalty
+
+Clamping: floor = 0.20, ceiling = 1.0
+
+### 20.7 Window Definitions
+
+| Window | Start | End | Purpose |
+|--------|-------|-----|---------|
+| Compute | -10 trading days | +2 trading days | IES calculation and display |
+| Action | -5 trading days | +2 trading days | Trading logic enforcement |
+
+---
+
+## Part 21: Expected Outcomes
+
+### 21.1 Problems Solved
+
+False positive BUY signals on high-expectation stocks that beat consensus but miss the whisper will be eliminated or significantly reduced.
+
+Guidance-driven failures ("beat EPS but guided down") will be captured by the blended event_z.
+
+AI Chat will provide accurate context about priced-in expectations rather than misleading absolute assessments.
+
+Trade Ideas will not recommend entries into elevated-expectation setups without exceptional clearance.
+
+Position sizing will automatically reduce risk around earnings when expectations are extreme.
+
+Signal accuracy metrics will improve because the system will avoid the most common earnings traps.
+
+Data quality issues will be surfaced explicitly rather than causing silent failures.
+
+### 21.2 Remaining Limitations
+
+The system cannot predict earnings outcomes — it can only assess whether outcomes cleared expectations.
+
+Whisper estimation is imperfect — some expectation gaps will still not be captured.
+
+Post-earnings drift over multiple days is not directly traded — this system focuses on immediate reaction.
+
+The system requires sufficient options data and historical earnings for each ticker to function at HIGH quality.
+
+Initial weights and thresholds are heuristics that require calibration with real outcome data.
+
+---
+
+## Document Conclusion
+
+This guide provides complete, production-ready specifications for implementing an Implied Expectations Score and Expectations Clearance System. The core insight is that markets trade against priced-in expectations, not consensus estimates.
+
+Key improvements in this revision:
+
+1. **Blended event_z**: ECS now considers EPS, revenue, AND guidance together, preventing guidance-driven failure modes.
+
+2. **Precise reaction definitions**: Gap, intraday, and total reactions are separately defined and logged, with total_reaction as the canonical training label.
+
+3. **Consistent naming**: Clear distinction between percentages and percentiles, with explicit variable names throughout.
+
+4. **Data quality tracking**: Explicit differentiation between logic-based suppression and data-gap-based uncertainty.
+
+5. **Time alignment**: Guardrails to prevent look-ahead bias in IES computation and model training.
+
+6. **Compute vs action windows**: Wider window for monitoring, narrower window for trading modifications.
+
+7. **Caching policy**: Consistent values across modules with defined refresh intervals.
+
+The implementation should proceed in phases, starting with logging infrastructure and building toward full integration. Clean data collection from the start enables future calibration that will improve accuracy over time.

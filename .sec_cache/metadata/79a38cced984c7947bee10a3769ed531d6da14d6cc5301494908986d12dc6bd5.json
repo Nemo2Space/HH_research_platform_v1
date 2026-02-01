@@ -1,0 +1,26 @@
+{
+  "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000009/mu-20250227.htm",
+  "status_code": 200,
+  "headers": {
+    "Content-Type": "text/html",
+    "X-Frame-Options": "SAMEORIGIN",
+    "x-amz-id-2": "458BSfeiaod1CKZrI/bDPiBKydL9IqAhm3siaPZfl2i1r7dUW5BuEBgamQBFowNQw35w5gTMtfE=",
+    "x-amz-request-id": "ZVP1JEGR39Z6XB1Z",
+    "x-amz-replication-status": "COMPLETED",
+    "Last-Modified": "Fri, 21 Mar 2025 10:01:13 GMT",
+    "x-amz-server-side-encryption": "AES256",
+    "x-amz-meta-mode": "33188",
+    "x-amz-version-id": "Sw.aN50R1f2oj9EhE.puqWoq1sep0lvG",
+    "Accept-Ranges": "bytes",
+    "Content-Encoding": "gzip",
+    "X-Content-Type-Options": "nosniff",
+    "X-XSS-Protection": "1; mode=block",
+    "Content-Length": "116067",
+    "Date": "Wed, 07 Jan 2026 19:50:48 GMT",
+    "Connection": "keep-alive",
+    "Vary": "Accept-Encoding",
+    "Strict-Transport-Security": "max-age=31536000 ; includeSubDomains ; preload"
+  },
+  "fetched_at_utc": "2026-01-07T19:50:49.211897Z",
+  "content_sha256": "27282ed579cbfc98ea75a4dac1990903119c67ac99363a5673ef9ce49fefdbe7"
+}

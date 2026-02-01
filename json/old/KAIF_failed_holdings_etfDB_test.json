@@ -1,0 +1,17 @@
+[
+    {
+        "name": "SPSK ETF",
+        "symbol": "SPSK",
+        "weight": 8.0
+    },
+    {
+        "name": "Reddit, Inc.",
+        "symbol": "RDDT",
+        "weight": 0.3
+    },
+    {
+        "name": "Roblox Corporation",
+        "symbol": "RBLX",
+        "weight": 0.29
+    }
+]

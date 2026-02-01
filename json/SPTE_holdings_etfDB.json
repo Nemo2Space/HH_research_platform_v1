@@ -1,0 +1,497 @@
+[
+    {
+        "name": "Taiwan Semiconductor Manufacturing Co., Ltd. Sponsored ADR",
+        "symbol": "TSM",
+        "weight": 16.31
+    },
+    {
+        "name": "Apple Inc.",
+        "symbol": "AAPL",
+        "weight": 12.27
+    },
+    {
+        "name": "Microsoft Corporation",
+        "symbol": "MSFT",
+        "weight": 10.42
+    },
+    {
+        "name": "NVIDIA Corporation",
+        "symbol": "NVDA",
+        "weight": 9.93
+    },
+    {
+        "name": "SAP SE Sponsored ADR",
+        "symbol": "SAP",
+        "weight": 4.96
+    },
+    {
+        "name": "ASML Holding NV",
+        "symbol": "ASML",
+        "weight": 4.96
+    },
+    {
+        "name": "Broadcom Inc.",
+        "symbol": "AVGO",
+        "weight": 4.29
+    },
+    {
+        "name": "Shopify, Inc. Class A",
+        "symbol": "SHOP",
+        "weight": 2.35
+    },
+    {
+        "name": "Tokyo Electron Ltd Unsponsored ADR",
+        "symbol": "TOELY",
+        "weight": 1.54
+    },
+    {
+        "name": "Keyence Corporation",
+        "symbol": "6861",
+        "weight": 1.47
+    },
+    {
+        "name": "Salesforce, Inc.",
+        "symbol": "CRM",
+        "weight": 1.31
+    },
+    {
+        "name": "United Microelectronics Corp. Sponsored ADR",
+        "symbol": "UMC",
+        "weight": 1.27
+    },
+    {
+        "name": "Xiaomi Corp. Unsponsored ADR Class B",
+        "symbol": "XIACY",
+        "weight": 1.13
+    },
+    {
+        "name": "Constellation Software Inc.",
+        "symbol": "CSU",
+        "weight": 1.05
+    },
+    {
+        "name": "Oracle Corporation",
+        "symbol": "ORCL",
+        "weight": 1.02
+    },
+    {
+        "name": "Cisco Systems, Inc.",
+        "symbol": "CSCO",
+        "weight": 0.97
+    },
+    {
+        "name": "Accenture Plc Class A",
+        "symbol": "ACN",
+        "weight": 0.92
+    },
+    {
+        "name": "Advantest Corp. Sponsored ADR",
+        "symbol": "ATEYY",
+        "weight": 0.88
+    },
+    {
+        "name": "ServiceNow, Inc.",
+        "symbol": "NOW",
+        "weight": 0.86
+    },
+    {
+        "name": "Advanced Micro Devices, Inc.",
+        "symbol": "AMD",
+        "weight": 0.82
+    },
+    {
+        "name": "Infineon Technologies AG Sponsored ADR",
+        "symbol": "IFNNY",
+        "weight": 0.79
+    },
+    {
+        "name": "Adobe Inc.",
+        "symbol": "ADBE",
+        "weight": 0.77
+    },
+    {
+        "name": "QUALCOMM Incorporated",
+        "symbol": "QCOM",
+        "weight": 0.72
+    },
+    {
+        "name": "Texas Instruments Incorporated",
+        "symbol": "TXN",
+        "weight": 0.71
+    },
+    {
+        "name": "Applied Materials, Inc.",
+        "symbol": "AMAT",
+        "weight": 0.6
+    },
+    {
+        "name": "Canon Inc. Sponsored ADR",
+        "symbol": "CAJPY",
+        "weight": 0.57
+    },
+    {
+        "name": "Fujitsu Limited Unsponsored ADR",
+        "symbol": "FJTSY",
+        "weight": 0.55
+    },
+    {
+        "name": "Murata Manufacturing Co Ltd Unsponsored ADR",
+        "symbol": "MRAAY",
+        "weight": 0.54
+    },
+    {
+        "name": "Disco Corporation Unsponsored ADR",
+        "symbol": "DSCSY",
+        "weight": 0.51
+    },
+    {
+        "name": "ASM International N.V.",
+        "symbol": "ASM",
+        "weight": 0.5
+    },
+    {
+        "name": "Telefonaktiebolaget LM Ericsson Sponsored ADR Class B",
+        "symbol": "ERIC",
+        "weight": 0.48
+    },
+    {
+        "name": "Arista Networks, Inc.",
+        "symbol": "ANET",
+        "weight": 0.48
+    },
+    {
+        "name": "Analog Devices, Inc.",
+        "symbol": "ADI",
+        "weight": 0.47
+    },
+    {
+        "name": "Capgemini SE Unsponsored ADR",
+        "symbol": "CGEMY",
+        "weight": 0.46
+    },
+    {
+        "name": "Nokia Oyj Sponsored ADR",
+        "symbol": "NOK",
+        "weight": 0.46
+    },
+    {
+        "name": "FUJIFILM Holdings Corp Unsponsored ADR",
+        "symbol": "FUJIY",
+        "weight": 0.46
+    },
+    {
+        "name": "Palo Alto Networks, Inc.",
+        "symbol": "PANW",
+        "weight": 0.46
+    },
+    {
+        "name": "Micron Technology, Inc.",
+        "symbol": "MU",
+        "weight": 0.45
+    },
+    {
+        "name": "Lam Research Corporation",
+        "symbol": "LRCX",
+        "weight": 0.43
+    },
+    {
+        "name": "Dassault Systemes SE Sponsored ADR",
+        "symbol": "DASTY",
+        "weight": 0.42
+    },
+    {
+        "name": "NEC Corp.",
+        "symbol": "6701",
+        "weight": 0.4
+    },
+    {
+        "name": "KLA Corporation",
+        "symbol": "KLAC",
+        "weight": 0.39
+    },
+    {
+        "name": "Hexagon AB Unsponsored ADR Class B",
+        "symbol": "HXGBY",
+        "weight": 0.37
+    },
+    {
+        "name": "CGI Inc. Class A",
+        "symbol": "GIB.A",
+        "weight": 0.37
+    },
+    {
+        "name": "CrowdStrike Holdings, Inc. Class A",
+        "symbol": "CRWD",
+        "weight": 0.36
+    },
+    {
+        "name": "Amphenol Corporation Class A",
+        "symbol": "APH",
+        "weight": 0.35
+    },
+    {
+        "name": "Cadence Design Systems, Inc.",
+        "symbol": "CDNS",
+        "weight": 0.34
+    },
+    {
+        "name": "Motorola Solutions, Inc.",
+        "symbol": "MSI",
+        "weight": 0.32
+    },
+    {
+        "name": "Sage Group plc Unsponsored ADR",
+        "symbol": "SGPYY",
+        "weight": 0.31
+    },
+    {
+        "name": "Synopsys, Inc.",
+        "symbol": "SNPS",
+        "weight": 0.31
+    },
+    {
+        "name": "STMicroelectronics NV",
+        "symbol": "STMMI",
+        "weight": 0.28
+    },
+    {
+        "name": "Kyocera Corporation Sponsored ADR",
+        "symbol": "KYOCY",
+        "weight": 0.26
+    },
+    {
+        "name": "Fortinet, Inc.",
+        "symbol": "FTNT",
+        "weight": 0.26
+    },
+    {
+        "name": "Autodesk, Inc.",
+        "symbol": "ADSK",
+        "weight": 0.26
+    },
+    {
+        "name": "NXP Semiconductors NV",
+        "symbol": "NXPI",
+        "weight": 0.24
+    },
+    {
+        "name": "Xero Limited",
+        "symbol": "XRO",
+        "weight": 0.24
+    },
+    {
+        "name": "Wisetech Global Ltd.",
+        "symbol": "WTC",
+        "weight": 0.24
+    },
+    {
+        "name": "Nomura Research Institute Ltd Unsponsored ADR",
+        "symbol": "NRILY",
+        "weight": 0.23
+    },
+    {
+        "name": "Roper Technologies, Inc.",
+        "symbol": "ROP",
+        "weight": 0.23
+    },
+    {
+        "name": "Logitech International S.A.",
+        "symbol": "LOGN",
+        "weight": 0.23
+    },
+    {
+        "name": "Workday, Inc. Class A",
+        "symbol": "WDAY",
+        "weight": 0.22
+    },
+    {
+        "name": "Halma PLC Unsponsored ADR",
+        "symbol": "HALMY",
+        "weight": 0.21
+    },
+    {
+        "name": "BE Semiconductor Industries N.V.",
+        "symbol": "BESI",
+        "weight": 0.19
+    },
+    {
+        "name": "TE Connectivity plc",
+        "symbol": "TEL",
+        "weight": 0.19
+    },
+    {
+        "name": "Lasertec Corp. Unsponsored ADR",
+        "symbol": "LSRCY",
+        "weight": 0.17
+    },
+    {
+        "name": "Fair Isaac Corporation",
+        "symbol": "FICO",
+        "weight": 0.17
+    },
+    {
+        "name": "Cognizant Technology Solutions Corporation Class A",
+        "symbol": "CTSH",
+        "weight": 0.17
+    },
+    {
+        "name": "OBIC Co., Ltd.",
+        "symbol": "4684",
+        "weight": 0.16
+    },
+    {
+        "name": "Gartner, Inc.",
+        "symbol": "IT",
+        "weight": 0.16
+    },
+    {
+        "name": "U.S. Dollar",
+        "symbol": "Other",
+        "weight": 0.15
+    },
+    {
+        "name": "ANSYS, Inc.",
+        "symbol": "ANSS",
+        "weight": 0.15
+    },
+    {
+        "name": "Corning Inc",
+        "symbol": "GLW",
+        "weight": 0.15
+    },
+    {
+        "name": "HP Inc.",
+        "symbol": "HPQ",
+        "weight": 0.13
+    },
+    {
+        "name": "Microchip Technology Incorporated",
+        "symbol": "MCHP",
+        "weight": 0.13
+    },
+    {
+        "name": "Keysight Technologies Inc",
+        "symbol": "KEYS",
+        "weight": 0.12
+    },
+    {
+        "name": "NetApp, Inc.",
+        "symbol": "NTAP",
+        "weight": 0.12
+    },
+    {
+        "name": "GoDaddy, Inc. Class A",
+        "symbol": "GDDY",
+        "weight": 0.12
+    },
+    {
+        "name": "SCREEN Holdings Co., Ltd",
+        "symbol": "7735",
+        "weight": 0.11
+    },
+    {
+        "name": "Monolithic Power Systems, Inc.",
+        "symbol": "MPWR",
+        "weight": 0.11
+    },
+    {
+        "name": "OMRON Corporation Sponsored ADR",
+        "symbol": "OMRNY",
+        "weight": 0.1
+    },
+    {
+        "name": "PTC Inc.",
+        "symbol": "PTC",
+        "weight": 0.1
+    },
+    {
+        "name": "ON Semiconductor Corporation",
+        "symbol": "ON",
+        "weight": 0.1
+    },
+    {
+        "name": "Tyler Technologies, Inc.",
+        "symbol": "TYL",
+        "weight": 0.1
+    },
+    {
+        "name": "CDW Corporation",
+        "symbol": "CDW",
+        "weight": 0.1
+    },
+    {
+        "name": "Temenos AG Sponsored ADR",
+        "symbol": "TMSNY",
+        "weight": 0.09
+    },
+    {
+        "name": "First Solar, Inc.",
+        "symbol": "FSLR",
+        "weight": 0.09
+    },
+    {
+        "name": "Teradyne, Inc.",
+        "symbol": "TER",
+        "weight": 0.08
+    },
+    {
+        "name": "Teledyne Technologies Incorporated",
+        "symbol": "TDY",
+        "weight": 0.08
+    },
+    {
+        "name": "Skyworks Solutions, Inc.",
+        "symbol": "SWKS",
+        "weight": 0.07
+    },
+    {
+        "name": "F5, Inc.",
+        "symbol": "FFIV",
+        "weight": 0.07
+    },
+    {
+        "name": "Jabil Inc.",
+        "symbol": "JBL",
+        "weight": 0.07
+    },
+    {
+        "name": "VeriSign, Inc.",
+        "symbol": "VRSN",
+        "weight": 0.07
+    },
+    {
+        "name": "Super Micro Computer, Inc.",
+        "symbol": "SMCI",
+        "weight": 0.07
+    },
+    {
+        "name": "Akamai Technologies, Inc.",
+        "symbol": "AKAM",
+        "weight": 0.07
+    },
+    {
+        "name": "Zebra Technologies Corporation Class A",
+        "symbol": "ZBRA",
+        "weight": 0.06
+    },
+    {
+        "name": "EPAM Systems, Inc.",
+        "symbol": "EPAM",
+        "weight": 0.06
+    },
+    {
+        "name": "Trimble Inc.",
+        "symbol": "TRMB",
+        "weight": 0.06
+    },
+    {
+        "name": "Juniper Networks, Inc.",
+        "symbol": "JNPR",
+        "weight": 0.06
+    },
+    {
+        "name": "Enphase Energy, Inc.",
+        "symbol": "ENPH",
+        "weight": 0.03
+    }
+]

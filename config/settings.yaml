@@ -1,0 +1,246 @@
+# =============================================================================
+# ALPHA PLATFORM - Main Configuration
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Application Metadata
+# -----------------------------------------------------------------------------
+app:
+  name: "Alpha Research Platform"
+  version: "1.0.0"
+  environment: "development"  # development, staging, production
+
+# -----------------------------------------------------------------------------
+# Database Configuration
+# -----------------------------------------------------------------------------
+database:
+  host: ${POSTGRES_HOST:-localhost}
+  port: ${POSTGRES_PORT:-5432}
+  name: ${POSTGRES_DB:-alpha_platform}
+  user: ${POSTGRES_USER:-alpha}
+  password: ${POSTGRES_PASSWORD:-}
+  pool_size: 10
+  max_overflow: 20
+
+# -----------------------------------------------------------------------------
+# Kafka Configuration
+# -----------------------------------------------------------------------------
+kafka:
+  bootstrap_servers: ${KAFKA_BOOTSTRAP_SERVERS:-localhost:9092}
+  group_id: ${KAFKA_GROUP_ID:-alpha-platform}
+  auto_offset_reset: "earliest"
+  
+  topics:
+    # Control topics
+    system_control: "system.control"
+    system_status: "system.status"
+    
+    # Data topics
+    data_prices: "data.prices"
+    data_news: "data.news"
+    data_filings: "data.filings"
+    
+    # Screener topics
+    screener_started: "screener.started"
+    screener_ticker: "screener.ticker"
+    screener_completed: "screener.completed"
+    screener_signals: "screener.signals"
+    
+    # Committee topics
+    committee_request: "committee.request"
+    committee_progress: "committee.progress"
+    committee_result: "committee.result"
+    
+    # Alert topics
+    alerts_signal: "alerts.signal"
+    alerts_insider: "alerts.insider"
+    alerts_filing: "alerts.filing"
+
+# -----------------------------------------------------------------------------
+# LLM Configuration
+# -----------------------------------------------------------------------------
+llm:
+  # Primary model (deep analysis)
+  qwen:
+    base_url: ${LLM_QWEN_BASE_URL:-http://172.23.193.91:8080/v1}
+    model: ${LLM_QWEN_MODEL:-Qwen3-32B-Q6_K.gguf}
+    temperature: 0.0
+    max_tokens: 4096
+    timeout: 120
+  
+  # Secondary model (fast filtering)
+  gpt_oss:
+    base_url: ${LLM_GPT_OSS_BASE_URL:-http://172.23.193.91:8081/v1}
+    model: ${LLM_GPT_OSS_MODEL:-gpt-oss-20b}
+    temperature: 0.0
+    max_tokens: 2048
+    timeout: 60
+  
+  # Default backend
+  default_backend: ${LLM_DEFAULT_BACKEND:-qwen}
+
+# -----------------------------------------------------------------------------
+# Screener Configuration (Project 1 scoring)
+# -----------------------------------------------------------------------------
+screener:
+  batch_size: 10
+  
+  # Score weights (must sum to 1.0)
+  weights:
+    sentiment: 0.15
+    fundamental: 0.30
+    growth: 0.20
+    dividend: 0.05
+    gap: 0.05
+    analyst: 0.05
+    target: 0.10
+    likelihood: 0.10
+  
+  # Signal thresholds
+  signals:
+    strong_buy:
+      likelihood_min: 75
+      sentiment_min: 60
+      gap_min: 60
+      fundamental_or_analyst_min: 70  # Either one must meet
+    
+    strong_sell:
+      likelihood_max: 25
+      sentiment_max: 40
+      gap_max: 40
+      fundamental_or_analyst_max: 30
+  
+  # News source credibility weights
+  news_credibility:
+    bloomberg: 10
+    wsj: 10
+    ft: 10
+    reuters: 10
+    cnbc: 9
+    barrons: 9
+    forbes: 8
+    marketwatch: 8
+    morningstar: 8
+    seekingalpha: 7
+    investors.com: 7
+    yahoo finance: 7
+    thestreet: 6
+    motley fool: 6
+    benzinga: 6
+    businessinsider: 5
+    default: 5
+
+# -----------------------------------------------------------------------------
+# Committee Configuration (Project 2 agents)
+# -----------------------------------------------------------------------------
+committee:
+  max_rounds: 3
+  min_turns_per_agent: 2
+  terminate_on_consensus: true
+  consensus_threshold: 0.7
+  
+  # Agent weights by persona
+  weights:
+    neutral:
+      fundamental: 0.30
+      valuation: 0.20
+      sentiment: 0.20
+      technical: 0.15
+      insider: 0.10
+      institutional: 0.05
+    
+    risk_averse:
+      fundamental: 0.40
+      valuation: 0.25
+      sentiment: 0.10
+      technical: 0.10
+      insider: 0.10
+      institutional: 0.05
+    
+    risk_seeking:
+      fundamental: 0.25
+      valuation: 0.15
+      sentiment: 0.25
+      technical: 0.20
+      insider: 0.10
+      institutional: 0.05
+
+# -----------------------------------------------------------------------------
+# Data Ingestion Configuration
+# -----------------------------------------------------------------------------
+data:
+  # Market data
+  market:
+    provider: "yfinance"
+    lookback_days: 252  # 1 year
+    cache_ttl_hours: 1
+  
+  # News collection
+  news:
+    sources:
+      - google_news
+      - finnhub
+      - nasdaq_rss
+      - financial_datasets
+      - reddit
+      - ai_search
+    max_articles_per_source: 50
+    lookback_days: 7
+    throttle_seconds: 2
+  
+  # SEC filings
+  sec:
+    filing_types:
+      - "10-K"
+      - "10-Q"
+      - "8-K"
+      - "13F-HR"
+      - "4"  # Form 4 (insider)
+    lookback_days: 365
+    chunk_size: 500
+    chunk_overlap: 50
+    rate_limit_per_second: 10
+
+# -----------------------------------------------------------------------------
+# Portfolio Configuration
+# -----------------------------------------------------------------------------
+portfolio:
+  # Position limits
+  max_position_pct: 0.10  # Max 10% in single stock
+  min_position_pct: 0.01  # Min 1% if held
+  
+  # Sector limits
+  max_sector_pct: 0.30
+  
+  # Rebalancing
+  rebalance_threshold_pct: 0.02  # Rebalance if >2% drift
+  transaction_cost_bps: 5
+  
+  # Risk limits
+  max_drawdown_pct: 0.15
+
+# -----------------------------------------------------------------------------
+# Backtest Configuration
+# -----------------------------------------------------------------------------
+backtest:
+  default_start_date: "2020-01-01"
+  initial_capital: 1000000
+  benchmark: "SPY"
+
+# -----------------------------------------------------------------------------
+# Logging Configuration
+# -----------------------------------------------------------------------------
+logging:
+  level: ${LOG_LEVEL:-INFO}
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/alpha_platform.log"
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+
+# -----------------------------------------------------------------------------
+# Dashboard Configuration
+# -----------------------------------------------------------------------------
+dashboard:
+  port: ${STREAMLIT_PORT:-8501}
+  refresh_interval_seconds: 30
+  max_rows_display: 100

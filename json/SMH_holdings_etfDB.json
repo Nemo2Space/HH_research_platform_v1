@@ -1,0 +1,132 @@
+[
+    {
+        "name": "NVIDIA Corporation",
+        "symbol": "NVDA",
+        "weight": 19.43
+    },
+    {
+        "name": "Taiwan Semiconductor Manufacturing Co., Ltd. Sponsored ADR",
+        "symbol": "TSM",
+        "weight": 12.72
+    },
+    {
+        "name": "Broadcom Inc.",
+        "symbol": "AVGO",
+        "weight": 9.49
+    },
+    {
+        "name": "ASML HOLDING NV-NY REG SHS",
+        "symbol": "ASML",
+        "weight": 5.12
+    },
+    {
+        "name": "Advanced Micro Devices, Inc.",
+        "symbol": "AMD",
+        "weight": 4.72
+    },
+    {
+        "name": "Applied Materials, Inc.",
+        "symbol": "AMAT",
+        "weight": 4.52
+    },
+    {
+        "name": "Texas Instruments Incorporated",
+        "symbol": "TXN",
+        "weight": 4.36
+    },
+    {
+        "name": "QUALCOMM Incorporated",
+        "symbol": "QCOM",
+        "weight": 4.36
+    },
+    {
+        "name": "Micron Technology, Inc.",
+        "symbol": "MU",
+        "weight": 4.16
+    },
+    {
+        "name": "Analog Devices, Inc.",
+        "symbol": "ADI",
+        "weight": 3.89
+    },
+    {
+        "name": "Lam Research Corporation",
+        "symbol": "LRCX",
+        "weight": 3.81
+    },
+    {
+        "name": "KLA Corporation",
+        "symbol": "KLAC",
+        "weight": 3.52
+    },
+    {
+        "name": "Intel Corporation",
+        "symbol": "INTC",
+        "weight": 3.34
+    },
+    {
+        "name": "Marvell Technology, Inc.",
+        "symbol": "MRVL",
+        "weight": 3.27
+    },
+    {
+        "name": "Cadence Design Systems, Inc.",
+        "symbol": "CDNS",
+        "weight": 3.12
+    },
+    {
+        "name": "Synopsys, Inc.",
+        "symbol": "SNPS",
+        "weight": 2.89
+    },
+    {
+        "name": "NXP Semiconductors NV",
+        "symbol": "NXPI",
+        "weight": 1.63
+    },
+    {
+        "name": "Microchip Technology Incorporated",
+        "symbol": "MCHP",
+        "weight": 1.15
+    },
+    {
+        "name": "Monolithic Power Systems, Inc.",
+        "symbol": "MPWR",
+        "weight": 1.02
+    },
+    {
+        "name": "STMicroelectronics NV ADR RegS",
+        "symbol": "STM",
+        "weight": 0.81
+    },
+    {
+        "name": "ON Semiconductor Corporation",
+        "symbol": "ON",
+        "weight": 0.79
+    },
+    {
+        "name": "Teradyne, Inc.",
+        "symbol": "TER",
+        "weight": 0.75
+    },
+    {
+        "name": "Skyworks Solutions, Inc.",
+        "symbol": "SWKS",
+        "weight": 0.55
+    },
+    {
+        "name": "Universal Display Corporation",
+        "symbol": "OLED",
+        "weight": 0.28
+    },
+    {
+        "name": "Qorvo, Inc.",
+        "symbol": "QRVO",
+        "weight": 0.25
+    },
+    {
+        "name": "U.S. Dollar",
+        "symbol": "Other",
+        "weight": 0.05
+    }
+]

@@ -1,0 +1,107 @@
+================================================================================
+AI PORTFOLIO MANAGER - DEBUG EXPORT
+================================================================================
+
+Export Time: 2026-01-26T01:17:01.634924
+Account: DUK415187
+Strategy: core_passive_drift
+NAV: $1,423,666.67
+IBKR Connected: True
+
+--------------------------------------------------------------------------------
+COUNTS
+--------------------------------------------------------------------------------
+Live Positions: 145
+Live Open Orders in TWS: 83
+Target Symbols: 0
+Planned Orders: 0
+Price Map Entries: 145
+
+--------------------------------------------------------------------------------
+🚨 CONFLICTS DETECTED: 83
+--------------------------------------------------------------------------------
+  AAPL: EXTRA: TWS=BUY 22, Plan=none
+  ABBV: EXTRA: TWS=BUY 7, Plan=none
+  ABT: EXTRA: TWS=BUY 20, Plan=none
+  ADBE: EXTRA: TWS=BUY 3, Plan=none
+  ALC: EXTRA: TWS=SELL 40, Plan=none
+  ALNY: EXTRA: TWS=SELL 8, Plan=none
+  APD: EXTRA: TWS=SELL 15, Plan=none
+  APP: EXTRA: TWS=BUY 4, Plan=none
+  ARGX: EXTRA: TWS=SELL 5, Plan=none
+  ARM: EXTRA: TWS=BUY 14, Plan=none
+  AVGO: EXTRA: TWS=BUY 44, Plan=none
+  BKNG: EXTRA: TWS=SELL 1, Plan=none
+  CEG: EXTRA: TWS=SELL 15, Plan=none
+  CL: EXTRA: TWS=SELL 47, Plan=none
+  CMG: EXTRA: TWS=SELL 54, Plan=none
+  COR: EXTRA: TWS=SELL 13, Plan=none
+  CORT: EXTRA: TWS=SELL 20, Plan=none
+  CRM: EXTRA: TWS=BUY 6, Plan=none
+  CRWD: EXTRA: TWS=BUY 3, Plan=none
+  CSCO: EXTRA: TWS=BUY 15, Plan=none
+  ... and 63 more
+
+--------------------------------------------------------------------------------
+COMPARISON TABLE (First 50 symbols with activity)
+--------------------------------------------------------------------------------
+Symbol    CurrQty   Curr%    Tgt%         Plan          TWS Conflict
+--------------------------------------------------------------------------------
+AAPL         96.0   1.67%   0.00%            -       BUY 22 EXTRA: TWS=BUY 22, Plan=none
+ABBV         50.0   0.77%   0.00%            -        BUY 7 EXTRA: TWS=BUY 7, Plan=none
+ABT          79.0   0.60%   0.00%            -       BUY 20 EXTRA: TWS=BUY 20, Plan=none
+ADBE         20.0   0.42%   0.00%            -        BUY 3 EXTRA: TWS=BUY 3, Plan=none
+ALC          43.0   0.24%   0.00%            -      SELL 40 EXTRA: TWS=SELL 40, Plan=none
+ALNY          8.0   0.20%   0.00%            -       SELL 8 EXTRA: TWS=SELL 8, Plan=none
+APD          15.0   0.28%   0.00%            -      SELL 15 EXTRA: TWS=SELL 15, Plan=none
+APP           9.0   0.33%   0.00%            -        BUY 4 EXTRA: TWS=BUY 4, Plan=none
+ARGX          5.0   0.29%   0.00%            -       SELL 5 EXTRA: TWS=SELL 5, Plan=none
+ARM          47.0   0.38%   0.00%            -       BUY 14 EXTRA: TWS=BUY 14, Plan=none
+AVGO         95.0   2.14%   0.00%            -       BUY 44 EXTRA: TWS=BUY 44, Plan=none
+BKNG          1.0   0.36%   0.00%            -       SELL 1 EXTRA: TWS=SELL 1, Plan=none
+CEG          15.0   0.30%   0.00%            -      SELL 15 EXTRA: TWS=SELL 15, Plan=none
+CL           49.0   0.30%   0.00%            -      SELL 47 EXTRA: TWS=SELL 47, Plan=none
+CMG          64.0   0.18%   0.00%            -      SELL 54 EXTRA: TWS=SELL 54, Plan=none
+COR          13.0   0.32%   0.00%            -      SELL 13 EXTRA: TWS=SELL 13, Plan=none
+CORT         39.0   0.12%   0.00%            -      SELL 20 EXTRA: TWS=SELL 20, Plan=none
+CRM          40.0   0.64%   0.00%            -        BUY 6 EXTRA: TWS=BUY 6, Plan=none
+CRWD         12.0   0.38%   0.00%            -        BUY 3 EXTRA: TWS=BUY 3, Plan=none
+CSCO        120.0   0.63%   0.00%            -       BUY 15 EXTRA: TWS=BUY 15, Plan=none
+CTVA         49.0   0.25%   0.00%            -      SELL 49 EXTRA: TWS=SELL 49, Plan=none
+DD           56.0   0.17%   0.00%            -      SELL 56 EXTRA: TWS=SELL 56, Plan=none
+DECK         30.0   0.21%   0.00%            -      SELL 28 EXTRA: TWS=SELL 28, Plan=none
+EA           54.0   0.77%   0.00%            -      SELL 54 EXTRA: TWS=SELL 54, Plan=none
+ECL          15.0   0.30%   0.00%            -      SELL 15 EXTRA: TWS=SELL 15, Plan=none
+EOG          62.0   0.47%   0.00%            -      SELL 58 EXTRA: TWS=SELL 58, Plan=none
+ETN          29.0   0.67%   0.00%            -        BUY 3 EXTRA: TWS=BUY 3, Plan=none
+FERG         17.0   0.30%   0.00%            -      SELL 17 EXTRA: TWS=SELL 17, Plan=none
+FTNT         51.0   0.29%   0.00%            -      SELL 40 EXTRA: TWS=SELL 40, Plan=none
+GE          990.0  20.44%   0.00%            -     SELL 990 EXTRA: TWS=SELL 990, Plan=none
+GOAU       1878.0   7.05%   0.00%            -    SELL 1878 EXTRA: TWS=SELL 1878, Plan=none
+GRMN         14.0   0.20%   0.00%            -      SELL 14 EXTRA: TWS=SELL 14, Plan=none
+HLN         434.0   0.32%   0.00%            -     SELL 434 EXTRA: TWS=SELL 434, Plan=none
+IBM          29.0   0.60%   0.00%            -        BUY 4 EXTRA: TWS=BUY 4, Plan=none
+INFY        568.0   0.73%   0.00%            -     SELL 568 EXTRA: TWS=SELL 568, Plan=none
+INTU         11.0   0.44%   0.00%            -        BUY 4 EXTRA: TWS=BUY 4, Plan=none
+ISRG         11.0   0.40%   0.00%            -        BUY 2 EXTRA: TWS=BUY 2, Plan=none
+KMB          34.0   0.24%   0.00%            -      SELL 26 EXTRA: TWS=SELL 26, Plan=none
+LLY          19.0   1.42%   0.00%            -        BUY 1 EXTRA: TWS=BUY 1, Plan=none
+MCK           7.0   0.40%   0.00%            -       SELL 7 EXTRA: TWS=SELL 7, Plan=none
+MDLZ         85.0   0.35%   0.00%            -      SELL 75 EXTRA: TWS=SELL 75, Plan=none
+META         51.0   2.36%   0.00%            -        BUY 4 EXTRA: TWS=BUY 4, Plan=none
+MLM           5.0   0.23%   0.00%            -       SELL 5 EXTRA: TWS=SELL 5, Plan=none
+MRVL        134.0   0.76%   0.00%            -       BUY 43 EXTRA: TWS=BUY 43, Plan=none
+MSFT        142.0   4.65%   0.00%            -       BUY 10 EXTRA: TWS=BUY 10, Plan=none
+MU           96.0   2.69%   0.00%            -      SELL 93 EXTRA: TWS=SELL 93, Plan=none
+NBIX         42.0   0.40%   0.00%            -       BUY 10 EXTRA: TWS=BUY 10, Plan=none
+NKE          70.0   0.32%   0.00%            -      SELL 70 EXTRA: TWS=SELL 70, Plan=none
+NOW          30.0   0.28%   0.00%            -      SELL 25 EXTRA: TWS=SELL 25, Plan=none
+NVDA        300.0   3.95%   0.00%            -        BUY 7 EXTRA: TWS=BUY 7, Plan=none
+
+--------------------------------------------------------------------------------
+FILES CREATED
+--------------------------------------------------------------------------------
+  json: debug_exports\debug_DUK415187_2026-01-26T01-17-01.json
+  positions_csv: debug_exports\debug_DUK415187_2026-01-26T01-17-01_positions.csv
+  orders_csv: debug_exports\debug_DUK415187_2026-01-26T01-17-01_orders.csv
+  comparison_csv: debug_exports\debug_DUK415187_2026-01-26T01-17-01_comparison.csv

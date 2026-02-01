@@ -1,0 +1,106 @@
+{
+  "timestamp": "2026-01-24T21:10:05.883216",
+  "model_path": "models/multi_factor_alpha.pkl",
+  "results": {
+    "validation_report": {
+      "test_name": "Validation Report",
+      "passed": false,
+      "metrics": {
+        "overall_ic": -0.0048740256638066855,
+        "overall_icir": -0.08419655438393665,
+        "overall_r2": 0.006066630519897864,
+        "ic_tstat": -0.14583271001521442,
+        "ic_pvalue": 0.8933010493756062,
+        "n_folds": 4,
+        "mean_ic_oos": -0.0048740256638066855,
+        "std_ic_oos": 0.057888659452512835,
+        "beats_baseline": false,
+        "best_regime_ic": 0.18189115591705485,
+        "fold_ics": [
+          -0.026739871555410848,
+          -0.0881852052675407,
+          0.0627879134244708,
+          0.032641060743254006
+        ],
+        "negative_folds": 2
+      },
+      "issues": [
+        "Negative IC (-0.0049) - model predicts opposite of actual returns",
+        "Not statistically significant (p=0.893)",
+        "2/4 folds have negative IC"
+      ],
+      "recommendations": [
+        "Strong regime-specific IC (0.1819)"
+      ]
+    },
+    "signal_distribution": {
+      "test_name": "Signal Distribution",
+      "passed": "True",
+      "metrics": {
+        "total_predictions": 182,
+        "signal_counts": {
+          "HOLD": 153,
+          "BUY": 20,
+          "STRONG_BUY": 8,
+          "SELL": 1
+        },
+        "confidence_counts": {
+          "MEDIUM": 159,
+          "LOW": 23
+        },
+        "return_stats": {
+          "mean": 0.47547659584374935,
+          "std": 0.2857127336534521,
+          "min": -0.2723421645921308,
+          "max": 1.1565751941500841
+        }
+      },
+      "issues": [
+        "No HIGH confidence predictions"
+      ],
+      "recommendations": []
+    },
+    "historical_backtest": {
+      "test_name": "Historical Backtest",
+      "passed": false,
+      "metrics": {
+        "total_predictions": 1230,
+        "direction_accuracy": 48.45528455284553,
+        "information_coefficient": -0.03649982825744457,
+        "prediction_std": 0.35703468139528055,
+        "actual_std": 2.017195607500332
+      },
+      "issues": [
+        "Direction accuracy below 50% (48.5%)",
+        "Negative IC in backtest (-0.0365)"
+      ],
+      "recommendations": []
+    },
+    "factor_sanity": {
+      "test_name": "Factor Sanity",
+      "passed": true,
+      "metrics": {
+        "top_factor": "growth_score",
+        "top_importance": 0.44862605103413233,
+        "sign_match_rate": 0.45454545454545453,
+        "sensitivity_spread": -1.7688704547969405
+      },
+      "issues": [
+        "Low sign match rate (45.5%) - factors behaving opposite to theory"
+      ],
+      "recommendations": [
+        "Model shows contrarian behavior (high scores \u2192 lower returns)"
+      ]
+    },
+    "prediction_consistency": {
+      "test_name": "Prediction Consistency",
+      "passed": true,
+      "metrics": {
+        "is_deterministic": true,
+        "sensitivity_to_small_change": 0.02472544501546381
+      },
+      "issues": [],
+      "recommendations": []
+    }
+  }
+}

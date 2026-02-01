@@ -1,0 +1,617 @@
+[
+    {
+        "name": "KSA Sukuk Ltd. 3.628% 20-APR-2027",
+        "symbol": "Other",
+        "weight": 3.3
+    },
+    {
+        "name": "KSA Sukuk Ltd. 4.274% 22-MAY-2029",
+        "symbol": "Other",
+        "weight": 2.23
+    },
+    {
+        "name": "KSA Sukuk Ltd. 4.511% 22-MAY-2033",
+        "symbol": "Other",
+        "weight": 2.23
+    },
+    {
+        "name": "SA Global Sukuk Ltd. 2.694% 17-JUN-2031",
+        "symbol": "Other",
+        "weight": 1.98
+    },
+    {
+        "name": "KSA Sukuk Ltd. 5.268% 25-OCT-2028",
+        "symbol": "Other",
+        "weight": 1.89
+    },
+    {
+        "name": "ISDB Trust Services No. 2 SARL 1.262% 31-MAR-2026",
+        "symbol": "Other",
+        "weight": 1.82
+    },
+    {
+        "name": "SUCI Second Investment Company 6.0% 25-OCT-2028",
+        "symbol": "Other",
+        "weight": 1.79
+    },
+    {
+        "name": "KSA Sukuk Ltd. 5.25% 04-JUN-2034",
+        "symbol": "Other",
+        "weight": 1.72
+    },
+    {
+        "name": "KSA Sukuk Ltd. 2.969% 29-OCT-2029",
+        "symbol": "Other",
+        "weight": 1.7
+    },
+    {
+        "name": "SUCI Second Investment Company 5.171% 05-MAR-2031",
+        "symbol": "Other",
+        "weight": 1.53
+    },
+    {
+        "name": "KSA Sukuk Ltd. 4.303% 19-JAN-2029",
+        "symbol": "Other",
+        "weight": 1.49
+    },
+    {
+        "name": "U.S. Dollar",
+        "symbol": "Other",
+        "weight": 1.48
+    },
+    {
+        "name": "ISDB Trust Services No. 2 SARL 4.598% 14-MAR-2028",
+        "symbol": "Other",
+        "weight": 1.48
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 4.15% 29-MAR-2027",
+        "symbol": "Other",
+        "weight": 1.47
+    },
+    {
+        "name": "SA Global Sukuk Ltd. 1.602% 17-JUN-2026",
+        "symbol": "Other",
+        "weight": 1.44
+    },
+    {
+        "name": "ISDB Trust Services No. 2 SARL 4.906% 03-OCT-2028",
+        "symbol": "Other",
+        "weight": 1.43
+    },
+    {
+        "name": "ISDB Trust Services No. 2 SARL 4.754% 15-MAY-2029",
+        "symbol": "Other",
+        "weight": 1.42
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 4.4% 06-JUN-2027",
+        "symbol": "Other",
+        "weight": 1.32
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 4.55% 29-MAR-2026",
+        "symbol": "Other",
+        "weight": 1.29
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 4.4% 01-MAR-2028",
+        "symbol": "Other",
+        "weight": 1.28
+    },
+    {
+        "name": "KSA Sukuk Ltd. 2.25% 17-MAY-2031",
+        "symbol": "Other",
+        "weight": 1.25
+    },
+    {
+        "name": "ISDB Trust Services No. 2 SARL 3.213% 28-APR-2027",
+        "symbol": "Other",
+        "weight": 1.25
+    },
+    {
+        "name": "ISDB Trust Services No. 2 SARL 1.435% 21-OCT-2026",
+        "symbol": "Other",
+        "weight": 1.19
+    },
+    {
+        "name": "KSA Sukuk Ltd. 5.25% 04-JUN-2030",
+        "symbol": "Other",
+        "weight": 1.19
+    },
+    {
+        "name": "TMS ISSUER S.a r.l. 5.78% 23-AUG-2032",
+        "symbol": "Other",
+        "weight": 1.16
+    },
+    {
+        "name": "DP World Crescent Ltd. 5.5% 13-SEP-2033",
+        "symbol": "Other",
+        "weight": 1.15
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 4.7% 06-JUN-2032",
+        "symbol": "Other",
+        "weight": 1.12
+    },
+    {
+        "name": "SUCI Second Investment Company 4.375% 10-SEP-2027",
+        "symbol": "Other",
+        "weight": 1.1
+    },
+    {
+        "name": "Saudi Electricity Sukuk Programme Company 5.684% 11-APR-2053",
+        "symbol": "Other",
+        "weight": 1.07
+    },
+    {
+        "name": "Saudi Electricity Sukuk Programme Company 5.194% 13-FEB-2034",
+        "symbol": "Other",
+        "weight": 1.03
+    },
+    {
+        "name": "SUCI Second Investment Company 6.25% 25-OCT-2033",
+        "symbol": "Other",
+        "weight": 0.98
+    },
+    {
+        "name": "KSA Sukuk Ltd. 5.25% 04-JUN-2027",
+        "symbol": "Other",
+        "weight": 0.96
+    },
+    {
+        "name": "DIB Sukuk Ltd. 2.95% 16-JAN-2026",
+        "symbol": "Other",
+        "weight": 0.96
+    },
+    {
+        "name": "STC Sukuk Company Limited 3.89% 13-MAY-2029",
+        "symbol": "Other",
+        "weight": 0.96
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 4.45% 20-FEB-2029",
+        "symbol": "Other",
+        "weight": 0.93
+    },
+    {
+        "name": "Saudi Electricity Global Sukuk Co. - 4 4.723% 27-SEP-2028",
+        "symbol": "Other",
+        "weight": 0.91
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 1.5% 09-JUN-2026",
+        "symbol": "Other",
+        "weight": 0.9
+    },
+    {
+        "name": "Sharjah Sukuk Programme Ltd. 4.226% 14-MAR-2028",
+        "symbol": "Other",
+        "weight": 0.89
+    },
+    {
+        "name": "Saudi Electricity Sukuk Programme Company 4.632% 11-APR-2033",
+        "symbol": "Other",
+        "weight": 0.86
+    },
+    {
+        "name": "Al Rajhi Sukuk Limited 4.75% 05-APR-2028",
+        "symbol": "Other",
+        "weight": 0.83
+    },
+    {
+        "name": "DIB Sukuk Ltd. 5.243% 04-MAR-2029",
+        "symbol": "Other",
+        "weight": 0.81
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 5.4% 15-NOV-2028",
+        "symbol": "Other",
+        "weight": 0.81
+    },
+    {
+        "name": "ROP Sukuk Trust 5.045% 06-JUN-2029",
+        "symbol": "Other",
+        "weight": 0.8
+    },
+    {
+        "name": "Al Rajhi Sukuk Limited 5.047% 12-MAR-2029",
+        "symbol": "Other",
+        "weight": 0.8
+    },
+    {
+        "name": "KFH Sukuk Company 5.011% 17-JAN-2029",
+        "symbol": "Other",
+        "weight": 0.8
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 5.6% 15-NOV-2033",
+        "symbol": "Other",
+        "weight": 0.79
+    },
+    {
+        "name": "Malaysia Sukuk Global Bhd. 3.179% 27-APR-2026",
+        "symbol": "Other",
+        "weight": 0.78
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 5.2% 02-JUL-2034",
+        "symbol": "Other",
+        "weight": 0.76
+    },
+    {
+        "name": "ISDB Trust Services No. 2 SARL 4.747% 27-OCT-2027",
+        "symbol": "Other",
+        "weight": 0.76
+    },
+    {
+        "name": "DIB Sukuk Ltd. 4.8% 16-AUG-2028",
+        "symbol": "Other",
+        "weight": 0.76
+    },
+    {
+        "name": "DP World Crescent Ltd. 4.848% 26-SEP-2028",
+        "symbol": "Other",
+        "weight": 0.75
+    },
+    {
+        "name": "Saudi Electricity Global Sukuk Co. - 3 5.5% 08-APR-2044",
+        "symbol": "Other",
+        "weight": 0.75
+    },
+    {
+        "name": "Sharjah Sukuk Programme Ltd. 3.854% 03-APR-2026",
+        "symbol": "Other",
+        "weight": 0.75
+    },
+    {
+        "name": "Hong Kong Sukuk 2017 Ltd. 3.132% 28-FEB-2027",
+        "symbol": "Other",
+        "weight": 0.74
+    },
+    {
+        "name": "DP World Crescent Ltd. 3.875% 18-JUL-2029",
+        "symbol": "Other",
+        "weight": 0.72
+    },
+    {
+        "name": "Saudi Electricity Global Sukuk Co. - 2 5.06% 08-APR-2043",
+        "symbol": "Other",
+        "weight": 0.72
+    },
+    {
+        "name": "Sharjah Sukuk Programme Ltd. 2.942% 10-JUN-2027",
+        "symbol": "Other",
+        "weight": 0.72
+    },
+    {
+        "name": "DIB Sukuk Ltd. 1.959% 22-JUN-2026",
+        "symbol": "Other",
+        "weight": 0.72
+    },
+    {
+        "name": "Banque Saudi Fransi 4.75% 31-MAY-2028",
+        "symbol": "Other",
+        "weight": 0.72
+    },
+    {
+        "name": "Sharjah Sukuk Programme Ltd. 6.092% 19-MAR-2034",
+        "symbol": "Other",
+        "weight": 0.72
+    },
+    {
+        "name": "MDGH Sukuk Ltd. 4.959% 04-APR-2034",
+        "symbol": "Other",
+        "weight": 0.72
+    },
+    {
+        "name": "Sharjah Sukuk Program Ltd 3.234 % Sukuk Trust Certificates 2019-23.10.29 Murabaha Ijara Series 5 Tranche 1 Reg S",
+        "symbol": "Other",
+        "weight": 0.71
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 2.8% 23-JUN-2030",
+        "symbol": "Other",
+        "weight": 0.68
+    },
+    {
+        "name": "QIB Sukuk Ltd. 5.581% 22-NOV-2028",
+        "symbol": "Other",
+        "weight": 0.67
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 2.55% 09-JUN-2031",
+        "symbol": "Other",
+        "weight": 0.66
+    },
+    {
+        "name": "SNB Sukuk Ltd. 5.129% 27-FEB-2029",
+        "symbol": "Other",
+        "weight": 0.65
+    },
+    {
+        "name": "QIIB Senior Sukuk Ltd. 5.247% 24-JAN-2029",
+        "symbol": "Other",
+        "weight": 0.62
+    },
+    {
+        "name": "DIB Sukuk Ltd. 5.493% 30-NOV-2027",
+        "symbol": "Other",
+        "weight": 0.62
+    },
+    {
+        "name": "FAB Sukuk Co. Ltd. 4.779% 23-JAN-2029",
+        "symbol": "Other",
+        "weight": 0.61
+    },
+    {
+        "name": "Saudi Electricity Sukuk Programme Company 4.942% 13-FEB-2029",
+        "symbol": "Other",
+        "weight": 0.61
+    },
+    {
+        "name": "TNB Global Ventures Capital Bhd. 4.851% 01-NOV-2028",
+        "symbol": "Other",
+        "weight": 0.61
+    },
+    {
+        "name": "QIB Sukuk Ltd. 4.485% 17-SEP-2029",
+        "symbol": "Other",
+        "weight": 0.6
+    },
+    {
+        "name": "Emaar Sukuk Ltd. 3.635% 15-SEP-2026",
+        "symbol": "Other",
+        "weight": 0.59
+    },
+    {
+        "name": "SNB Sukuk Ltd. 2.342% 19-JAN-2027",
+        "symbol": "Other",
+        "weight": 0.58
+    },
+    {
+        "name": "EI Sukuk Co. Ltd. 5.431% 28-MAY-2029",
+        "symbol": "Other",
+        "weight": 0.58
+    },
+    {
+        "name": "Almarai Sukuk Ltd. 5.233% 25-JUL-2033",
+        "symbol": "Other",
+        "weight": 0.58
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 5.1% 02-JUL-2029",
+        "symbol": "Other",
+        "weight": 0.57
+    },
+    {
+        "name": "Khazanah Global Sukuk Bhd. 4.687% 01-JUN-2028",
+        "symbol": "Other",
+        "weight": 0.57
+    },
+    {
+        "name": "Equate Sukuk SPC Ltd. 5.0% 05-SEP-2031",
+        "symbol": "Other",
+        "weight": 0.55
+    },
+    {
+        "name": "ESIC Sukuk Ltd. 5.831% 14-FEB-2029",
+        "symbol": "Other",
+        "weight": 0.54
+    },
+    {
+        "name": "Malaysia Sukuk Global Bhd. 2.07% 28-APR-2031",
+        "symbol": "Other",
+        "weight": 0.54
+    },
+    {
+        "name": "BSF Sukuk Co. Ltd. 5.0% 25-JAN-2029",
+        "symbol": "Other",
+        "weight": 0.53
+    },
+    {
+        "name": "Sharjah Sukuk Programme Ltd. 3.2% 13-JUL-2031",
+        "symbol": "Other",
+        "weight": 0.53
+    },
+    {
+        "name": "DAE Sukuk (DIFC) Ltd 3.75% 15-FEB-2026",
+        "symbol": "Other",
+        "weight": 0.52
+    },
+    {
+        "name": "TNB Global Ventures Capital Bhd. 3.244% 19-OCT-2026",
+        "symbol": "Other",
+        "weight": 0.52
+    },
+    {
+        "name": "DIB Sukuk Ltd. 2.74% 16-FEB-2027",
+        "symbol": "Other",
+        "weight": 0.51
+    },
+    {
+        "name": "FAB Sukuk Co. Ltd. 1.411% 14-JAN-2026",
+        "symbol": "Other",
+        "weight": 0.51
+    },
+    {
+        "name": "Sharjah Sukuk Programme Ltd. 3.886% 04-APR-2030",
+        "symbol": "Other",
+        "weight": 0.5
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 5.5% 02-JUL-2054",
+        "symbol": "Other",
+        "weight": 0.46
+    },
+    {
+        "name": "Air Lease Corporation Sukuk Ltd. 5.85% 01-APR-2028",
+        "symbol": "Other",
+        "weight": 0.46
+    },
+    {
+        "name": "CORPORATE BOND",
+        "symbol": "Other",
+        "weight": 0.45
+    },
+    {
+        "name": "MAF Sukuk Ltd. 4.638% 14-MAY-2029",
+        "symbol": "Other",
+        "weight": 0.45
+    },
+    {
+        "name": "SA Global Sukuk Ltd. 4.25% 02-OCT-2029",
+        "symbol": "Other",
+        "weight": 0.44
+    },
+    {
+        "name": "ADIB Sukuk Co. II Ltd. 5.695% 15-NOV-2028",
+        "symbol": "Other",
+        "weight": 0.43
+    },
+    {
+        "name": "AUB Sukuk Ltd. 2.615% 09-SEP-2026",
+        "symbol": "Other",
+        "weight": 0.43
+    },
+    {
+        "name": "MAF Sukuk Ltd. 3.9325% 28-FEB-2030",
+        "symbol": "Other",
+        "weight": 0.43
+    },
+    {
+        "name": "ICDPS Sukuk Ltd. 4.95% 14-FEB-2029",
+        "symbol": "Other",
+        "weight": 0.42
+    },
+    {
+        "name": "Warba Sukuk Ltd. 5.351% 10-JUL-2029",
+        "symbol": "Other",
+        "weight": 0.41
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 3.8% 23-JUN-2050",
+        "symbol": "Other",
+        "weight": 0.41
+    },
+    {
+        "name": "FIXED INCOME (UNCLASSFIED)",
+        "symbol": "Other",
+        "weight": 0.4
+    },
+    {
+        "name": "Dua Capital Ltd. 2.78% 11-MAY-2031",
+        "symbol": "Other",
+        "weight": 0.4
+    },
+    {
+        "name": "Saudi Electricity Global Sukuk Co. - 5 2.413% 17-SEP-2030",
+        "symbol": "Other",
+        "weight": 0.4
+    },
+    {
+        "name": "Aldar Investment Properties LLC 5.5% 16-MAY-2034",
+        "symbol": "Other",
+        "weight": 0.39
+    },
+    {
+        "name": "Perusahaan Penerbit SBSN Indonesia III 3.55% 09-JUN-2051",
+        "symbol": "Other",
+        "weight": 0.39
+    },
+    {
+        "name": "Axiata SPV2 Bhd. 4.357% 24-MAR-2026",
+        "symbol": "Other",
+        "weight": 0.38
+    },
+    {
+        "name": "MAF Sukuk Ltd. 5.0% 01-JUN-2033",
+        "symbol": "Other",
+        "weight": 0.38
+    },
+    {
+        "name": "FAB Sukuk Co. Ltd. 4.581% 17-JAN-2028",
+        "symbol": "Other",
+        "weight": 0.38
+    },
+    {
+        "name": "ISDB Trust Services No. 2 SARL 4.047% 15-OCT-2029",
+        "symbol": "Other",
+        "weight": 0.37
+    },
+    {
+        "name": "Khazanah Global Sukuk Bhd. 4.484% 05-SEP-2029",
+        "symbol": "Other",
+        "weight": 0.37
+    },
+    {
+        "name": "Aldar Investment Properties LLC 4.875% 24-MAY-2033",
+        "symbol": "Other",
+        "weight": 0.37
+    },
+    {
+        "name": "Boubyan Sukuk Limited 3.389% 29-MAR-2027",
+        "symbol": "Other",
+        "weight": 0.37
+    },
+    {
+        "name": "Aldar Investment Properties LLC 3.875% 22-OCT-2029",
+        "symbol": "Other",
+        "weight": 0.36
+    },
+    {
+        "name": "DP World Crescent Ltd. 3.7495% 30-JAN-2030",
+        "symbol": "Other",
+        "weight": 0.36
+    },
+    {
+        "name": "EI Sukuk Co. Ltd. 2.082% 02-NOV-2026",
+        "symbol": "Other",
+        "weight": 0.36
+    },
+    {
+        "name": "Emaar Sukuk Ltd. 3.875% 17-SEP-2029",
+        "symbol": "Other",
+        "weight": 0.36
+    },
+    {
+        "name": "FAB Sukuk Co. Ltd. 2.591% 02-MAR-2027",
+        "symbol": "Other",
+        "weight": 0.36
+    },
+    {
+        "name": "Emaar Sukuk Ltd. 3.7% 06-JUL-2031",
+        "symbol": "Other",
+        "weight": 0.35
+    },
+    {
+        "name": "Malaysia Sukuk Global Bhd. 4.08% 27-APR-2046",
+        "symbol": "Other",
+        "weight": 0.32
+    },
+    {
+        "name": "Axiata SPV2 Bhd. 2.163% 19-AUG-2030",
+        "symbol": "Other",
+        "weight": 0.32
+    },
+    {
+        "name": "Malaysia Sovereign Sukuk Bhd. 4.236% 22-APR-2045",
+        "symbol": "Other",
+        "weight": 0.31
+    },
+    {
+        "name": "Dua Capital Ltd. 1.658% 11-MAY-2026",
+        "symbol": "Other",
+        "weight": 0.29
+    },
+    {
+        "name": "Malaysia Sukuk Global Bhd. 3.075% 28-APR-2051",
+        "symbol": "Other",
+        "weight": 0.26
+    },
+    {
+        "name": "Senaat General Holding Corp. 4.76% 05-DEC-2025",
+        "symbol": "Other",
+        "weight": 0.23
+    }
+]

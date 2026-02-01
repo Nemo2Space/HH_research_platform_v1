@@ -1,0 +1,3223 @@
+{
+  "metadata": {
+    "generated_at": "2025-12-15T15:32:35.583381",
+    "rebalance_type": "full",
+    "etf_sources": [
+      "KAIF"
+    ],
+    "account_id": "U20993660",
+    "initial_investment": 315000.0,
+    "filename": "rebalance_None_20251215_153235.json",
+    "rebalance_date": "2025-12-15",
+    "rebalance_time": "15:32:35"
+  },
+  "summary": {
+    "total_holdings": 100,
+    "holdings_rebalanced": 5,
+    "holdings_unchanged": 95,
+    "holdings_failed": 0,
+    "total_buy_value": 7691.18,
+    "total_sell_value": 0,
+    "net_cash_flow": -7696.18,
+    "total_commission": 5.0,
+    "turnover_ratio": 2.4416444444444445,
+    "average_accuracy": 100.0,
+    "weight_accuracy": 100.0,
+    "portfolio_value_before": 315000.0,
+    "portfolio_value_after": 299465.52999999997,
+    "execution_time_seconds": 0
+  },
+  "risk_metrics": {},
+  "sector_allocations": [
+    {
+      "sector": "Unknown",
+      "weight_before": 4255.660000000002,
+      "weight_after": 4593.254695238095,
+      "target_weight": 0,
+      "holdings_count": 100
+    }
+  ],
+  "holdings": [
+    {
+      "symbol": "CVX",
+      "name": "CVX",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 99.99333333333334,
+        "actual_weight_before": 1.0,
+        "actual_weight_after": 99.99333333333334,
+        "drift_before": -98.99333333333334,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 21,
+        "executed_quantity": 21,
+        "open_order_quantity": 0,
+        "position_quantity": 21,
+        "price": 149.99,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 1.00% (target: 99.99%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (100.0%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 1
+    },
+    {
+      "symbol": "PDD",
+      "name": "PDD",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 99.51999999999998,
+        "actual_weight_before": 1.0,
+        "actual_weight_after": 99.51999999999998,
+        "drift_before": -98.51999999999998,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 28,
+        "executed_quantity": 28,
+        "open_order_quantity": 0,
+        "position_quantity": 28,
+        "price": 111.96,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 1.00% (target: 99.52%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (99.5%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 2
+    },
+    {
+      "symbol": "PFE",
+      "name": "PFE",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 99.29682539682541,
+        "actual_weight_before": 1.0,
+        "actual_weight_after": 99.29682539682541,
+        "drift_before": -98.29682539682541,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "BUY",
+        "target_quantity": 121,
+        "executed_quantity": 121,
+        "open_order_quantity": 64,
+        "position_quantity": 57,
+        "price": 25.85,
+        "order_value": 1654.4,
+        "commission_estimate": 1.0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Underweight by 98.30% vs target 99.30%. Buying 121 shares at $25.85. Order value: $1,654.40. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (99.3%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 3
+    },
+    {
+      "symbol": "MRVL",
+      "name": "MRVL",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 99.16,
+        "actual_weight_before": 1.0,
+        "actual_weight_after": 99.16,
+        "drift_before": -98.16,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 37,
+        "executed_quantity": 37,
+        "open_order_quantity": 0,
+        "position_quantity": 37,
+        "price": 84.42,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 1.00% (target: 99.16%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (99.2%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 4
+    },
+    {
+      "symbol": "JNJ",
+      "name": "JNJ",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 94.03555555555558,
+        "actual_weight_before": 1.0,
+        "actual_weight_after": 94.03555555555558,
+        "drift_before": -93.03555555555558,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 14,
+        "executed_quantity": 14,
+        "open_order_quantity": 0,
+        "position_quantity": 14,
+        "price": 211.58,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 1.00% (target: 94.04%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (94.0%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 5
+    },
+    {
+      "symbol": "ABBV",
+      "name": "ABBV",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 85.07428571428572,
+        "actual_weight_before": 88.0,
+        "actual_weight_after": 85.07428571428572,
+        "drift_before": 2.925714285714278,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 12,
+        "executed_quantity": 12,
+        "open_order_quantity": 0,
+        "position_quantity": 12,
+        "price": 223.32,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 88.00% (target: 85.07%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (85.1%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 6
+    },
+    {
+      "symbol": "KO",
+      "name": "KO",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 85.07174603174602,
+        "actual_weight_before": 86.0,
+        "actual_weight_after": 85.07174603174602,
+        "drift_before": 0.9282539682539834,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 38,
+        "executed_quantity": 38,
+        "open_order_quantity": 0,
+        "position_quantity": 38,
+        "price": 70.52,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 86.00% (target: 85.07%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (85.1%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 7
+    },
+    {
+      "symbol": "COST",
+      "name": "COST",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 84.2352380952381,
+        "actual_weight_before": 1.0,
+        "actual_weight_after": 84.2352380952381,
+        "drift_before": -83.2352380952381,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 3,
+        "executed_quantity": 3,
+        "open_order_quantity": 0,
+        "position_quantity": 3,
+        "price": 884.47,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 1.00% (target: 84.24%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (84.2%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 8
+    },
+    {
+      "symbol": "PG",
+      "name": "PG",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 81.62285714285714,
+        "actual_weight_before": 86.0,
+        "actual_weight_after": 81.62285714285714,
+        "drift_before": 4.377142857142857,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 18,
+        "executed_quantity": 18,
+        "open_order_quantity": 0,
+        "position_quantity": 18,
+        "price": 142.84,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 86.00% (target: 81.62%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (81.6%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 9
+    },
+    {
+      "symbol": "GE",
+      "name": "GE",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 80.86984126984127,
+        "actual_weight_before": 81.0,
+        "actual_weight_after": 80.86984126984127,
+        "drift_before": 0.13015873015872614,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "BUY",
+        "target_quantity": 235,
+        "executed_quantity": 235,
+        "open_order_quantity": 235,
+        "position_quantity": 0,
+        "price": 10.84,
+        "order_value": 2547.4,
+        "commission_estimate": 1.0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Buying 235 shares at $10.84. Order value: $2,547.40. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (80.9%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 10
+    },
+    {
+      "symbol": "HD",
+      "name": "HD",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 79.92222222222222,
+        "actual_weight_before": 91.0,
+        "actual_weight_after": 79.92222222222222,
+        "drift_before": 11.077777777777783,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 7,
+        "executed_quantity": 7,
+        "open_order_quantity": 0,
+        "position_quantity": 7,
+        "price": 359.65,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 91.00% (target: 79.92%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (79.9%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 11
+    },
+    {
+      "symbol": "UNH",
+      "name": "UNH",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 75.96444444444444,
+        "actual_weight_before": 78.0,
+        "actual_weight_after": 75.96444444444444,
+        "drift_before": 2.035555555555561,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 7,
+        "executed_quantity": 7,
+        "open_order_quantity": 0,
+        "position_quantity": 7,
+        "price": 341.84,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 78.00% (target: 75.96%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (76.0%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 12
+    },
+    {
+      "symbol": "PLTR",
+      "name": "PLTR",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 75.75904761904762,
+        "actual_weight_before": 78.0,
+        "actual_weight_after": 75.75904761904762,
+        "drift_before": 2.240952380952379,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 13,
+        "executed_quantity": 13,
+        "open_order_quantity": 0,
+        "position_quantity": 13,
+        "price": 183.57,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 78.00% (target: 75.76%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (75.8%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 13
+    },
+    {
+      "symbol": "BYDDY",
+      "name": "BYDDY",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 75.05555555555556,
+        "actual_weight_before": 75.0,
+        "actual_weight_after": 75.05555555555556,
+        "drift_before": -0.055555555555557135,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 193,
+        "executed_quantity": 193,
+        "open_order_quantity": 0,
+        "position_quantity": 193,
+        "price": 12.25,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 75.00% (target: 75.06%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (75.1%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 14
+    },
+    {
+      "symbol": "CRM",
+      "name": "CRM",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 74.92285714285715,
+        "actual_weight_before": 75.0,
+        "actual_weight_after": 74.92285714285715,
+        "drift_before": 0.07714285714284586,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 9,
+        "executed_quantity": 9,
+        "open_order_quantity": 0,
+        "position_quantity": 9,
+        "price": 262.23,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 75.00% (target: 74.92%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (74.9%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 15
+    },
+    {
+      "symbol": "NVO",
+      "name": "NVO",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 74.87174603174603,
+        "actual_weight_before": 75.0,
+        "actual_weight_after": 74.87174603174603,
+        "drift_before": 0.12825396825397206,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 47,
+        "executed_quantity": 47,
+        "open_order_quantity": 0,
+        "position_quantity": 47,
+        "price": 50.18,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 75.00% (target: 74.87%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (74.9%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 16
+    },
+    {
+      "symbol": "TMUS",
+      "name": "TMUS",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 74.34666666666668,
+        "actual_weight_before": 75.0,
+        "actual_weight_after": 74.34666666666668,
+        "drift_before": 0.6533333333333218,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 12,
+        "executed_quantity": 12,
+        "open_order_quantity": 0,
+        "position_quantity": 12,
+        "price": 195.16,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 75.00% (target: 74.35%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (74.3%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 17
+    },
+    {
+      "symbol": "AZN",
+      "name": "AZN",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 74.14539682539683,
+        "actual_weight_before": 76.0,
+        "actual_weight_after": 74.14539682539683,
+        "drift_before": 1.8546031746031701,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 26,
+        "executed_quantity": 26,
+        "open_order_quantity": 0,
+        "position_quantity": 26,
+        "price": 89.83,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 76.00% (target: 74.15%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (74.1%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 18
+    },
+    {
+      "symbol": "AMAT",
+      "name": "AMAT",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 74.05999999999999,
+        "actual_weight_before": 75.0,
+        "actual_weight_after": 74.05999999999999,
+        "drift_before": 0.9400000000000119,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 9,
+        "executed_quantity": 9,
+        "open_order_quantity": 0,
+        "position_quantity": 9,
+        "price": 259.21,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 75.00% (target: 74.06%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (74.1%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 19
+    },
+    {
+      "symbol": "ETN",
+      "name": "ETN",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 73.77333333333334,
+        "actual_weight_before": 75.0,
+        "actual_weight_after": 73.77333333333334,
+        "drift_before": 1.2266666666666595,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 7,
+        "executed_quantity": 7,
+        "open_order_quantity": 0,
+        "position_quantity": 7,
+        "price": 331.98,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 75.00% (target: 73.77%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (73.8%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 20
+    },
+    {
+      "symbol": "ABT",
+      "name": "ABT",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 71.69142857142856,
+        "actual_weight_before": 75.0,
+        "actual_weight_after": 71.69142857142856,
+        "drift_before": 3.3085714285714403,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 18,
+        "executed_quantity": 18,
+        "open_order_quantity": 0,
+        "position_quantity": 18,
+        "price": 125.46,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 75.00% (target: 71.69%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (71.7%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 21
+    },
+    {
+      "symbol": "SNY",
+      "name": "SNY",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 69.54285714285714,
+        "actual_weight_before": 70.0,
+        "actual_weight_after": 69.54285714285714,
+        "drift_before": 0.4571428571428555,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 45,
+        "executed_quantity": 45,
+        "open_order_quantity": 0,
+        "position_quantity": 45,
+        "price": 48.68,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 70.00% (target: 69.54%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (69.5%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 22
+    },
+    {
+      "symbol": "CSCO",
+      "name": "CSCO",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 69.15555555555557,
+        "actual_weight_before": 71.0,
+        "actual_weight_after": 69.15555555555557,
+        "drift_before": 1.8444444444444343,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 28,
+        "executed_quantity": 28,
+        "open_order_quantity": 0,
+        "position_quantity": 28,
+        "price": 77.8,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 71.00% (target: 69.16%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (69.2%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 23
+    },
+    {
+      "symbol": "MRK",
+      "name": "MRK",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 66.86666666666665,
+        "actual_weight_before": 68.0,
+        "actual_weight_after": 66.86666666666665,
+        "drift_before": 1.1333333333333542,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 21,
+        "executed_quantity": 21,
+        "open_order_quantity": 0,
+        "position_quantity": 21,
+        "price": 100.3,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 68.00% (target: 66.87%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (66.9%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 24
+    },
+    {
+      "symbol": "VZ",
+      "name": "VZ",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 64.90476190476191,
+        "actual_weight_before": 66.0,
+        "actual_weight_after": 64.90476190476191,
+        "drift_before": 1.0952380952380878,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 50,
+        "executed_quantity": 50,
+        "open_order_quantity": 0,
+        "position_quantity": 50,
+        "price": 40.89,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 66.00% (target: 64.90%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (64.9%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 25
+    },
+    {
+      "symbol": "GEV",
+      "name": "GEV",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 63.97238095238096,
+        "actual_weight_before": 75.0,
+        "actual_weight_after": 63.97238095238096,
+        "drift_before": 11.02761904761904,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 3,
+        "executed_quantity": 3,
+        "open_order_quantity": 0,
+        "position_quantity": 3,
+        "price": 671.71,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 75.00% (target: 63.97%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (64.0%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 26
+    },
+    {
+      "symbol": "SPGI",
+      "name": "SPGI",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 63.622857142857136,
+        "actual_weight_before": 67.0,
+        "actual_weight_after": 63.622857142857136,
+        "drift_before": 3.3771428571428643,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 4,
+        "executed_quantity": 4,
+        "open_order_quantity": 0,
+        "position_quantity": 4,
+        "price": 501.03,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 67.00% (target: 63.62%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (63.6%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 27
+    },
+    {
+      "symbol": "CMCSA",
+      "name": "CMCSA",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 59.64666666666667,
+        "actual_weight_before": 60.0,
+        "actual_weight_after": 59.64666666666667,
+        "drift_before": 0.3533333333333317,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 69,
+        "executed_quantity": 69,
+        "open_order_quantity": 0,
+        "position_quantity": 69,
+        "price": 27.23,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 60.00% (target: 59.65%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (59.6%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 28
+    },
+    {
+      "symbol": "NEE",
+      "name": "NEE",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 59.61746031746031,
+        "actual_weight_before": 60.0,
+        "actual_weight_after": 59.61746031746031,
+        "drift_before": 0.3825396825396865,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 23,
+        "executed_quantity": 23,
+        "open_order_quantity": 0,
+        "position_quantity": 23,
+        "price": 81.65,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 60.00% (target: 59.62%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (59.6%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 29
+    },
+    {
+      "symbol": "XIACY",
+      "name": "XIACY",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 59.58095238095238,
+        "actual_weight_before": 60.0,
+        "actual_weight_after": 59.58095238095238,
+        "drift_before": 0.41904761904761756,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 69,
+        "executed_quantity": 69,
+        "open_order_quantity": 0,
+        "position_quantity": 69,
+        "price": 27.2,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 60.00% (target: 59.58%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (59.6%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 30
+    },
+    {
+      "symbol": "TTD",
+      "name": "TTD",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 59.338095238095235,
+        "actual_weight_before": 60.0,
+        "actual_weight_after": 59.338095238095235,
+        "drift_before": 0.6619047619047649,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 51,
+        "executed_quantity": 51,
+        "open_order_quantity": 0,
+        "position_quantity": 51,
+        "price": 36.65,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 60.00% (target: 59.34%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (59.3%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 31
+    },
+    {
+      "symbol": "IBM",
+      "name": "IBM",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 58.902857142857144,
+        "actual_weight_before": 68.0,
+        "actual_weight_after": 58.902857142857144,
+        "drift_before": 9.097142857142856,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 6,
+        "executed_quantity": 6,
+        "open_order_quantity": 0,
+        "position_quantity": 6,
+        "price": 309.24,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 68.00% (target: 58.90%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (58.9%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 32
+    },
+    {
+      "symbol": "COP",
+      "name": "COP",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 57.627301587301595,
+        "actual_weight_before": 60.0,
+        "actual_weight_after": 57.627301587301595,
+        "drift_before": 2.372698412698405,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 19,
+        "executed_quantity": 19,
+        "open_order_quantity": 0,
+        "position_quantity": 19,
+        "price": 95.54,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 60.00% (target: 57.63%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (57.6%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 33
+    },
+    {
+      "symbol": "PEP",
+      "name": "PEP",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 57.39047619047619,
+        "actual_weight_before": 59.0,
+        "actual_weight_after": 57.39047619047619,
+        "drift_before": 1.6095238095238074,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 12,
+        "executed_quantity": 12,
+        "open_order_quantity": 0,
+        "position_quantity": 12,
+        "price": 150.65,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 59.00% (target: 57.39%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (57.4%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 34
+    },
+    {
+      "symbol": "CAT",
+      "name": "CAT",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 56.94190476190477,
+        "actual_weight_before": 59.0,
+        "actual_weight_after": 56.94190476190477,
+        "drift_before": 2.058095238095227,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 3,
+        "executed_quantity": 3,
+        "open_order_quantity": 0,
+        "position_quantity": 3,
+        "price": 597.89,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 59.00% (target: 56.94%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (56.9%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 35
+    },
+    {
+      "symbol": "RTX",
+      "name": "RTX",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 56.71746031746031,
+        "actual_weight_before": 59.0,
+        "actual_weight_after": 56.71746031746031,
+        "drift_before": 2.282539682539692,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 10,
+        "executed_quantity": 10,
+        "open_order_quantity": 0,
+        "position_quantity": 10,
+        "price": 178.66,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 59.00% (target: 56.72%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (56.7%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 36
+    },
+    {
+      "symbol": "TMO",
+      "name": "TMO",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 54.50285714285714,
+        "actual_weight_before": 59.0,
+        "actual_weight_after": 54.50285714285714,
+        "drift_before": 4.497142857142862,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 3,
+        "executed_quantity": 3,
+        "open_order_quantity": 0,
+        "position_quantity": 3,
+        "price": 572.28,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 59.00% (target: 54.50%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (54.5%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 37
+    },
+    {
+      "symbol": "GILD",
+      "name": "GILD",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 53.511111111111106,
+        "actual_weight_before": 56.00000000000001,
+        "actual_weight_after": 53.511111111111106,
+        "drift_before": 2.4888888888889014,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 14,
+        "executed_quantity": 14,
+        "open_order_quantity": 0,
+        "position_quantity": 14,
+        "price": 120.4,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 56.00% (target: 53.51%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (53.5%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 38
+    },
+    {
+      "symbol": "APH",
+      "name": "APH",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 53.33714285714286,
+        "actual_weight_before": 55.00000000000001,
+        "actual_weight_after": 53.33714285714286,
+        "drift_before": 1.662857142857149,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 13,
+        "executed_quantity": 13,
+        "open_order_quantity": 0,
+        "position_quantity": 13,
+        "price": 129.24,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 55.00% (target: 53.34%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (53.3%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 39
+    },
+    {
+      "symbol": "LIN",
+      "name": "LIN",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 52.85587301587301,
+        "actual_weight_before": 65.0,
+        "actual_weight_after": 52.85587301587301,
+        "drift_before": 12.144126984126991,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 4,
+        "executed_quantity": 4,
+        "open_order_quantity": 0,
+        "position_quantity": 4,
+        "price": 416.24,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 65.00% (target: 52.86%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (52.9%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 40
+    },
+    {
+      "symbol": "ACN",
+      "name": "ACN",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 51.72571428571429,
+        "actual_weight_before": 56.00000000000001,
+        "actual_weight_after": 51.72571428571429,
+        "drift_before": 4.274285714285718,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 6,
+        "executed_quantity": 6,
+        "open_order_quantity": 0,
+        "position_quantity": 6,
+        "price": 271.56,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 56.00% (target: 51.73%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (51.7%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 41
+    },
+    {
+      "symbol": "TXN",
+      "name": "TXN",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 51.26285714285714,
+        "actual_weight_before": 56.00000000000001,
+        "actual_weight_after": 51.26285714285714,
+        "drift_before": 4.737142857142864,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 9,
+        "executed_quantity": 9,
+        "open_order_quantity": 0,
+        "position_quantity": 9,
+        "price": 179.42,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 56.00% (target: 51.26%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (51.3%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 42
+    },
+    {
+      "symbol": "LRCX",
+      "name": "LRCX",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 50.95873015873016,
+        "actual_weight_before": 53.0,
+        "actual_weight_after": 50.95873015873016,
+        "drift_before": 2.0412698412698376,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 10,
+        "executed_quantity": 10,
+        "open_order_quantity": 0,
+        "position_quantity": 10,
+        "price": 160.52,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 53.00% (target: 50.96%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (51.0%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 43
+    },
+    {
+      "symbol": "AMGN",
+      "name": "AMGN",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 50.43492063492063,
+        "actual_weight_before": 60.0,
+        "actual_weight_after": 50.43492063492063,
+        "drift_before": 9.56507936507937,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 5,
+        "executed_quantity": 5,
+        "open_order_quantity": 0,
+        "position_quantity": 5,
+        "price": 317.74,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 60.00% (target: 50.43%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (50.4%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 44
+    },
+    {
+      "symbol": "IFNNY",
+      "name": "IFNNY",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 49.99111111111112,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 49.99111111111112,
+        "drift_before": 0.008888888888883173,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 37,
+        "executed_quantity": 37,
+        "open_order_quantity": 0,
+        "position_quantity": 37,
+        "price": 42.56,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 49.99%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (50.0%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 45
+    },
+    {
+      "symbol": "ARM",
+      "name": "ARM",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 49.862857142857145,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 49.862857142857145,
+        "drift_before": 0.13714285714285523,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 12,
+        "executed_quantity": 12,
+        "open_order_quantity": 0,
+        "position_quantity": 12,
+        "price": 130.89,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 49.86%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (49.9%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 46
+    },
+    {
+      "symbol": "TJX",
+      "name": "TJX",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 49.56825396825396,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 49.56825396825396,
+        "drift_before": 0.4317460317460373,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 10,
+        "executed_quantity": 10,
+        "open_order_quantity": 0,
+        "position_quantity": 10,
+        "price": 156.14,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 49.57%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (49.6%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 47
+    },
+    {
+      "symbol": "MPNGY",
+      "name": "MPNGY",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 49.40952380952381,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 49.40952380952381,
+        "drift_before": 0.5904761904761884,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 60,
+        "executed_quantity": 60,
+        "open_order_quantity": 0,
+        "position_quantity": 60,
+        "price": 25.94,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 49.41%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (49.4%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 48
+    },
+    {
+      "symbol": "PPG",
+      "name": "PPG",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 49.304761904761904,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 49.304761904761904,
+        "drift_before": 0.6952380952380963,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 15,
+        "executed_quantity": 15,
+        "open_order_quantity": 0,
+        "position_quantity": 15,
+        "price": 103.54,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 49.30%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (49.3%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 49
+    },
+    {
+      "symbol": "HON",
+      "name": "HON",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 49.18349206349207,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 49.18349206349207,
+        "drift_before": 0.8165079365079322,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 8,
+        "executed_quantity": 8,
+        "open_order_quantity": 0,
+        "position_quantity": 8,
+        "price": 193.66,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 49.18%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (49.2%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 50
+    },
+    {
+      "symbol": "TER",
+      "name": "TER",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 49.109841269841276,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 49.109841269841276,
+        "drift_before": 0.8901587301587242,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 8,
+        "executed_quantity": 8,
+        "open_order_quantity": 0,
+        "position_quantity": 8,
+        "price": 193.37,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 49.11%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (49.1%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 51
+    },
+    {
+      "symbol": "SLB",
+      "name": "SLB",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 48.84285714285715,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 48.84285714285715,
+        "drift_before": 1.1571428571428513,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 39,
+        "executed_quantity": 39,
+        "open_order_quantity": 0,
+        "position_quantity": 39,
+        "price": 39.45,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 48.84%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (48.8%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 52
+    },
+    {
+      "symbol": "PANW",
+      "name": "PANW",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 48.6831746031746,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 48.6831746031746,
+        "drift_before": 1.3168253968254007,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 8,
+        "executed_quantity": 8,
+        "open_order_quantity": 0,
+        "position_quantity": 8,
+        "price": 191.69,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 48.68%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (48.7%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 53
+    },
+    {
+      "symbol": "NBIX",
+      "name": "NBIX",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 48.507936507936506,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 48.507936507936506,
+        "drift_before": 1.4920634920634939,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 10,
+        "executed_quantity": 10,
+        "open_order_quantity": 0,
+        "position_quantity": 10,
+        "price": 152.8,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 48.51%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (48.5%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 54
+    },
+    {
+      "symbol": "CRWD",
+      "name": "CRWD",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 48.07428571428571,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 48.07428571428571,
+        "drift_before": 1.9257142857142924,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 3,
+        "executed_quantity": 3,
+        "open_order_quantity": 0,
+        "position_quantity": 3,
+        "price": 504.78,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 48.07%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (48.1%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 55
+    },
+    {
+      "symbol": "XYL",
+      "name": "XYL",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 47.87619047619047,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 47.87619047619047,
+        "drift_before": 2.123809523809527,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 11,
+        "executed_quantity": 11,
+        "open_order_quantity": 0,
+        "position_quantity": 11,
+        "price": 137.1,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 47.88%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (47.9%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 56
+    },
+    {
+      "symbol": "SE",
+      "name": "SE",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 47.626666666666665,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 47.626666666666665,
+        "drift_before": 2.373333333333335,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 12,
+        "executed_quantity": 12,
+        "open_order_quantity": 0,
+        "position_quantity": 12,
+        "price": 125.02,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 47.63%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (47.6%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 57
+    },
+    {
+      "symbol": "MDT",
+      "name": "MDT",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 47.55714285714286,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 47.55714285714286,
+        "drift_before": 2.442857142857143,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 15,
+        "executed_quantity": 15,
+        "open_order_quantity": 0,
+        "position_quantity": 15,
+        "price": 99.87,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 47.56%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (47.6%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 58
+    },
+    {
+      "symbol": "ANET",
+      "name": "ANET",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 47.527619047619055,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 47.527619047619055,
+        "drift_before": 2.472380952380945,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 12,
+        "executed_quantity": 12,
+        "open_order_quantity": 0,
+        "position_quantity": 12,
+        "price": 124.76,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 47.53%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (47.5%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 59
+    },
+    {
+      "symbol": "NSC",
+      "name": "NSC",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 47.13968253968254,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 47.13968253968254,
+        "drift_before": 2.860317460317461,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 5,
+        "executed_quantity": 5,
+        "open_order_quantity": 0,
+        "position_quantity": 5,
+        "price": 296.98,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 47.14%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (47.1%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 60
+    },
+    {
+      "symbol": "LOW",
+      "name": "LOW",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 47.10285714285715,
+        "actual_weight_before": 52.0,
+        "actual_weight_after": 47.10285714285715,
+        "drift_before": 4.897142857142853,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 6,
+        "executed_quantity": 6,
+        "open_order_quantity": 0,
+        "position_quantity": 6,
+        "price": 247.29,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 52.00% (target: 47.10%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (47.1%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 61
+    },
+    {
+      "symbol": "DE",
+      "name": "DE",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 46.17142857142858,
+        "actual_weight_before": 53.0,
+        "actual_weight_after": 46.17142857142858,
+        "drift_before": 6.828571428571422,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 3,
+        "executed_quantity": 3,
+        "open_order_quantity": 0,
+        "position_quantity": 3,
+        "price": 484.8,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 53.00% (target: 46.17%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (46.2%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 62
+    },
+    {
+      "symbol": "ADBE",
+      "name": "ADBE",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 45.26095238095238,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 45.26095238095238,
+        "drift_before": 4.739047619047618,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 4,
+        "executed_quantity": 4,
+        "open_order_quantity": 0,
+        "position_quantity": 4,
+        "price": 356.43,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 45.26%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (45.3%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 63
+    },
+    {
+      "symbol": "SYK",
+      "name": "SYK",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 44.96380952380952,
+        "actual_weight_before": 47.0,
+        "actual_weight_after": 44.96380952380952,
+        "drift_before": 2.0361904761904768,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 4,
+        "executed_quantity": 4,
+        "open_order_quantity": 0,
+        "position_quantity": 4,
+        "price": 354.09,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 47.00% (target: 44.96%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (45.0%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 64
+    },
+    {
+      "symbol": "ADI",
+      "name": "ADI",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 44.336507936507935,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 44.336507936507935,
+        "drift_before": 5.663492063492065,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 5,
+        "executed_quantity": 5,
+        "open_order_quantity": 0,
+        "position_quantity": 5,
+        "price": 279.32,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 44.34%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (44.3%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 65
+    },
+    {
+      "symbol": "DHR",
+      "name": "DHR",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 43.11047619047619,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 43.11047619047619,
+        "drift_before": 6.8895238095238085,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 6,
+        "executed_quantity": 6,
+        "open_order_quantity": 0,
+        "position_quantity": 6,
+        "price": 226.33,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 43.11%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (43.1%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 66
+    },
+    {
+      "symbol": "INTU",
+      "name": "INTU",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 42.59809523809523,
+        "actual_weight_before": 60.0,
+        "actual_weight_after": 42.59809523809523,
+        "drift_before": 17.401904761904767,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 2,
+        "executed_quantity": 2,
+        "open_order_quantity": 0,
+        "position_quantity": 2,
+        "price": 670.92,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 60.00% (target: 42.60%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (42.6%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 67
+    },
+    {
+      "symbol": "APP",
+      "name": "APP",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 42.58222222222222,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 42.58222222222222,
+        "drift_before": 7.417777777777779,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 2,
+        "executed_quantity": 2,
+        "open_order_quantity": 0,
+        "position_quantity": 2,
+        "price": 670.67,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 42.58%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (42.6%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 68
+    },
+    {
+      "symbol": "ADP",
+      "name": "ADP",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 42.238095238095234,
+        "actual_weight_before": 46.0,
+        "actual_weight_after": 42.238095238095234,
+        "drift_before": 3.7619047619047663,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 5,
+        "executed_quantity": 5,
+        "open_order_quantity": 0,
+        "position_quantity": 5,
+        "price": 266.1,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 46.00% (target: 42.24%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (42.2%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 69
+    },
+    {
+      "symbol": "DLS",
+      "name": "DLS",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 39.8920634920635,
+        "actual_weight_before": 40.0,
+        "actual_weight_after": 39.8920634920635,
+        "drift_before": 0.10793650793650045,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "BUY",
+        "target_quantity": 244,
+        "executed_quantity": 244,
+        "open_order_quantity": 244,
+        "position_quantity": 0,
+        "price": 5.15,
+        "order_value": 1256.6000000000001,
+        "commission_estimate": 1.0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Buying 244 shares at $5.15. Order value: $1,256.60. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (39.9%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 70
+    },
+    {
+      "symbol": "FCX",
+      "name": "FCX",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 39.1073015873016,
+        "actual_weight_before": 40.0,
+        "actual_weight_after": 39.1073015873016,
+        "drift_before": 0.892698412698401,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "BUY",
+        "target_quantity": 26,
+        "executed_quantity": 26,
+        "open_order_quantity": 7,
+        "position_quantity": 19,
+        "price": 47.38,
+        "order_value": 331.66,
+        "commission_estimate": 1.0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Buying 26 shares at $47.38. Order value: $331.66. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (39.1%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 71
+    },
+    {
+      "symbol": "KLAC",
+      "name": "KLAC",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 37.90222222222223,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 37.90222222222223,
+        "drift_before": 12.097777777777772,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 1,
+        "executed_quantity": 1,
+        "open_order_quantity": 0,
+        "position_quantity": 1,
+        "price": 1193.92,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 37.90%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (37.9%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 72
+    },
+    {
+      "symbol": "ISRG",
+      "name": "ISRG",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 34.433015873015876,
+        "actual_weight_before": 50.0,
+        "actual_weight_after": 34.433015873015876,
+        "drift_before": 15.566984126984124,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 2,
+        "executed_quantity": 2,
+        "open_order_quantity": 0,
+        "position_quantity": 2,
+        "price": 542.32,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 50.00% (target: 34.43%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (34.4%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 73
+    },
+    {
+      "symbol": "ROIV",
+      "name": "ROIV",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 24.555555555555557,
+        "actual_weight_before": 25.0,
+        "actual_weight_after": 24.555555555555557,
+        "drift_before": 0.44444444444444287,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 35,
+        "executed_quantity": 35,
+        "open_order_quantity": 0,
+        "position_quantity": 35,
+        "price": 22.1,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 25.00% (target: 24.56%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (24.6%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 74
+    },
+    {
+      "symbol": "MCHP",
+      "name": "MCHP",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 23.45968253968254,
+        "actual_weight_before": 25.0,
+        "actual_weight_after": 23.45968253968254,
+        "drift_before": 1.5403174603174605,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 11,
+        "executed_quantity": 11,
+        "open_order_quantity": 0,
+        "position_quantity": 11,
+        "price": 67.18,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 25.00% (target: 23.46%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (23.5%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 75
+    },
+    {
+      "symbol": "CORT",
+      "name": "CORT",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 22.346666666666664,
+        "actual_weight_before": 25.0,
+        "actual_weight_after": 22.346666666666664,
+        "drift_before": 2.653333333333336,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 8,
+        "executed_quantity": 8,
+        "open_order_quantity": 0,
+        "position_quantity": 8,
+        "price": 87.99,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 25.00% (target: 22.35%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (22.3%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 76
+    },
+    {
+      "symbol": "NXPI",
+      "name": "NXPI",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 21.72952380952381,
+        "actual_weight_before": 25.0,
+        "actual_weight_after": 21.72952380952381,
+        "drift_before": 3.2704761904761916,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 3,
+        "executed_quantity": 3,
+        "open_order_quantity": 0,
+        "position_quantity": 3,
+        "price": 228.16,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 25.00% (target: 21.73%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (21.7%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 77
+    },
+    {
+      "symbol": "DXCM",
+      "name": "DXCM",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 19.13142857142857,
+        "actual_weight_before": 20.0,
+        "actual_weight_after": 19.13142857142857,
+        "drift_before": 0.8685714285714283,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 9,
+        "executed_quantity": 9,
+        "open_order_quantity": 0,
+        "position_quantity": 9,
+        "price": 66.96,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 20.00% (target: 19.13%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (19.1%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 78
+    },
+    {
+      "symbol": "ROST",
+      "name": "ROST",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 17.34190476190476,
+        "actual_weight_before": 20.0,
+        "actual_weight_after": 17.34190476190476,
+        "drift_before": 2.658095238095239,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 3,
+        "executed_quantity": 3,
+        "open_order_quantity": 0,
+        "position_quantity": 3,
+        "price": 182.09,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 20.00% (target: 17.34%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (17.3%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 79
+    },
+    {
+      "symbol": "BSX",
+      "name": "BSX",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 8.817142857142857,
+        "actual_weight_before": 10.0,
+        "actual_weight_after": 8.817142857142857,
+        "drift_before": 1.1828571428571433,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 3,
+        "executed_quantity": 3,
+        "open_order_quantity": 0,
+        "position_quantity": 3,
+        "price": 92.58,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 10.00% (target: 8.82%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "High concentration (8.8%) - approaching single position limit",
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 80
+    },
+    {
+      "symbol": "MSFT",
+      "name": "MSFT",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 5.468914285714285,
+        "actual_weight_before": 5.0,
+        "actual_weight_after": 5.468914285714285,
+        "drift_before": -0.46891428571428495,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 36,
+        "executed_quantity": 36,
+        "open_order_quantity": 0,
+        "position_quantity": 36,
+        "price": 478.53,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 5.00% (target: 5.47%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 81
+    },
+    {
+      "symbol": "GOOG",
+      "name": "GOOG",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 4.633155555555555,
+        "actual_weight_before": 4.19,
+        "actual_weight_after": 4.633155555555555,
+        "drift_before": -0.4431555555555544,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 47,
+        "executed_quantity": 47,
+        "open_order_quantity": 0,
+        "position_quantity": 47,
+        "price": 310.52,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 4.19% (target: 4.63%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 82
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVDA",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 4.444952380952381,
+        "actual_weight_before": 4.05,
+        "actual_weight_after": 4.444952380952381,
+        "drift_before": -0.3949523809523816,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 80,
+        "executed_quantity": 80,
+        "open_order_quantity": 0,
+        "position_quantity": 80,
+        "price": 175.02,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 4.05% (target: 4.44%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 83
+    },
+    {
+      "symbol": "AMZN",
+      "name": "AMZN",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 4.021155555555556,
+        "actual_weight_before": 3.67,
+        "actual_weight_after": 4.021155555555556,
+        "drift_before": -0.35115555555555567,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 56,
+        "executed_quantity": 56,
+        "open_order_quantity": 0,
+        "position_quantity": 56,
+        "price": 226.19,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 3.67% (target: 4.02%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 84
+    },
+    {
+      "symbol": "AMD",
+      "name": "AMD",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 3.814114285714286,
+        "actual_weight_before": 3.57,
+        "actual_weight_after": 3.814114285714286,
+        "drift_before": -0.24411428571428617,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 57,
+        "executed_quantity": 57,
+        "open_order_quantity": 0,
+        "position_quantity": 57,
+        "price": 210.78,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 3.57% (target: 3.81%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 85
+    },
+    {
+      "symbol": "TSM",
+      "name": "TSM",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 3.152177777777778,
+        "actual_weight_before": 3.04,
+        "actual_weight_after": 3.152177777777778,
+        "drift_before": -0.11217777777777815,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 34,
+        "executed_quantity": 34,
+        "open_order_quantity": 0,
+        "position_quantity": 34,
+        "price": 292.04,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 3.04% (target: 3.15%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 86
+    },
+    {
+      "symbol": "ASML",
+      "name": "ASML",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 2.745015873015873,
+        "actual_weight_before": 2.81,
+        "actual_weight_after": 2.745015873015873,
+        "drift_before": 0.06498412698412714,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 8,
+        "executed_quantity": 8,
+        "open_order_quantity": 0,
+        "position_quantity": 8,
+        "price": 1080.85,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 2.81% (target: 2.75%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 87
+    },
+    {
+      "symbol": "AVGO",
+      "name": "AVGO",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 2.7423238095238096,
+        "actual_weight_before": 2.7,
+        "actual_weight_after": 2.7423238095238096,
+        "drift_before": -0.04232380952380943,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 24,
+        "executed_quantity": 24,
+        "open_order_quantity": 0,
+        "position_quantity": 24,
+        "price": 359.93,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 2.70% (target: 2.74%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 88
+    },
+    {
+      "symbol": "BA",
+      "name": "BA",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 2.595301587301587,
+        "actual_weight_before": 2.5,
+        "actual_weight_after": 2.595301587301587,
+        "drift_before": -0.095301587301587,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 40,
+        "executed_quantity": 40,
+        "open_order_quantity": 0,
+        "position_quantity": 40,
+        "price": 204.38,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 2.50% (target: 2.60%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 89
+    },
+    {
+      "symbol": "META",
+      "name": "META",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 2.454209523809524,
+        "actual_weight_before": 2.55,
+        "actual_weight_after": 2.454209523809524,
+        "drift_before": 0.09579047619047598,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 12,
+        "executed_quantity": 12,
+        "open_order_quantity": 0,
+        "position_quantity": 12,
+        "price": 644.23,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 2.55% (target: 2.45%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 90
+    },
+    {
+      "symbol": "ORCL",
+      "name": "ORCL",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 2.291701587301587,
+        "actual_weight_before": 2.34,
+        "actual_weight_after": 2.291701587301587,
+        "drift_before": 0.04829841269841273,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 38,
+        "executed_quantity": 38,
+        "open_order_quantity": 0,
+        "position_quantity": 38,
+        "price": 189.97,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 2.34% (target: 2.29%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 91
+    },
+    {
+      "symbol": "AAPL",
+      "name": "AAPL",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 2.031885714285714,
+        "actual_weight_before": 2.06,
+        "actual_weight_after": 2.031885714285714,
+        "drift_before": 0.02811428571428598,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 23,
+        "executed_quantity": 23,
+        "open_order_quantity": 0,
+        "position_quantity": 23,
+        "price": 278.28,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 2.06% (target: 2.03%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 92
+    },
+    {
+      "symbol": "BABA",
+      "name": "BABA",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 1.729777777777778,
+        "actual_weight_before": 1.75,
+        "actual_weight_after": 1.729777777777778,
+        "drift_before": 0.02022222222222192,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 35,
+        "executed_quantity": 35,
+        "open_order_quantity": 0,
+        "position_quantity": 35,
+        "price": 155.68,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 1.75% (target: 1.73%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 93
+    },
+    {
+      "symbol": "MU",
+      "name": "MU",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 1.6076,
+        "actual_weight_before": 1.65,
+        "actual_weight_after": 1.6076,
+        "drift_before": 0.04239999999999999,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 21,
+        "executed_quantity": 21,
+        "open_order_quantity": 0,
+        "position_quantity": 21,
+        "price": 241.14,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 1.65% (target: 1.61%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 94
+    },
+    {
+      "symbol": "TSLA",
+      "name": "TSLA",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 1.6027174603174603,
+        "actual_weight_before": 1.72,
+        "actual_weight_after": 1.6027174603174603,
+        "drift_before": 0.11728253968253965,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 11,
+        "executed_quantity": 11,
+        "open_order_quantity": 0,
+        "position_quantity": 11,
+        "price": 458.96,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 1.72% (target: 1.60%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 95
+    },
+    {
+      "symbol": "WMT",
+      "name": "WMT",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 1.5930476190476193,
+        "actual_weight_before": 1.6,
+        "actual_weight_after": 1.5930476190476193,
+        "drift_before": 0.006952380952380821,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 43,
+        "executed_quantity": 43,
+        "open_order_quantity": 0,
+        "position_quantity": 43,
+        "price": 116.7,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 1.60% (target: 1.59%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 96
+    },
+    {
+      "symbol": "QCOM",
+      "name": "QCOM",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 1.5282,
+        "actual_weight_before": 1.56,
+        "actual_weight_after": 1.5282,
+        "drift_before": 0.03180000000000005,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 27,
+        "executed_quantity": 27,
+        "open_order_quantity": 0,
+        "position_quantity": 27,
+        "price": 178.29,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 1.56% (target: 1.53%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 97
+    },
+    {
+      "symbol": "LLY",
+      "name": "LLY",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 1.3047746031746033,
+        "actual_weight_before": 1.5,
+        "actual_weight_after": 1.3047746031746033,
+        "drift_before": 0.19522539682539675,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 4,
+        "executed_quantity": 4,
+        "open_order_quantity": 0,
+        "position_quantity": 4,
+        "price": 1027.51,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 1.50% (target: 1.30%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 98
+    },
+    {
+      "symbol": "SAP",
+      "name": "SAP",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 1.2435809523809525,
+        "actual_weight_before": 1.3,
+        "actual_weight_after": 1.2435809523809525,
+        "drift_before": 0.05641904761904759,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100.0
+      },
+      "trade": {
+        "action": "HOLD",
+        "target_quantity": 16,
+        "executed_quantity": 16,
+        "open_order_quantity": 0,
+        "position_quantity": 16,
+        "price": 244.83,
+        "order_value": 0.0,
+        "commission_estimate": 0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Within tolerance at 1.30% (target: 1.24%). No rebalancing required. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 99
+    },
+    {
+      "symbol": "XOM",
+      "name": "XOM",
+      "sector": "Unknown",
+      "source_etf": "",
+      "drift": {
+        "target_weight": 1.0938984126984126,
+        "actual_weight_before": 1.1,
+        "actual_weight_after": 1.0938984126984126,
+        "drift_before": 0.006101587301587497,
+        "drift_after": 0.0,
+        "drift_reduced_pct": 100
+      },
+      "trade": {
+        "action": "BUY",
+        "target_quantity": 29,
+        "executed_quantity": 29,
+        "open_order_quantity": 16,
+        "position_quantity": 13,
+        "price": 118.82,
+        "order_value": 1901.12,
+        "commission_estimate": 1.0,
+        "execution_accuracy": 100.0,
+        "status": "FILLED"
+      },
+      "reasoning": "Buying 29 shares at $118.82. Order value: $1,901.12. Execution accuracy: 100.0%.",
+      "risks": [
+        "Unknown sector at 4593% concentration"
+      ],
+      "rank": 100
+    }
+  ],
+  "failed_holdings": []
+}

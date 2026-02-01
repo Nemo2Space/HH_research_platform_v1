@@ -1,0 +1,5 @@
+Ticker,Sector,Volume,Sentiment,FundamentalScore,GrowthScore,DividendScore,Counter,Total,OpPrice,TargetAvgPrice,MktScore,GapType,EarnDate,PositiveRatings,TotalRatings,ExitDate,DividendYield
+NVDA,Technology,65337745.0,76.0,0.0,0.0,0.0,107.0,20.2,185.6,35.5,72.0,99.1,2025-11-19,17.0,20.0,2025-06-11,2.0
+UNH,Healthcare,1725868.0,72.0,0.0,0.0,0.0,79.0,12.8,323.2,20.0,72.0,0.6,2026-01-15,6.0,20.0,2025-06-16,285.0
+AMD,Technology,11924618.0,73.0,78.0,85.0,55.0,181.0,61.6,221.0,27.4,72.0,94.6,2026-02-03,6.0,20.0,0.0,0.0
+MSFT,Technology,3520313.0,73.0,88.0,92.0,84.0,106.0,67.6,489.3,27.2,72.0,98.6,2026-01-28,17.0,20.0,2025-08-21,66.0

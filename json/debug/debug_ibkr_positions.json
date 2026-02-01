@@ -1,0 +1,80 @@
+[
+  {
+    "symbol": "AMD",
+    "quantity": 75.0,
+    "avg_cost": 256.71502265,
+    "current_price": 256.71502265,
+    "market_value": 19253.62669875,
+    "unrealized_pnl": 0.0,
+    "unrealized_pnl_pct": 0.0,
+    "account": "U17994267",
+    "sec_type": "STK",
+    "lastPrice": 210.77999877929688,
+    "marketValue": 0.0
+  },
+  {
+    "symbol": "SMCI",
+    "quantity": 500.0,
+    "avg_cost": 32.727,
+    "current_price": 32.727,
+    "market_value": 16363.499999999998,
+    "unrealized_pnl": 0.0,
+    "unrealized_pnl_pct": 0.0,
+    "account": "U17994267",
+    "sec_type": "STK",
+    "lastPrice": 32.33000183105469,
+    "marketValue": 0.0
+  },
+  {
+    "symbol": "TLT",
+    "quantity": 10.0,
+    "avg_cost": 89.75502,
+    "current_price": 89.75502,
+    "market_value": 897.5502,
+    "unrealized_pnl": 0.0,
+    "unrealized_pnl_pct": 0.0,
+    "account": "U17994267",
+    "sec_type": "STK",
+    "lastPrice": 87.33999633789062,
+    "marketValue": 0.0
+  },
+  {
+    "symbol": "ORCL",
+    "quantity": 300.0,
+    "avg_cost": 189.765,
+    "current_price": 189.765,
+    "market_value": 56929.49999999999,
+    "unrealized_pnl": 0.0,
+    "unrealized_pnl_pct": 0.0,
+    "account": "U17994267",
+    "sec_type": "STK",
+    "lastPrice": 189.97000122070312,
+    "marketValue": 0.0
+  },
+  {
+    "symbol": "ZROZ",
+    "quantity": 22536.0,
+    "avg_cost": 67.58894075,
+    "current_price": 67.58894075,
+    "market_value": 1523184.368742,
+    "unrealized_pnl": 0.0,
+    "unrealized_pnl_pct": 0.0,
+    "account": "U17994267",
+    "sec_type": "ETF",
+    "lastPrice": 65.11000061035156,
+    "marketValue": 0.0
+  },
+  {
+    "symbol": "SPSK",
+    "quantity": 50.0,
+    "avg_cost": 18.480022,
+    "current_price": 18.480022,
+    "market_value": 924.0011000000001,
+    "unrealized_pnl": 0.0,
+    "unrealized_pnl_pct": 0.0,
+    "account": "U17994267",
+    "sec_type": "STK",
+    "lastPrice": 18.530000686645508,
+    "marketValue": 0.0
+  }
+]

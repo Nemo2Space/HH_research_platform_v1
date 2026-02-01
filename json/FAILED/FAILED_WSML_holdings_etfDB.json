@@ -1,0 +1,13 @@
+{
+    "failed": [
+        {
+            "name": "",
+            "symbol": "",
+            "weight": "",
+            "reason": "Not found in IBKR",
+            "input_index": 0
+        }
+    ],
+    "skipped": [],
+    "timestamp": "2025-10-12 10:58:36"
+}

@@ -1,0 +1,1280 @@
+{
+  "MAR": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.2987,
+    "drift": -0.2987,
+    "status": "\u274c Not held (target: 0.3%)"
+  },
+  "DHR": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.431,
+    "drift": -0.431,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "SBUX": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3874,
+    "drift": -0.3874,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "ETN": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.424,
+    "drift": -0.424,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "UNH": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.6835,
+    "drift": -0.6835,
+    "status": "\u274c Not held (target: 0.7%)"
+  },
+  "SPSK": {
+    "in_ibkr": true,
+    "in_etf_creator": true,
+    "actual_shares": 50.0,
+    "actual_weight": 0.057123405472161916,
+    "target_weight": 10.0,
+    "drift": -9.942876594527839,
+    "status": "\u26a0\ufe0f Underweight (-9.9%)"
+  },
+  "ADI": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4307,
+    "drift": -0.4307,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "MSFT": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 4.853,
+    "drift": -4.853,
+    "status": "\u274c Not held (target: 4.9%)"
+  },
+  "COP": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4297,
+    "drift": -0.4297,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "TLT": {
+    "in_ibkr": true,
+    "in_etf_creator": false,
+    "actual_shares": 10.0,
+    "actual_weight": 0.0554881633866237,
+    "target_weight": 0,
+    "drift": 0.0554881633866237,
+    "status": "\u26a0\ufe0f Not in target (consider selling)"
+  },
+  "TMUS": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "PANW": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "ASML": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.7836,
+    "drift": -0.7836,
+    "status": "\u274c Not held (target: 0.8%)"
+  },
+  "ACN": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "RCL": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3508,
+    "drift": -0.3508,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "PDD": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3761,
+    "drift": -0.3761,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "LMT": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3835,
+    "drift": -0.3835,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "ABBV": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.8075,
+    "drift": -0.8075,
+    "status": "\u274c Not held (target: 0.8%)"
+  },
+  "APP": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.5169,
+    "drift": -0.5169,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "TMO": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.5114,
+    "drift": -0.5114,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "MPNGY": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "SPGI": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "AVGO": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 2.429,
+    "drift": -2.429,
+    "status": "\u274c Not held (target: 2.4%)"
+  },
+  "SHEL": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.5335,
+    "drift": -0.5335,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "AMGN": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4796,
+    "drift": -0.4796,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "NOW": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.51,
+    "drift": -0.51,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "PEP": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "BABA": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "COST": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.7867,
+    "drift": -0.7867,
+    "status": "\u274c Not held (target: 0.8%)"
+  },
+  "NVO": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "CVX": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.6967,
+    "drift": -0.6967,
+    "status": "\u274c Not held (target: 0.7%)"
+  },
+  "SNY": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4474,
+    "drift": -0.4474,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "MRK": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.5962,
+    "drift": -0.5962,
+    "status": "\u274c Not held (target: 0.6%)"
+  },
+  "NEM": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3603,
+    "drift": -0.3603,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "PFE": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "JNJ": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.9542,
+    "drift": -0.9542,
+    "status": "\u274c Not held (target: 1.0%)"
+  },
+  "HWM": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3613,
+    "drift": -0.3613,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "PLTR": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.7914,
+    "drift": -0.7914,
+    "status": "\u274c Not held (target: 0.8%)"
+  },
+  "XOM": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 1.0064,
+    "drift": -1.0064,
+    "status": "\u274c Not held (target: 1.0%)"
+  },
+  "NTES": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4188,
+    "drift": -0.4188,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "APH": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4182,
+    "drift": -0.4182,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "HON": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4004,
+    "drift": -0.4004,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "TSM": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 2.151,
+    "drift": -2.151,
+    "status": "\u274c Not held (target: 2.2%)"
+  },
+  "GILD": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4895,
+    "drift": -0.4895,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "AMZN": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 3.3738,
+    "drift": -3.3738,
+    "status": "\u274c Not held (target: 3.4%)"
+  },
+  "ARM": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "CORT": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "CSCO": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.6829,
+    "drift": -0.6829,
+    "status": "\u274c Not held (target: 0.7%)"
+  },
+  "KLAC": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4046,
+    "drift": -0.4046,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "ROST": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "NBIX": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "DXCM": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "CDNS": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3319,
+    "drift": -0.3319,
+    "status": "\u274c Not held (target: 0.3%)"
+  },
+  "CAT": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.5857,
+    "drift": -0.5857,
+    "status": "\u274c Not held (target: 0.6%)"
+  },
+  "BSX": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.419,
+    "drift": -0.419,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "MCHP": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "HD": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.742,
+    "drift": -0.742,
+    "status": "\u274c Not held (target: 0.7%)"
+  },
+  "MRVL": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "GSK": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3717,
+    "drift": -0.3717,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "KO": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "CMCSA": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "TSLA": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 2.1505,
+    "drift": -2.1505,
+    "status": "\u274c Not held (target: 2.2%)"
+  },
+  "RTX": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.5278,
+    "drift": -0.5278,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "PH": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3534,
+    "drift": -0.3534,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "ECL": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.2808,
+    "drift": -0.2808,
+    "status": "\u274c Not held (target: 0.3%)"
+  },
+  "TER": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "ZROZ": {
+    "in_ibkr": true,
+    "in_etf_creator": false,
+    "actual_shares": 22536.0,
+    "actual_weight": 94.16598995878712,
+    "target_weight": 0,
+    "drift": 94.16598995878712,
+    "status": "\u26a0\ufe0f Not in target (consider selling)"
+  },
+  "LLY": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 1.5118,
+    "drift": -1.5118,
+    "status": "\u274c Not held (target: 1.5%)"
+  },
+  "ABNB": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.2776,
+    "drift": -0.2776,
+    "status": "\u274c Not held (target: 0.3%)"
+  },
+  "LIN": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.506,
+    "drift": -0.506,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "CVNA": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.2878,
+    "drift": -0.2878,
+    "status": "\u274c Not held (target: 0.3%)"
+  },
+  "GOOGL": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 5.0665,
+    "drift": -5.0665,
+    "status": "\u274c Not held (target: 5.1%)"
+  },
+  "INTU": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.5092,
+    "drift": -0.5092,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "ABT": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.5929,
+    "drift": -0.5929,
+    "status": "\u274c Not held (target: 0.6%)"
+  },
+  "XYL": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "SAP": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "ROIV": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "WELL": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4026,
+    "drift": -0.4026,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "REGN": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3237,
+    "drift": -0.3237,
+    "status": "\u274c Not held (target: 0.3%)"
+  },
+  "GOOG": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 5.0901,
+    "drift": -5.0901,
+    "status": "\u274c Not held (target: 5.1%)"
+  },
+  "XIACY": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "DE": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "ISRG": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.5021,
+    "drift": -0.5021,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "MCD": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.5501,
+    "drift": -0.5501,
+    "status": "\u274c Not held (target: 0.6%)"
+  },
+  "MCK": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3938,
+    "drift": -0.3938,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "ORLY": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3726,
+    "drift": -0.3726,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "TTD": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "PPG": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "ORCL": {
+    "in_ibkr": true,
+    "in_etf_creator": true,
+    "actual_shares": 300.0,
+    "actual_weight": 3.5194838099515695,
+    "target_weight": 0.9736,
+    "drift": 2.5458838099515697,
+    "status": "\u26a0\ufe0f Overweight (+2.5%)"
+  },
+  "NVDA": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 5.7634,
+    "drift": -5.7634,
+    "status": "\u274c Not held (target: 5.8%)"
+  },
+  "CRM": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.594,
+    "drift": -0.594,
+    "status": "\u274c Not held (target: 0.6%)"
+  },
+  "SNPS": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3574,
+    "drift": -0.3574,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "NEE": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "LOW": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4241,
+    "drift": -0.4241,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "VRTX": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3816,
+    "drift": -0.3816,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "GEV": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4876,
+    "drift": -0.4876,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "NSC": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "BHP": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4336,
+    "drift": -0.4336,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "INTC": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3855,
+    "drift": -0.3855,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "SMCI": {
+    "in_ibkr": true,
+    "in_etf_creator": false,
+    "actual_shares": 500.0,
+    "actual_weight": 1.0116209227929722,
+    "target_weight": 0,
+    "drift": 1.0116209227929722,
+    "status": "\u26a0\ufe0f Not in target (consider selling)"
+  },
+  "SHW": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3141,
+    "drift": -0.3141,
+    "status": "\u274c Not held (target: 0.3%)"
+  },
+  "TXN": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4617,
+    "drift": -0.4617,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "MU": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.6608,
+    "drift": -0.6608,
+    "status": "\u274c Not held (target: 0.7%)"
+  },
+  "GE": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.6997,
+    "drift": -0.6997,
+    "status": "\u274c Not held (target: 0.7%)"
+  },
+  "RIO": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.449,
+    "drift": -0.449,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "DASH": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3349,
+    "drift": -0.3349,
+    "status": "\u274c Not held (target: 0.3%)"
+  },
+  "SNOW": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3026,
+    "drift": -0.3026,
+    "status": "\u274c Not held (target: 0.3%)"
+  },
+  "ANET": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4427,
+    "drift": -0.4427,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "FCX": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "WMT": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 1.5637,
+    "drift": -1.5637,
+    "status": "\u274c Not held (target: 1.6%)"
+  },
+  "PLD": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4128,
+    "drift": -0.4128,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "IFNNY": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "LRCX": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.5023,
+    "drift": -0.5023,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "MDT": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4223,
+    "drift": -0.4223,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "NOC": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3573,
+    "drift": -0.3573,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "GLD": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 5.0,
+    "drift": -5.0,
+    "status": "\u274c Not held (target: 5.0%)"
+  },
+  "CRWD": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "AMD": {
+    "in_ibkr": true,
+    "in_etf_creator": true,
+    "actual_shares": 75.0,
+    "actual_weight": 1.1902937396095505,
+    "target_weight": 0.6679,
+    "drift": 0.5223937396095505,
+    "status": "\u26a0\ufe0f Overweight (+0.5%)"
+  },
+  "NXPI": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "BA": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3917,
+    "drift": -0.3917,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "DLS": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "PG": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.7021,
+    "drift": -0.7021,
+    "status": "\u274c Not held (target: 0.7%)"
+  },
+  "NVS": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.5734,
+    "drift": -0.5734,
+    "status": "\u274c Not held (target: 0.6%)"
+  },
+  "EQIX": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3519,
+    "drift": -0.3519,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "GD": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3413,
+    "drift": -0.3413,
+    "status": "\u274c Not held (target: 0.3%)"
+  },
+  "SYK": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3954,
+    "drift": -0.3954,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "SE": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "TJX": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.5184,
+    "drift": -0.5184,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "AZN": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.6391,
+    "drift": -0.6391,
+    "status": "\u274c Not held (target: 0.6%)"
+  },
+  "NKE": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3817,
+    "drift": -0.3817,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "BKNG": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4565,
+    "drift": -0.4565,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "CEG": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3878,
+    "drift": -0.3878,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "QCOM": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.5413,
+    "drift": -0.5413,
+    "status": "\u274c Not held (target: 0.5%)"
+  },
+  "ADP": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.3696,
+    "drift": -0.3696,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "ADBE": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4288,
+    "drift": -0.4288,
+    "status": "\u274c Not held (target: 0.4%)"
+  },
+  "META": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 2.3241,
+    "drift": -2.3241,
+    "status": "\u274c Not held (target: 2.3%)"
+  },
+  "VZ": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "BYDDY": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "SLB": {
+    "in_ibkr": false,
+    "in_etf_creator": false,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0,
+    "drift": 0,
+    "status": "? Unknown"
+  },
+  "IBM": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.6294,
+    "drift": -0.6294,
+    "status": "\u274c Not held (target: 0.6%)"
+  },
+  "AAPL": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 5.5741,
+    "drift": -5.5741,
+    "status": "\u274c Not held (target: 5.6%)"
+  },
+  "AMAT": {
+    "in_ibkr": false,
+    "in_etf_creator": true,
+    "actual_shares": 0,
+    "actual_weight": 0,
+    "target_weight": 0.4916,
+    "drift": -0.4916,
+    "status": "\u274c Not held (target: 0.5%)"
+  }
+}

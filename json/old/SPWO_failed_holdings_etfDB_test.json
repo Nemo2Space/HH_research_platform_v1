@@ -1,0 +1,107 @@
+[
+    {
+        "name": "Emirates Telecommunications Group Company PJSC",
+        "symbol": "EAND",
+        "weight": 0.25
+    },
+    {
+        "name": "Emaar Properties (P.J.S.C)",
+        "symbol": "EMAAR",
+        "weight": 0.22
+    },
+    {
+        "name": "SHORT POSITIONS",
+        "symbol": "Other",
+        "weight": 0.17
+    },
+    {
+        "name": "PT Chandra Asri Pacific Tbk",
+        "symbol": "TPIA",
+        "weight": 0.16
+    },
+    {
+        "name": "Adnoc Gas Plc",
+        "symbol": "ADNOCGAS",
+        "weight": 0.11
+    },
+    {
+        "name": "Celltrion, Inc.",
+        "symbol": "68270",
+        "weight": 0.11
+    },
+    {
+        "name": "Aldar Properties - P J S C",
+        "symbol": "ALDAR",
+        "weight": 0.11
+    },
+    {
+        "name": "BIM Birlesik Magazalar A.S.",
+        "symbol": "BIMAS.E",
+        "weight": 0.11
+    },
+    {
+        "name": "Kia Corporation",
+        "symbol": "270",
+        "weight": 0.09
+    },
+    {
+        "name": "Dubai Electricity & Water Authority PJSC",
+        "symbol": "DEWA",
+        "weight": 0.09
+    },
+    {
+        "name": "Turkiye Petrol Rafinerileri A.S.",
+        "symbol": "TUPRS.E",
+        "weight": 0.08
+    },
+    {
+        "name": "SAMSUNG BIOLOGICS Co., Ltd.",
+        "symbol": "207940",
+        "weight": 0.08
+    },
+    {
+        "name": "PT GoTo Gojek Tokopedia Tbk",
+        "symbol": "GOTO",
+        "weight": 0.07
+    },
+    {
+        "name": "Abu Dhabi Islamic Bank",
+        "symbol": "ADIB",
+        "weight": 0.07
+    },
+    {
+        "name": "PT Sumber Alfaria Trijaya",
+        "symbol": "AMRT",
+        "weight": 0.07
+    },
+    {
+        "name": "Dubai Islamic Bank PJSC",
+        "symbol": "DIB",
+        "weight": 0.07
+    },
+    {
+        "name": "LG Energy Solution Ltd.",
+        "symbol": "373220",
+        "weight": 0.07
+    },
+    {
+        "name": "ADNOC Drilling Company PJSC",
+        "symbol": "ADNOCDRILL",
+        "weight": 0.05
+    },
+    {
+        "name": "Abu Dhabi National Oil Company for Distribution PJSC",
+        "symbol": "ADNOCDIST",
+        "weight": 0.04
+    },
+    {
+        "name": "Bumrungrad Hospital Public Co., Ltd.",
+        "symbol": "BH",
+        "weight": 0.04
+    },
+    {
+        "name": "Ecopro BM Co., Ltd.",
+        "symbol": "247540",
+        "weight": 0.03
+    }
+]

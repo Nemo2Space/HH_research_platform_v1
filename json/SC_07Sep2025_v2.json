@@ -1,0 +1,716 @@
+[
+    {
+        "name": "NVIDIA Corporation",
+        "symbol": "NVDA",
+        "sector": "Technology",
+        "weight": 5.73,
+        "secType": "STK"
+    },
+    {
+        "name": "Microsoft Corporation",
+        "symbol": "MSFT",
+        "sector": "Technology",
+        "weight": 5.21,
+        "secType": "STK"
+    },
+    {
+        "name": "Apple Inc.",
+        "symbol": "AAPL",
+        "sector": "Technology",
+        "weight": 4.97,
+        "secType": "STK"
+    },
+    {
+        "name": "Alphabet Inc.",
+        "symbol": "GOOG",
+        "sector": "Communication Services",
+        "weight": 4.41,
+        "secType": "STK"
+    },
+    {
+        "name": "Alphabet Inc.",
+        "symbol": "GOOGL",
+        "sector": "Communication Services",
+        "weight": 4.36,
+        "secType": "STK"
+    },
+    {
+        "name": "Amazon.com, Inc.",
+        "symbol": "AMZN",
+        "sector": "Consumer Cyclical",
+        "weight": 3.71,
+        "secType": "STK"
+    },
+    {
+        "name": "Meta Platforms, Inc.",
+        "symbol": "META",
+        "sector": "Communication Services",
+        "weight": 3.04,
+        "secType": "STK"
+    },
+    {
+        "name": "Broadcom Inc.",
+        "symbol": "AVGO",
+        "sector": "Technology",
+        "weight": 2.38,
+        "secType": "STK"
+    },
+    {
+        "name": "Walmart Inc.",
+        "symbol": "WMT",
+        "sector": "Consumer Defensive",
+        "weight": 1.91,
+        "secType": "STK"
+    },
+    {
+        "name": "Taiwan Semiconductor Manufacturing Company Limited",
+        "symbol": "TSM",
+        "sector": "Technology",
+        "weight": 1.84,
+        "secType": "STK"
+    },
+    {
+        "name": "Tesla, Inc.",
+        "symbol": "TSLA",
+        "sector": "Consumer Cyclical",
+        "weight": 1.79,
+        "secType": "STK"
+    },
+    {
+        "name": "Eli Lilly and Company",
+        "symbol": "LLY",
+        "sector": "Healthcare",
+        "weight": 1.62,
+        "secType": "STK"
+    },
+    {
+        "name": "Oracle Corporation",
+        "symbol": "ORCL",
+        "sector": "Technology",
+        "weight": 1.41,
+        "secType": "STK"
+    },
+    {
+        "name": "Exxon Mobil Corporation",
+        "symbol": "XOM",
+        "sector": "Energy",
+        "weight": 1.31,
+        "secType": "STK"
+    },
+    {
+        "name": "Costco Wholesale Corporation",
+        "symbol": "COST",
+        "sector": "Consumer Defensive",
+        "weight": 1.22,
+        "secType": "STK"
+    },
+    {
+        "name": "Johnson & Johnson",
+        "symbol": "JNJ",
+        "sector": "Healthcare",
+        "weight": 1.12,
+        "secType": "STK"
+    },
+    {
+        "name": "The Procter & Gamble Company",
+        "symbol": "PG",
+        "sector": "Consumer Defensive",
+        "weight": 1.11,
+        "secType": "STK"
+    },
+    {
+        "name": "AbbVie Inc.",
+        "symbol": "ABBV",
+        "sector": "Healthcare",
+        "weight": 1.11,
+        "secType": "STK"
+    },
+    {
+        "name": "The Home Depot, Inc.",
+        "symbol": "HD",
+        "sector": "Consumer Cyclical",
+        "weight": 1.09,
+        "secType": "STK"
+    },
+    {
+        "name": "Chevron Corporation",
+        "symbol": "CVX",
+        "sector": "Energy",
+        "weight": 0.99,
+        "secType": "STK"
+    },
+    {
+        "name": "GE Aerospace",
+        "symbol": "GE",
+        "sector": "Industrials",
+        "weight": 0.97,
+        "secType": "STK"
+    },
+    {
+        "name": "UnitedHealth Group Incorporated",
+        "symbol": "UNH",
+        "sector": "Healthcare",
+        "weight": 0.93,
+        "secType": "STK"
+    },
+    {
+        "name": "T-Mobile US, Inc.",
+        "symbol": "TMUS",
+        "sector": "Communication Services",
+        "weight": 0.91,
+        "secType": "STK"
+    },
+    {
+        "name": "AstraZeneca PLC",
+        "symbol": "AZN",
+        "sector": "Healthcare",
+        "weight": 0.89,
+        "secType": "STK"
+    },
+    {
+        "name": "ASML Holding N.V.",
+        "symbol": "ASML",
+        "sector": "Technology",
+        "weight": 0.85,
+        "secType": "STK"
+    },
+    {
+        "name": "Novartis AG",
+        "symbol": "NVS",
+        "sector": "Healthcare",
+        "weight": 0.85,
+        "secType": "STK"
+    },
+    {
+        "name": "Palantir Technologies Inc.",
+        "symbol": "PLTR",
+        "sector": "Technology",
+        "weight": 0.84,
+        "secType": "STK"
+    },
+    {
+        "name": "Merck & Co., Inc.",
+        "symbol": "MRK",
+        "sector": "Healthcare",
+        "weight": 0.82,
+        "secType": "STK"
+    },
+    {
+        "name": "Abbott Laboratories",
+        "symbol": "ABT",
+        "sector": "Healthcare",
+        "weight": 0.81,
+        "secType": "STK"
+    },
+    {
+        "name": "McDonald's Corporation",
+        "symbol": "MCD",
+        "sector": "Consumer Cyclical",
+        "weight": 0.81,
+        "secType": "STK"
+    },
+    {
+        "name": "Linde plc",
+        "symbol": "LIN",
+        "sector": "Basic Materials",
+        "weight": 0.79,
+        "secType": "STK"
+    },
+    {
+        "name": "Cisco Systems, Inc.",
+        "symbol": "CSCO",
+        "sector": "Technology",
+        "weight": 0.75,
+        "secType": "STK"
+    },
+    {
+        "name": "International Business Machines Corporation",
+        "symbol": "IBM",
+        "sector": "Technology",
+        "weight": 0.75,
+        "secType": "STK"
+    },
+    {
+        "name": "Thermo Fisher Scientific Inc.",
+        "symbol": "TMO",
+        "sector": "Healthcare",
+        "weight": 0.75,
+        "secType": "STK"
+    },
+    {
+        "name": "Booking Holdings Inc.",
+        "symbol": "BKNG",
+        "sector": "Consumer Cyclical",
+        "weight": 0.75,
+        "secType": "STK"
+    },
+    {
+        "name": "Salesforce, Inc.",
+        "symbol": "CRM",
+        "sector": "Technology",
+        "weight": 0.73,
+        "secType": "STK"
+    },
+    {
+        "name": "RTX Corporation",
+        "symbol": "RTX",
+        "sector": "Industrials",
+        "weight": 0.73,
+        "secType": "STK"
+    },
+    {
+        "name": "Caterpillar Inc.",
+        "symbol": "CAT",
+        "sector": "Industrials",
+        "weight": 0.73,
+        "secType": "STK"
+    },
+    {
+        "name": "Gilead Sciences, Inc.",
+        "symbol": "GILD",
+        "sector": "Healthcare",
+        "weight": 0.72,
+        "secType": "STK"
+    },
+    {
+        "name": "GE Vernova Inc.",
+        "symbol": "GEV",
+        "sector": "Industrials",
+        "weight": 0.7,
+        "secType": "STK"
+    },
+    {
+        "name": "Amgen Inc.",
+        "symbol": "AMGN",
+        "sector": "Healthcare",
+        "weight": 0.68,
+        "secType": "STK"
+    },
+    {
+        "name": "Lowe's Companies, Inc.",
+        "symbol": "LOW",
+        "sector": "Consumer Cyclical",
+        "weight": 0.67,
+        "secType": "STK"
+    },
+    {
+        "name": "Sanofi",
+        "symbol": "SNY",
+        "sector": "Healthcare",
+        "weight": 0.67,
+        "secType": "STK"
+    },
+    {
+        "name": "Micron Technology, Inc.",
+        "symbol": "MU",
+        "sector": "Technology",
+        "weight": 0.66,
+        "secType": "STK"
+    },
+    {
+        "name": "The TJX Companies, Inc.",
+        "symbol": "TJX",
+        "sector": "Consumer Cyclical",
+        "weight": 0.65,
+        "secType": "STK"
+    },
+    {
+        "name": "Eaton Corporation plc",
+        "symbol": "ETN",
+        "sector": "Industrials",
+        "weight": 0.65,
+        "secType": "STK"
+    },
+    {
+        "name": "Intuit Inc.",
+        "symbol": "INTU",
+        "sector": "Technology",
+        "weight": 0.64,
+        "secType": "STK"
+    },
+    {
+        "name": "NetEase, Inc.",
+        "symbol": "NTES",
+        "sector": "Communication Services",
+        "weight": 0.64,
+        "secType": "STK"
+    },
+    {
+        "name": "Rio Tinto Group",
+        "symbol": "RIO",
+        "sector": "Basic Materials",
+        "weight": 0.64,
+        "secType": "STK"
+    },
+    {
+        "name": "Advanced Micro Devices, Inc.",
+        "symbol": "AMD",
+        "sector": "Technology",
+        "weight": 0.64,
+        "secType": "STK"
+    },
+    {
+        "name": "Medtronic plc",
+        "symbol": "MDT",
+        "sector": "Healthcare",
+        "weight": 0.64,
+        "secType": "STK"
+    },
+    {
+        "name": "AppLovin Corporation",
+        "symbol": "APP",
+        "sector": "Communication Services",
+        "weight": 0.62,
+        "secType": "STK"
+    },
+    {
+        "name": "Honeywell International Inc.",
+        "symbol": "HON",
+        "sector": "Industrials",
+        "weight": 0.62,
+        "secType": "STK"
+    },
+    {
+        "name": "Danaher Corporation",
+        "symbol": "DHR",
+        "sector": "Healthcare",
+        "weight": 0.62,
+        "secType": "STK"
+    },
+    {
+        "name": "NIKE, Inc.",
+        "symbol": "NKE",
+        "sector": "Consumer Cyclical",
+        "weight": 0.62,
+        "secType": "STK"
+    },
+    {
+        "name": "PDD Holdings Inc.",
+        "symbol": "PDD",
+        "sector": "Consumer Cyclical",
+        "weight": 0.62,
+        "secType": "STK"
+    },
+    {
+        "name": "Texas Instruments Incorporated",
+        "symbol": "TXN",
+        "sector": "Technology",
+        "weight": 0.62,
+        "secType": "STK"
+    },
+    {
+        "name": "Prologis, Inc.",
+        "symbol": "PLD",
+        "sector": "Real Estate",
+        "weight": 0.61,
+        "secType": "STK"
+    },
+    {
+        "name": "Royal Caribbean Cruises Ltd.",
+        "symbol": "RCL",
+        "sector": "Consumer Cyclical",
+        "weight": 0.61,
+        "secType": "STK"
+    },
+    {
+        "name": "Accenture plc",
+        "symbol": "ACN",
+        "sector": "Technology",
+        "weight": 0.61,
+        "secType": "STK"
+    },
+    {
+        "name": "QUALCOMM Incorporated",
+        "symbol": "QCOM",
+        "sector": "Technology",
+        "weight": 0.6,
+        "secType": "STK"
+    },
+    {
+        "name": "Mondelez International, Inc.",
+        "symbol": "MDLZ",
+        "sector": "Consumer Defensive",
+        "weight": 0.6,
+        "secType": "STK"
+    },
+    {
+        "name": "ConocoPhillips",
+        "symbol": "COP",
+        "sector": "Energy",
+        "weight": 0.59,
+        "secType": "STK"
+    },
+    {
+        "name": "Intuitive Surgical, Inc.",
+        "symbol": "ISRG",
+        "sector": "Healthcare",
+        "weight": 0.59,
+        "secType": "STK"
+    },
+    {
+        "name": "Boston Scientific Corporation",
+        "symbol": "BSX",
+        "sector": "Healthcare",
+        "weight": 0.59,
+        "secType": "STK"
+    },
+    {
+        "name": "McKesson Corporation",
+        "symbol": "MCK",
+        "sector": "Healthcare",
+        "weight": 0.59,
+        "secType": "STK"
+    },
+    {
+        "name": "Welltower Inc.",
+        "symbol": "WELL",
+        "sector": "Real Estate",
+        "weight": 0.58,
+        "secType": "STK"
+    },
+    {
+        "name": "Starbucks Corporation",
+        "symbol": "SBUX",
+        "sector": "Consumer Cyclical",
+        "weight": 0.58,
+        "secType": "STK"
+    },
+    {
+        "name": "Lam Research Corporation",
+        "symbol": "LRCX",
+        "sector": "Technology",
+        "weight": 0.57,
+        "secType": "STK"
+    },
+    {
+        "name": "Amphenol Corporation",
+        "symbol": "APH",
+        "sector": "Technology",
+        "weight": 0.57,
+        "secType": "STK"
+    },
+    {
+        "name": "Analog Devices, Inc.",
+        "symbol": "ADI",
+        "sector": "Technology",
+        "weight": 0.56,
+        "secType": "STK"
+    },
+    {
+        "name": "Constellation Energy Corporation",
+        "symbol": "CEG",
+        "sector": "Utilities",
+        "weight": 0.56,
+        "secType": "STK"
+    },
+    {
+        "name": "Stryker Corporation",
+        "symbol": "SYK",
+        "sector": "Healthcare",
+        "weight": 0.56,
+        "secType": "STK"
+    },
+    {
+        "name": "Lockheed Martin Corporation",
+        "symbol": "LMT",
+        "sector": "Industrials",
+        "weight": 0.56,
+        "secType": "STK"
+    },
+    {
+        "name": "The Boeing Company",
+        "symbol": "BA",
+        "sector": "Industrials",
+        "weight": 0.56,
+        "secType": "STK"
+    },
+    {
+        "name": "Applied Materials, Inc.",
+        "symbol": "AMAT",
+        "sector": "Technology",
+        "weight": 0.55,
+        "secType": "STK"
+    },
+    {
+        "name": "ServiceNow, Inc.",
+        "symbol": "NOW",
+        "sector": "Technology",
+        "weight": 0.55,
+        "secType": "STK"
+    },
+    {
+        "name": "Arista Networks Inc",
+        "symbol": "ANET",
+        "sector": "Technology",
+        "weight": 0.55,
+        "secType": "STK"
+    },
+    {
+        "name": "Equinix, Inc.",
+        "symbol": "EQIX",
+        "sector": "Real Estate",
+        "weight": 0.54,
+        "secType": "STK"
+    },
+    {
+        "name": "General Dynamics Corporation",
+        "symbol": "GD",
+        "sector": "Industrials",
+        "weight": 0.53,
+        "secType": "STK"
+    },
+    {
+        "name": "GSK plc",
+        "symbol": "GSK",
+        "sector": "Healthcare",
+        "weight": 0.53,
+        "secType": "STK"
+    },
+    {
+        "name": "Parker-Hannifin Corporation",
+        "symbol": "PH",
+        "sector": "Industrials",
+        "weight": 0.53,
+        "secType": "STK"
+    },
+    {
+        "name": "Northrop Grumman Corporation",
+        "symbol": "NOC",
+        "sector": "Industrials",
+        "weight": 0.53,
+        "secType": "STK"
+    },
+    {
+        "name": "Newmont Corporation",
+        "symbol": "NEM",
+        "sector": "Basic Materials",
+        "weight": 0.52,
+        "secType": "STK"
+    },
+    {
+        "name": "Ferrari N.V.",
+        "symbol": "RACE",
+        "sector": "Consumer Cyclical",
+        "weight": 0.52,
+        "secType": "STK"
+    },
+    {
+        "name": "KLA Corporation",
+        "symbol": "KLAC",
+        "sector": "Technology",
+        "weight": 0.51,
+        "secType": "STK"
+    },
+    {
+        "name": "The Sherwin-Williams Company",
+        "symbol": "SHW",
+        "sector": "Basic Materials",
+        "weight": 0.51,
+        "secType": "STK"
+    },
+    {
+        "name": "Automatic Data Processing, Inc.",
+        "symbol": "ADP",
+        "sector": "Technology",
+        "weight": 0.51,
+        "secType": "STK"
+    },
+    {
+        "name": "Sea Limited",
+        "symbol": "SE",
+        "sector": "Consumer Cyclical",
+        "weight": 0.5,
+        "secType": "STK"
+    },
+    {
+        "name": "DoorDash, Inc.",
+        "symbol": "DASH",
+        "sector": "Consumer Cyclical",
+        "weight": 0.49,
+        "secType": "STK"
+    },
+    {
+        "name": "Adobe Inc.",
+        "symbol": "ADBE",
+        "sector": "Technology",
+        "weight": 0.49,
+        "secType": "STK"
+    },
+    {
+        "name": "Ecolab Inc.",
+        "symbol": "ECL",
+        "sector": "Basic Materials",
+        "weight": 0.49,
+        "secType": "STK"
+    },
+    {
+        "name": "Vertex Pharmaceuticals Incorporated",
+        "symbol": "VRTX",
+        "sector": "Healthcare",
+        "weight": 0.47,
+        "secType": "STK"
+    },
+    {
+        "name": "Motorola Solutions, Inc.",
+        "symbol": "MSI",
+        "sector": "Technology",
+        "weight": 0.46,
+        "secType": "STK"
+    },
+    {
+        "name": "O'Reilly Automotive, Inc.",
+        "symbol": "ORLY",
+        "sector": "Consumer Cyclical",
+        "weight": 0.44,
+        "secType": "STK"
+    },
+    {
+        "name": "Roblox Corporation",
+        "symbol": "RBLX",
+        "sector": "Communication Services",
+        "weight": 0.43,
+        "secType": "STK"
+    },
+    {
+        "name": "Synopsys, Inc.",
+        "symbol": "SNPS",
+        "sector": "Technology",
+        "weight": 0.43,
+        "secType": "STK"
+    },
+    {
+        "name": "Airbnb, Inc.",
+        "symbol": "ABNB",
+        "sector": "Consumer Cyclical",
+        "weight": 0.41,
+        "secType": "STK"
+    },
+    {
+        "name": "Cadence Design Systems, Inc.",
+        "symbol": "CDNS",
+        "sector": "Technology",
+        "weight": 0.4,
+        "secType": "STK"
+    },
+    {
+        "name": "Strategy Inc",
+        "symbol": "MSTR",
+        "sector": "Technology",
+        "weight": 0.35,
+        "secType": "STK"
+    },
+    {
+        "name": "GLD ETF",
+        "symbol": "GLD",
+        "sector": "",
+        "weight": 0.0,
+        "secType": "ETF"
+    },
+    {
+        "name": "SPSK ETF",
+        "symbol": "SPSK",
+        "sector": "",
+        "weight": 0.0,
+        "secType": "ETF"
+    }
+]

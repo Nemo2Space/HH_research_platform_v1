@@ -1,0 +1,182 @@
+[
+    {
+        "name": "Equinix, Inc.",
+        "symbol": "EQIX",
+        "weight": 12.58
+    },
+    {
+        "name": "Goodman Group",
+        "symbol": "GMG",
+        "weight": 12.49
+    },
+    {
+        "name": "Prologis, Inc.",
+        "symbol": "PLD",
+        "weight": 12.34
+    },
+    {
+        "name": "AvalonBay Communities, Inc.",
+        "symbol": "AVB",
+        "weight": 10.85
+    },
+    {
+        "name": "Weyerhaeuser Company",
+        "symbol": "WY",
+        "weight": 4.94
+    },
+    {
+        "name": "Mid-America Apartment Communities, Inc.",
+        "symbol": "MAA",
+        "weight": 4.82
+    },
+    {
+        "name": "Equity LifeStyle Properties, Inc.",
+        "symbol": "ELS",
+        "weight": 4.78
+    },
+    {
+        "name": "Camden Property Trust",
+        "symbol": "CPT",
+        "weight": 4.75
+    },
+    {
+        "name": "Equity Residential",
+        "symbol": "EQR",
+        "weight": 4.68
+    },
+    {
+        "name": "CubeSmart",
+        "symbol": "CUBE",
+        "weight": 4.5
+    },
+    {
+        "name": "Rexford Industrial Realty, Inc.",
+        "symbol": "REXR",
+        "weight": 3.97
+    },
+    {
+        "name": "EastGroup Properties, Inc.",
+        "symbol": "EGP",
+        "weight": 3.69
+    },
+    {
+        "name": "First Industrial Realty Trust, Inc.",
+        "symbol": "FR",
+        "weight": 3.07
+    },
+    {
+        "name": "Terreno Realty Corporation",
+        "symbol": "TRNO",
+        "weight": 2.72
+    },
+    {
+        "name": "Charter Hall Group",
+        "symbol": "CHC",
+        "weight": 2.08
+    },
+    {
+        "name": "Rayonier Inc.",
+        "symbol": "RYN",
+        "weight": 1.63
+    },
+    {
+        "name": "PotlatchDeltic Corporation",
+        "symbol": "PCH",
+        "weight": 1.32
+    },
+    {
+        "name": "U.S. Dollar",
+        "symbol": "Other",
+        "weight": 0.88
+    },
+    {
+        "name": "Parkway Life Real Estate Investment Trust",
+        "symbol": "C2PU",
+        "weight": 0.55
+    },
+    {
+        "name": "BWP Trust",
+        "symbol": "BWP",
+        "weight": 0.55
+    },
+    {
+        "name": "Arena REIT",
+        "symbol": "ARF",
+        "weight": 0.46
+    },
+    {
+        "name": "IGB Real Estate Investment Trust",
+        "symbol": "5227",
+        "weight": 0.33
+    },
+    {
+        "name": "SITE Centers Corp.",
+        "symbol": "SITC",
+        "weight": 0.33
+    },
+    {
+        "name": "RL Commercial REIT, Inc.",
+        "symbol": "RCR",
+        "weight": 0.25
+    },
+    {
+        "name": "Axtra Future City Freehold & Leasehold Real Estate Investment Trust",
+        "symbol": "AXTRART",
+        "weight": 0.25
+    },
+    {
+        "name": "Axis Real Estate Investment Trust",
+        "symbol": "5106",
+        "weight": 0.25
+    },
+    {
+        "name": "Dexus Industria REIT",
+        "symbol": "DXI",
+        "weight": 0.17
+    },
+    {
+        "name": "Ziraat Gayrimenkul Yatirim Ortakligi AS",
+        "symbol": "ZRGYO.E",
+        "weight": 0.16
+    },
+    {
+        "name": "MREIT, Inc.",
+        "symbol": "MREIT",
+        "weight": 0.12
+    },
+    {
+        "name": "Torunlar Gayrimenkul Yatirim Ortakligi A.S.",
+        "symbol": "TRGYO.E",
+        "weight": 0.12
+    },
+    {
+        "name": "IMPACT Growth Real Estate Investment Trust",
+        "symbol": "IMPACT",
+        "weight": 0.09
+    },
+    {
+        "name": "Ozak Gayrimenkul Yatirim Ortakligi AS",
+        "symbol": "OZKGY.E",
+        "weight": 0.07
+    },
+    {
+        "name": "Avrupakent Gayrimenkul Yatirim Ortakligi SA",
+        "symbol": "AVPGY.E",
+        "weight": 0.06
+    },
+    {
+        "name": "Servet Gayrimenkul Yatirim Ortakligi AS",
+        "symbol": "SRVGY.E",
+        "weight": 0.06
+    },
+    {
+        "name": "Citicore Energy REIT Corp",
+        "symbol": "CREIT",
+        "weight": 0.06
+    },
+    {
+        "name": "KIZILBUK GAYRIMENKUL YATIRIM ORTAKLIGI A.S.",
+        "symbol": "KZBGY.E",
+        "weight": 0.04
+    }
+]

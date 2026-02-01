@@ -1,0 +1,552 @@
+[
+    {
+        "name": "Xiaomi Corp. Class B",
+        "symbol": "1810",
+        "weight": 1.02
+    },
+    {
+        "name": "Infosys Limited Sponsored ADR",
+        "symbol": "INFY",
+        "weight": 1.66
+    },
+    {
+        "name": "Samsung Electronics Co., Ltd.",
+        "symbol": "5930",
+        "weight": 1.14
+    },
+    {
+        "name": "Air Liquide SA Unsponsored ADR",
+        "symbol": "AIQUY",
+        "weight": 0.79
+    },
+    {
+        "name": "Recruit Holdings Co., Ltd. Unsponsored ADR",
+        "symbol": "RCRUY",
+        "weight": 0.74
+    },
+    {
+        "name": "CSL Limited Sponsored ADR",
+        "symbol": "CSLLY",
+        "weight": 0.7
+    },
+    {
+        "name": "Oreal S.A.Unsponsored ADR",
+        "symbol": "LRLCY",
+        "weight": 0.69
+    },
+    {
+        "name": "Shin-Etsu Chemical Co Ltd Unsponsored ADR",
+        "symbol": "SHECY",
+        "weight": 0.57
+    },
+    {
+        "name": "Safran SA Unsponsored ADR",
+        "symbol": "SAFRY",
+        "weight": 0.57
+    },
+    {
+        "name": "Canadian Pacific Kansas City Limited",
+        "symbol": "CP",
+        "weight": 0.55
+    },
+    {
+        "name": "EssilorLuxottica SA Unsponsored ADR",
+        "symbol": "ESLOY",
+        "weight": 0.52
+    },
+    {
+        "name": "Tokyo Electron Ltd Unsponsored ADR",
+        "symbol": "TOELY",
+        "weight": 0.52
+    },
+    {
+        "name": "FAST RETAILING CO., LTD. Unsponsored ADR",
+        "symbol": "FRCOY",
+        "weight": 0.51
+    },
+    {
+        "name": "Constellation Software Inc.",
+        "symbol": "CSU",
+        "weight": 0.45
+    },
+    {
+        "name": "Compass Group Plc Sponsored ADR",
+        "symbol": "CMPGY",
+        "weight": 0.41
+    },
+    {
+        "name": "Wesfarmers Limited Unsponsored ADR",
+        "symbol": "WFAFY",
+        "weight": 0.39
+    },
+    {
+        "name": "Lonza Group AG Unsponsored ADR",
+        "symbol": "LZAGY",
+        "weight": 0.37
+    },
+    {
+        "name": "Grupo Mexico S.A.B. de C.V. Class B",
+        "symbol": "GMEXICOB",
+        "weight": 0.37
+    },
+    {
+        "name": "Sika AG Unsponsored ADR",
+        "symbol": "SXYAY",
+        "weight": 0.36
+    },
+    {
+        "name": "Infineon Technologies AG Sponsored ADR",
+        "symbol": "IFNNY",
+        "weight": 0.35
+    },
+    {
+        "name": "Waste Connections, Inc.",
+        "symbol": "WCN",
+        "weight": 0.35
+    },
+    {
+        "name": "Reckitt Benckiser Group plc Sponsored ADR",
+        "symbol": "RBGLY",
+        "weight": 0.34
+    },
+    {
+        "name": "Experian PLC Sponsored ADR",
+        "symbol": "EXPGY",
+        "weight": 0.34
+    },
+    {
+        "name": "Wolters Kluwer N.V. Sponsored ADR",
+        "symbol": "WTKWY",
+        "weight": 0.32
+    },
+    {
+        "name": "BeiGene Ltd Sponsored ADR",
+        "symbol": "BGNE",
+        "weight": 0.31
+    },
+    {
+        "name": "Advantest Corp. Sponsored ADR",
+        "symbol": "ATEYY",
+        "weight": 0.31
+    },
+    {
+        "name": "Amadeus IT Group SA Unsponsored ADR",
+        "symbol": "AMADY",
+        "weight": 0.28
+    },
+    {
+        "name": "ANTA Sports Products Ltd. Unsponsored ADR",
+        "symbol": "ANPDY",
+        "weight": 0.25
+    },
+    {
+        "name": "Murata Manufacturing Co Ltd Unsponsored ADR",
+        "symbol": "MRAAY",
+        "weight": 0.25
+    },
+    {
+        "name": "Emirates Telecommunications Group Company PJSC",
+        "symbol": "EAND",
+        "weight": 0.25
+    },
+    {
+        "name": "Woodside Energy Group Ltd Sponsored ADR",
+        "symbol": "WDS",
+        "weight": 0.23
+    },
+    {
+        "name": "Canon Inc.",
+        "symbol": "7751",
+        "weight": 0.23
+    },
+    {
+        "name": "DENSO CORPORATION Unsponsored ADR",
+        "symbol": "DNZOY",
+        "weight": 0.22
+    },
+    {
+        "name": "Emaar Properties (P.J.S.C)",
+        "symbol": "EMAAR",
+        "weight": 0.22
+    },
+    {
+        "name": "Atlas Copco AB Sponsored ADR Class B",
+        "symbol": "ATLCY",
+        "weight": 0.2
+    },
+    {
+        "name": "Dassault Systemes SE Sponsored ADR",
+        "symbol": "DASTY",
+        "weight": 0.2
+    },
+    {
+        "name": "ICON Plc",
+        "symbol": "ICLR",
+        "weight": 0.2
+    },
+    {
+        "name": "Haier Smart Home Co., Ltd. Unsponsored ADR",
+        "symbol": "HSHCY",
+        "weight": 0.19
+    },
+    {
+        "name": "Kone Oyj Unsponsored ADR Class B",
+        "symbol": "KNYJY",
+        "weight": 0.19
+    },
+    {
+        "name": "Fortescue Metals Group Ltd Sponsored ADR",
+        "symbol": "FSUGY",
+        "weight": 0.19
+    },
+    {
+        "name": "Merck KGaA Sponsored ADR",
+        "symbol": "MKKGY",
+        "weight": 0.19
+    },
+    {
+        "name": "Kao Corporation Unsponsored ADR",
+        "symbol": "KAOOY",
+        "weight": 0.18
+    },
+    {
+        "name": "Sandvik AB Sponsored ADR Class B",
+        "symbol": "SDVKY",
+        "weight": 0.18
+    },
+    {
+        "name": "Disco Corporation Unsponsored ADR",
+        "symbol": "DSCSY",
+        "weight": 0.18
+    },
+    {
+        "name": "SHORT POSITIONS",
+        "symbol": "Other",
+        "weight": 0.17
+    },
+    {
+        "name": "Rheinmetall AG Unsponsored ADR",
+        "symbol": "RNMBY",
+        "weight": 0.17
+    },
+    {
+        "name": "Airports of Thailand Public Co Ltd",
+        "symbol": "AOT",
+        "weight": 0.17
+    },
+    {
+        "name": "Thomson Reuters Corporation",
+        "symbol": "TRI",
+        "weight": 0.17
+    },
+    {
+        "name": "Geberit AG Unsponsored ADR",
+        "symbol": "GBERY",
+        "weight": 0.16
+    },
+    {
+        "name": "Renesas Electronics Corporation Unsponsored ADR",
+        "symbol": "RNECY",
+        "weight": 0.16
+    },
+    {
+        "name": "Prysmian S.p.A. Unsponsored ADR",
+        "symbol": "PRYMY",
+        "weight": 0.16
+    },
+    {
+        "name": "Bridgestone Corporation Unsponsored ADR",
+        "symbol": "BRDCY",
+        "weight": 0.16
+    },
+    {
+        "name": "PT Chandra Asri Pacific Tbk",
+        "symbol": "TPIA",
+        "weight": 0.16
+    },
+    {
+        "name": "Siemens Energy AG Unsponsored ADR",
+        "symbol": "SMNEY",
+        "weight": 0.15
+    },
+    {
+        "name": "Check Point Software Technologies Ltd.",
+        "symbol": "CHKP",
+        "weight": 0.15
+    },
+    {
+        "name": "Sandoz Group Ltd Sponsored ADR",
+        "symbol": "SDZNY",
+        "weight": 0.14
+    },
+    {
+        "name": "Nongfu Spring Co., Ltd. Class H",
+        "symbol": "9633",
+        "weight": 0.14
+    },
+    {
+        "name": "CSPC Pharmaceutical Group Limited",
+        "symbol": "1093",
+        "weight": 0.14
+    },
+    {
+        "name": "Shenzhou International Group Holdings Limited Unsponsored ADR",
+        "symbol": "SHZHY",
+        "weight": 0.13
+    },
+    {
+        "name": "Symrise AG Unsponsored ADR",
+        "symbol": "SYIEY",
+        "weight": 0.13
+    },
+    {
+        "name": "Grupo Aeroportuario del Pacifico SAB de CV Sponsored ADR Class B",
+        "symbol": "PAC",
+        "weight": 0.13
+    },
+    {
+        "name": "Ajinomoto Co., Inc. Unsponsored ADR",
+        "symbol": "AJINY",
+        "weight": 0.13
+    },
+    {
+        "name": "Impala Platinum Holdings Limited Sponsored ADR",
+        "symbol": "IMPUY",
+        "weight": 0.12
+    },
+    {
+        "name": "Kyocera Corporation Sponsored ADR",
+        "symbol": "KYOCY",
+        "weight": 0.12
+    },
+    {
+        "name": "Singapore Telecommunications Limited Sponsored ADR",
+        "symbol": "SGAPY",
+        "weight": 0.12
+    },
+    {
+        "name": "Kerry Group Plc Sponsored ADR",
+        "symbol": "KRYAY",
+        "weight": 0.11
+    },
+    {
+        "name": "Nomura Research Institute Ltd Unsponsored ADR",
+        "symbol": "NRILY",
+        "weight": 0.11
+    },
+    {
+        "name": "Kingspan Group Plc Unsponsored ADR",
+        "symbol": "KGSPY",
+        "weight": 0.11
+    },
+    {
+        "name": "Cochlear Limited Unsponsored ADR",
+        "symbol": "CHEOY",
+        "weight": 0.11
+    },
+    {
+        "name": "Adnoc Gas Plc",
+        "symbol": "ADNOCGAS",
+        "weight": 0.11
+    },
+    {
+        "name": "Celltrion, Inc.",
+        "symbol": "68270",
+        "weight": 0.11
+    },
+    {
+        "name": "PTT Exploration & Production Plc",
+        "symbol": "PTTEP",
+        "weight": 0.11
+    },
+    {
+        "name": "Aldar Properties - P J S C",
+        "symbol": "ALDAR",
+        "weight": 0.11
+    },
+    {
+        "name": "BIM Birlesik Magazalar A.S.",
+        "symbol": "BIMAS.E",
+        "weight": 0.11
+    },
+    {
+        "name": "Secom Co., Ltd. Unsponsored ADR",
+        "symbol": "SOMLY",
+        "weight": 0.1
+    },
+    {
+        "name": "Sino Biopharmaceutical Limited",
+        "symbol": "1177",
+        "weight": 0.1
+    },
+    {
+        "name": "Wisetech Global Ltd.",
+        "symbol": "WTC",
+        "weight": 0.1
+    },
+    {
+        "name": "Halma plc",
+        "symbol": "HLMA",
+        "weight": 0.1
+    },
+    {
+        "name": "Beiersdorf AG Unsponsored ADR",
+        "symbol": "BDRFY",
+        "weight": 0.09
+    },
+    {
+        "name": "Chocoladefabriken Lindt & Spruengli AG Partizipsch.",
+        "symbol": "LISP",
+        "weight": 0.09
+    },
+    {
+        "name": "Kia Corporation",
+        "symbol": "270",
+        "weight": 0.09
+    },
+    {
+        "name": "Bangkok Dusit Medical Services Public Co. Ltd.",
+        "symbol": "BDMS",
+        "weight": 0.09
+    },
+    {
+        "name": "Dubai Electricity & Water Authority PJSC",
+        "symbol": "DEWA",
+        "weight": 0.09
+    },
+    {
+        "name": "Shimano Inc Unsponsored ADR",
+        "symbol": "SMNNY",
+        "weight": 0.08
+    },
+    {
+        "name": "Vodacom Group Limited Sponsored ADR",
+        "symbol": "VDMCY",
+        "weight": 0.08
+    },
+    {
+        "name": "Turkiye Petrol Rafinerileri A.S.",
+        "symbol": "TUPRS.E",
+        "weight": 0.08
+    },
+    {
+        "name": "Arca Continental SAB de CV",
+        "symbol": "AC",
+        "weight": 0.08
+    },
+    {
+        "name": "SAMSUNG BIOLOGICS Co., Ltd.",
+        "symbol": "207940",
+        "weight": 0.08
+    },
+    {
+        "name": "JD Health International, Inc.",
+        "symbol": "6618",
+        "weight": 0.08
+    },
+    {
+        "name": "Computershare Limited Sponsored ADR",
+        "symbol": "CMSQY",
+        "weight": 0.07
+    },
+    {
+        "name": "Intertek Group plc Unsponsored ADR",
+        "symbol": "IKTSY",
+        "weight": 0.07
+    },
+    {
+        "name": "PT GoTo Gojek Tokopedia Tbk",
+        "symbol": "GOTO",
+        "weight": 0.07
+    },
+    {
+        "name": "Kawasaki Kisen Kaisha, Ltd.",
+        "symbol": "9107",
+        "weight": 0.07
+    },
+    {
+        "name": "Abu Dhabi Islamic Bank",
+        "symbol": "ADIB",
+        "weight": 0.07
+    },
+    {
+        "name": "PT Sumber Alfaria Trijaya",
+        "symbol": "AMRT",
+        "weight": 0.07
+    },
+    {
+        "name": "Dubai Islamic Bank PJSC",
+        "symbol": "DIB",
+        "weight": 0.07
+    },
+    {
+        "name": "LG Energy Solution Ltd.",
+        "symbol": "373220",
+        "weight": 0.07
+    },
+    {
+        "name": "Associated British Foods plc Sponsored ADR",
+        "symbol": "ASBFY",
+        "weight": 0.06
+    },
+    {
+        "name": "Dai Nippon Printing Co Ltd Sponsored ADR",
+        "symbol": "DNPLY",
+        "weight": 0.06
+    },
+    {
+        "name": "H&M Hennes & Mauritz AB Unsponsored ADR",
+        "symbol": "HNNMY",
+        "weight": 0.06
+    },
+    {
+        "name": "Trend Micro Incorporated Sponsored ADR",
+        "symbol": "TMICY",
+        "weight": 0.06
+    },
+    {
+        "name": "Indutrade AB",
+        "symbol": "INDT",
+        "weight": 0.06
+    },
+    {
+        "name": "SITC International Holdings Co., Ltd.",
+        "symbol": "1308",
+        "weight": 0.05
+    },
+    {
+        "name": "ADNOC Drilling Company PJSC",
+        "symbol": "ADNOCDRILL",
+        "weight": 0.05
+    },
+    {
+        "name": "Bluescope Steel Limited",
+        "symbol": "BSL",
+        "weight": 0.05
+    },
+    {
+        "name": "SAMSUNG C&T CORP",
+        "symbol": "28260",
+        "weight": 0.04
+    },
+    {
+        "name": "Abu Dhabi National Oil Company for Distribution PJSC",
+        "symbol": "ADNOCDIST",
+        "weight": 0.04
+    },
+    {
+        "name": "Bumrungrad Hospital Public Co., Ltd.",
+        "symbol": "BH",
+        "weight": 0.04
+    },
+    {
+        "name": "Sekisui Chemical Co., Ltd.",
+        "symbol": "4204",
+        "weight": 0.03
+    },
+    {
+        "name": "Ecopro BM Co., Ltd.",
+        "symbol": "247540",
+        "weight": 0.03
+    }
+]

@@ -1,0 +1,27 @@
+﻿with open('../dashboard/ai_pm/execution_engine.py', 'r', encoding='utf-8') as f:
+    content = f.read()
+
+# Add logging before contract building and qualifyContracts
+old_code = '''    else:
+        orders = orders_all
+    # Build contracts
+    contract_by_symbol: Dict[str, Contract] = {}'''
+
+new_code = '''    else:
+        orders = orders_all
+    
+    _log.info(f"execute_trade_plan: cash policy passed, orders count={len(orders)}")
+    sys.stdout.flush()
+    
+    # Build contracts
+    _log.info("execute_trade_plan: building contracts...")
+    sys.stdout.flush()
+    contract_by_symbol: Dict[str, Contract] = {}'''
+
+if old_code in content:
+    content = content.replace(old_code, new_code)
+    with open('../dashboard/ai_pm/execution_engine.py', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("✅ Added logging before contract building")
+else:
+    print("❌ Could not find code")

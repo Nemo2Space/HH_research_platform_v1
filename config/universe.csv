@@ -1,0 +1,173 @@
+ticker,name,sector,industry
+AAPL,Apple Inc.,Technology,Consumer Electronics
+MSFT,Microsoft Corporation,Technology,Software
+GOOGL,Alphabet Inc.,Technology,Internet Services
+AMZN,Amazon.com Inc.,Consumer Cyclical,Internet Retail
+NVDA,NVIDIA Corporation,Technology,Semiconductors
+META,Meta Platforms Inc.,Technology,Internet Services
+TSLA,Tesla Inc.,Consumer Cyclical,Auto Manufacturers
+UNH,UnitedHealth Group Inc.,Healthcare,Health Care Plans
+JNJ,Johnson & Johnson,Healthcare,Drug Manufacturers
+V,Visa Inc.,Financial,Credit Services
+XOM,Exxon Mobil Corporation,Energy,Oil & Gas Integrated
+JPM,JPMorgan Chase & Co.,Financial,Banks
+PG,Procter & Gamble Co.,Consumer Defensive,Household Products
+MA,Mastercard Inc.,Financial,Credit Services
+HD,The Home Depot Inc.,Consumer Cyclical,Home Improvement
+CVX,Chevron Corporation,Energy,Oil & Gas Integrated
+MRK,Merck & Co. Inc.,Healthcare,Drug Manufacturers
+ABBV,AbbVie Inc.,Healthcare,Drug Manufacturers
+LLY,Eli Lilly and Company,Healthcare,Drug Manufacturers
+PEP,PepsiCo Inc.,Consumer Defensive,Beverages
+KO,The Coca-Cola Company,Consumer Defensive,Beverages
+COST,Costco Wholesale Corporation,Consumer Defensive,Discount Stores
+AVGO,Broadcom Inc.,Technology,Semiconductors
+TMO,Thermo Fisher Scientific Inc.,Healthcare,Diagnostics & Research
+MCD,McDonald's Corporation,Consumer Cyclical,Restaurants
+WMT,Walmart Inc.,Consumer Defensive,Discount Stores
+CSCO,Cisco Systems Inc.,Technology,Communication Equipment
+ACN,Accenture plc,Technology,IT Services
+ABT,Abbott Laboratories,Healthcare,Medical Devices
+DHR,Danaher Corporation,Healthcare,Diagnostics & Research
+NKE,NIKE Inc.,Consumer Cyclical,Footwear & Accessories
+ORCL,Oracle Corporation,Technology,Software
+TXN,Texas Instruments Inc.,Technology,Semiconductors
+AMD,Advanced Micro Devices Inc.,Technology,Semiconductors
+PM,Philip Morris International,Consumer Defensive,Tobacco
+NEE,NextEra Energy Inc.,Utilities,Utilities
+UNP,Union Pacific Corporation,Industrials,Railroads
+UPS,United Parcel Service Inc.,Industrials,Integrated Freight
+RTX,Raytheon Technologies,Industrials,Aerospace & Defense
+LOW,Lowe's Companies Inc.,Consumer Cyclical,Home Improvement
+SPGI,S&P Global Inc.,Financial,Financial Data & Stock Exchanges
+INTU,Intuit Inc.,Technology,Software
+HON,Honeywell International Inc.,Industrials,Conglomerates
+BA,The Boeing Company,Industrials,Aerospace & Defense
+CAT,Caterpillar Inc.,Industrials,Farm & Heavy Construction
+GE,General Electric Company,Industrials,Conglomerates
+AMGN,Amgen Inc.,Healthcare,Drug Manufacturers
+BKNG,Booking Holdings Inc.,Consumer Cyclical,Travel Services
+GILD,Gilead Sciences Inc.,Healthcare,Drug Manufacturers
+MDLZ,Mondelez International,Consumer Defensive,Confectioners
+ADP,Automatic Data Processing,Industrials,Staffing & Employment
+TJX,The TJX Companies Inc.,Consumer Cyclical,Apparel Retail
+MMC,Marsh & McLennan Companies,Financial,Insurance Brokers
+PLD,Prologis Inc.,Real Estate,REIT - Industrial
+CB,Chubb Limited,Financial,Insurance
+BDX,Becton Dickinson and Co.,Healthcare,Medical Instruments
+CI,The Cigna Group,Healthcare,Health Care Plans
+MO,Altria Group Inc.,Consumer Defensive,Tobacco
+DUK,Duke Energy Corporation,Utilities,Utilities
+SO,The Southern Company,Utilities,Utilities
+ZTS,Zoetis Inc.,Healthcare,Drug Manufacturers
+CME,CME Group Inc.,Financial,Financial Data & Stock Exchanges
+CL,Colgate-Palmolive Company,Consumer Defensive,Household Products
+USB,U.S. Bancorp,Financial,Banks
+ICE,Intercontinental Exchange,Financial,Financial Data & Stock Exchanges
+BMY,Bristol-Myers Squibb Co.,Healthcare,Drug Manufacturers
+REGN,Regeneron Pharmaceuticals,Healthcare,Biotechnology
+PNC,The PNC Financial Services,Financial,Banks
+EQIX,Equinix Inc.,Real Estate,REIT - Specialty
+TGT,Target Corporation,Consumer Defensive,Discount Stores
+EOG,EOG Resources Inc.,Energy,Oil & Gas E&P
+SHW,The Sherwin-Williams Co.,Basic Materials,Specialty Chemicals
+APD,Air Products and Chemicals,Basic Materials,Specialty Chemicals
+MU,Micron Technology Inc.,Technology,Semiconductors
+ADI,Analog Devices Inc.,Technology,Semiconductors
+MRVL,Marvell Technology Inc.,Technology,Semiconductors
+SNPS,Synopsys Inc.,Technology,Software
+CDNS,Cadence Design Systems,Technology,Software
+PANW,Palo Alto Networks Inc.,Technology,Software
+CRWD,CrowdStrike Holdings Inc.,Technology,Software
+ADBE,Adobe Inc.,Technology,Software
+NFLX,Netflix Inc.,Communication Services,Entertainment
+DIS,The Walt Disney Company,Communication Services,Entertainment
+CMCSA,Comcast Corporation,Communication Services,Entertainment
+T,AT&T Inc.,Communication Services,Telecom Services
+VZ,Verizon Communications,Communication Services,Telecom Services
+TMUS,T-Mobile US Inc.,Communication Services,Telecom Services
+COIN,Coinbase Global Inc.,Financial,Capital Markets
+PYPL,PayPal Holdings Inc.,Financial,Credit Services
+SHOP,Shopify Inc.,Technology,Software
+SLB,SLB N.V.,Energy,Oil & Gas Equipment & Services
+DELL,Dell Technologies Inc.,Technology,Computer Hardware
+BABA,Alibaba Group Holding Limited,Consumer Cyclical,Internet Retail
+DECK,Deckers Outdoor Corporation,Consumer Cyclical,Footwear & Accessories
+ALNY,"Alnylam Pharmaceuticals, Inc.",Healthcare,Biotechnology
+CMG,"Chipotle Mexican Grill, Inc.",Consumer Cyclical,Restaurants
+ETN,Eaton Corporation plc,Industrials,Specialty Industrial Machinery
+IBM,International Business Machines Corporation,Technology,Information Technology Services
+PCAR,PACCAR Inc,Industrials,Farm & Heavy Construction Machinery
+PPG,"PPG Industries, Inc.",Basic Materials,Specialty Chemicals
+ECL,Ecolab Inc.,Basic Materials,Specialty Chemicals
+FTNT,"Fortinet, Inc.",Technology,Software - Infrastructure
+ROST,"Ross Stores, Inc.",Consumer Cyclical,Apparel Retail
+AZN,AstraZeneca PLC,Healthcare,Drug Manufacturers - General
+ROP,"Roper Technologies, Inc.",Technology,Software - Application
+ORLY,"O'Reilly Automotive, Inc.",Consumer Cyclical,Auto Parts
+PLTR,Palantir Technologies Inc.,Technology,Software - Infrastructure
+TT,Trane Technologies plc,Industrials,Building Products & Equipment
+DXCM,"DexCom, Inc.",Healthcare,Medical Devices
+TTD,"The Trade Desk, Inc.",Communication Services,Advertising Agencies
+INFY,Infosys Limited,Technology,Information Technology Services
+ALC,Alcon Inc.,Healthcare,Medical Instruments & Supplies
+ARGX,argenx SE,Healthcare,Biotechnology
+MCHP,Microchip Technology Incorporated,Technology,Semiconductors
+VMC,Vulcan Materials Company,Basic Materials,Building Materials
+SNY,Sanofi,Healthcare,Drug Manufacturers - General
+LIN,Linde plc,Basic Materials,Specialty Chemicals
+ASML,ASML Holding N.V.,Technology,Semiconductor Equipment & Materials
+DE,Deere & Company,Industrials,Farm & Heavy Construction Machinery
+GOOG,Alphabet Inc.,Communication Services,Internet Content & Information
+SOLS,"Solstice Advanced Materials, Inc.",Basic Materials,Specialty Chemicals
+BSX,Boston Scientific Corporation,Healthcare,Medical Devices
+SAP,SAP SE,Technology,Software - Application
+SPSK,SP Funds Dow Jones Global Sukuk ETF,Unknown,Unknown
+QCOM,QUALCOMM Incorporated,Technology,Semiconductors
+COP,ConocoPhillips,Energy,Oil & Gas E&P
+SE,Sea Limited,Consumer Cyclical,Internet Retail
+SBUX,Starbucks Corporation,Consumer Cyclical,Restaurants
+ROIV,Roivant Sciences Ltd.,Healthcare,Biotechnology
+VST,Vistra Corp.,Utilities,Utilities - Independent Power Producers
+KMB,Kimberly-Clark Corporation,Consumer Defensive,Household & Personal Products
+CTVA,"Corteva, Inc.",Basic Materials,Agricultural Inputs
+ANET,"Arista Networks, Inc.",Technology,Computer Hardware
+PH,Parker-Hannifin Corporation,Industrials,Specialty Industrial Machinery
+NVO,Novo Nordisk A/S,Healthcare,Drug Manufacturers - General
+ARM,Arm Holdings plc,Technology,Semiconductors
+APP,AppLovin Corporation,Communication Services,Advertising Agencies
+NVS,Novartis AG,Healthcare,Drug Manufacturers - General
+PFE,Pfizer Inc.,Healthcare,Drug Manufacturers - General
+PDD,PDD Holdings Inc.,Consumer Cyclical,Internet Retail
+GRMN,Garmin Ltd.,Technology,Scientific & Technical Instruments
+XYL,Xylem Inc.,Industrials,Specialty Industrial Machinery
+NSC,Norfolk Southern Corporation,Industrials,Railroads
+IFNNY,Infineon Technologies AG,Technology,Semiconductors
+COR,"Cencora, Inc.",Healthcare,Medical Distribution
+HLN,Haleon plc,Healthcare,Drug Manufacturers - Specialty & Generic
+MLM,"Martin Marietta Materials, Inc.",Basic Materials,Building Materials
+TSM,Taiwan Semiconductor Manufacturing Company Limited,Technology,Semiconductors
+NXPI,NXP Semiconductors N.V.,Technology,Semiconductors
+SW,Smurfit Westrock Plc,Consumer Cyclical,Packaging & Containers
+VRTX,Vertex Pharmaceuticals Incorporated,Healthcare,Biotechnology
+APH,Amphenol Corporation,Technology,Electronic Components
+MDT,Medtronic plc,Healthcare,Medical Devices
+XIACY,Xiaomi Corporation,Technology,Consumer Electronics
+FERG,Ferguson Enterprises Inc.,Industrials,Industrial Distribution
+NBIX,"Neurocrine Biosciences, Inc.",Healthcare,Drug Manufacturers - Specialty & Generic
+MCK,McKesson Corporation,Healthcare,Medical Distribution
+TER,"Teradyne, Inc.",Technology,Semiconductor Equipment & Materials
+FCX,Freeport-McMoRan Inc.,Basic Materials,Copper
+BYDDY,BYD Company Limited,Consumer Cyclical,Auto Manufacturers
+Q,"Qnity Electronics, Inc.",Technology,Semiconductor Equipment & Materials
+SMCI,"Super Micro Computer, Inc.",Technology,Computer Hardware
+TLT,iShares 20+ Year Treasury Bond ETF,Unknown,Unknown
+ZROZ,PIMCO 25+ Year Zero Coupon U.S. Treasury Index Exchange-Traded Fund,Unknown,Unknown
+GLD,SPDR Gold Shares,Unknown,Unknown
+VRT,"Vertiv Holdings, LLC",Industrials,Electrical Equipment & Parts
+SNOW,Snowflake Inc.,Technology,Software - Application
+DDOG,"Datadog, Inc.",Technology,Software - Application
+SBGSY,Schneider Electric SE,Industrials,Specialty Industrial Machinery
+CEG,Constellation Energy Corporatio,Utilities,Utilities - Independent Power Producers
+PATH,"UiPath, Inc.",Technology,Software - Infrastructure
+NET,"Cloudflare, Inc.",Technology,Software - Infrastructure
