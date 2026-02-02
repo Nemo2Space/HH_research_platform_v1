@@ -612,34 +612,23 @@ def _get_options_flow_context(ticker: str, display_price: float = 0) -> str:
         # Fetch LIVE data if DB is stale or empty
         if use_live:
             try:
-                stock = yf.Ticker(ticker)
-                info = stock.info
+                from src.analytics.yf_subprocess import get_stock_info, get_options_chain
+                info = get_stock_info(ticker) or {}
                 stock_price = info.get('currentPrice') or info.get('regularMarketPrice', 0)
 
-                # Get options expirations
-                expirations = stock.options
-                if not expirations:
+                # Get options via subprocess (safe from Streamlit freeze)
+                chain_result = get_options_chain(ticker, max_expiries=4)
+                if chain_result is None:
                     return _format_stale_options_context(df, "No options data available")
 
-                # Get near-term options (up to 4 expiries)
-                all_calls = []
-                all_puts = []
-                expiries_used = []
-
-                for expiry in expirations[:4]:
-                    try:
-                        opt_chain = stock.option_chain(expiry)
-                        all_calls.append(opt_chain.calls)
-                        all_puts.append(opt_chain.puts)
-                        expiries_used.append(expiry)
-                    except:
-                        continue
-
-                if not all_calls or not all_puts:
+                calls_df, puts_df, chain_price = chain_result
+                if calls_df is None or puts_df is None or calls_df.empty or puts_df.empty:
                     return _format_stale_options_context(df, "Could not fetch options data")
 
-                calls_df = pd.concat(all_calls, ignore_index=True)
-                puts_df = pd.concat(all_puts, ignore_index=True)
+                if not stock_price and chain_price:
+                    stock_price = chain_price
+
+                expiries_used = sorted(calls_df['expiry'].unique().tolist()) if 'expiry' in calls_df.columns else ["aggregated"]
 
                 # Calculate metrics
                 call_vol = calls_df['volume'].sum() if 'volume' in calls_df else 0
@@ -656,13 +645,20 @@ def _get_options_flow_context(ticker: str, display_price: float = 0) -> str:
                 max_pain_expiry = "N/A"
 
                 if nearest_expiry:
-                    # Get options for just the nearest expiry
                     try:
-                        nearest_chain = stock.option_chain(nearest_expiry)
-                        max_pain = _calculate_max_pain_live(nearest_chain.calls, nearest_chain.puts)
-                        max_pain_expiry = nearest_expiry
+                        if 'expiry' in calls_df.columns:
+                            nearest_calls = calls_df[calls_df['expiry'] == nearest_expiry]
+                            nearest_puts = puts_df[puts_df['expiry'] == nearest_expiry]
+                            if not nearest_calls.empty and not nearest_puts.empty:
+                                max_pain = _calculate_max_pain_live(nearest_calls, nearest_puts)
+                                max_pain_expiry = nearest_expiry
+                            else:
+                                max_pain = _calculate_max_pain_live(calls_df, puts_df)
+                                max_pain_expiry = f"aggregated ({len(expiries_used)} expiries)"
+                        else:
+                            max_pain = _calculate_max_pain_live(calls_df, puts_df)
+                            max_pain_expiry = f"aggregated ({len(expiries_used)} expiries)"
                     except:
-                        # Fallback to aggregated if single expiry fails
                         max_pain = _calculate_max_pain_live(calls_df, puts_df)
                         max_pain_expiry = f"aggregated ({len(expiries_used)} expiries)"
 

@@ -108,6 +108,15 @@ st.set_page_config(
     layout="wide"
 )
 
+# Clear stale ticker selection on fresh app load (prevents auto-running AAPL analysis)
+if '_app_initialized' not in st.session_state:
+    st.session_state._app_initialized = True
+    for key in ['selected_ticker', '_ticker_selected_this_session', 'deep_dive_ticker']:
+        if key in st.session_state:
+            del st.session_state[key]
+
+# Start alert scheduler
+
 # Start alert scheduler
 try:
     from src.alerts.scheduler import start_scheduler

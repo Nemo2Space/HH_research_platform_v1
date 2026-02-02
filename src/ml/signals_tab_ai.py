@@ -71,15 +71,18 @@ def _render_ai_analysis(signal):
             st.rerun()
         return
 
-    # Build scores from signal
+    # Build scores from signal - pass ALL 9 features with domain-correct defaults
     scores = {
         'ticker': signal.ticker,
-        'sentiment_score': getattr(signal, 'sentiment_score', 50) or 50,
-        'fundamental_score': getattr(signal, 'fundamental_score', 50) or 50,
-        'technical_score': getattr(signal, 'technical_score', 50) or 50,
-        'options_flow_score': getattr(signal, 'options_score', 50) or 50,
-        'short_squeeze_score': getattr(signal, 'short_squeeze_score', 50) or 50,
+        'sentiment_score': getattr(signal, 'sentiment_score', None) or 50,
+        'fundamental_score': getattr(signal, 'fundamental_score', None) or 50,
+        'technical_score': getattr(signal, 'technical_score', None) or 50,
+        'options_flow_score': getattr(signal, 'options_score', None) or 50,
+        'short_squeeze_score': getattr(signal, 'short_squeeze_score', None) or 50,
         'total_score': signal.today_score or 50,
+        'gap_score': getattr(signal, 'gap_score', None) or 50,
+        'article_count': getattr(signal, 'article_count', None) or 0,
+        'target_upside_pct': getattr(signal, 'target_upside_pct', None) or 0,
     }
 
     # Get days_to_earnings from signal (only if upcoming, not past)
@@ -218,12 +221,15 @@ def get_ai_probabilities_batch(signal_list) -> dict:
         try:
             scores = {
                 'ticker': signal.ticker,
-                'sentiment_score': getattr(signal, 'sentiment_score', 50) or 50,
-                'fundamental_score': getattr(signal, 'fundamental_score', 50) or 50,
-                'technical_score': getattr(signal, 'technical_score', 50) or 50,
-                'options_flow_score': getattr(signal, 'options_score', 50) or 50,
-                'short_squeeze_score': getattr(signal, 'short_squeeze_score', 50) or 50,
+                'sentiment_score': getattr(signal, 'sentiment_score', None) or 50,
+                'fundamental_score': getattr(signal, 'fundamental_score', None) or 50,
+                'technical_score': getattr(signal, 'technical_score', None) or 50,
+                'options_flow_score': getattr(signal, 'options_score', None) or 50,
+                'short_squeeze_score': getattr(signal, 'short_squeeze_score', None) or 50,
                 'total_score': signal.today_score or 50,
+                'gap_score': getattr(signal, 'gap_score', None) or 50,
+                'article_count': getattr(signal, 'article_count', None) or 0,
+                'target_upside_pct': getattr(signal, 'target_upside_pct', None) or 0,
             }
 
             # Get ML prediction only (fast)

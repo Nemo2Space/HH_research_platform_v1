@@ -234,10 +234,9 @@ def _render_deep_dive(signal: UnifiedSignal):
         days_since_earnings = None
 
         try:
-            import yfinance as yf
+            from src.analytics.yf_subprocess import get_earnings_dates
             from datetime import date
-            stock = yf.Ticker(signal.ticker)
-            ed = stock.earnings_dates
+            ed = get_earnings_dates(signal.ticker)
 
             if ed is not None and not ed.empty:
                 today = date.today()
@@ -504,11 +503,10 @@ def _load_additional_data(ticker: str) -> dict:
 
             # If post-earnings, get actual results
             if ei and ei.is_post_earnings:
-                import yfinance as yf
-                stock = yf.Ticker(ticker)
+                from src.analytics.yf_subprocess import get_earnings_history
 
                 try:
-                    hist = stock.earnings_history
+                    hist = get_earnings_history(ticker)
                     if hist is not None and not hist.empty:
                         latest = hist.iloc[0]
                         data['earnings_actual'] = {
@@ -762,12 +760,11 @@ def _render_price_targets(signal: UnifiedSignal, additional_data: dict):
 def _render_chart(ticker: str, additional_data: dict):
     """Render Google Finance-style price chart with period selectors and key stats."""
     try:
-        import yfinance as yf
+        from src.analytics.yf_subprocess import get_stock_info, get_stock_history
         import plotly.graph_objects as go
         from datetime import datetime, timedelta
 
-        stock = yf.Ticker(ticker)
-        info = stock.info
+        info = get_stock_info(ticker) or {}
 
         # Period selector
         period_options = {
@@ -793,11 +790,11 @@ def _render_chart(ticker: str, additional_data: dict):
                     selected_period = period
                     st.rerun()
 
-        # Get data for selected period
+        # Get data for selected period via subprocess
         period_code, interval = period_options[selected_period]
-        data = stock.history(period=period_code, interval=interval)
+        data = get_stock_history(ticker, period=period_code, interval=interval, timeout=15)
 
-        if data.empty:
+        if data is None or data.empty:
             st.caption("Chart unavailable")
             return
 

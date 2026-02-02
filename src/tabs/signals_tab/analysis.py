@@ -214,7 +214,7 @@ def _process_next(tickers: list, skip_if_analyzed_today: bool = True, force_fres
         dividend = None
 
         try:
-            scorer = UniverseScorer()
+            scorer = UniverseScorer(skip_ibkr=True)
             scores_list, _ = scorer.score_and_save_universe(tickers=[next_ticker], max_workers=1)
 
             # FIX: scores_list is a List[UniverseScores], not a dict!
@@ -556,41 +556,84 @@ def _process_next(tickers: list, skip_if_analyzed_today: bool = True, force_fres
             logger.warning(f"{next_ticker}: screener_scores update error - {e}")
 
         # =====================================================================
-        # STEP 6: Update Earnings Calendar from yfinance
+        # STEP 6: Update Earnings Calendar from yfinance (with cache check)
         # =====================================================================
         try:
-            import yfinance as yf
-            stock = yf.Ticker(next_ticker)
-            ed = stock.earnings_dates
+            # Skip yfinance call if we already have a recent earnings date in DB
+            # Skip yfinance call if we already have a recent earnings date in DB
+            skip_earnings_fetch = False
+            if not force_fresh_news:
+                try:
+                    with get_connection() as conn:
+                        with conn.cursor() as cur:
+                            cur.execute("""
+                                                SELECT earnings_date, updated_at FROM earnings_calendar
+                                                WHERE ticker = %s
+                                                  AND earnings_date >= CURRENT_DATE
+                                                  AND updated_at >= NOW() - INTERVAL '3 days'
+                                                LIMIT 1
+                                            """, (next_ticker,))
+                            row = cur.fetchone()
+                            if row:
+                                skip_earnings_fetch = True
+                                logger.debug(
+                                    f"{next_ticker}: Earnings calendar fresh (next: {row[0]}), skipping yfinance")
+                except Exception:
+                    pass  # If check fails (e.g. no updated_at column), just fetch normally
 
-            if ed is not None and not ed.empty:
-                # Get the next upcoming earnings date
-                for idx in ed.index:
-                    earnings_dt = idx.date() if hasattr(idx, 'date') else pd.to_datetime(idx).date()
-                    if earnings_dt >= today:
-                        # Found next earnings date - save to DB
-                        with get_connection() as conn:
-                            with conn.cursor() as cur:
-                                # Try with updated_at, fall back to simpler insert
-                                try:
-                                    cur.execute("""
-                                        INSERT INTO earnings_calendar (ticker, earnings_date, updated_at)
-                                        VALUES (%s, %s, NOW())
-                                        ON CONFLICT (ticker) DO UPDATE SET
-                                            earnings_date = EXCLUDED.earnings_date,
-                                            updated_at = NOW()
-                                    """, (next_ticker, earnings_dt))
-                                except Exception:
-                                    # Table might not have updated_at column
-                                    cur.execute("""
-                                        INSERT INTO earnings_calendar (ticker, earnings_date)
-                                        VALUES (%s, %s)
-                                        ON CONFLICT (ticker) DO UPDATE SET
-                                            earnings_date = EXCLUDED.earnings_date
-                                    """, (next_ticker, earnings_dt))
-                            conn.commit()
-                        logger.debug(f"{next_ticker}: Updated earnings_calendar -> {earnings_dt}")
-                        break
+            if not skip_earnings_fetch:
+                import subprocess, sys, json as _json
+                try:
+                    _ed_cmd = [sys.executable, "-c", f"""
+                import json, yfinance as yf
+                try:
+                    stock = yf.Ticker("{next_ticker}")
+                    ed = stock.earnings_dates
+                    if ed is not None and not ed.empty:
+                        dates = [str(idx.date() if hasattr(idx, 'date') else idx)[:10] for idx in ed.index]
+                        print(json.dumps({{"ok": True, "dates": dates}}))
+                    else:
+                        print(json.dumps({{"ok": True, "dates": []}}))
+                except Exception as e:
+                    print(json.dumps({{"ok": False, "error": str(e)}}))
+                """]
+                    _ed_result = subprocess.run(_ed_cmd, capture_output=True, text=True, timeout=5, check=False)
+                    _ed_payload = _json.loads(_ed_result.stdout.strip()) if _ed_result.stdout.strip() else {"ok": False}
+                except (subprocess.TimeoutExpired, Exception):
+                    _ed_payload = {"ok": False, "error": "timeout"}
+                    logger.debug(f"{next_ticker}: Earnings fetch timed out after 5s")
+
+                ed = None
+                if _ed_payload.get("ok") and _ed_payload.get("dates"):
+                    import pandas as _pd
+                    ed = _pd.DataFrame(index=[_pd.Timestamp(d) for d in _ed_payload["dates"]])
+
+                if ed is not None and not ed.empty:
+                    # Get the next upcoming earnings date
+                    for idx in ed.index:
+                        earnings_dt = idx.date() if hasattr(idx, 'date') else pd.to_datetime(idx).date()
+                        if earnings_dt >= today:
+                            # Found next earnings date - save to DB
+                            with get_connection() as conn:
+                                with conn.cursor() as cur:
+                                    try:
+                                        cur.execute("""
+                                                INSERT INTO earnings_calendar (ticker, earnings_date, updated_at)
+                                                VALUES (%s, %s, NOW())
+                                                ON CONFLICT (ticker) DO UPDATE SET
+                                                    earnings_date = EXCLUDED.earnings_date,
+                                                    updated_at = NOW()
+                                            """, (next_ticker, earnings_dt))
+                                    except Exception:
+                                        cur.execute("""
+                                                INSERT INTO earnings_calendar (ticker, earnings_date)
+                                                VALUES (%s, %s)
+                                                ON CONFLICT (ticker) DO UPDATE SET
+                                                    earnings_date = EXCLUDED.earnings_date
+                                            """, (next_ticker, earnings_dt))
+                                conn.commit()
+                            logger.debug(f"{next_ticker}: Updated earnings_calendar -> {earnings_dt}")
+                            break
         except Exception as e:
             logger.debug(f"{next_ticker}: Could not update earnings calendar: {e}")
 
@@ -664,8 +707,6 @@ def _process_next(tickers: list, skip_if_analyzed_today: bool = True, force_fres
 def _check_earnings_status(ticker: str) -> str:
     """Check if ticker is near earnings. Returns 'pre', 'post', or 'none'."""
     try:
-        import yfinance as yf
-
         engine = get_engine()
 
         # Check database for earnings date
@@ -686,17 +727,17 @@ def _check_earnings_status(ticker: str) -> str:
             elif days <= 5:
                 return 'pre'
 
-        # Fallback to yfinance
-        stock = yf.Ticker(ticker)
-        try:
-            hist = stock.earnings_history
-            if hist is not None and not hist.empty:
+        # Fallback to yfinance via subprocess (safe from Streamlit freeze)
+        from src.analytics.yf_subprocess import get_earnings_history
+        hist = get_earnings_history(ticker)
+        if hist is not None and not hist.empty:
+            try:
                 latest_date = pd.to_datetime(hist.index[0]).date()
                 days = (latest_date - date.today()).days
                 if days >= -5 and days <= 0:
                     return 'post'
-        except:
-            pass
+            except Exception:
+                pass
 
     except Exception as e:
         logger.debug(f"Earnings status check error for {ticker}: {e}")
@@ -705,8 +746,8 @@ def _check_earnings_status(ticker: str) -> str:
 
 
 def _run_earnings_aware_analysis(ticker: str, earnings_status: str) -> Dict:
-    """Run analysis with earnings context."""
-    import yfinance as yf
+    """Run analysis with earnings context. Uses subprocess for all yfinance calls."""
+    from src.analytics.yf_subprocess import get_stock_info, get_earnings_history, get_stock_history
 
     result = {
         'ticker': ticker,
@@ -716,8 +757,7 @@ def _run_earnings_aware_analysis(ticker: str, earnings_status: str) -> Dict:
     }
 
     try:
-        stock = yf.Ticker(ticker)
-        info = stock.info
+        info = get_stock_info(ticker) or {}
         company_name = info.get('shortName', info.get('longName', ticker))
 
         # Build earnings-specific search queries
@@ -774,7 +814,7 @@ def _run_earnings_aware_analysis(ticker: str, earnings_status: str) -> Dict:
         # Get earnings result if post-earnings
         if earnings_status == 'post':
             try:
-                hist = stock.earnings_history
+                hist = get_earnings_history(ticker)
                 if hist is not None and not hist.empty:
                     latest = hist.iloc[0]
                     eps_actual = latest.get('epsActual')
@@ -784,10 +824,10 @@ def _run_earnings_aware_analysis(ticker: str, earnings_status: str) -> Dict:
                     if eps_actual and eps_est and eps_est != 0:
                         surprise_pct = ((eps_actual - eps_est) / abs(eps_est)) * 100
 
-                    # Get price reaction
-                    price_hist = stock.history(period="5d")
+                    # Get price reaction via subprocess
+                    price_hist = get_stock_history(ticker, period="5d")
                     reaction_pct = 0
-                    if len(price_hist) >= 2:
+                    if price_hist is not None and len(price_hist) >= 2:
                         reaction_pct = ((price_hist['Close'].iloc[-1] - price_hist['Close'].iloc[-2]) /
                                         price_hist['Close'].iloc[-2]) * 100
 
@@ -872,7 +912,7 @@ def _run_single_analysis(ticker: str):
             dividend_score = None
 
             try:
-                scorer = UniverseScorer()
+                scorer = UniverseScorer(skip_ibkr=True)
                 scores_list, _ = scorer.score_and_save_universe(tickers=[ticker], max_workers=1)
 
                 # FIX: scores_list is a List[UniverseScores], not a dict!
@@ -1248,9 +1288,8 @@ def _run_single_analysis(ticker: str):
             status_container.info(f"📅 Step 6/8: Updating earnings calendar...")
 
             try:
-                import yfinance as yf
-                stock = yf.Ticker(ticker)
-                ed = stock.earnings_dates
+                from src.analytics.yf_subprocess import get_earnings_dates
+                ed = get_earnings_dates(ticker)
 
                 if ed is not None and not ed.empty:
                     # Get the next upcoming earnings date

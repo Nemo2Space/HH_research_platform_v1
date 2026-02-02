@@ -306,6 +306,13 @@ class AlertScheduler:
         self.add_bond_check(hour=15, minute=0)
         self.add_regime_check(interval_minutes=120)
 
+        # ML auto-maintenance: daily return backfill + weekly model retrain
+        try:
+            from src.ml.auto_maintenance import register_ml_jobs
+            register_ml_jobs(self)
+        except Exception as e:
+            logger.warning(f"Could not register ML maintenance jobs: {e}")
+
         logger.info("Default schedule configured")
 
 

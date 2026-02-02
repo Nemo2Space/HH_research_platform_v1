@@ -1473,7 +1473,7 @@ def _quick_analyze_ticker(ticker: str, add_permanent: bool = False, force_refres
         squeeze_score = None
         try:
             from src.analytics.universe_scorer import UniverseScorer
-            scorer = UniverseScorer()
+            scorer = UniverseScorer(skip_ibkr=True)
             scores_list, _ = scorer.score_and_save_universe(tickers=[ticker], max_workers=1)
             if scores_list:
                 for score_obj in scores_list:
@@ -4241,7 +4241,7 @@ def _process_next(tickers: list, skip_if_analyzed_today: bool = True, force_fres
 
         try:
             from src.analytics.universe_scorer import UniverseScorer
-            scorer = UniverseScorer()
+            scorer = UniverseScorer(skip_ibkr=True)
             scores_list, _ = scorer.score_and_save_universe(tickers=[next_ticker], max_workers=1)
 
             # FIX: scores_list is a List[UniverseScores], not a dict!
@@ -8516,7 +8516,7 @@ def _run_single_analysis(ticker: str):
 
             try:
                 from src.analytics.universe_scorer import UniverseScorer
-                scorer = UniverseScorer()
+                scorer = UniverseScorer(skip_ibkr=True)
                 scores_list, _ = scorer.score_and_save_universe(tickers=[ticker], max_workers=1)
 
                 # FIX: scores_list is a List[UniverseScores], not a dict!

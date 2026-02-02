@@ -585,6 +585,31 @@ Return ONLY a JSON object:
         articles = deduplicate_articles(articles)
         dedup_count = len(articles)
 
+        # Stage 1b: Pre-filter obviously irrelevant articles (before expensive LLM call)
+        if len(articles) > 25:
+            pre_filter_count = len(articles)
+            ticker_upper = ticker.upper()
+            ticker_lower = ticker.lower()
+
+            def _likely_relevant(article):
+                """Quick keyword check - keep if ticker appears in title or description text."""
+                title = (article.get('title') or article.get('headline') or '').lower()
+                desc = (article.get('description') or '')[:200].lower()
+                text = title + ' ' + desc
+                # Keep if ticker symbol mentioned in actual content
+                if ticker_lower in text:
+                    return True
+                # Keep articles from high-credibility sources (they're usually relevant)
+                if article.get('credibility_score', 0) >= 8:
+                    return True
+                return False
+
+            articles = [a for a in articles if _likely_relevant(a)]
+            removed = pre_filter_count - len(articles)
+            if removed > 0:
+                logger.info(
+                    f"{ticker}: Pre-filtered {removed} irrelevant articles ({pre_filter_count} → {len(articles)})")
+
         # Stage 2: Filter model scoring and ranking
         if self.filter_available and len(articles) > 10:
             articles = self.filter_articles(ticker, articles)

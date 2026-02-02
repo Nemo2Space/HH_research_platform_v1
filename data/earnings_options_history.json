@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-01T15:36:36.052195",
+  "updated": "2026-02-01T17:05:07.733182",
   "history": {
     "AAPL": [
       {
@@ -8895,29 +8895,29 @@
       {
         "ticker": "SW",
         "earnings_date": "2025-05-01",
-        "implied_move_pct": 0.03581657921307117,
-        "avg_iv": 0.37507160544914975,
+        "implied_move_pct": 0.03581668560712509,
+        "avg_iv": 0.3750716799249876,
         "iv_skew": 0.02
       },
       {
         "ticker": "SW",
         "earnings_date": "2025-02-12",
-        "implied_move_pct": 0.0016995089552589808,
-        "avg_iv": 0.35118965626868126,
+        "implied_move_pct": 0.0016995088319019665,
+        "avg_iv": 0.35118965618233133,
         "iv_skew": 0.02
       },
       {
         "ticker": "SW",
         "earnings_date": "2024-10-30",
-        "implied_move_pct": 0.14712029657042064,
-        "avg_iv": 0.45298420759929436,
+        "implied_move_pct": 0.14712039979715946,
+        "avg_iv": 0.45298427985801165,
         "iv_skew": 0.02
       },
       {
         "ticker": "SW",
         "earnings_date": "2024-08-09",
-        "implied_move_pct": 0.03566436480368023,
-        "avg_iv": 0.3749650553625761,
+        "implied_move_pct": 0.03566448032035326,
+        "avg_iv": 0.37496513622424726,
         "iv_skew": 0.02
       }
     ],

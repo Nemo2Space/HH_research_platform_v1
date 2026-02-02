@@ -622,6 +622,10 @@ def _get_ai_probabilities_for_table(ticker_scores: dict) -> dict:
     for ticker, scores in ticker_scores.items():
         try:
             scores['ticker'] = ticker
+            # Ensure domain-correct defaults for features not in scores dict
+            scores.setdefault('gap_score', 50)
+            scores.setdefault('article_count', 0)
+            scores.setdefault('target_upside_pct', 0)
             ml_pred = ai_system.ml_predictor.predict(scores)
             results[ticker] = {
                 'prob': ml_pred.prob_win_5d,
@@ -691,11 +695,10 @@ def _get_extended_hours_price(ticker: str) -> dict:
     }
 
     try:
-        import yfinance as yf
-        stock = yf.Ticker(ticker)
+        from src.analytics.yf_subprocess import get_stock_info
 
-        # Get quote data
-        info = stock.info
+        # Get quote data via subprocess (safe from Streamlit freeze)
+        info = get_stock_info(ticker) or {}
 
         # Get all available price fields
         current_price = info.get('currentPrice') or info.get('regularMarketPrice', 0)

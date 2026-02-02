@@ -59,10 +59,11 @@ class UniverseScorer:
     Calculates Options Flow and Short Squeeze scores for universe stocks.
     """
 
-    def __init__(self):
+    def __init__(self, skip_ibkr: bool = False):
         """Initialize analyzers."""
         self.options_analyzer = OptionsFlowAnalyzer() if OPTIONS_FLOW_AVAILABLE else None
         self.squeeze_detector = ShortSqueezeDetector() if SHORT_SQUEEZE_AVAILABLE else None
+        self.skip_ibkr = skip_ibkr
 
     def _normalize_options_score(self, sentiment_score: float) -> float:
         """
@@ -96,7 +97,7 @@ class UniverseScorer:
             # Options Flow Score
             if include_options and self.options_analyzer:
                 try:
-                    options_summary = self.options_analyzer.analyze_ticker(ticker)
+                    options_summary = self.options_analyzer.analyze_ticker(ticker, skip_ibkr=self.skip_ibkr)
                     if options_summary and options_summary.total_call_volume > 0:
                         # Normalize from -100/+100 to 0-100
                         scores.options_flow_score = self._normalize_options_score(
@@ -312,13 +313,13 @@ class UniverseScorer:
 # Convenience functions
 def score_universe(tickers: List[str], max_workers: int = 3) -> List[UniverseScores]:
     """Score a list of tickers for options flow and short squeeze potential."""
-    scorer = UniverseScorer()
+    scorer = UniverseScorer(skip_ibkr=True)
     return scorer.score_universe(tickers, max_workers=max_workers)
 
 
 def update_universe_scores(max_workers: int = 3) -> int:
     """Update all tickers in screener_scores with flow/squeeze scores."""
-    scorer = UniverseScorer()
+    scorer = UniverseScorer(skip_ibkr=True)
     _, updated = scorer.score_and_save_universe(max_workers=max_workers)
     return updated
 

@@ -754,29 +754,30 @@ class NewsCollector:
         all_articles = []
 
         # Collect from each source
-        sources = [
-            ("Google News", self.get_google_news),
-            ("Finnhub", self.get_finnhub_news),
-            #   ("Nasdaq RSS", self.get_nasdaq_news),
-            #   ("Financial Datasets", self.get_financial_datasets_news),
-            #   ("Reddit", self.get_reddit_news),
-        ]
+        # Collect from all sources in parallel (saves ~5-6s vs sequential)
+        from concurrent.futures import ThreadPoolExecutor, as_completed
 
-        for source_name, fetch_func in sources:
+        def _fetch_source(source_name, fetch_func, *args):
+            """Wrapper to catch errors per source."""
             try:
-                articles = fetch_func(ticker, days_back, max_per_source)
-                all_articles.extend(articles)
+                return source_name, fetch_func(*args)
             except Exception as e:
                 logger.error(f"{ticker}: {source_name} failed - {e}")
+                return source_name, []
 
-        # 6. AI Search (Brave/Tavily/DuckDuckGo via tool server)
-        try:
-            ai_articles = self.collect_ai_search(ticker)
-            for article in ai_articles:
-                article['ticker'] = ticker
-            all_articles.extend(ai_articles)
-        except Exception as e:
-            logger.error(f"{ticker}: AI Search failed - {e}")
+        with ThreadPoolExecutor(max_workers=3) as executor:
+            futures = [
+                executor.submit(_fetch_source, "Google News", self.get_google_news, ticker, days_back, max_per_source),
+                executor.submit(_fetch_source, "Finnhub", self.get_finnhub_news, ticker, days_back, max_per_source),
+                executor.submit(_fetch_source, "AI Search", self.collect_ai_search, ticker),
+            ]
+
+            for future in as_completed(futures):
+                source_name, articles = future.result()
+                if source_name == "AI Search":
+                    for article in articles:
+                        article['ticker'] = ticker
+                all_articles.extend(articles)
 
         # Add credibility scores
         for article in all_articles:

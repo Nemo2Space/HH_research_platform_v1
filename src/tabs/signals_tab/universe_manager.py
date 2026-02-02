@@ -427,17 +427,12 @@ def _quick_analyze_ticker(ticker: str, add_permanent: bool = False, force_refres
     if not ticker or len(ticker) > 10 or not ticker.replace('.', '').replace('-', '').isalnum():
         return {'success': False, 'error': f"Invalid ticker format: {ticker}"}
 
-    # Quick validation - check if ticker exists via yfinance
+    # Quick validation - check if ticker exists via yfinance subprocess (safe from Streamlit freeze)
     try:
-        yf_ticker = yf.Ticker(ticker)
-        info = yf_ticker.info
-        if not info or info.get('regularMarketPrice') is None:
-            try:
-                fast = yf_ticker.fast_info
-                if not hasattr(fast, 'last_price') or fast.last_price is None:
-                    return {'success': False, 'error': f"Ticker '{ticker}' not found or has no price data"}
-            except:
-                return {'success': False, 'error': f"Ticker '{ticker}' not found or has no price data"}
+        from src.analytics.yf_subprocess import get_stock_info
+        info = get_stock_info(ticker) or {}
+        if not info or (info.get('regularMarketPrice') is None and info.get('currentPrice') is None and info.get('previousClose') is None):
+            return {'success': False, 'error': f"Ticker '{ticker}' not found or has no price data"}
     except Exception as e:
         return {'success': False, 'error': f"Could not validate ticker '{ticker}': {str(e)}"}
 
@@ -544,7 +539,7 @@ def _quick_analyze_ticker(ticker: str, add_permanent: bool = False, force_refres
         options_score = None
         squeeze_score = None
         try:
-            scorer = UniverseScorer()
+            scorer = UniverseScorer(skip_ibkr=True)
             scores_list, _ = scorer.score_and_save_universe(tickers=[ticker], max_workers=1)
             if scores_list:
                 for score_obj in scores_list:

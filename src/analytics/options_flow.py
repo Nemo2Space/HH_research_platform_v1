@@ -116,6 +116,7 @@ class OptionsFlowSummary:
     data_timestamp: str = ""  # When data was fetched
 
 
+
 class OptionsFlowAnalyzer:
     """
     Analyze options flow for unusual activity.
@@ -151,7 +152,8 @@ class OptionsFlowAnalyzer:
 
     def get_options_chain(self, ticker: str, max_expiries: int = 4,
                           ibkr_host: str = "127.0.0.1",
-                          ibkr_port: int = 7496) -> Tuple[pd.DataFrame, pd.DataFrame, float, str]:
+                          ibkr_port: int = 7496,
+                          skip_ibkr: bool = False) -> Tuple[pd.DataFrame, pd.DataFrame, float, str]:
         """
         Get options chain data for a ticker.
 
@@ -162,12 +164,13 @@ class OptionsFlowAnalyzer:
             max_expiries: Maximum number of expiration dates to fetch
             ibkr_host: IBKR TWS/Gateway host
             ibkr_port: IBKR port (7496 for TWS, 4001 for Gateway)
+            skip_ibkr: If True, skip IBKR entirely and go straight to Yahoo (for scanner speed)
 
         Returns:
             Tuple of (calls_df, puts_df, stock_price, data_source)
         """
         # Try IBKR/Yahoo unified fetcher
-        if IBKR_OPTIONS_AVAILABLE:
+        if IBKR_OPTIONS_AVAILABLE and not skip_ibkr:
             try:
                 result = fetch_options_chain(ticker, max_expiries, ibkr_host, ibkr_port)
 
@@ -175,7 +178,6 @@ class OptionsFlowAnalyzer:
                     source = result.data_source.value  # Actual source: "IBKR" or "YAHOO"
 
                     # Check if IBKR returned data but with zero volume/OI
-                    # This happens when IBKR market data subscription doesn't include options volume
                     if source == "IBKR":
                         call_vol = result.calls['volume'].sum() if 'volume' in result.calls.columns else 0
                         call_oi = result.calls['openInterest'].sum() if 'openInterest' in result.calls.columns else 0
@@ -183,7 +185,8 @@ class OptionsFlowAnalyzer:
                         put_oi = result.puts['openInterest'].sum() if 'openInterest' in result.puts.columns else 0
 
                         if call_vol == 0 and put_vol == 0 and call_oi == 0 and put_oi == 0:
-                            logger.warning(f"{ticker}: IBKR returned zero volume/OI - falling back to Yahoo for volume data")
+                            logger.warning(
+                                f"{ticker}: IBKR returned zero volume/OI - falling back to Yahoo for volume data")
                             # Don't return yet - fall through to Yahoo fallback below
                         else:
                             return result.calls, result.puts, result.stock_price, source
@@ -192,67 +195,75 @@ class OptionsFlowAnalyzer:
 
             except Exception as e:
                 logger.warning(f"Options fetch failed for {ticker}: {e}")
-        # Fallback to Yahoo Finance
-        logger.info(f"📊 {ticker}: Using Yahoo Finance options (15-20 min delayed)")
 
+        # Fallback to Yahoo Finance (HARD timeout via subprocess.run)
+        logger.info(f"\U0001f4ca {ticker}: Using Yahoo Finance options (15-20 min delayed)")
+        logger.info(f"{ticker}: >>> SUBPROCESS VERSION ACTIVE <<<")
         try:
-            stock = yf.Ticker(ticker)
+            import json
+            import subprocess
+            import sys
 
-            # Get current stock price
-            info = stock.info
-            stock_price = info.get('currentPrice') or info.get('regularMarketPrice') or info.get('previousClose', 0)
+            cmd = [
+                sys.executable,
+                "-m",
+                "src.analytics.yahoo_options_subprocess",
+                ticker,
+                str(int(max_expiries)),
+            ]
 
-            if not stock_price:
-                # Fallback: get from history
-                hist = stock.history(period='1d')
-                if not hist.empty:
-                    stock_price = hist['Close'].iloc[-1]
+            try:
+                proc = subprocess.Popen(
+                    cmd,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                    creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == 'win32' else 0,
+                )
+                try:
+                    stdout_data, stderr_data = proc.communicate(timeout=3)
+                except subprocess.TimeoutExpired:
+                    proc.kill()
+                    proc.wait(timeout=2)
+                    logger.warning(f"{ticker}: Yahoo options timed out after 3s (subprocess killed)")
+                    return pd.DataFrame(), pd.DataFrame(), 0.0, "YAHOO"
+            except Exception as e:
+                logger.warning(f"{ticker}: Yahoo subprocess launch failed: {e}")
+                return pd.DataFrame(), pd.DataFrame(), 0.0, "YAHOO"
 
-            # Get available expiration dates
-            expiries = stock.options
+            stdout = (stdout_data or "").strip()
 
-            if not expiries:
-                logger.warning(f"No options available for {ticker}")
+
+            lines = [ln for ln in stdout.splitlines() if ln.strip()]
+            last = lines[-1] if lines else stdout
+
+            try:
+                payload = json.loads(last)
+            except Exception:
+                logger.debug(f"{ticker}: Yahoo subprocess JSON parse failed. tail={last[-500:]}")
+                return pd.DataFrame(), pd.DataFrame(), 0.0, "YAHOO"
+
+            if not payload.get("ok"):
+                logger.debug(f"{ticker}: Yahoo subprocess failed: {payload.get('error')}")
+                return pd.DataFrame(), pd.DataFrame(), 0.0, "YAHOO"
+
+            stock_price = float(payload.get("stock_price") or 0.0)
+
+            calls_split = payload.get("calls_split")
+            puts_split = payload.get("puts_split")
+
+            if not calls_split or not puts_split:
                 return pd.DataFrame(), pd.DataFrame(), stock_price, "YAHOO"
 
-            # Limit to near-term expiries (more liquid)
-            expiries_to_fetch = expiries[:max_expiries]
-
-            all_calls = []
-            all_puts = []
-
-            for expiry in expiries_to_fetch:
-                try:
-                    opt_chain = stock.option_chain(expiry)
-
-                    calls = opt_chain.calls.copy()
-                    puts = opt_chain.puts.copy()
-
-                    # Add expiry column
-                    calls['expiry'] = expiry
-                    puts['expiry'] = expiry
-
-                    # Calculate days to expiry
-                    exp_date = datetime.strptime(expiry, '%Y-%m-%d')
-                    days_to_exp = (exp_date - datetime.now()).days
-                    calls['daysToExpiry'] = days_to_exp
-                    puts['daysToExpiry'] = days_to_exp
-
-                    all_calls.append(calls)
-                    all_puts.append(puts)
-
-                except Exception as e:
-                    logger.debug(f"Error fetching {ticker} options for {expiry}: {e}")
-                    continue
-
-            calls_df = pd.concat(all_calls, ignore_index=True) if all_calls else pd.DataFrame()
-            puts_df = pd.concat(all_puts, ignore_index=True) if all_puts else pd.DataFrame()
+            from io import StringIO
+            calls_df = pd.read_json(StringIO(calls_split), orient="split")
+            puts_df = pd.read_json(StringIO(puts_split), orient="split")
 
             return calls_df, puts_df, stock_price, "YAHOO"
 
         except Exception as e:
-            logger.error(f"Error getting options for {ticker}: {e}")
-            return pd.DataFrame(), pd.DataFrame(), 0, "YAHOO"
+            logger.warning(f"{ticker}: Yahoo fallback failed: {e}")
+            return pd.DataFrame(), pd.DataFrame(), 0.0, "YAHOO"
 
     def detect_unusual_activity(self, ticker: str, calls_df: pd.DataFrame,
                                 puts_df: pd.DataFrame, stock_price: float) -> List[OptionsAlert]:
@@ -469,9 +480,13 @@ class OptionsFlowAnalyzer:
 
         return max_pain_strike
 
-    def analyze_ticker(self, ticker: str) -> OptionsFlowSummary:
+    def analyze_ticker(self, ticker: str, skip_ibkr: bool = False) -> OptionsFlowSummary:
         """
         Full options flow analysis for a ticker.
+
+        Args:
+            ticker: Stock symbol
+            skip_ibkr: If True, skip IBKR connection attempt (faster for scanner)
 
         Returns:
             OptionsFlowSummary with all metrics and alerts
@@ -479,7 +494,8 @@ class OptionsFlowAnalyzer:
         from datetime import datetime
 
         # Get options data
-        calls_df, puts_df, stock_price, data_source = self.get_options_chain(ticker)
+        calls_df, puts_df, stock_price, data_source = self.get_options_chain(ticker, skip_ibkr=skip_ibkr)
+
         data_timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
 
         if calls_df.empty and puts_df.empty:

@@ -230,7 +230,7 @@ class RAGMemoryStore:
                 COALESCE(h.fundamental_score, 50) as fundamental_score,
                 COALESCE(h.growth_score, 50) as growth_score,
                 COALESCE(h.total_score, 50) as total_score,
-COALESCE(h.gap_score::numeric, 50) as gap_score,
+COALESCE(CASE WHEN h.gap_score ~ '^[0-9.\\-]+$' THEN h.gap_score::numeric ELSE NULL END, 50) as gap_score,
                 h.signal_type,
                 h.op_price as entry_price,
                 h.return_1d,

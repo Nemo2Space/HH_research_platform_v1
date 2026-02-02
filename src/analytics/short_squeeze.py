@@ -109,8 +109,11 @@ class ShortSqueezeDetector:
         data = ShortSqueezeData(ticker=ticker)
 
         try:
-            stock = yf.Ticker(ticker)
-            info = stock.info
+            # Use subprocess wrapper to avoid curl_cffi/Streamlit deadlock
+            from src.analytics.yf_subprocess import get_stock_info_and_history
+            _yf_data = get_stock_info_and_history(ticker, history_period="3mo")
+            info = _yf_data.get("info", {})
+            _hist_from_subprocess = _yf_data.get("history")
 
             if not info:
                 data.calculation_errors.append("Could not fetch stock info")
@@ -154,7 +157,7 @@ class ShortSqueezeDetector:
 
             # Price data
             try:
-                hist = stock.history(period="3mo")
+                hist = _hist_from_subprocess
                 if hist is not None and len(hist) > 0:
                     current = hist['Close'].iloc[-1]
 
@@ -190,7 +193,7 @@ class ShortSqueezeDetector:
             # Options flow
             if self.options_analyzer:
                 try:
-                    options_data = self.options_analyzer.analyze_ticker(ticker)
+                    options_data = self.options_analyzer.analyze_ticker(ticker, skip_ibkr=True)
                     if options_data:
                         data.options_sentiment = options_data.overall_sentiment or "NEUTRAL"
                         data.options_sentiment_score = options_data.sentiment_score

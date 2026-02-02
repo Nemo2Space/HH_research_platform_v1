@@ -1246,7 +1246,9 @@ def _render_signals_table_view():
     ticker_list = filtered_df['Ticker'].tolist() if 'Ticker' in filtered_df.columns else []
 
     # Check if there's a pre-selected ticker from Quick Add
-    preselected = st.session_state.get('selected_ticker')
+    # Only use preselected if it was set in THIS session (not stale from previous run)
+    preselected = st.session_state.get('selected_ticker') if st.session_state.get(
+        '_ticker_selected_this_session') else None
 
     # If preselected ticker is not in the filtered list, add it temporarily
     # (This handles newly added tickers that might not be in the current filter)
@@ -1270,6 +1272,7 @@ def _render_signals_table_view():
         )
         if selected:
             st.session_state.selected_ticker = selected
+            st.session_state._ticker_selected_this_session = True
 
     with col_refresh:
         if selected and st.button(f"🔄 Refresh {selected}", key="refresh_selected_btn"):
