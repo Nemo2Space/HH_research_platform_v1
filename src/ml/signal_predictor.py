@@ -1,15 +1,16 @@
 """
-ML Signal Predictor - Phase 2
+ML Signal Predictor - Phase 3
 
 Walk-forward validation with 3-way time split, multi-horizon labels,
 calibrated probabilities, missing indicators, and A/B feature testing.
 
-Phase 2 changes:
-- 3-way time split: train -> calibrate -> test (fixes calibration leakage)
-- Missing indicators for frequently-null features
-- A/B comparison: with vs without total_score
-- Sigmoid fallback for small calibration sets
-- Domain-correct defaults and clipping (Phase 1)
+Phase 3 changes (on top of Phase 2):
+- Removed global StandardScaler (XGBoost is scale-invariant; eliminates leakage)
+- LogisticRegression fallback uses sklearn Pipeline (scaler fitted per fold only)
+- EV stats computed from GROSS returns conditioned on NET-win labels (no double-count)
+- Real accuracy and avg_return computed per fold (no more hardcoded 0.5 / 0)
+- Atomic model save (write to .tmp then os.replace — prevents corrupt pickles)
+- Backward-compatible load (ignores legacy 'scaler' key from v1/v2 pickles)
 
 Location: src/ml/signal_predictor.py
 """
@@ -32,6 +33,7 @@ sys.path.insert(0, str(project_root))
 from sklearn.linear_model import LogisticRegression
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score, roc_auc_score, brier_score_loss
 
 try:
@@ -195,7 +197,6 @@ class SignalDataLoader:
 
     def __init__(self):
         self.engine = get_engine()
-        self.scaler = StandardScaler()
         self.cost_pct = 0.15  # 0.15% round trip cost
 
     def load_training_data(self, min_date: str = None) -> pd.DataFrame:
@@ -260,7 +261,7 @@ class SignalDataLoader:
             if col in df.columns:
                 df[f'{col}_net'] = df[col] - self.cost_pct
 
-        # Binary labels
+        # Binary labels (based on NET returns — cost already subtracted)
         for h in [1, 2, 5, 10]:
             df[f'win_{h}d'] = (df[f'return_{h}d_net'] > 0).astype(int)
 
@@ -282,17 +283,21 @@ class SignalDataLoader:
 
     def get_feature_matrix(self, df: pd.DataFrame, feature_list: List[str] = None,
                            fit: bool = False) -> Tuple[np.ndarray, List[str]]:
-        """Extract and scale features."""
+        """
+        Extract features WITHOUT global scaling.
+
+        Phase 3: Scaling on the full dataset leaked future distribution info
+        into past folds. XGBoost is scale-invariant so scaling was unnecessary.
+        For the LogisticRegression fallback, scaling is done inside a Pipeline
+        fitted only on each training fold.
+
+        The 'fit' parameter is kept for API compatibility but no longer
+        triggers any fitting.
+        """
         if feature_list is None:
             feature_list = self.FEATURES
         available = [f for f in feature_list if f in df.columns]
-        X = df[available].values
-
-        if fit:
-            X = self.scaler.fit_transform(X)
-        else:
-            X = self.scaler.transform(X)
-
+        X = df[available].values.astype(float, copy=False)
         return X, available
 
 
@@ -317,6 +322,36 @@ class MLSignalPredictor:
         self.avg_loss_return = {}
         self.validation_report = None
 
+    def _make_estimator(self):
+        """
+        Create base estimator.
+
+        XGBoost: returned as-is (tree-based, scale-invariant).
+        LogisticRegression: wrapped in a Pipeline with StandardScaler so that
+        scaling is fitted only on the training fold (no leakage).
+        """
+        if XGBOOST_AVAILABLE:
+            return xgb.XGBClassifier(
+                n_estimators=50, max_depth=3, learning_rate=0.1,
+                random_state=42, use_label_encoder=False, eval_metric='logloss',
+            )
+        return Pipeline([
+            ('scaler', StandardScaler()),
+            ('clf', LogisticRegression(max_iter=1000, random_state=42)),
+        ])
+
+    @staticmethod
+    def _get_feature_importance(model, feature_names: List[str]) -> Dict[str, float]:
+        """Extract feature importance from model or Pipeline."""
+        if XGBOOST_AVAILABLE:
+            return dict(zip(feature_names, model.feature_importances_))
+        # LogisticRegression inside Pipeline
+        if hasattr(model, 'named_steps'):
+            lr = model.named_steps['clf']
+        else:
+            lr = model
+        return dict(zip(feature_names, np.abs(lr.coef_[0])))
+
     def train(self, df: pd.DataFrame = None) -> ModelReport:
         """Train models with walk-forward validation and A/B feature comparison."""
         if df is None:
@@ -325,13 +360,19 @@ class MLSignalPredictor:
         if df.empty or len(df) < 200:
             raise ValueError(f"Insufficient data: {len(df)} samples (need 200+)")
 
-        # Calculate historical returns for EV
+        # --- EV stats: GROSS returns conditioned on NET-win label ---
+        # Labels (win_{h}d) are defined from return_{h}d_net > 0 (cost already in label).
+        # For EV magnitude we want gross win/loss averages; cost subtracted ONCE in predict().
         for h in [1, 2, 5, 10]:
-            col = f'return_{h}d_net'
-            if col in df.columns:
-                returns = df[col].dropna()
-                self.avg_win_return[h] = returns[returns > 0].mean() if (returns > 0).any() else 2.0
-                self.avg_loss_return[h] = abs(returns[returns <= 0].mean()) if (returns <= 0).any() else 2.0
+            win_col = f'win_{h}d'
+            ret_gross = f'return_{h}d'
+            if win_col in df.columns and ret_gross in df.columns:
+                r = df[ret_gross].astype(float)
+                w = df[win_col].astype(int)
+                wins = r[w == 1].dropna()
+                losses = r[w == 0].dropna()
+                self.avg_win_return[h] = float(wins.mean()) if len(wins) else 2.0
+                self.avg_loss_return[h] = float(abs(losses.mean())) if len(losses) else 2.0
 
         # === A/B TEST: with vs without total_score ===
         logger.info("=" * 60)
@@ -348,8 +389,10 @@ class MLSignalPredictor:
         brier_b = np.mean([r['brier'] for r in results_b]) if results_b else 1.0
         auc_a = np.mean([r['auc'] for r in results_a]) if results_a else 0.5
         auc_b = np.mean([r['auc'] for r in results_b]) if results_b else 0.5
-        wr_a = np.mean([r['win_rate'] for r in results_a if r['trades'] > 0]) if any(r['trades'] > 0 for r in results_a) else 0
-        wr_b = np.mean([r['win_rate'] for r in results_b if r['trades'] > 0]) if any(r['trades'] > 0 for r in results_b) else 0
+        wr_a = np.mean([r['win_rate'] for r in results_a if r['trades'] > 0]) \
+            if any(r['trades'] > 0 for r in results_a) else 0
+        wr_b = np.mean([r['win_rate'] for r in results_b if r['trades'] > 0]) \
+            if any(r['trades'] > 0 for r in results_b) else 0
         trades_a = sum(r['trades'] for r in results_a)
         trades_b = sum(r['trades'] for r in results_b)
 
@@ -370,7 +413,7 @@ class MLSignalPredictor:
             logger.info(f"  >>> WINNER: Set A (with total_score) — better performance")
         logger.info(f"{'='*60}\n")
 
-        # Train final models with chosen feature set
+        # Train final models with chosen feature set (NO global scaling)
         X, self.feature_names = self.data_loader.get_feature_matrix(df, chosen_features, fit=True)
 
         all_folds = []
@@ -379,7 +422,7 @@ class MLSignalPredictor:
             if target_col not in df.columns:
                 continue
 
-            y = df[target_col].values
+            y = df[target_col].values.astype(int)
             logger.info(f"Training final {horizon}-day model (feature set {winner})...")
 
             folds = self._walk_forward_train(df, X, y, horizon)
@@ -390,12 +433,12 @@ class MLSignalPredictor:
         return self.validation_report
 
     def _evaluate_feature_set(self, df, feature_list, label) -> List[Dict]:
-        """Evaluate a feature set using 3-way walk-forward (for A/B comparison)."""
+        """Evaluate a feature set using 3-way walk-forward (for A/B comparison) WITHOUT leakage."""
         available = [f for f in feature_list if f in df.columns]
         logger.info(f"\nEvaluating {label} ({len(available)} features)...")
 
-        temp_scaler = StandardScaler()
-        X = temp_scaler.fit_transform(df[available].values)
+        # Phase 3: No global scaler — use raw feature values
+        X = df[available].values.astype(float, copy=False)
 
         results = []
         for horizon in [5]:  # Compare on 5d only (speed)
@@ -403,10 +446,10 @@ class MLSignalPredictor:
             if target_col not in df.columns:
                 continue
 
-            y = df[target_col].values
+            y = df[target_col].values.astype(int)
             dates = np.sort(df['date'].unique())
             total = len(dates)
-            test_size = total // 5
+            test_size = max(total // 5, 10)
             cal_size = max(test_size // 2, 15)
             purge = 5
 
@@ -435,13 +478,7 @@ class MLSignalPredictor:
                 if len(X_train) < 50 or len(X_cal) < 10 or len(X_test) < 10:
                     continue
 
-                if XGBOOST_AVAILABLE:
-                    model = xgb.XGBClassifier(
-                        n_estimators=50, max_depth=3, learning_rate=0.1,
-                        random_state=42, use_label_encoder=False, eval_metric='logloss')
-                else:
-                    model = LogisticRegression(max_iter=1000, random_state=42)
-
+                model = self._make_estimator()
                 model.fit(X_train, y_train)
 
                 # Calibrate on SEPARATE set (fixes leakage!)
@@ -474,9 +511,11 @@ class MLSignalPredictor:
         results = []
         dates = np.sort(df['date'].unique())
         total = len(dates)
-        test_size = total // 5
+        test_size = max(total // 5, 10)
         cal_size = max(test_size // 2, 15)
         purge = 5
+
+        ret_net_col = f'return_{horizon}d_net'
 
         for fold in range(n_splits):
             test_end = total - fold * test_size
@@ -503,13 +542,7 @@ class MLSignalPredictor:
             if len(X_train) < 50 or len(X_cal) < 10 or len(X_test) < 10:
                 continue
 
-            if XGBOOST_AVAILABLE:
-                model = xgb.XGBClassifier(
-                    n_estimators=50, max_depth=3, learning_rate=0.1,
-                    random_state=42, use_label_encoder=False, eval_metric='logloss')
-            else:
-                model = LogisticRegression(max_iter=1000, random_state=42)
-
+            model = self._make_estimator()
             model.fit(X_train, y_train)
 
             # Calibrate on SEPARATE held-out calibration set
@@ -524,23 +557,30 @@ class MLSignalPredictor:
             auc = roc_auc_score(y_test, probs) if len(np.unique(y_test)) > 1 else 0.5
             brier = brier_score_loss(y_test, probs)
 
+            # Phase 3: Compute REAL accuracy (no more hardcoded 0.5)
+            acc = float(((probs >= 0.5).astype(int) == y_test).mean())
+
             trade_mask = probs >= self.min_probability
-            if trade_mask.sum() > 0:
-                win_rate = float(y_test[trade_mask].mean())
-                trades = int(trade_mask.sum())
-            else:
-                win_rate = 0.0
-                trades = 0
+            trades = int(trade_mask.sum())
+            win_rate = float(y_test[trade_mask].mean()) if trades > 0 else 0.0
+
+            # Phase 3: Compute REAL avg_return for trades taken (no more hardcoded 0)
+            avg_return = 0.0
+            if trades > 0 and ret_net_col in df.columns:
+                test_returns = df.loc[test_mask, ret_net_col].values.astype(float)
+                traded_returns = test_returns[trade_mask]
+                avg_return = float(np.nanmean(traded_returns)) if len(traded_returns) > 0 else 0.0
 
             results.append(WalkForwardResult(
                 fold=fold, train_start=train_dates[0], train_end=train_dates[-1],
                 test_start=test_dates[0], test_end=test_dates[-1],
-                accuracy=0.5, auc_roc=auc, brier_score=brier,
-                trades_taken=trades, win_rate=win_rate, avg_return=0
+                accuracy=acc, auc_roc=auc, brier_score=brier,
+                trades_taken=trades, win_rate=win_rate, avg_return=avg_return,
             ))
 
-            logger.info(f"  Fold {fold}: AUC={auc:.3f}  Brier={brier:.4f}  "
-                       f"Trades={trades}  WR={win_rate:.1%}  Cal={cal_method}({len(X_cal)})")
+            logger.info(f"  Fold {fold}: ACC={acc:.3f}  AUC={auc:.3f}  Brier={brier:.4f}  "
+                       f"Trades={trades}  WR={win_rate:.1%}  AvgRet={avg_return:.3f}  "
+                       f"Cal={cal_method}({len(X_cal)})")
 
         return results
 
@@ -562,16 +602,9 @@ class MLSignalPredictor:
         X_train, y_train = X[train_mask], y[train_mask]
         X_cal, y_cal = X[cal_mask], y[cal_mask]
 
-        if XGBOOST_AVAILABLE:
-            model = xgb.XGBClassifier(
-                n_estimators=50, max_depth=3, learning_rate=0.1,
-                random_state=42, use_label_encoder=False, eval_metric='logloss')
-            model.fit(X_train, y_train)
-            self.feature_importance[horizon] = dict(zip(self.feature_names, model.feature_importances_))
-        else:
-            model = LogisticRegression(max_iter=1000, random_state=42)
-            model.fit(X_train, y_train)
-            self.feature_importance[horizon] = dict(zip(self.feature_names, np.abs(model.coef_[0])))
+        model = self._make_estimator()
+        model.fit(X_train, y_train)
+        self.feature_importance[horizon] = self._get_feature_importance(model, self.feature_names)
 
         # Calibrate on HELD-OUT calibration set (not training data!)
         cal_method = 'sigmoid' if len(X_cal) < 100 else 'isotonic'
@@ -588,32 +621,49 @@ class MLSignalPredictor:
         self.models[horizon] = model
 
     def _generate_report(self, df, folds) -> ModelReport:
-        """Generate validation report."""
+        """Generate validation report with REAL computed metrics."""
         if not folds:
-            folds = [WalkForwardResult(0, date.today(), date.today(), date.today(), date.today(),
-                                       0.5, 0.5, 0.25, 0, 0.5, 0)]
+            logger.warning("No walk-forward folds completed — report will have no metric data")
+            return ModelReport(
+                model_name="XGBoost" if XGBOOST_AVAILABLE else "Logistic",
+                trained_at=datetime.now(), total_samples=len(df),
+                feature_count=len(self.feature_names), target_horizon=self.target_horizon,
+                folds=[], mean_accuracy=float('nan'), mean_auc=float('nan'),
+                mean_brier=float('nan'), mean_win_rate=float('nan'), mean_return=float('nan'),
+                feature_importance={}, is_well_calibrated=False, calibration_error=float('nan'),
+                beats_baseline=False, baseline_auc=0.5, improvement_vs_baseline=0.0,
+            )
 
-        mean_auc = np.mean([f.auc_roc for f in folds])
-        mean_brier = np.mean([f.brier_score for f in folds])
-        mean_wr = np.mean([f.win_rate for f in folds if f.trades_taken > 0]) \
-            if any(f.trades_taken > 0 for f in folds) else 0.5
+        # Phase 3: All metrics computed from actual fold results (no hardcoding)
+        mean_acc = float(np.mean([f.accuracy for f in folds]))
+        mean_auc = float(np.mean([f.auc_roc for f in folds]))
+        mean_brier = float(np.mean([f.brier_score for f in folds]))
+        mean_wr = float(np.mean([f.win_rate for f in folds if f.trades_taken > 0])) \
+            if any(f.trades_taken > 0 for f in folds) else float('nan')
+        mean_ret = float(np.mean([f.avg_return for f in folds if f.trades_taken > 0])) \
+            if any(f.trades_taken > 0 for f in folds) else float('nan')
 
         combined_imp = {}
         for h, imp in self.feature_importance.items():
             for feat, val in imp.items():
-                combined_imp[feat] = combined_imp.get(feat, 0) + val
-        total = sum(combined_imp.values()) or 1
-        combined_imp = {k: v/total for k, v in combined_imp.items()}
+                combined_imp[feat] = combined_imp.get(feat, 0.0) + float(val)
+        total = sum(combined_imp.values()) or 1.0
+        combined_imp = {k: v / total for k, v in combined_imp.items()}
 
         return ModelReport(
             model_name="XGBoost" if XGBOOST_AVAILABLE else "Logistic",
             trained_at=datetime.now(), total_samples=len(df),
             feature_count=len(self.feature_names), target_horizon=self.target_horizon,
-            folds=folds, mean_accuracy=0.5, mean_auc=mean_auc, mean_brier=mean_brier,
-            mean_win_rate=mean_wr, mean_return=0, feature_importance=combined_imp,
+            folds=folds,
+            mean_accuracy=mean_acc,
+            mean_auc=mean_auc,
+            mean_brier=mean_brier,
+            mean_win_rate=mean_wr,
+            mean_return=mean_ret,
+            feature_importance=combined_imp,
             is_well_calibrated=mean_brier < 0.25, calibration_error=mean_brier,
             beats_baseline=mean_auc > 0.52, baseline_auc=0.5,
-            improvement_vs_baseline=mean_auc - 0.5
+            improvement_vs_baseline=mean_auc - 0.5,
         )
 
     def predict(self, scores: Dict[str, float]) -> PredictionResult:
@@ -633,7 +683,7 @@ class MLSignalPredictor:
             val = scores.get(f)
             if val is None:
                 default = self.data_loader.FEATURE_DEFAULTS.get(f, 50)
-                feature_values.append(default)
+                feature_values.append(float(default))
                 filled_features.append(f)
             else:
                 clip_range = self.data_loader.FEATURE_CLIPS.get(f)
@@ -644,8 +694,9 @@ class MLSignalPredictor:
         if filled_features:
             logger.debug(f"{scores.get('ticker', '?')}: Filled missing features: {filled_features}")
 
-        X = np.array([feature_values])
-        X = self.data_loader.scaler.transform(X)
+        # Phase 3: NO global scaler — raw features go straight to model/calibrator.
+        # XGBoost is scale-invariant; LogisticRegression Pipeline handles its own scaling.
+        X = np.array([feature_values], dtype=float)
 
         probs = {}
         evs = {}
@@ -653,30 +704,31 @@ class MLSignalPredictor:
         for horizon in [5, 10]:
             if horizon not in self.calibrators:
                 probs[horizon] = 0.5
-                evs[horizon] = 0
+                evs[horizon] = 0.0
                 continue
 
             try:
-                prob = self.calibrators[horizon].predict_proba(X)[0, 1]
+                prob = float(self.calibrators[horizon].predict_proba(X)[0, 1])
             except Exception:
                 prob = 0.5
 
             probs[horizon] = prob
 
-            avg_win = self.avg_win_return.get(horizon, 2.0)
-            avg_loss = self.avg_loss_return.get(horizon, 2.0)
-            cost = 0.15
-            ev = prob * avg_win - (1 - prob) * avg_loss - cost
-            evs[horizon] = ev / 100
+            # Phase 3: avg_win/loss are from GROSS returns; cost subtracted ONCE here
+            avg_win = float(self.avg_win_return.get(horizon, 2.0))
+            avg_loss = float(self.avg_loss_return.get(horizon, 2.0))
+            cost = 0.15  # single cost deduction (percent)
+            ev_pct = prob * avg_win - (1.0 - prob) * avg_loss - cost
+            evs[horizon] = ev_pct / 100.0
 
-        # Extrapolate 1d and 2d (heuristic — Phase 3 will replace with proper models)
+        # Extrapolate 1d and 2d (heuristic — Phase 4 will replace with proper models)
         probs[1] = probs.get(5, 0.5) * 0.85
         probs[2] = probs.get(5, 0.5) * 0.92
-        evs[1] = evs.get(5, 0) * 0.5
-        evs[2] = evs.get(5, 0) * 0.7
+        evs[1] = evs.get(5, 0.0) * 0.5
+        evs[2] = evs.get(5, 0.0) * 0.7
 
-        best_horizon = max(evs.keys(), key=lambda h: evs.get(h, 0))
-        should_trade = probs.get(5, 0.5) >= self.min_probability and evs.get(5, 0) >= self.min_ev
+        best_horizon = max(evs.keys(), key=lambda h: evs.get(h, 0.0))
+        should_trade = probs.get(5, 0.5) >= self.min_probability and evs.get(5, 0.0) >= self.min_ev
 
         confidence = "HIGH" if probs.get(5, 0.5) >= 0.70 \
             else "MEDIUM" if probs.get(5, 0.5) >= 0.60 else "LOW"
@@ -692,50 +744,59 @@ class MLSignalPredictor:
             prob_win_2d=probs.get(2, 0.5),
             prob_win_5d=probs.get(5, 0.5),
             prob_win_10d=probs.get(10, 0.5),
-            ev_1d=evs.get(1, 0),
-            ev_2d=evs.get(2, 0),
-            ev_5d=evs.get(5, 0),
-            ev_10d=evs.get(10, 0),
+            ev_1d=evs.get(1, 0.0),
+            ev_2d=evs.get(2, 0.0),
+            ev_5d=evs.get(5, 0.0),
+            ev_10d=evs.get(10, 0.0),
             top_features=top_features,
             confidence=confidence,
             similar_setups_win_rate=probs.get(5, 0.5),
             similar_setups_count=0,
             should_trade=should_trade,
-            recommended_horizon=best_horizon
+            recommended_horizon=best_horizon,
         )
 
     def save(self, path: str = 'models/signal_predictor.pkl'):
-        """Save model."""
-        os.makedirs(os.path.dirname(path), exist_ok=True)
+        """Save model atomically (write to .tmp then os.replace — prevents corrupt pickles)."""
+        os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
+
         state = {
-            'version': 2,  # Phase 2 model format
+            'version': 3,  # Phase 3: no global scaler
             'models': self.models,
             'calibrators': self.calibrators,
             'feature_names': self.feature_names,
             'feature_importance': self.feature_importance,
             'avg_win_return': self.avg_win_return,
             'avg_loss_return': self.avg_loss_return,
-            'scaler': self.data_loader.scaler,
-            'validation_report': self.validation_report
+            'validation_report': self.validation_report,
         }
-        with open(path, 'wb') as f:
-            pickle.dump(state, f)
+
+        tmp_path = f"{path}.tmp"
+        with open(tmp_path, 'wb') as f:
+            pickle.dump(state, f, protocol=pickle.HIGHEST_PROTOCOL)
+
+        os.replace(tmp_path, path)  # atomic on same filesystem
         logger.info(f"Model saved to {path}")
 
     def load(self, path: str = 'models/signal_predictor.pkl'):
-        """Load model (backward compatible with Phase 1 models)."""
+        """Load model (backward compatible with Phase 1/2 pickles that stored a scaler)."""
         with open(path, 'rb') as f:
             state = pickle.load(f)
 
-        self.models = state['models']
-        self.calibrators = state['calibrators']
-        self.feature_names = state['feature_names']
-        self.feature_importance = state['feature_importance']
-        self.avg_win_return = state['avg_win_return']
-        self.avg_loss_return = state['avg_loss_return']
-        self.data_loader.scaler = state['scaler']
+        self.models = state.get('models', {})
+        self.calibrators = state.get('calibrators', {})
+        self.feature_names = state.get('feature_names', [])
+        self.feature_importance = state.get('feature_importance', {})
+        self.avg_win_return = state.get('avg_win_return', {})
+        self.avg_loss_return = state.get('avg_loss_return', {})
         self.validation_report = state.get('validation_report')
-        logger.info(f"Model loaded from {path} (version {state.get('version', 1)})")
+
+        # Phase 1/2 pickles stored a 'scaler' key — ignored in v3+.
+        version = state.get('version', 1)
+        if version < 3 and 'scaler' in state:
+            logger.info(f"  Legacy v{version} pickle: ignoring stored scaler (v3 doesn't use global scaling)")
+
+        logger.info(f"Model loaded from {path} (version {version})")
 
 
 if __name__ == "__main__":
@@ -749,9 +810,11 @@ if __name__ == "__main__":
     print(f"Samples: {report.total_samples}")
     print(f"Features: {report.feature_count}")
     print(f"  {', '.join(predictor.feature_names)}")
+    print(f"Mean Accuracy: {report.mean_accuracy:.4f}")
     print(f"Mean AUC: {report.mean_auc:.4f}")
     print(f"Mean Brier: {report.mean_brier:.4f}")
     print(f"Mean Win Rate: {report.mean_win_rate:.1%}")
+    print(f"Mean Avg Return: {report.mean_return:.4f}%")
     print(f"Beats Baseline: {report.beats_baseline}")
     print(f"Well Calibrated: {report.is_well_calibrated}")
     print(f"\nFeature Importance:")
