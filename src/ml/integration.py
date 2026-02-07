@@ -480,12 +480,12 @@ def render_ai_system_tab():
 
         if analyze_btn and ticker:
             scores = _get_scores_from_db(ticker) or {
-                'sentiment_score': 50,
-                'fundamental_score': 50,
-                'technical_score': 50,
-                'options_flow_score': 50,
-                'short_squeeze_score': 50,
-                'total_score': 50
+                'sentiment_score': None,
+                'fundamental_score': None,
+                'technical_score': None,
+                'options_flow_score': None,
+                'short_squeeze_score': None,
+                'total_score': None
             }
 
             with st.spinner(f"Analyzing {ticker}..."):

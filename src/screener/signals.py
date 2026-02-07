@@ -67,15 +67,24 @@ def generate_trading_signal(scores: Dict[str, Any]) -> Signal:
     Returns:
         Signal object with type, strength, reasons, color
     """
-    # Extract scores with defaults
-    sentiment = float(scores.get('sentiment_score', 50) or 50)
-    likelihood = float(scores.get('likelihood_score', 50) or 50)
-    gap_type = float(scores.get('gap_score', 50) or 50)
-    fundamental_score = float(scores.get('fundamental_score', 50) or 50)
-    growth_score = float(scores.get('growth_score', 50) or 50)
-    dividend_score = float(scores.get('dividend_score', 50) or 50)
-    analyst_positivity = float(scores.get('analyst_positivity', 50) or 50)
-    total_score = float(scores.get('total_score', 50) or 50)
+    # Extract scores — None means "not available"
+    def _score(key: str):
+        v = scores.get(key)
+        if v is None:
+            return None
+        try:
+            return float(v)
+        except (TypeError, ValueError):
+            return None
+
+    sentiment = _score('sentiment_score')
+    likelihood = _score('likelihood_score')
+    gap_type = _score('gap_score')
+    fundamental_score = _score('fundamental_score')
+    growth_score = _score('growth_score')
+    dividend_score = _score('dividend_score')
+    analyst_positivity = _score('analyst_positivity')
+    total_score = _score('total_score')
 
     # Initialize
     signal_type = "NEUTRAL"
@@ -85,63 +94,81 @@ def generate_trading_signal(scores: Dict[str, Any]) -> Signal:
 
     ticker = scores.get('ticker', 'UNKNOWN')
 
-    # Signal generation logic (from Project 1)
+    # None-safe comparisons: missing data → condition fails (can't confirm signal)
+    def _gt(v, t): return v is not None and v > t
+    def _lt(v, t): return v is not None and v < t
+    def _gte(v, t): return v is not None and v >= t
+
+    # Count available scores for confidence
+    available = sum(1 for v in [sentiment, likelihood, gap_type, fundamental_score] if v is not None)
+
+    if available == 0:
+        # No data at all — cannot generate signal
+        return Signal(
+            type="NEUTRAL",
+            strength=0,
+            reasons=["Insufficient data for signal generation"],
+            color="#d1d5db",
+            timestamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        )
+
+    # Signal generation logic
 
     # 1. Strong buy signals
-    if (likelihood > 75 and sentiment > 60 and gap_type > 60 and
-            (fundamental_score > 70 or analyst_positivity > 80)):
+    if (_gt(likelihood, 75) and _gt(sentiment, 60) and _gt(gap_type, 60) and
+            (_gt(fundamental_score, 70) or _gt(analyst_positivity, 80))):
         signal_type = "STRONG BUY"
         signal_strength = 5
         signal_reasons.append("Multiple indicators strongly positive")
         signal_color = "#22c55e"
 
     # 2. Buy signals
-    elif (likelihood > 60 and sentiment > 50 and
-          (gap_type > 50 or fundamental_score > 60)):
+    elif (_gt(likelihood, 60) and _gt(sentiment, 50) and
+          (_gt(gap_type, 50) or _gt(fundamental_score, 60))):
         signal_type = "BUY"
         signal_strength = 4
         signal_reasons.append("Positive outlook with technical support")
         signal_color = "#4ade80"
 
     # 3. Weak buy signals
-    elif (likelihood > 55 and (sentiment > 45 or gap_type > 45) and total_score > 50):
+    elif (_gt(likelihood, 55) and (_gt(sentiment, 45) or _gt(gap_type, 45)) and _gt(total_score, 50)):
         signal_type = "WEAK BUY"
         signal_strength = 3
         signal_reasons.append("Modestly positive indicators")
         signal_color = "#86efac"
 
     # 4. Strong sell signals
-    elif (likelihood < 25 and sentiment < 40 and gap_type < 40 and
-          (fundamental_score < 30 or analyst_positivity < 20)):
+    elif (_lt(likelihood, 25) and _lt(sentiment, 40) and _lt(gap_type, 40) and
+          (_lt(fundamental_score, 30) or _lt(analyst_positivity, 20))):
         signal_type = "STRONG SELL"
         signal_strength = -5
         signal_reasons.append("Multiple indicators strongly negative")
         signal_color = "#ef4444"
 
     # 5. Sell signals
-    elif (likelihood < 40 and sentiment < 50 and
-          (gap_type < 50 or fundamental_score < 40)):
+    elif (_lt(likelihood, 40) and _lt(sentiment, 50) and
+          (_lt(gap_type, 50) or _lt(fundamental_score, 40))):
         signal_type = "SELL"
         signal_strength = -4
         signal_reasons.append("Negative outlook with technical weakness")
         signal_color = "#f87171"
 
     # 6. Weak sell signals
-    elif (likelihood < 45 and (sentiment < 55 or gap_type < 55) and total_score < 50):
+    elif (_lt(likelihood, 45) and (_lt(sentiment, 55) or _lt(gap_type, 55)) and _lt(total_score, 50)):
         signal_type = "WEAK SELL"
         signal_strength = -3
         signal_reasons.append("Modestly negative indicators")
         signal_color = "#fca5a5"
 
     # 7. Neutral with positive bias
-    elif likelihood > 55 or sentiment > 55 or total_score > 55:
+    elif _gt(likelihood, 55) or _gt(sentiment, 55) or _gt(total_score, 55):
         signal_type = "NEUTRAL+"
         signal_strength = 1
         signal_reasons.append("Slightly positive indicators")
         signal_color = "#bef264"
 
     # 8. Neutral with negative bias
-    elif likelihood < 45 or sentiment < 45 or total_score < 45:
+    elif _lt(likelihood, 45) or _lt(sentiment, 45) or _lt(total_score, 45):
         signal_type = "NEUTRAL-"
         signal_strength = -1
         signal_reasons.append("Slightly negative indicators")
@@ -155,7 +182,7 @@ def generate_trading_signal(scores: Dict[str, Any]) -> Signal:
         signal_color = "#d1d5db"
 
     # Special case: High dividend stocks with good fundamentals
-    if dividend_score > 70 and fundamental_score > 60 and signal_strength >= 0:
+    if _gt(dividend_score, 70) and _gt(fundamental_score, 60) and signal_strength >= 0:
         if signal_strength < 3:
             signal_type = "INCOME BUY"
             signal_strength = 3
@@ -163,7 +190,7 @@ def generate_trading_signal(scores: Dict[str, Any]) -> Signal:
             signal_color = "#818cf8"
 
     # Special case: High growth stocks with positive sentiment
-    if growth_score > 75 and sentiment > 60 and signal_strength >= 0:
+    if _gt(growth_score, 75) and _gt(sentiment, 60) and signal_strength >= 0:
         if signal_strength < 3:
             signal_type = "GROWTH BUY"
             signal_strength = 3
@@ -184,47 +211,82 @@ def generate_trading_signal(scores: Dict[str, Any]) -> Signal:
 
 
 def calculate_composite_score(scores: Dict[str, Any],
-                              weights: Optional[Dict[str, float]] = None) -> int:
+                              weights: Optional[Dict[str, float]] = None) -> Optional[int]:
     """
     Calculate composite score from individual scores.
+    Only includes components with real data; normalizes weights dynamically.
+
+    NOTE (F-03 fix): 'likelihood' removed — it's derived from sentiment +
+    fundamental + analyst, so including it double-counts those components.
     """
     default_weights = {
-        'sentiment': 0.20,
-        'fundamental': 0.25,
+        'sentiment': 0.25,
+        'fundamental': 0.30,
         'growth': 0.15,
         'dividend': 0.05,
         'gap': 0.10,
-        'analyst': 0.10,
-        'likelihood': 0.15,
+        'analyst': 0.15,
     }
 
     w = weights or default_weights
 
-    composite = 0.0
-    composite += float(scores.get('sentiment_score', 50) or 50) * w.get('sentiment', 0.20)
-    composite += float(scores.get('fundamental_score', 50) or 50) * w.get('fundamental', 0.25)
-    composite += float(scores.get('growth_score', 50) or 50) * w.get('growth', 0.15)
-    composite += float(scores.get('dividend_score', 50) or 50) * w.get('dividend', 0.05)
-    composite += float(scores.get('gap_score', 50) or 50) * w.get('gap', 0.10)
-    composite += float(scores.get('analyst_positivity', 50) or 50) * w.get('analyst', 0.10)
-    composite += float(scores.get('likelihood_score', 50) or 50) * w.get('likelihood', 0.15)
+    # Map weight keys to score keys
+    score_keys = {
+        'sentiment': 'sentiment_score',
+        'fundamental': 'fundamental_score',
+        'growth': 'growth_score',
+        'dividend': 'dividend_score',
+        'gap': 'gap_score',
+        'analyst': 'analyst_positivity',
+    }
 
-    result = int(composite)
+    # Collect available components
+    weighted_total = 0.0
+    weight_sum = 0.0
+
+    for weight_key, score_key in score_keys.items():
+        val = scores.get(score_key)
+        if val is not None:
+            try:
+                weighted_total += float(val) * w.get(weight_key, 0)
+                weight_sum += w.get(weight_key, 0)
+            except (TypeError, ValueError):
+                continue
+
+    if weight_sum == 0:
+        return None  # Cannot score — no data
+
+    result = int(weighted_total / weight_sum)
     return max(0, min(100, result))
 
-def calculate_likelihood_score(scores: Dict[str, Any]) -> int:
+def calculate_likelihood_score(scores: Dict[str, Any]) -> Optional[int]:
     """
     Calculate likelihood score (probability of positive outcome).
-
     Based on sentiment, fundamentals, and analyst consensus.
+    Only uses components with real data.
     """
-    sentiment = float(scores.get('sentiment_score', 50) or 50)
-    fundamental = float(scores.get('fundamental_score', 50) or 50)
-    analyst = float(scores.get('analyst_positivity', 50) or 50)
+    component_weights = {
+        'sentiment_score': 0.4,
+        'fundamental_score': 0.35,
+        'analyst_positivity': 0.25,
+    }
 
-    # Simple weighted average
-    likelihood = (sentiment * 0.4) + (fundamental * 0.35) + (analyst * 0.25)
+    weighted_total = 0.0
+    weight_sum = 0.0
 
+    for key, weight in component_weights.items():
+        val = scores.get(key)
+        if val is not None:
+            try:
+                weighted_total += float(val) * weight
+                weight_sum += weight
+            except (TypeError, ValueError):
+                continue
+
+    if weight_sum == 0:
+        return None  # Cannot compute — no input data
+
+    likelihood = weighted_total / weight_sum
     return int(max(0, min(100, likelihood)))
 
 

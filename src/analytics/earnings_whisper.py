@@ -620,7 +620,7 @@ class EarningsWhisperAnalyzer:
         if whisper.historical_pattern and whisper.historical_pattern.avg_surprise_pct != 0:
             base_surprise = whisper.historical_pattern.avg_surprise_pct
         else:
-            base_surprise = 3.0  # Default slight beat
+            base_surprise = 0.0  # No history = no directional assumption
 
         # Adjust based on current signals
         adjustment = (composite - 50) / 10  # -5 to +5

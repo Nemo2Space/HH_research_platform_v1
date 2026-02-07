@@ -411,18 +411,18 @@ Return ONLY a JSON object with headline numbers and scores:
         """
         if not articles:
             return {
-                'sentiment_score': 50,
-                'sentiment_weighted': 50,
-                'sentiment_class': 'neutral',
+                'sentiment_score': None,
+                'sentiment_weighted': None,
+                'sentiment_class': None,
                 'relevant_count': 0
             }
 
         if not self.sentiment_available:
-            logger.warning(f"{ticker}: Sentiment model not available, returning neutral")
+            logger.warning(f"{ticker}: Sentiment model not available, returning None")
             return {
-                'sentiment_score': 50,
-                'sentiment_weighted': 50,
-                'sentiment_class': 'neutral',
+                'sentiment_score': None,
+                'sentiment_weighted': None,
+                'sentiment_class': None,
                 'relevant_count': len(articles)
             }
 
@@ -522,14 +522,17 @@ Return ONLY a JSON object:
             logger.error(f"{ticker}: Sentiment model error: {e}")
 
         return {
-            'sentiment_score': 50,
-            'sentiment_weighted': 50,
-            'sentiment_class': 'neutral',
+            'sentiment_score': None,
+            'sentiment_weighted': None,
+            'sentiment_class': None,
             'relevant_count': len(articles)
         }
 
     def _save_sentiment_score(self, ticker: str, score: int, sentiment_class: str, article_count: int):
         """Save sentiment score to screener_scores table."""
+        if score is None:
+            logger.debug(f"{ticker}: Skipping DB write — sentiment score is None")
+            return
         try:
             from src.db.connection import get_connection
             from datetime import date
@@ -569,9 +572,9 @@ Return ONLY a JSON object:
         if not articles:
             return {
                 'ticker': ticker,
-                'sentiment_score': 50,
-                'sentiment_weighted': 50,
-                'sentiment_class': 'neutral',
+                'sentiment_score': None,
+                'sentiment_weighted': None,
+                'sentiment_class': None,
                 'article_count': 0,
                 'relevant_count': 0
             }

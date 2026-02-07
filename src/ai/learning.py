@@ -531,8 +531,8 @@ class SignalLearner:
         similar = self.get_similar_historical_signals(
             ticker=ticker,
             sector=sector,
-            sentiment=scores.get('sentiment_score', 50),
-            fundamental=scores.get('fundamental_score', 50),
+            sentiment=scores.get('sentiment_score'),
+            fundamental=scores.get('fundamental_score'),
             limit=5
         )
 
@@ -598,8 +598,8 @@ KEY LEARNINGS FOR {sector}:
         similar = self.get_similar_historical_signals(
             ticker=ticker,
             sector=sector,
-            sentiment=scores.get('sentiment_score', 50),
-            fundamental=scores.get('fundamental_score', 50),
+            sentiment=scores.get('sentiment_score'),
+            fundamental=scores.get('fundamental_score'),
             limit=5
         )
 

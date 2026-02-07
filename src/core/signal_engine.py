@@ -348,7 +348,7 @@ class SignalEngine:
             if TECHNICAL_AVAILABLE:
                 try:
                     self._add_technical_analysis(signal)
-                    if signal.technical_score != 50:
+                    if signal.technical_score is not None:
                         components_used.append("technical")
                 except Exception as e:
                     logger.debug(f"{ticker}: Technical analysis error: {e}")
@@ -356,7 +356,7 @@ class SignalEngine:
             # Fundamental Analysis (from DB or yfinance)
             try:
                 self._add_fundamental_analysis(signal)
-                if signal.fundamental_score != 50:
+                if signal.fundamental_score is not None:
                     components_used.append("fundamental")
             except Exception as e:
                 logger.debug(f"{ticker}: Fundamental analysis error: {e}")
@@ -365,7 +365,7 @@ class SignalEngine:
         if EARNINGS_AVAILABLE:
             try:
                 self._add_earnings_analysis(signal)
-                if signal.earnings_date or signal.earnings_score != 50:
+                if signal.earnings_date or signal.earnings_score is not None:
                     components_used.append("earnings")
             except Exception as e:
                 logger.debug(f"{ticker}: Earnings analysis error: {e}")
@@ -547,26 +547,44 @@ class SignalEngine:
 
             row = df.iloc[0]
 
-            # Load all scores
-            signal.sentiment_score = int(row.get('sentiment_score') or 50)
-            signal.fundamental_score = int(row.get('fundamental_score') or 50)
-            signal.technical_score = int(row.get('technical_score') or 50)
-            signal.options_score = int(row.get('options_flow_score') or 50)
+            # Load all scores - preserve None for missing data (NO default-50!)
+            def _safe_int(val):
+                """Convert DB value to int, preserving None for missing data."""
+                if val is None or (hasattr(val, '__class__') and str(val) == 'nan'):
+                    return None
+                try:
+                    return int(val)
+                except (TypeError, ValueError):
+                    return None
+
+            signal.sentiment_score = _safe_int(row.get('sentiment_score'))
+            signal.fundamental_score = _safe_int(row.get('fundamental_score'))
+            signal.technical_score = _safe_int(row.get('technical_score'))
+            signal.options_score = _safe_int(row.get('options_flow_score'))
 
             logger.info(f"{signal.ticker}: DB scores - Sent:{signal.sentiment_score} Fund:{signal.fundamental_score} Tech:{signal.technical_score} Opts:{signal.options_score}")
 
-            # Set signals based on scores
-            signal.sentiment_signal = "BUY" if signal.sentiment_score >= 60 else "SELL" if signal.sentiment_score <= 40 else "HOLD"
-            signal.fundamental_signal = "BUY" if signal.fundamental_score >= 60 else "SELL" if signal.fundamental_score <= 40 else "HOLD"
-            signal.technical_signal = "BUY" if signal.technical_score >= 60 else "SELL" if signal.technical_score <= 40 else "HOLD"
-            signal.options_signal = "BUY" if signal.options_score >= 60 else "SELL" if signal.options_score <= 40 else "HOLD"
+            # Set signals based on scores (only when score exists)
+            def _score_to_signal_str(score):
+                if score is None:
+                    return None
+                return "BUY" if score >= 60 else "SELL" if score <= 40 else "HOLD"
 
-            # Set reasons with actual values
+            signal.sentiment_signal = _score_to_signal_str(signal.sentiment_score)
+            signal.fundamental_signal = _score_to_signal_str(signal.fundamental_score)
+            signal.technical_signal = _score_to_signal_str(signal.technical_score)
+            signal.options_signal = _score_to_signal_str(signal.options_score)
+
+            # Set reasons with actual values (only when score exists)
             articles = int(row.get('article_count') or 0)
-            signal.sentiment_reason = f"Score {signal.sentiment_score}" + (f" ({articles} articles)" if articles > 0 else "")
-            signal.fundamental_reason = f"Score {signal.fundamental_score}"
-            signal.technical_reason = f"Score {signal.technical_score}"
-            signal.options_reason = str(row.get('options_sentiment') or f"Score {signal.options_score}")
+            if signal.sentiment_score is not None:
+                signal.sentiment_reason = f"Score {signal.sentiment_score}" + (f" ({articles} articles)" if articles > 0 else "")
+            if signal.fundamental_score is not None:
+                signal.fundamental_reason = f"Score {signal.fundamental_score}"
+            if signal.technical_score is not None:
+                signal.technical_reason = f"Score {signal.technical_score}"
+            if signal.options_score is not None:
+                signal.options_reason = str(row.get('options_sentiment') or f"Score {signal.options_score}")
 
             # Squeeze flag
             squeeze = int(row.get('short_squeeze_score') or 0)
@@ -796,7 +814,7 @@ class SignalEngine:
     def _add_technical_analysis(self, signal: UnifiedSignal):
         """Add technical analysis component."""
         # Skip if already loaded from screener_scores
-        if hasattr(signal, '_scores_from_db') and signal._scores_from_db and signal.technical_score != 50:
+        if hasattr(signal, '_scores_from_db') and signal._scores_from_db and signal.technical_score is not None:
             return
 
         if not self.technical_analyzer:
@@ -811,8 +829,8 @@ class SignalEngine:
             elif hasattr(result, 'technical_score'):
                 signal.technical_score = int(result.technical_score)
             else:
-                # Calculate from individual indicators
-                signal.technical_score = 50
+                # Cannot calculate from individual indicators — leave as None
+                return
 
             # Determine signal
             if signal.technical_score >= 70:
@@ -837,7 +855,7 @@ class SignalEngine:
     def _add_fundamental_analysis(self, signal: UnifiedSignal):
         """Add fundamental analysis from database."""
         # Skip if already loaded from screener_scores
-        if hasattr(signal, '_scores_from_db') and signal._scores_from_db and signal.fundamental_score != 50:
+        if hasattr(signal, '_scores_from_db') and signal._scores_from_db and signal.fundamental_score is not None:
             return
 
         try:
@@ -919,7 +937,7 @@ class SignalEngine:
     def _add_sentiment_analysis(self, signal: UnifiedSignal):
         """Add sentiment analysis from database."""
         # Skip if already loaded from screener_scores
-        if hasattr(signal, '_scores_from_db') and signal._scores_from_db and signal.sentiment_score != 50:
+        if hasattr(signal, '_scores_from_db') and signal._scores_from_db and signal.sentiment_score is not None:
             return
 
         try:
@@ -941,8 +959,11 @@ class SignalEngine:
             row = df.iloc[0]
 
             # Sentiment score from screener (already 0-100)
-            sent_score = row.get('sentiment_score', 50)
-            signal.sentiment_score = int(sent_score) if sent_score else 50
+            sent_score = row.get('sentiment_score')
+            if sent_score is not None and not (hasattr(sent_score, '__class__') and str(sent_score) == 'nan'):
+                signal.sentiment_score = int(sent_score)
+            else:
+                return  # No valid sentiment data — leave as None
 
             article_count = row.get('article_count', 0)
 
@@ -962,7 +983,7 @@ class SignalEngine:
     def _add_options_analysis(self, signal: UnifiedSignal):
         """Add options flow analysis."""
         # Skip if already loaded from screener_scores
-        if hasattr(signal, '_scores_from_db') and signal._scores_from_db and signal.options_score != 50:
+        if hasattr(signal, '_scores_from_db') and signal._scores_from_db and signal.options_score is not None:
             return
 
         if not self.options_analyzer:
@@ -976,7 +997,7 @@ class SignalEngine:
             elif hasattr(result, 'score'):
                 signal.options_score = int(result.score)
             else:
-                signal.options_score = 50
+                return  # Cannot score — leave as None
 
             if signal.options_score >= 70:
                 signal.options_signal = "BUY"
@@ -1105,25 +1126,34 @@ class SignalEngine:
         """
         Calculate scores using UnifiedScorer (Phase 0).
         Ensures backtest and live scoring use identical weights.
+        
+        FIXED: Passes None for missing scores so UnifiedScorer's
+        get_available_scores() correctly excludes them from weighting.
         """
         from datetime import datetime
 
         # Build TickerFeatures from signal data
+        # CRITICAL: Pass None (not 50) for missing components
         features = TickerFeatures(
             ticker=signal.ticker,
             as_of_time=datetime.now(),
             current_price=signal.current_price or 0,
-            sentiment_score=signal.sentiment_score,
-            fundamental_score=signal.fundamental_score,
-            technical_score=signal.technical_score,
-            options_flow_score=signal.options_score,
-            short_squeeze_score=signal.squeeze_score if hasattr(signal, 'squeeze_score') else 0,
+            sentiment_score=float(signal.sentiment_score) if signal.sentiment_score is not None else None,
+            fundamental_score=float(signal.fundamental_score) if signal.fundamental_score is not None else None,
+            technical_score=float(signal.technical_score) if signal.technical_score is not None else None,
+            options_flow_score=float(signal.options_score) if signal.options_score is not None else None,
+            short_squeeze_score=float(signal.squeeze_score) if hasattr(signal, 'squeeze_score') and signal.squeeze_score else None,
             # Add earnings if available
             earnings_date=signal.earnings_date if signal.earnings_date else None,
         )
 
         # Compute scores using unified weights
         result = self.unified_scorer.compute_scores(features)
+
+        # If UnifiedScorer couldn't score (insufficient data), fall back to legacy
+        if result.total_score is None or result.signal_type == "CANNOT_SCORE":
+            logger.debug(f"{signal.ticker}: UnifiedScorer returned CANNOT_SCORE, using legacy")
+            raise ValueError("UnifiedScorer returned CANNOT_SCORE")
 
         # Map back to signal
         signal.today_score = int(result.total_score)
@@ -1180,17 +1210,8 @@ class SignalEngine:
     def _calculate_scores_legacy(self, signal: UnifiedSignal):
         """
         Original scoring logic (fallback).
-        Kept for backwards compatibility.
+        FIXED: Uses is not None instead of != 50, with proper weight normalization.
         """
-        # Track if we have real data (not just default 50s)
-        has_real_data = any([
-            signal.technical_score != 50,
-            signal.sentiment_score != 50,
-            signal.fundamental_score != 50,
-            signal.options_score != 50,
-            signal.earnings_score != 50,
-        ])
-
         # Weights for today signal (short-term)
         today_weights = {
             'technical': 0.30,
@@ -1207,65 +1228,70 @@ class SignalEngine:
             'earnings': 0.20,
         }
 
-        # Calculate today score - include all components
+        # Calculate today score - only include components with real data
         today_total = 0
         today_weight_sum = 0
 
-        # Always include if we have real data, or if score is not default
-        if signal.technical_score != 50 or has_real_data:
+        if signal.technical_score is not None:
             today_total += signal.technical_score * today_weights['technical']
             today_weight_sum += today_weights['technical']
-        if signal.sentiment_score != 50 or has_real_data:
+        if signal.sentiment_score is not None:
             today_total += signal.sentiment_score * today_weights['sentiment']
             today_weight_sum += today_weights['sentiment']
-        if signal.options_score != 50 or has_real_data:
+        if signal.options_score is not None:
             today_total += signal.options_score * today_weights['options']
             today_weight_sum += today_weights['options']
-        if signal.earnings_score != 50:  # Only include if we have earnings data
+        if signal.earnings_score is not None:
             today_total += signal.earnings_score * today_weights['earnings']
             today_weight_sum += today_weights['earnings']
 
         if today_weight_sum > 0:
             signal.today_score = int(today_total / today_weight_sum)
         else:
-            signal.today_score = 50  # Default neutral
+            signal.today_score = None  # No data = cannot score
 
         # Calculate long-term score
         longterm_total = 0
         longterm_weight_sum = 0
 
-        if signal.fundamental_score != 50 or has_real_data:
+        if signal.fundamental_score is not None:
             longterm_total += signal.fundamental_score * longterm_weights['fundamental']
             longterm_weight_sum += longterm_weights['fundamental']
-        if signal.technical_score != 50 or has_real_data:
+        if signal.technical_score is not None:
             longterm_total += signal.technical_score * longterm_weights['technical']
             longterm_weight_sum += longterm_weights['technical']
-        if signal.sentiment_score != 50 or has_real_data:
+        if signal.sentiment_score is not None:
             longterm_total += signal.sentiment_score * longterm_weights['sentiment']
             longterm_weight_sum += longterm_weights['sentiment']
-        if signal.earnings_score != 50:
+        if signal.earnings_score is not None:
             longterm_total += signal.earnings_score * longterm_weights['earnings']
             longterm_weight_sum += longterm_weights['earnings']
 
         if longterm_weight_sum > 0:
             signal.longterm_score = int(longterm_total / longterm_weight_sum)
         else:
-            signal.longterm_score = 50
+            signal.longterm_score = None
 
         logger.debug(f"{signal.ticker}: Legacy -> Today={signal.today_score} Longterm={signal.longterm_score}")
 
-        # Determine signal strengths
-        signal.today_signal = self._score_to_signal(signal.today_score)
-        signal.longterm_signal = self._score_to_signal(signal.longterm_score)
+        # Determine signal strengths (handle None)
+        if signal.today_score is not None:
+            signal.today_signal = self._score_to_signal(signal.today_score)
+        if signal.longterm_score is not None:
+            signal.longterm_signal = self._score_to_signal(signal.longterm_score)
 
-        # Committee votes
-        signal.committee_votes = {
-            'technical': signal.technical_signal,
-            'fundamental': signal.fundamental_signal,
-            'sentiment': signal.sentiment_signal,
-            'options': signal.options_signal,
-            'earnings': signal.earnings_signal,
-        }
+        # Committee votes (only for components with data)
+        signal.committee_votes = {}
+        if signal.technical_signal is not None:
+            signal.committee_votes['technical'] = signal.technical_signal
+        if signal.fundamental_signal is not None:
+            signal.committee_votes['fundamental'] = signal.fundamental_signal
+        if signal.sentiment_signal is not None:
+            signal.committee_votes['sentiment'] = signal.sentiment_signal
+        if signal.options_signal is not None:
+            signal.committee_votes['options'] = signal.options_signal
+        if signal.earnings_signal is not None:
+            signal.committee_votes['earnings'] = signal.earnings_signal
 
         # Calculate agreement
         votes = [v for v in signal.committee_votes.values() if v]
@@ -1300,7 +1326,7 @@ class SignalEngine:
 
     def _calculate_risk(self, signal: UnifiedSignal):
         """Calculate risk level and factors."""
-        risk_score = 50
+        risk_score = 30  # Start at LOW baseline, add risk factors
         risk_factors = []
 
         # Earnings risk
@@ -1339,37 +1365,41 @@ class SignalEngine:
         reasons = []
         neutral_info = []
 
-        # Technical
-        if signal.technical_score >= 65:
-            reasons.append("strong technicals")
-        elif signal.technical_score <= 35:
-            reasons.append("weak technicals")
-        elif signal.technical_score != 50:
-            neutral_info.append(f"tech {signal.technical_score}")
+        # Technical (only if we have data)
+        if signal.technical_score is not None:
+            if signal.technical_score >= 65:
+                reasons.append("strong technicals")
+            elif signal.technical_score <= 35:
+                reasons.append("weak technicals")
+            else:
+                neutral_info.append(f"tech {signal.technical_score}")
 
         # Sentiment
-        if signal.sentiment_score >= 65:
-            reasons.append("positive sentiment")
-        elif signal.sentiment_score <= 35:
-            reasons.append("negative sentiment")
-        elif signal.sentiment_score != 50:
-            neutral_info.append(f"sent {signal.sentiment_score}")
+        if signal.sentiment_score is not None:
+            if signal.sentiment_score >= 65:
+                reasons.append("positive sentiment")
+            elif signal.sentiment_score <= 35:
+                reasons.append("negative sentiment")
+            else:
+                neutral_info.append(f"sent {signal.sentiment_score}")
 
         # Options
-        if signal.options_score >= 65:
-            reasons.append("bullish options flow")
-        elif signal.options_score <= 35:
-            reasons.append("bearish options flow")
-        elif signal.options_score != 50:
-            neutral_info.append(f"opts {signal.options_score}")
+        if signal.options_score is not None:
+            if signal.options_score >= 65:
+                reasons.append("bullish options flow")
+            elif signal.options_score <= 35:
+                reasons.append("bearish options flow")
+            else:
+                neutral_info.append(f"opts {signal.options_score}")
 
         # Fundamentals
-        if signal.fundamental_score >= 65:
-            reasons.append("solid fundamentals")
-        elif signal.fundamental_score <= 35:
-            reasons.append("weak fundamentals")
-        elif signal.fundamental_score != 50:
-            neutral_info.append(f"fund {signal.fundamental_score}")
+        if signal.fundamental_score is not None:
+            if signal.fundamental_score >= 65:
+                reasons.append("solid fundamentals")
+            elif signal.fundamental_score <= 35:
+                reasons.append("weak fundamentals")
+            else:
+                neutral_info.append(f"fund {signal.fundamental_score}")
 
         # Earnings
         if signal.earnings_reason and "beat" in signal.earnings_reason.lower():
@@ -1386,9 +1416,10 @@ class SignalEngine:
             neutral_info.append(signal.next_catalyst)
 
         if reasons:
-            if signal.today_score >= 65:
+            ts = signal.today_score or 50  # fallback for display only
+            if ts >= 65:
                 signal.signal_reason = f"Bullish: {', '.join(reasons[:3])}"
-            elif signal.today_score <= 35:
+            elif ts <= 35:
                 signal.signal_reason = f"Bearish: {', '.join(reasons[:3])}"
             else:
                 signal.signal_reason = f"Mixed: {', '.join(reasons[:3])}"
@@ -1409,7 +1440,7 @@ class SignalEngine:
     def _add_flags(self, signal: UnifiedSignal):
         """Add visual flags based on signal characteristics."""
         # Hot stock (high score + volume)
-        if signal.today_score >= 80:
+        if signal.today_score is not None and signal.today_score >= 80:
             signal.flags.append("🔥 Hot")
 
         # Earnings flags already added in earnings analysis

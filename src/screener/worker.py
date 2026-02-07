@@ -229,7 +229,7 @@ class ScreenerWorker:
         # 4. Technical analysis
         tech_analyzer = TechnicalAnalyzer(self.repo)
         tech_data = tech_analyzer.analyze_ticker(ticker)
-        technical_score = tech_data.get('technical_score', 50)
+        technical_score = tech_data.get('technical_score')
 
         # 5. Get news with smart caching
         # collect_all_news now handles caching internally:
@@ -244,13 +244,13 @@ class ScreenerWorker:
         self.news_collector.save_articles(articles)
 
         # 6. Analyze sentiment (with caching)
-        sentiment_score = 50
-        sentiment_weighted = 50
+        sentiment_score = None
+        sentiment_weighted = None
 
         # Check if we have cached sentiment from today
         cached_sentiment = self.get_cached_sentiment(ticker)
 
-        if cached_sentiment and cached_sentiment['sentiment_score'] not in (None, 0, 50):
+        if cached_sentiment and cached_sentiment['sentiment_score'] not in (None, 0):
             # Use cached if article count is similar (within 10%)
             cached_count = cached_sentiment.get('article_count', 0)
             current_count = len(articles)
@@ -283,11 +283,11 @@ class ScreenerWorker:
 
         # 7c. Get insider signal
         insider_data = self.insider_fetcher.get_insider_signal(ticker, days_back=30)
-        insider_signal = insider_data.get('insider_signal', 50)
+        insider_signal = insider_data.get('insider_signal')
 
         # 7d. Get institutional signal from Finviz
         finviz_data = self.finviz_fetcher.get_institutional_signal(ticker)
-        institutional_signal = finviz_data.get('institutional_signal', 50)
+        institutional_signal = finviz_data.get('institutional_signal')
 
         # 8. Build scores dict
         scores = {
@@ -300,14 +300,14 @@ class ScreenerWorker:
             'technical_score': technical_score,
             'gap_score': gap_score,
             'gap_type': gap_type,
-            'analyst_positivity': analyst_data.get('analyst_positivity', 50),
+            'analyst_positivity': analyst_data.get('analyst_positivity'),
             'target_upside_pct': target_upside,
             'article_count': len(articles),
             'insider_signal': insider_signal,
             'institutional_signal': institutional_signal,
 
             # Technical details
-            'rsi': tech_data.get('rsi', 50),
+            'rsi': tech_data.get('rsi'),
             'macd_signal': tech_data.get('macd_signal', 'neutral'),
             'trend': tech_data.get('trend', 'neutral'),
             'momentum_5d': tech_data.get('momentum_5d', 0),

@@ -549,10 +549,10 @@ class DriftDetector:
 
         # This would compare current regime to regime during training
         # For now, just check for extreme regimes
-        vix = current_regime.get('vix', 20)
-        regime_score = current_regime.get('score', 50)
+        vix = current_regime.get('vix')
+        regime_score = current_regime.get('score')
 
-        if vix > 35:
+        if vix is not None and vix > 35:
             return DriftAlert(
                 alert_time=datetime.now(),
                 drift_type=DriftType.REGIME,
@@ -565,7 +565,7 @@ class DriftDetector:
                 recommended_action="Reduce position sizes. Model may not be calibrated for this regime."
             )
 
-        if regime_score < 25 or regime_score > 75:
+        if regime_score is not None and (regime_score < 25 or regime_score > 75):
             direction = "Risk-Off" if regime_score < 25 else "Strong Risk-On"
             return DriftAlert(
                 alert_time=datetime.now(),

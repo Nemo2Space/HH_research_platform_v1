@@ -542,7 +542,7 @@ class BacktestEngine:
 
         for _, row in df.iterrows():
             sentiment = row.get('sentiment', 50)
-            fundamental = row.get('fundamental_score', 50)
+            fundamental = row.get('fundamental_score')
             total = row.get('total_score', 50)
             ret = row.get(return_col)
 

@@ -352,7 +352,7 @@ def process_ticker(ticker: str, dry_run: bool = False) -> Dict:
         dividend = calculate_dividend_score(fund_data)
         print(f"  {Colors.GREEN}✓ Fundamental: {fundamental}, Growth: {growth}, Dividend: {dividend}{Colors.END}")
     else:
-        fundamental = existing.get('fundamental_score', 50)
+        fundamental = existing.get('fundamental_score')
         growth = existing.get('growth_score', 50)
         dividend = existing.get('dividend_score', 50)
         print(f"  {Colors.YELLOW}○ Using existing fundamental scores{Colors.END}")

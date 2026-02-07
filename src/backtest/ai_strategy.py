@@ -86,8 +86,8 @@ class AIBacktestStrategy:
         scores = {
             'ticker': row.get('ticker', 'UNKNOWN'),
             'sentiment_score': float(row.get('sentiment', 50) or 50),
-            'fundamental_score': float(row.get('fundamental_score', 50) or 50),
-            'technical_score': float(row.get('technical_score', 50) or 50),
+            'fundamental_score': float(row.get('fundamental_score') or 50),
+            'technical_score': float(row.get('technical_score') or 50),
             'options_flow_score': float(row.get('options_flow_score', 50) or 50),
             'short_squeeze_score': float(row.get('short_squeeze_score', 50) or 50),
             'total_score': float(row.get('total_score', 50) or 50),

@@ -335,8 +335,12 @@ class TradeIdeasAdapter:
         for candidate in candidates:
             sector = candidate.get('sector', '')
             
-            # Base score from trade ideas
-            base_score = candidate.get('ai_score', 50)
+            # Base score from trade ideas — skip if no AI score available
+            base_score = candidate.get('ai_score')
+            if base_score is None:
+                candidate['exposure_adjusted_score'] = None
+                candidate['exposure_adjustment'] = 0
+                continue
             adjustment = 0
             
             # Bonus for sectors with low exposure
@@ -354,8 +358,8 @@ class TradeIdeasAdapter:
             candidate['exposure_adjusted_score'] = base_score + adjustment
             candidate['exposure_adjustment'] = adjustment
         
-        # Re-sort by adjusted score
-        candidates.sort(key=lambda x: x.get('exposure_adjusted_score', 0), reverse=True)
+        # Re-sort by adjusted score (None-scored candidates sorted to bottom)
+        candidates.sort(key=lambda x: x.get('exposure_adjusted_score') or 0, reverse=True)
         
         return candidates
 

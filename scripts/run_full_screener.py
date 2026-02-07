@@ -47,7 +47,7 @@ def run_screener(tickers: list, use_llm: bool = True, force_news: bool = False):
         print(f"[{i:3}/{len(tickers)}] {ticker}...", end=" ", flush=True)
         try:
             result = worker.process_ticker(ticker, force_news=force_news, days_back=7)
-            sent = result.get('sentiment_score', 50)
+            sent = result.get('sentiment_score')
             sig = result.get('signal', {}).get('type', 'N/A')
             print(f"Sentiment={sent}, Signal={sig}")
             results.append(result)

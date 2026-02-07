@@ -63,9 +63,9 @@ class CommitteeCoordinator:
         df = pd.read_sql(query, self.repo.engine, params={"ticker": ticker})
         if len(df) > 0:
             row = df.iloc[0]
-            data['sentiment_score'] = row.get('sentiment_score', 50)
-            data['technical_score'] = row.get('technical_score', 50)
-            data['fundamental_score'] = row.get('fundamental_score', 50)
+            data['sentiment_score'] = row.get('sentiment_score')
+            data['technical_score'] = row.get('technical_score')
+            data['fundamental_score'] = row.get('fundamental_score')
             data['gap_score'] = row.get('gap_score', 50)
             data['article_count'] = row.get('article_count', 0)
 

@@ -205,7 +205,7 @@ class SentimentAgent(BaseAgent):
 
     def analyze(self, ticker: str, data: Dict[str, Any]) -> AgentVote:
         """Analyze sentiment and return vote."""
-        sentiment_score = data.get('sentiment_score', 50)
+        sentiment_score = data.get('sentiment_score')
         article_count = data.get('article_count', 0)
 
         # Convert sentiment to vote
@@ -255,7 +255,7 @@ class TechnicalAgent(BaseAgent):
 
     def analyze(self, ticker: str, data: Dict[str, Any]) -> AgentVote:
         """Analyze technicals and return vote."""
-        tech_score = data.get('technical_score', 50)
+        tech_score = data.get('technical_score')
         rsi = data.get('rsi', 50)
         trend = data.get('trend', 'neutral')
         momentum = data.get('momentum_5d', 0)

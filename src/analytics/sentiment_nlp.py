@@ -528,7 +528,7 @@ JSON response:"""
                 data = json.loads(json_match.group())
 
                 # Parse sentiment score
-                score = data.get('sentiment_score', 50)
+                score = data.get('sentiment_score')
                 if isinstance(score, (int, float)):
                     analysis.sentiment_score = int(max(0, min(100, score)))
 

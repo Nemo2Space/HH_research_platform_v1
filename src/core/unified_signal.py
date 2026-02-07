@@ -84,82 +84,83 @@ class UnifiedSignal:
     # ========================================
     # Today signal - short term (will it go up today/this week?)
     today_signal: SignalStrength = SignalStrength.HOLD
-    today_score: int = 50  # 0-100 (confidence it goes up)
+    today_score: Optional[int] = None  # 0-100 (None = not yet scored)
 
     # Long-term signal - investment quality
     longterm_signal: SignalStrength = SignalStrength.HOLD
-    longterm_score: int = 50  # 0-100
+    longterm_score: Optional[int] = None  # 0-100
 
     # Risk assessment (separate from signal)
     risk_level: RiskLevel = RiskLevel.MEDIUM
-    risk_score: int = 50  # 0-100 (higher = more risky)
+    risk_score: Optional[int] = None  # 0-100 (higher = more risky, None = not assessed)
     risk_factors: List[str] = field(default_factory=list)
 
     # Why this signal (one sentence)
     signal_reason: str = ""
 
     # ========================================
-    # COMPONENT SCORES (all 0-100)
+    # COMPONENT SCORES (all 0-100, None = no data)
     # ========================================
-    technical_score: int = 50
-    technical_signal: str = "HOLD"
+    technical_score: Optional[int] = None
+    technical_signal: Optional[str] = None
     technical_reason: str = ""
 
-    fundamental_score: int = 50
-    fundamental_signal: str = "HOLD"
+    fundamental_score: Optional[int] = None
+    fundamental_signal: Optional[str] = None
     fundamental_reason: str = ""
 
-    sentiment_score: int = 50
-    sentiment_signal: str = "HOLD"
+    sentiment_score: Optional[int] = None
+    sentiment_signal: Optional[str] = None
     sentiment_reason: str = ""
 
-    options_score: int = 50
-    options_signal: str = "HOLD"
+    options_score: Optional[int] = None
+    options_signal: Optional[str] = None
     options_reason: str = ""
 
-    earnings_score: int = 50
-    earnings_signal: str = "HOLD"
+    earnings_score: Optional[int] = None
+    earnings_signal: Optional[str] = None
     earnings_reason: str = ""
 
     # Bond-specific (only for bond ETFs)
-    bond_score: int = 50
-    bond_signal: str = "HOLD"
+    bond_score: Optional[int] = None
+    bond_signal: Optional[str] = None
     bond_reason: str = ""
 
     # ========================================
     # INSTITUTIONAL SIGNALS (Phase 2-4)
+    # None = module not available or no data
     # ========================================
     # GEX/Gamma Analysis
-    gex_score: int = 50
-    gex_signal: str = "NEUTRAL"  # BULLISH, BEARISH, NEUTRAL, PINNED
-    gex_regime: str = "NEUTRAL"  # POSITIVE_GEX, NEGATIVE_GEX, NEUTRAL
+    gex_score: Optional[int] = None
+    gex_signal: Optional[str] = None  # BULLISH, BEARISH, NEUTRAL, PINNED
+    gex_regime: Optional[str] = None  # POSITIVE_GEX, NEGATIVE_GEX, NEUTRAL
     gex_reason: str = ""
 
     # Dark Pool Flow
-    dark_pool_score: int = 50
-    dark_pool_signal: str = "NEUTRAL"  # ACCUMULATION, DISTRIBUTION, NEUTRAL
-    institutional_bias: str = "NEUTRAL"  # BUYING, SELLING, NEUTRAL
+    dark_pool_score: Optional[int] = None
+    dark_pool_signal: Optional[str] = None  # ACCUMULATION, DISTRIBUTION, NEUTRAL
+    institutional_bias: Optional[str] = None  # BUYING, SELLING, NEUTRAL
     dark_pool_reason: str = ""
 
     # Cross-Asset Context
-    cross_asset_score: int = 50
-    cross_asset_signal: str = "NEUTRAL"  # RISK_ON, RISK_OFF, NEUTRAL
+    cross_asset_score: Optional[int] = None
+    cross_asset_signal: Optional[str] = None  # RISK_ON, RISK_OFF, NEUTRAL
     cycle_phase: str = ""  # EARLY_CYCLE, MID_CYCLE, LATE_CYCLE, RECESSION
     cross_asset_reason: str = ""
 
     # Sentiment NLP (AI-powered)
-    sentiment_nlp_score: int = 50
-    sentiment_nlp_signal: str = "NEUTRAL"
+    sentiment_nlp_score: Optional[int] = None
+    sentiment_nlp_signal: Optional[str] = None
     sentiment_nlp_reason: str = ""
 
     # Earnings Whisper
-    whisper_score: int = 50
-    whisper_signal: str = "NEUTRAL"  # BEAT_EXPECTED, MISS_EXPECTED, NEUTRAL
+    whisper_score: Optional[int] = None
+    whisper_signal: Optional[str] = None  # BEAT_EXPECTED, MISS_EXPECTED, NEUTRAL
     whisper_reason: str = ""
 
     # Insider Transactions (Form 4 - 2 day lag)
-    insider_score: int = 50
-    insider_signal: str = "NEUTRAL"  # STRONG_BUY, BUY, NEUTRAL, SELL, STRONG_SELL
+    insider_score: Optional[int] = None
+    insider_signal: Optional[str] = None  # STRONG_BUY, BUY, NEUTRAL, SELL, STRONG_SELL
     insider_ceo_bought: bool = False
     insider_cfo_bought: bool = False
     insider_cluster_buying: bool = False
@@ -168,8 +169,8 @@ class UnifiedSignal:
     insider_reason: str = ""
 
     # 13F Institutional Holdings (45+ day lag)
-    inst_13f_score: int = 50
-    inst_13f_signal: str = "NEUTRAL"
+    inst_13f_score: Optional[int] = None
+    inst_13f_signal: Optional[str] = None
     inst_buffett_owns: bool = False
     inst_buffett_added: bool = False
     inst_activist_involved: bool = False
@@ -285,6 +286,8 @@ class UnifiedSignal:
 
     def get_stars(self) -> str:
         """Get star rating for long-term score."""
+        if self.longterm_score is None:
+            return "—"
         if self.longterm_score >= 90:
             return "⭐⭐⭐⭐⭐"
         elif self.longterm_score >= 75:
@@ -296,56 +299,100 @@ class UnifiedSignal:
         else:
             return "⭐"
 
+    # ========================================
+    # SAFE ACCESSORS (backward compatibility)
+    # ========================================
+
+    def score_value(self, field: str, default: int = 0) -> int:
+        """
+        Get a score field value, returning default if None.
+        Use this in UI/display code where you need an int.
+        For scoring logic, always check 'is not None' first.
+        """
+        val = getattr(self, field, None)
+        return val if val is not None else default
+
+    def has_score(self, field: str) -> bool:
+        """Check if a score field has real data (is not None)."""
+        return getattr(self, field, None) is not None
+
+    def score_display(self, field: str) -> str:
+        """Get a score for display: returns the value or 'N/A'."""
+        val = getattr(self, field, None)
+        return str(val) if val is not None else "N/A"
+
+    def signal_display(self, field: str) -> str:
+        """Get a signal string for display: returns the value or '—'."""
+        val = getattr(self, field, None)
+        return val if val is not None else "—"
+
+    @property
+    def data_completeness(self) -> float:
+        """
+        Fraction of core component scores that have real data (0.0 to 1.0).
+        Core components: technical, fundamental, sentiment, options, earnings.
+        """
+        core_fields = ['technical_score', 'fundamental_score', 'sentiment_score',
+                        'options_score', 'earnings_score']
+        available = sum(1 for f in core_fields if getattr(self, f, None) is not None)
+        return available / len(core_fields)
+
     def get_component_scores(self) -> List[ComponentScore]:
-        """Get all component scores as list."""
+        """Get all component scores as list (only those with data)."""
         components = []
 
         if self.asset_type == AssetType.BOND_ETF:
             # Bond-specific components
-            components.append(ComponentScore(
-                name="Bond Analysis",
-                score=self.bond_score,
-                signal=self.bond_signal,
-                weight=0.40,
-                reason=self.bond_reason
-            ))
+            if self.bond_score is not None:
+                components.append(ComponentScore(
+                    name="Bond Analysis",
+                    score=self.bond_score,
+                    signal=self.bond_signal or "—",
+                    weight=0.40,
+                    reason=self.bond_reason
+                ))
         else:
-            # Stock components
-            components.append(ComponentScore(
-                name="Technical",
-                score=self.technical_score,
-                signal=self.technical_signal,
-                weight=0.20,
-                reason=self.technical_reason
-            ))
-            components.append(ComponentScore(
-                name="Fundamental",
-                score=self.fundamental_score,
-                signal=self.fundamental_signal,
-                weight=0.20,
-                reason=self.fundamental_reason
-            ))
-            components.append(ComponentScore(
-                name="Sentiment",
-                score=self.sentiment_score,
-                signal=self.sentiment_signal,
-                weight=0.15,
-                reason=self.sentiment_reason
-            ))
-            components.append(ComponentScore(
-                name="Options Flow",
-                score=self.options_score,
-                signal=self.options_signal,
-                weight=0.15,
-                reason=self.options_reason
-            ))
-            components.append(ComponentScore(
-                name="Earnings",
-                score=self.earnings_score,
-                signal=self.earnings_signal,
-                weight=0.15,
-                reason=self.earnings_reason
-            ))
+            # Stock components — only include those with real data
+            if self.technical_score is not None:
+                components.append(ComponentScore(
+                    name="Technical",
+                    score=self.technical_score,
+                    signal=self.technical_signal or "—",
+                    weight=0.20,
+                    reason=self.technical_reason
+                ))
+            if self.fundamental_score is not None:
+                components.append(ComponentScore(
+                    name="Fundamental",
+                    score=self.fundamental_score,
+                    signal=self.fundamental_signal or "—",
+                    weight=0.20,
+                    reason=self.fundamental_reason
+                ))
+            if self.sentiment_score is not None:
+                components.append(ComponentScore(
+                    name="Sentiment",
+                    score=self.sentiment_score,
+                    signal=self.sentiment_signal or "—",
+                    weight=0.15,
+                    reason=self.sentiment_reason
+                ))
+            if self.options_score is not None:
+                components.append(ComponentScore(
+                    name="Options Flow",
+                    score=self.options_score,
+                    signal=self.options_signal or "—",
+                    weight=0.15,
+                    reason=self.options_reason
+                ))
+            if self.earnings_score is not None:
+                components.append(ComponentScore(
+                    name="Earnings",
+                    score=self.earnings_score,
+                    signal=self.earnings_signal or "—",
+                    weight=0.15,
+                    reason=self.earnings_reason
+                ))
 
         return components
 

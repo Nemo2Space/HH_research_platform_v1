@@ -158,9 +158,9 @@ SIMILAR HISTORICAL SETUPS:
 - Avg Return: {similar.get('avg_return', 0):.2f}%
 
 SIGNAL SCORES:
-- Sentiment: {scores.get('sentiment_score', 50):.0f}
-- Fundamental: {scores.get('fundamental_score', 50):.0f}
-- Technical: {scores.get('technical_score', 50):.0f}
+- Sentiment: {scores.get('sentiment_score'):.0f}
+- Fundamental: {scores.get('fundamental_score'):.0f}
+- Technical: {scores.get('technical_score'):.0f}
 - Options Flow: {scores.get('options_flow_score', 50):.0f}
 - Total: {scores.get('total_score', 50):.0f}
 
@@ -222,16 +222,16 @@ Based on the above data, provide:
         # ===== BULLISH FACTORS (data-driven) =====
         bullish = []
 
-        if scores.get('sentiment_score', 50) >= 65:
+        if scores.get('sentiment_score') >= 65:
             bullish.append(f"Strong sentiment ({scores['sentiment_score']:.0f})")
 
         if scores.get('options_flow_score', 50) >= 60:
             bullish.append(f"Bullish options flow ({scores['options_flow_score']:.0f})")
 
-        if scores.get('fundamental_score', 50) >= 70:
+        if scores.get('fundamental_score') >= 70:
             bullish.append(f"Strong fundamentals ({scores['fundamental_score']:.0f})")
 
-        if scores.get('technical_score', 50) >= 65:
+        if scores.get('technical_score') >= 65:
             bullish.append(f"Positive technicals ({scores['technical_score']:.0f})")
 
         if similar_count > 0 and wr >= 0.60:
@@ -246,8 +246,8 @@ Based on the above data, provide:
         # ===== BEARISH FACTORS (data-driven) =====
         bearish = []
 
-        if scores.get('sentiment_score', 50) < 45:
-            bearish.append(f"Weak sentiment ({scores.get('sentiment_score', 50):.0f})")
+        if scores.get('sentiment_score') < 45:
+            bearish.append(f"Weak sentiment ({scores.get('sentiment_score'):.0f})")
 
         if scores.get('options_flow_score', 50) < 45:
             bearish.append(f"Bearish options flow ({scores.get('options_flow_score', 50):.0f})")
@@ -263,9 +263,9 @@ Based on the above data, provide:
 
         # Score disagreement
         component_scores = [
-            scores.get('sentiment_score', 50),
-            scores.get('fundamental_score', 50),
-            scores.get('technical_score', 50),
+            scores.get('sentiment_score'),
+            scores.get('fundamental_score'),
+            scores.get('technical_score'),
             scores.get('options_flow_score', 50)
         ]
         import numpy as np
@@ -307,7 +307,7 @@ Based on the above data, provide:
         thesis_breakers.append("Price breaks below stop loss level")
 
         # Based on what's driving the signal
-        if scores.get('sentiment_score', 50) >= 60:
+        if scores.get('sentiment_score') >= 60:
             thesis_breakers.append("Sentiment score drops below 50")
 
         if scores.get('options_flow_score', 50) >= 55:
