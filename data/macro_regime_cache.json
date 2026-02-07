@@ -1,67 +1,66 @@
 {
-  "timestamp": "2026-02-01T14:40:02.161086",
+  "timestamp": "2026-02-06T11:30:11.270496",
   "result": {
-    "regime": "RISK_ON",
-    "regime_score": 56,
-    "confidence": 0.6666666666666666,
+    "regime": "NEUTRAL",
+    "regime_score": 48,
+    "confidence": 0.3333333333333333,
     "risk_on_factors": [
-      "VIX low (17.4) - bullish sentiment",
-      "Yield curve positive (+0.67%) - normal",
-      "Dollar weakening (-0.7% monthly)",
-      "Healthy breadth (equal-weight keeping up)"
+      "Yield curve positive (+0.63%) - normal",
+      "Broad market participation (RSP +0.8% vs SPY +-2.1%)"
     ],
     "risk_off_factors": [
-      "Defensive leading (1.8% spread)"
+      "Bonds beating stocks (TLT +0.6% vs SPY -2.1%)",
+      "Flight to defensive sectors (7.3% spread)"
     ],
-    "growth_adjustment": 10,
+    "growth_adjustment": 0,
     "defensive_adjustment": 0,
-    "analysis_date": "2026-02-01T14:40:02.159580",
+    "analysis_date": "2026-02-06T11:30:11.269492",
     "vix": {
       "name": "VIX",
-      "value": 17.440000534057617,
-      "signal": "RISK_ON",
-      "score": 70,
-      "description": "VIX low (17.4) - bullish sentiment",
+      "value": 20.440000534057617,
+      "signal": "NEUTRAL",
+      "score": 50,
+      "description": "VIX moderate (20.4) - normal conditions",
       "weight": 1.5
     },
     "yield_spread": {
       "name": "Yield Spread",
-      "value": 0.6690001487731934,
+      "value": 0.6319999694824219,
       "signal": "RISK_ON",
       "score": 65,
-      "description": "Yield curve positive (+0.67%) - normal",
+      "description": "Yield curve positive (+0.63%) - normal",
       "weight": 1.2
     },
     "stock_vs_bond": {
       "name": "Stock vs Bond",
-      "value": 1.508204972180549,
-      "signal": "NEUTRAL",
-      "score": 50,
-      "description": "Stocks & bonds even (SPY +1.5% vs TLT -0.0%)",
+      "value": -2.6636697834517165,
+      "signal": "RISK_OFF",
+      "score": 35,
+      "description": "Bonds beating stocks (TLT +0.6% vs SPY -2.1%)",
       "weight": 1.3
     },
     "dollar_index": {
       "name": "Dollar Index",
-      "value": -0.6659278601672813,
-      "signal": "RISK_ON",
-      "score": 60,
-      "description": "Dollar weakening (-0.7% monthly)",
+      "value": -0.25773083658867657,
+      "signal": "NEUTRAL",
+      "score": 50,
+      "description": "Dollar stable (-0.3% monthly)",
       "weight": 0.8
     },
     "sector_leadership": {
       "name": "Sector Leadership",
-      "value": -1.7873411977112894,
+      "value": -7.331587604430746,
       "signal": "RISK_OFF",
-      "score": 35,
-      "description": "Defensive leading (1.8% spread)",
+      "score": 20,
+      "description": "Flight to defensive sectors (7.3% spread)",
       "weight": 1.2
     },
     "market_breadth": {
       "name": "Market Breadth",
-      "value": 1.9298574377328626,
+      "value": 2.8430185027276567,
       "signal": "RISK_ON",
-      "score": 60,
-      "description": "Healthy breadth (equal-weight keeping up)",
+      "score": 75,
+      "description": "Broad market participation (RSP +0.8% vs SPY +-2.1%)",
       "weight": 1.0
     }
   }

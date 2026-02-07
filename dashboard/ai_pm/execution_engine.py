@@ -10,7 +10,9 @@ import time
 from ib_insync import IB, Stock, Contract, MarketOrder, LimitOrder, Trade
 
 from .config import DEFAULT_CONSTRAINTS, RiskConstraints
+from .kill_switch import check_and_block as _check_kill_switch, is_active as _kill_switch_active
 from .models import ExecutionResult, OrderTicket, PortfolioSnapshot, TradePlan
+from .order_reconciliation import OrderSession, tag_ib_order
 
 
 def _safe_float(x) -> Optional[float]:
@@ -202,6 +204,7 @@ def execute_trade_plan(
         max_slice_nav_pct: float = 1.00,  # disabled - send full orders (no slicing)
         price_map: Optional[Dict[str, float]] = None,  # Pre-fetched prices (Yahoo) to avoid slow IBKR quotes
         skip_live_quotes: bool = True,  # Skip slow IBKR reqMktData calls
+        session: Optional[OrderSession] = None,  # Order session for tagging & reconciliation
 ) -> ExecutionResult:
     """
     Execute orders for a plan.
@@ -241,7 +244,14 @@ def execute_trade_plan(
     if kill_switch:
         return ExecutionResult(ts_utc=ts, account=account, strategy_key=plan.strategy_key,
                                submitted=False, submitted_orders=[],
-                               errors=["Kill switch is enabled; execution blocked."], notes=[])
+                               errors=["Kill switch is enabled (in-memory flag); execution blocked."], notes=[])
+
+    # Check file-based kill switch (external trigger)
+    kill_block = _check_kill_switch(f"execute_trade_plan account={account}")
+    if kill_block:
+        return ExecutionResult(ts_utc=ts, account=account, strategy_key=plan.strategy_key,
+                               submitted=False, submitted_orders=[],
+                               errors=[kill_block], notes=[])
 
     if auto_trade_enabled and not armed:
         return ExecutionResult(ts_utc=ts, account=account, strategy_key=plan.strategy_key,
@@ -374,27 +384,85 @@ def execute_trade_plan(
             continue
         contract_by_symbol[sym] = _make_contract(sym, snapshot)
 
-    # Skip qualifyContracts - it deadlocks in threaded environments (Streamlit)
-    # IBKR accepts basic Stock() contracts for order placement without qualification
-    _log.info(f"execute_trade_plan: built {len(contract_by_symbol)} contracts")
+    # Qualify contracts with IBKR (validates symbol → conId mapping)
+    # Uses batched qualification with proper error handling
+    _log.info(f"execute_trade_plan: qualifying {len(contract_by_symbol)} contracts...")
     sys.stdout.flush()
-    
+
     try:
-        _log.info("execute_trade_plan: skipping qualifyContracts (causes thread deadlock)")
+        contracts_to_qualify = list(contract_by_symbol.values())
+        qualified = []
+        unqualified_symbols = []
+
+        # Qualify in batches of 20 to avoid overwhelming IBKR
+        BATCH_SIZE = 20
+        for batch_start in range(0, len(contracts_to_qualify), BATCH_SIZE):
+            batch = contracts_to_qualify[batch_start:batch_start + BATCH_SIZE]
+            try:
+                # qualifyContracts returns the list of successfully qualified contracts
+                result = ib.qualifyContracts(*batch)
+                for c in batch:
+                    sym = (getattr(c, "symbol", "") or "").strip().upper()
+                    con_id = getattr(c, "conId", 0)
+                    if con_id and con_id > 0:
+                        qualified.append(c)
+                        contract_by_symbol[sym] = c
+                    else:
+                        unqualified_symbols.append(sym)
+                        _log.warning(f"Contract qualification failed for {sym}: conId=0")
+            except Exception as batch_err:
+                _log.warning(f"Contract qualification batch error: {batch_err}")
+                # On batch failure, mark all in batch as unqualified
+                for c in batch:
+                    sym = (getattr(c, "symbol", "") or "").strip().upper()
+                    unqualified_symbols.append(sym)
+
+        if unqualified_symbols:
+            notes.append(
+                f"Contract qualification: {len(unqualified_symbols)} symbols could not be "
+                f"validated with IBKR: {', '.join(unqualified_symbols[:10])}"
+                f"{'...' if len(unqualified_symbols) > 10 else ''}. "
+                f"Orders for these symbols will be skipped."
+            )
+            # Remove unqualified contracts so orders for them get skipped
+            for sym in unqualified_symbols:
+                contract_by_symbol.pop(sym, None)
+
+        _log.info(
+            f"execute_trade_plan: {len(qualified)} contracts qualified, "
+            f"{len(unqualified_symbols)} failed"
+        )
         sys.stdout.flush()
-        qualified = list(contract_by_symbol.values())
-        _log.info(f"execute_trade_plan: {len(qualified)} contracts ready for order placement")
-        sys.stdout.flush()
-        for c in qualified:
-            sym = (getattr(c, "symbol", "") or "").strip().upper()
-            if sym:
-                contract_by_symbol[sym] = c
+
     except Exception as e:
-        return ExecutionResult(ts_utc=ts, account=account, strategy_key=plan.strategy_key,
-                               submitted=False, submitted_orders=[],
-                               errors=[f"Contract qualification failed: {e!r}"], notes=[])
+        _log.error(f"Contract qualification completely failed: {e}")
+        # If qualification entirely fails (e.g., threading issue), log but continue
+        # with unqualified contracts — IBKR may still accept them for US STK
+        notes.append(
+            f"WARNING: Contract qualification failed ({e!r}). "
+            f"Proceeding with unqualified contracts — verify fills manually."
+        )
 
     placed_any = False
+
+    # =========================================================================
+    # PRE-TRADE CONCENTRATION CHECK
+    # Build current position weights from snapshot for hard limit enforcement
+    # =========================================================================
+    _position_weights: Dict[str, float] = {}
+    if nav > 0:
+        for p in snapshot.positions:
+            sym = (getattr(p, 'symbol', '') or '').strip().upper()
+            if not sym:
+                continue
+            mv = _safe_float(getattr(p, 'market_value', None))
+            if mv is None or mv <= 0:
+                px = _safe_float(getattr(p, 'market_price', None))
+                qty = _safe_float(getattr(p, 'quantity', None)) or 0
+                if px and px > 0:
+                    mv = px * qty
+            if mv and mv > 0:
+                _position_weights[sym] = float(mv) / float(nav)
 
     for o in orders:
         sym = (o.symbol or "").strip().upper()
@@ -412,6 +480,29 @@ def execute_trade_plan(
             if raw_qty > 0:
                 notes.append(f"{sym}: quantity {raw_qty:.4f} rounds to 0 shares; skipped (too small to trade).")
             continue
+
+        # =================================================================
+        # HARD LIMIT: Position concentration check
+        # Block BUY orders that would push a position above max_position_weight
+        # =================================================================
+        if (o.action or "").upper() == "BUY" and nav > 0:
+            current_w = _position_weights.get(sym, 0.0)
+            order_px = None
+            if price_map and sym in price_map:
+                order_px = _safe_float(price_map.get(sym))
+            if order_px is None or order_px <= 0:
+                order_px = px_map.get(sym)
+            if order_px is not None and order_px > 0:
+                order_value = float(qty) * float(order_px)
+                projected_w = current_w + (order_value / float(nav))
+                max_pos_w = float(constraints.max_position_weight)
+                if projected_w > max_pos_w:
+                    errors.append(
+                        f"{sym}: BLOCKED — BUY would push position to "
+                        f"{projected_w:.1%} of NAV, exceeding max_position_weight "
+                        f"{max_pos_w:.1%}. Current: {current_w:.1%}."
+                    )
+                    continue
 
         # Use pre-fetched price if available (much faster than IBKR reqMktData)
         if skip_live_quotes and price_map and sym in price_map and price_map[sym]:
@@ -449,6 +540,13 @@ def execute_trade_plan(
                 ib_order.account = account
             except Exception:
                 pass
+
+            # Tag order with session reference for reconciliation
+            if session:
+                order_ref = session.get_order_ref(sym, o.action)
+                tag_ib_order(ib_order, order_ref)
+            else:
+                order_ref = None
 
             ticket_repr = {
                 "symbol": sym,
@@ -492,8 +590,16 @@ def execute_trade_plan(
                         "order_id": order_id,
                         "perm_id": perm_id,
                         "status": status,
+                        "order_ref": order_ref,
                     }
                 )
+
+                # Record in session for reconciliation
+                if session:
+                    session.record_order({
+                        "symbol": sym, "action": o.action, "quantity": float(slice_qty),
+                        "order_id": order_id, "perm_id": perm_id, "order_ref": order_ref,
+                    })
             except Exception as e:
                 errors.append(f"{sym}: order placement failed: {e!r}")
                 submitted_orders.append({**ticket_repr, "submitted": False, "dry_run": False, "error": repr(e)})

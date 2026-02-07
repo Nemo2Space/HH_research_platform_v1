@@ -669,16 +669,34 @@ class UnifiedScorer:
     # =========================================================================
 
     def _fetch_price(self, ticker: str, as_of: datetime) -> Optional[Dict]:
+        """
+        Fetch price data with point-in-time enforcement.
+        
+        FIXED: Previously used repo.get_latest_price(ticker) which returns the 
+        absolute latest price regardless of as_of time — causing look-ahead bias
+        in backtesting. Now queries with explicit date constraint.
+        """
         if not self.repo:
             return None
         try:
-            price_data = self.repo.get_latest_price(ticker)
-            if price_data:
-                close_price = price_data.get('close') or price_data.get('adj_close')
+            query = (
+                "SELECT close, adj_close, date FROM prices "
+                "WHERE ticker = %(ticker)s AND date <= %(as_of)s "
+                "ORDER BY date DESC LIMIT 1"
+            )
+            df = pd.read_sql(query, self.repo.engine, params={
+                'ticker': ticker, 'as_of': as_of.date()
+            })
+            if len(df) > 0:
+                row = df.iloc[0]
+                close_price = self._safe_float(row.get('adj_close')) or self._safe_float(row.get('close'))
                 if close_price is not None:
-                    return {'close': close_price, 'timestamp': self._parse_timestamp(price_data.get('date'))}
+                    return {
+                        'close': close_price,
+                        'timestamp': self._parse_timestamp(row.get('date'))
+                    }
         except Exception as e:
-            logger.debug(f"Error fetching price for {ticker}: {e}")
+            logger.debug(f"Error fetching price for {ticker} as_of {as_of}: {e}")
         return None
 
     def _fetch_sentiment(self, ticker: str, as_of: datetime) -> Optional[Dict]:
@@ -815,10 +833,31 @@ class UnifiedScorer:
         return None
 
     def _fetch_regime(self, ticker: str, as_of: datetime) -> Optional[Dict]:
+        """
+        Fetch regime/macro adjustment.
+        
+        FIXED: Previously called get_regime_adjustment() which uses current
+        market conditions regardless of as_of time. Now passes as_of to
+        ensure point-in-time correctness during backtesting.
+        """
         try:
             from src.analytics.macro_regime import get_regime_adjustment
             sector = self._get_ticker_sector(ticker)
-            adjustment = get_regime_adjustment(ticker, sector)
+            # Pass as_of to regime adjustment if the function supports it
+            try:
+                adjustment = get_regime_adjustment(ticker, sector, as_of=as_of)
+            except TypeError:
+                # Fallback if the function doesn't accept as_of yet
+                # In this case, return None for regime adjustment during backtest
+                # to avoid look-ahead bias
+                if as_of.date() < datetime.now().date():
+                    # We're in backtest mode — don't use current regime data
+                    logger.debug(
+                        f"Regime adjustment for {ticker} skipped in backtest mode "
+                        f"(as_of={as_of.date()} < today). Function doesn't support as_of."
+                    )
+                    return {'adjustment': 0, 'sector': sector, 'is_growth': None, 'is_defensive': None}
+                adjustment = get_regime_adjustment(ticker, sector)
             is_growth = sector in ['Technology', 'Consumer Cyclical', 'Communication Services'] if sector else None
             is_defensive = sector in ['Utilities', 'Consumer Defensive', 'Healthcare', 'Consumer Staples'] if sector else None
             return {'adjustment': adjustment, 'sector': sector, 'is_growth': is_growth, 'is_defensive': is_defensive}

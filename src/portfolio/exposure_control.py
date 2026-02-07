@@ -87,14 +87,14 @@ class ExposureReport:
     """Complete exposure report for a portfolio."""
     as_of_time: datetime
     
-    # Market exposure
-    portfolio_beta: float
+    # Market exposure — FIXED: Optional (None when data unavailable)
+    portfolio_beta: Optional[float]
     beta_status: ExposureStatus
     
-    # Volatility
-    portfolio_volatility: float  # Annualized
+    # Volatility — FIXED: Optional (None when data unavailable)
+    portfolio_volatility: Optional[float]
     target_volatility: float
-    vol_scaling_factor: float    # To hit target vol
+    vol_scaling_factor: Optional[float]  # FIXED: Optional
     
     # Sector exposures
     sector_exposures: List[SectorExposure]
@@ -113,9 +113,9 @@ class ExposureReport:
     effective_positions: float  # 1/HHI
     top_10_weight: float
     
-    # Risk metrics
-    var_95_pct: float
-    max_drawdown_estimate: float
+    # Risk metrics — FIXED: Optional (None when vol data unavailable)
+    var_95_pct: Optional[float]
+    max_drawdown_estimate: Optional[float]
     
     # Recommendations
     warnings: List[str] = field(default_factory=list)
@@ -247,11 +247,11 @@ class ExposureController:
         """
         report = ExposureReport(
             as_of_time=datetime.now(),
-            portfolio_beta=1.0,
+            portfolio_beta=None,        # FIXED: was 1.0
             beta_status=ExposureStatus.OK,
-            portfolio_volatility=0.15,
+            portfolio_volatility=None,  # FIXED: was 0.15
             target_volatility=self.limits.target_volatility,
-            vol_scaling_factor=1.0,
+            vol_scaling_factor=None,    # FIXED: was 1.0
             sector_exposures=[],
             sector_breaches=[],
             factor_exposures=[],
@@ -261,8 +261,8 @@ class ExposureController:
             hhi_index=0,
             effective_positions=0,
             top_10_weight=0,
-            var_95_pct=0,
-            max_drawdown_estimate=0,
+            var_95_pct=None,          # FIXED: was 0
+            max_drawdown_estimate=None, # FIXED: was 0
         )
         
         if not positions:
@@ -280,19 +280,25 @@ class ExposureController:
         # 1. MARKET BETA
         # =========================================================================
         try:
-            report.portfolio_beta = self._calculate_portfolio_beta(
+            computed_beta = self._calculate_portfolio_beta(
                 symbols, weights, historical_days
             )
+            report.portfolio_beta = computed_beta
             
-            if report.portfolio_beta > self.limits.max_beta:
-                report.beta_status = ExposureStatus.BREACH
-                report.warnings.append(
-                    f"Beta {report.portfolio_beta:.2f} exceeds max {self.limits.max_beta}"
-                )
-            elif report.portfolio_beta < self.limits.min_beta:
+            if computed_beta is None:
                 report.beta_status = ExposureStatus.WARNING
                 report.warnings.append(
-                    f"Beta {report.portfolio_beta:.2f} below min {self.limits.min_beta}"
+                    "Beta: Data not available — cannot compute market sensitivity"
+                )
+            elif computed_beta > self.limits.max_beta:
+                report.beta_status = ExposureStatus.BREACH
+                report.warnings.append(
+                    f"Beta {computed_beta:.2f} exceeds max {self.limits.max_beta}"
+                )
+            elif computed_beta < self.limits.min_beta:
+                report.beta_status = ExposureStatus.WARNING
+                report.warnings.append(
+                    f"Beta {computed_beta:.2f} below min {self.limits.min_beta}"
                 )
         except Exception as e:
             logger.warning(f"Error calculating beta: {e}")
@@ -301,24 +307,31 @@ class ExposureController:
         # 2. VOLATILITY
         # =========================================================================
         try:
-            report.portfolio_volatility = self._calculate_portfolio_volatility(
+            computed_vol = self._calculate_portfolio_volatility(
                 symbols, weights, historical_days
             )
+            report.portfolio_volatility = computed_vol
             
-            # Calculate scaling factor to hit target vol
-            if report.portfolio_volatility > 0:
-                report.vol_scaling_factor = (
-                    self.limits.target_volatility / report.portfolio_volatility
-                )
-                
-            if report.portfolio_volatility > self.limits.max_volatility:
+            if computed_vol is None:
                 report.warnings.append(
-                    f"Volatility {report.portfolio_volatility:.1%} exceeds max "
-                    f"{self.limits.max_volatility:.1%}"
+                    "Volatility: Data not available — cannot compute portfolio risk"
                 )
-                report.required_actions.append(
-                    f"Reduce position sizes by {1 - report.vol_scaling_factor:.1%}"
-                )
+            else:
+                # Calculate scaling factor to hit target vol
+                if computed_vol > 0:
+                    report.vol_scaling_factor = (
+                        self.limits.target_volatility / computed_vol
+                    )
+                    
+                if computed_vol > self.limits.max_volatility:
+                    report.warnings.append(
+                        f"Volatility {computed_vol:.1%} exceeds max "
+                        f"{self.limits.max_volatility:.1%}"
+                    )
+                    if report.vol_scaling_factor is not None:
+                        report.required_actions.append(
+                            f"Reduce position sizes by {1 - report.vol_scaling_factor:.1%}"
+                        )
         except Exception as e:
             logger.warning(f"Error calculating volatility: {e}")
         
@@ -383,6 +396,9 @@ class ExposureController:
                 exposure = self._calculate_factor_exposure(
                     symbols, weights, proxy, historical_days
                 )
+                
+                if exposure is None:
+                    continue  # Skip factors we can't compute
                 
                 limit = self.limits.factor_limits.get(factor, 1.0)
                 
@@ -452,11 +468,14 @@ class ExposureController:
         # 7. RISK METRICS
         # =========================================================================
         try:
-            # VaR estimate (parametric)
-            report.var_95_pct = report.portfolio_volatility * 1.65 / np.sqrt(252)
-            
-            # Max drawdown estimate (based on vol and horizon)
-            report.max_drawdown_estimate = report.portfolio_volatility * 2.5
+            if report.portfolio_volatility is not None:
+                # VaR estimate (parametric)
+                report.var_95_pct = report.portfolio_volatility * 1.65 / np.sqrt(252)
+                # Max drawdown estimate (based on vol and horizon)
+                report.max_drawdown_estimate = report.portfolio_volatility * 2.5
+            else:
+                report.var_95_pct = None
+                report.max_drawdown_estimate = None
         except Exception as e:
             logger.warning(f"Error calculating risk metrics: {e}")
         
@@ -581,12 +600,17 @@ class ExposureController:
     def _calculate_portfolio_beta(self,
                                    symbols: List[str],
                                    weights: np.ndarray,
-                                   days: int = 252) -> float:
-        """Calculate portfolio beta vs SPY."""
+                                   days: int = 252) -> Optional[float]:
+        """
+        Calculate portfolio beta vs SPY.
+        
+        FIXED: Returns None when data is unavailable instead of defaulting to 1.0.
+        A hardcoded beta=1.0 is dangerous because it hides actual market sensitivity.
+        """
         returns = self._get_returns(symbols, days)
         
         if returns.empty or 'SPY' not in returns.columns:
-            return 1.0
+            return None  # FIXED: was return 1.0
         
         spy_returns = returns['SPY']
         
@@ -601,17 +625,29 @@ class ExposureController:
         cov = portfolio_returns.cov(spy_returns)
         var = spy_returns.var()
         
-        return cov / var if var > 0 else 1.0
+        if var is None or var <= 0 or np.isnan(var):
+            return None  # FIXED: was return 1.0
+        
+        beta = cov / var
+        if np.isnan(beta) or np.isinf(beta):
+            return None
+        
+        return float(beta)
     
     def _calculate_portfolio_volatility(self,
                                          symbols: List[str],
                                          weights: np.ndarray,
-                                         days: int = 252) -> float:
-        """Calculate annualized portfolio volatility."""
+                                         days: int = 252) -> Optional[float]:
+        """
+        Calculate annualized portfolio volatility.
+        
+        FIXED: Returns None when data unavailable instead of defaulting to 0.15 (15%).
+        A hardcoded volatility masks actual risk levels.
+        """
         returns = self._get_returns(symbols, days)
         
         if returns.empty:
-            return 0.15  # Default
+            return None  # FIXED: was return 0.15
         
         # Calculate weighted portfolio returns
         portfolio_returns = pd.Series(0, index=returns.index)
@@ -622,20 +658,28 @@ class ExposureController:
         
         # Annualized volatility
         daily_vol = portfolio_returns.std()
+        
+        if daily_vol is None or np.isnan(daily_vol):
+            return None
+        
         annual_vol = daily_vol * np.sqrt(252)
         
-        return annual_vol
+        return float(annual_vol)
     
     def _calculate_factor_exposure(self,
                                     symbols: List[str],
                                     weights: np.ndarray,
                                     factor_proxy: str,
-                                    days: int = 252) -> float:
-        """Calculate portfolio exposure to a factor."""
+                                    days: int = 252) -> Optional[float]:
+        """
+        Calculate portfolio exposure to a factor.
+        
+        FIXED: Returns None instead of 0.0 when data unavailable.
+        """
         returns = self._get_returns(symbols + [factor_proxy], days)
         
         if returns.empty or factor_proxy not in returns.columns:
-            return 0.0
+            return None  # FIXED: was return 0.0
         
         factor_returns = returns[factor_proxy]
         
@@ -650,7 +694,7 @@ class ExposureController:
         cov = portfolio_returns.cov(factor_returns)
         var = factor_returns.var()
         
-        return cov / var if var > 0 else 0.0
+        return cov / var if var > 0 else None
     
     def _find_correlation_clusters(self,
                                     symbols: List[str],

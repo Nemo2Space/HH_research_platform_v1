@@ -104,7 +104,7 @@ class BacktestResult:
     # Benchmark comparison
     benchmark_return: float
     alpha: float
-    beta: float
+    beta: Optional[float]  # FIXED: was float — None when insufficient data for regression
 
     # By signal breakdown
     returns_by_signal: Dict[str, Dict[str, float]]
@@ -676,7 +676,13 @@ class BacktestEngine:
         win_rate = winning_trades / total_trades if total_trades > 0 else 0
 
         returns_array = np.array(returns)
-        total_return = float(np.sum(returns_array))
+        # FIXED: total_return should use compounding (consistent with equity curve)
+        # Previously used sum which is incorrect for multi-period returns.
+        # Compounded: product of (1 + r) - 1
+        total_return_compounded = float(
+            (np.prod(1 + returns_array / 100.0) - 1) * 100.0
+        )
+        total_return = total_return_compounded
         avg_return = float(np.mean(returns_array))
         median_return = float(np.median(returns_array))
         std_return = float(np.std(returns_array)) if len(returns_array) > 1 else 0
@@ -689,7 +695,9 @@ class BacktestEngine:
 
         benchmark_return = self._calculate_benchmark_return(benchmark_df, start_date, end_date)
         alpha = avg_return * (252 / holding_period) - benchmark_return
-        beta = 1.0
+        
+        # FIXED: Compute actual beta from regression instead of hardcoding 1.0
+        beta = self._calculate_beta(trades, benchmark_df, holding_period)
 
         returns_by_signal = self._calculate_returns_by_signal(trades)
         equity_curve = self._build_equity_curve(trades)
@@ -775,6 +783,65 @@ class BacktestEngine:
             return float((end_price - start_price) / start_price * 100)
         return 0.0
 
+    def _calculate_beta(self, trades: List[Trade], benchmark_df: pd.DataFrame,
+                        holding_period: int) -> Optional[float]:
+        """
+        Calculate actual portfolio beta via OLS regression against benchmark.
+        
+        FIXED: Previously hardcoded to 1.0. Now computes real beta from 
+        strategy returns vs benchmark returns.
+        
+        Returns None if insufficient data for reliable beta computation.
+        """
+        if not trades or benchmark_df.empty or len(trades) < 10:
+            return None  # Not enough data — return None, NOT 1.0
+        
+        try:
+            # Build benchmark return series aligned to trade dates
+            bench = benchmark_df.copy()
+            bench['date'] = pd.to_datetime(bench['date'])
+            bench = bench.set_index('date').sort_index()
+            bench_close = bench['adj_close'].fillna(bench['close'])
+            bench_returns = bench_close.pct_change().dropna()
+            
+            # Build strategy returns aligned to trade entry dates
+            trade_dates = []
+            trade_returns = []
+            for t in trades:
+                td = pd.Timestamp(t.entry_date)
+                if td in bench_returns.index:
+                    trade_dates.append(td)
+                    trade_returns.append(t.return_pct_net / 100.0)  # Convert from pct
+            
+            if len(trade_dates) < 10:
+                return None  # Not enough aligned data
+            
+            trade_ret_series = pd.Series(trade_returns, index=trade_dates)
+            bench_aligned = bench_returns.reindex(trade_ret_series.index).dropna()
+            trade_aligned = trade_ret_series.reindex(bench_aligned.index).dropna()
+            
+            if len(trade_aligned) < 10:
+                return None
+            
+            # OLS: strategy_return = alpha + beta * benchmark_return
+            cov = trade_aligned.cov(bench_aligned)
+            var = bench_aligned.var()
+            
+            if var is None or var <= 0 or np.isnan(var):
+                return None
+            
+            beta = float(cov / var)
+            
+            # Sanity check: beta should be reasonable
+            if np.isnan(beta) or np.isinf(beta) or abs(beta) > 10:
+                return None
+            
+            return round(beta, 4)
+            
+        except Exception as e:
+            logger.debug(f"Beta calculation failed: {e}")
+            return None
+
     def _calculate_returns_by_signal(self, trades: List[Trade]) -> Dict[str, Dict[str, float]]:
         """Calculate performance by signal type."""
         by_signal = {}
@@ -804,7 +871,12 @@ class BacktestEngine:
         return result
 
     def _build_equity_curve(self, trades: List[Trade]) -> pd.DataFrame:
-        """Build equity curve from trades."""
+        """
+        Build equity curve from trades.
+        
+        FIXED: Uses return_pct_net (after costs) for consistency with
+        total_return and Sharpe calculations which also use net returns.
+        """
         if not trades:
             return pd.DataFrame()
 
@@ -814,11 +886,15 @@ class BacktestEngine:
         cumulative = 100.0
 
         for trade in sorted_trades:
-            cumulative = cumulative * (1 + trade.return_pct / 100)
+            # FIXED: Use net returns (after transaction costs) for consistency
+            ret = trade.return_pct_net if trade.return_pct_net != 0 else trade.return_pct
+            cumulative = cumulative * (1 + ret / 100)
             data.append({
                 'date': trade.entry_date,
                 'equity': cumulative,
-                'return': trade.return_pct,
+                'return': ret,
+                'return_gross': trade.return_pct,
+                'return_net': trade.return_pct_net,
                 'ticker': trade.ticker,
                 'signal': trade.signal_type
             })
@@ -862,7 +938,7 @@ class BacktestEngine:
             max_drawdown=0,
             benchmark_return=0,
             alpha=0,
-            beta=0,
+            beta=None,  # FIXED: was 0, which implies zero market sensitivity — None is honest
             returns_by_signal={},
             trades=[],
             equity_curve=pd.DataFrame(),
